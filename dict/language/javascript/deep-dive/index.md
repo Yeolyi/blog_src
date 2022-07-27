@@ -542,7 +542,7 @@ internal slot/method
 
 접근자 프로퍼티는 [[Get]], [[Set]], [[Enumerable]], [[Configurable]]을 가지며 getter/setter는 둘 중 하나만 가질 수도 있다. 
 
-!@chapter16.accessorProperty.js@!
+!@chapter16/accessorProperty.js@!
 
 ### 4. 프로퍼티 정의
 
@@ -760,7 +760,7 @@ Math, Reflect, JSON을 제외하고 모두 생성자 함수 객체이다.
 
 래퍼 객체의 처리가 종료되면 식별자가 원시값을 갖도록 되돌리고 래퍼 객체는 가비지 컬렉션의 대상이 된다. 
 
-!@wrapperObject.js@!
+!@chapter21/wrapperObject.js@!
 
 ### 4. 전역 객체
 

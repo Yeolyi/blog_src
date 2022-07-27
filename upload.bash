@@ -4,7 +4,11 @@ read -r commitName
 git add .
 git commit -m "$commitName"
 git push
-cd ../blog
+
+cd ~/Developer/blog
 git submodule foreach git pull
 git add .
+git commit --amend --no-edit
 git push -f
+
+open https://vercel.com/dashboard
