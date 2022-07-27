@@ -3,8 +3,6 @@ title: 사전
 subtitle: 공부한 것들 창고
 ---
 
-테스트
-
 ### 언어
 [Swift](language/swift)
 [Javascript](language/javascript)
