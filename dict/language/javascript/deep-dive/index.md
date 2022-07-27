@@ -72,13 +72,13 @@ ES6은 ES5의 superset이다.
 
 자바스크립트에서 변수, 함수, 클래스등의 식별자는 호이스팅되어 런타임 단계에서 선언문들이(할당문 x) 먼저 실행된다.
 
-!@hoisting.js@!
+!@chapter4/hoisting.js@!
 
 ### 5. 값의 할당
 
 > 변수 선언은 런타임 이전에 먼저 실행되지만 값의 할당은 런타임에 실행된다. 
 
-!@hoisting2.js@!
+!@chapter4/hoisting2.js@!
 
 ### 6. 값의 재할당
 
@@ -90,7 +90,7 @@ ES6은 ES5의 superset이다.
 
 특수문자를 제외한 문자, 숫자, 언더스코어, 달러 기호를 포함할 수 있으며, 숫자로 시작할 수 없으며, 예약어는 사용할 수 없다. 
 
-!@naming.js@!
+!@chapter4/naming.js@!
 
 ## 5. 표현식과 문
 
@@ -104,7 +104,7 @@ ES6은 ES5의 superset이다.
 
 > **리터럴**(literal)은 사람이 이해할 수 있는 문자 또는 약속된 기호를 사용해 값을 생성하는 표기법을 말한다. JS 엔진은 런타임에 리터럴을 평가해 값을 생성한다. 
 
-!@literal.js@!
+!@chapter5/literal.js@!
 
 ### 3. 표현식
 
@@ -122,7 +122,7 @@ ES6은 ES5의 superset이다.
 
 > **토큰**이란 문법적인 의미를 가지며, 문법적으로 더 이상 나눌 수 없는 코드의 기본 요소를 의미한다. 
 
-!@statement.js@!
+!@chapter5/statement.js@!
 
 ### 5. 세미콜론과 세미콜론 자동 삽입 기능
 
@@ -132,11 +132,11 @@ ES6은 ES5의 superset이다.
 
 ASI(Automatic semicolon insertion)으로 인해 사실 세미콜론을 붙이지 않아도 되긴 한다. 
 
-!@asiFail.js@!
+!@chapter5/asiFail.js@!
 
 ### 6. 표현식인 문과 표현식이 아닌 문
 
-!@statementExpression.js@!
+!@chapter5/statementExpression.js@!
 
 ## 6. 데이터 타입
 
@@ -144,11 +144,11 @@ ASI(Automatic semicolon insertion)으로 인해 사실 세미콜론을 붙이지
 
 **객체 타입**(object/reference type): 객체, 함수, 배열
 
-!@bigInt.js@!
+!@chapter6/bigInt.js@!
 
 ### 1. 숫자 타입
 
-!@number.js@!
+!@chapter6/number.js@!
  
 ### 2. 문자열 타입
 
@@ -162,11 +162,11 @@ ASI(Automatic semicolon insertion)으로 인해 사실 세미콜론을 붙이지
 
 ES6부터 추가된 새로운 문자열 표기법. 백틱(`)을 사용하며 multiline string, expression interpolation, tagged template등의 기능을 제공한다. [참고](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)
 
-!@escapeSequence.js@!
+!@chapter6/escapeSequence.js@!
 
 \n은 LF(Line Feed), \r은 CR(Carriage Return). 과거 타자기에서 전자는 종이를 한 줄 올리고 후자는 커서를 맨 앞줄로 이동시켰다. 요즘은 기능은 같지만 전자를 사용한다. 
 
-!@templateLiteral.js@!
+!@chapter6/templateLiteral.js@!
 
 > \+ 연산자는 피연산자 중 하나 이상이 문자열인 경우 문자열 연결 연산자로 동작한다. 
 
@@ -196,33 +196,33 @@ null타입의 값은 null이 유일하다. 변수 값의 의도적 부재(intent
 
 **implicit coersion, type coercion**
 
-!@unaryPlus.js@!
+!@chapter7/unaryPlus.js@!
 
-!@binaryPlus.js@!
+!@chapter7/binaryPlus.js@!
 
 ### 2. 할당 연산자
 
-!@assignmentOperator.js@!
+!@chapter7/assignmentOperator.js@!
 
 ### 3. 비교 연산자
 
 **동등 비교**(loose equality) 연산자는 암묵적 타입 변환을 통해 타입을 일치시킨 후 비교한다. 
 
-!@looseEquality.js@!
+!@chapter7/looseEquality.js@!
 
 **일치 비교**(strict equality) 연산자는 타입또한 비교한다. 
 
-!@objectIs.js@!
+!@chapter7/objectIs.js@!
 
 ### 6. 쉼표 연산자
 
 > 왼쪽 피연산자부터 차례대로 평가하고 마지막 평가 결과를 반환한다.
 
-!@objectIs.js@!
+!@chapter7/objectIs.js@!
 
 ### 7. typeof 연산자
 
-!@typeOf.js@!
+!@chapter7/typeOf.js@!
 
 ### 11. 연산자의 부수 효과
 
@@ -244,13 +244,13 @@ null타입의 값은 null이 유일하다. 변수 값의 의도적 부재(intent
 
 switch문에서 default문은 선택사항. if/else문은 논리적 참, 거짓으로 실행할 코드 블록을 결정하고, switch문은 다양한 상황(case)에 따라 결정한다. break문이 없으면 case문의 실행 흐름이 다음으로 넘어간다. 
 
-!@switchStatement.js@!
+!@chapter8/switchStatement.js@!
 
 for문은 반복 횟수가 명확할 때 사용하고, while문은 불명확할 때 사용한다. 
 
 ### 4. break문
 
-!@labelStatement.js@!
+!@chapter8/labelStatement.js@!
 
 ## 9. 타입 변환과 단축 평가
 
@@ -262,7 +262,7 @@ for문은 반복 횟수가 명확할 때 사용하고, while문은 불명확할 
 
 ### 2. 암묵적 타입 변환
 
-!@implicitCoercion.js@!
+!@chapter9/implicitCoercion.js@!
 
 ### 3. 명시적 타입 변환
 
@@ -270,17 +270,17 @@ for문은 반복 횟수가 명확할 때 사용하고, while문은 불명확할 
 - 빌트인 메서드 사용
 - 암묵적 타입 변환 이용
 
-!@explicitCoercion.js@!
+!@chapter9/explicitCoercion.js@!
 
 ### 4. 단축 평가
 
 > 논리합 또는 논리곱 연산자는 전에나 2개의 피연산자 중 어느 한쪽으로 평가된다. 
 
-!@shortCircuitEvaluation.js@!
+!@chapter9/shortCircuitEvaluation.js@!
 
 위 방법은 0이나 ''가 Falsy값이기 때문에 이를 그대로 반환하지만, 이들은 객체일 수 있기 때문에 아래의 옵셔널 체이닝 방법이 낫다. 
 
-!@optionalChaining.js@!
+!@chapter9/optionalChaining.js@!
 
 null 병합 연산자(nullish coalescing) 연산자도 바찬가지로 ||를 사용할 단축 평가로 대체할 수 있지만 Falsy값인 0과 ''도 유효한 기본값이라면 문제를 일으킬 수 있다. 
 
@@ -302,11 +302,11 @@ null 병합 연산자(nullish coalescing) 연산자도 바찬가지로 ||를 사
 
 식별자 네이밍 규칙을 따르지 않는 키에는 반드시 따옴표를 사용해야 한다. 
 
-!@property.js@!
+!@chapter10/property.js@!
 
 ### 9. ES6에서 추가된 객체 리터럴의 확장 기능
 
-!@es6Property.js@!
+!@chapter10/es6Property.js@!
 
 ## 11. 원시 값과 객체의 비교
 
@@ -330,7 +330,7 @@ null 병합 연산자(nullish coalescing) 연산자도 바찬가지로 ||를 사
 
 문자열도 원시값이므로 변경할 수 없다. 
 
-!@immutableString.js@!
+!@chapter11/immutableString.js@!
 
 > 참고로 '값에 의한 전달'이라는 용어는 자바스크립트를 위한 용어가 아니므로 사실 오해가 있을 수도 있다. **엄격하게 표현하면 변수에는 값이 전달되는 것이 아니라 메모리 주소가 전달되기 때문이다. 이는 변수와 같은 식별자는 값이 아니라 메모리 주소를 기억하고 있기 때문이다.
 
@@ -372,23 +372,23 @@ null 병합 연산자(nullish coalescing) 연산자도 바찬가지로 ||를 사
 
 함수 선언문은 표현식이 아닌 문이다. 다만 함수 이름이 있는 기명 함수 리터럴은 함수 선언문 또는 함수 리터럴 표현식으로 해석될 가능성이 있다. 
 
-!@functionLiteral.js@!
+!@chapter12/functionLiteral.js@!
 
 > 자바스크립트 엔진은 함수 이름과 동일한 이름의 식별자를 암묵적으로 생성하고, 거기에 함수 객체를 할당한다. 
 
 > 자바스크립트의 함수는 일급 객체다. 
 
-!@functionHoisting.js@!
+!@chapter12/functionHoisting.js@!
 
 > 함수 표현식으로 함수를 정의하면 함수 호이스팅이 발생하는 것이 아니라 변수 호이스팅이 발생한다. 
 
-!@functionConstructorFunction.js@!
+!@chapter12/functionConstructorFunction.js@!
 
 ### 5. 함수 호출
 
 매개변수(parameter, 인자)를 통해 인수(argument)를 전달한다. 
 
-!@argumentProperty.js@!
+!@chapter12/argumentProperty.js@!
 
 > 매개변수는 최대 3개 이상을 넘지 않는 것을 권장한다. 만약 그 이상의 매개변수가 필요하다면 하나의 매개변수를 선언하고 객체를 인수로 전달하는 것이 유리하다. 
 
@@ -437,7 +437,7 @@ var 키워드로 선언된 변수는 같은 스코프 내에서 중복 선언이
 
 ### 5. 렉시컬 스코프
 
-!@lexicalScope.js@!
+!@chapter13/lexicalScope.js@!
 
 - 동적 스코프(dnamic scope): 함수가 호출되는 시점에 동적으로 상위 스코프를 결정한다. 
 - 렉시컬 스코프(lexical scope/static scope): 함수 정의가 평가되는 시점에 상위 스코프가 정적으로 결정된다. 
@@ -454,7 +454,7 @@ var 키워드로 선언된 변수는 같은 스코프 내에서 중복 선언이
 
 전역 변수의 생명 주기는 응용 프로그램의 생명 주기와 같다. 지역 변수의 생명 주기는 함수의 생명 주기와 같다. 
 
-!@varLifeCycle.js@!
+!@chapter13/varLifeCycle.js@!
 
 전역변수는 호이스팅으로 인해 런타임 이전 단계에 선언문이 실행되지만, 함수 내부의 변수는 함수가 호출된 직후와 함수 몸체의 코드가 실행되기 이전 자바스크립트 엔진에 의해 선언문이 실행된다. 호이스팅은 스코프를 단위로 동작한다. 
 
@@ -472,7 +472,7 @@ var 키워드로 선언된 변수는 같은 스코프 내에서 중복 선언이
 
 모듈 패턴은 클로저를 기반으로 동작하며, 전역 네임스페이스의 오염을 막는 동시에 정보 은닉을 구현하기 위해 사용된다. 
 
-!@modulePattern.js@!
+!@chapter13/modulePattern.js@!
 
 ES6 모듈을 파일 자체의 독자적인 모듈 스코프를 제공한다. 
 
@@ -488,11 +488,11 @@ let 키워드로 선언한 변수는 선언 단계가 런타임 이전에 실행
 
 스코프의 시작 지점부터 초기화 단계 시작 지점까지의 구간을 일시적 사각지대(Temporal Dead Zone; TDZ)라고 부른다. 
 
-!@letHoisting.js@!
+!@chapter15/letHoisting.js@!
 
 let도 변수 호이스팅이 발생하기에 전역 변수에 접근하지는 않는다. 자바스크립트는 모든 선언을 호이스팅한다. 
 
-!@globalObject.js@!
+!@chapter15/globalObject.js@!
 
 let 키워드로 선언한 전역 변수는 전역 객체의 프로퍼티가 아니다. 
 
@@ -516,13 +516,13 @@ internal slot/method
 
 엔진 내부 로직이므로 원칙적으로 접근이 불가하지만, 일부에 한해 접근 수단을 제공하기는 한다. 
 
-!@internalSlot.js@!
+!@chapter16/internalSlot.js@!
 
 ### 2. 프로퍼티 어트리뷰트와 프로퍼티 디스크립터 객체
 
 자바스크립트 엔진은 프로퍼티를 생성할 때 프로퍼티의 상태를 나타내는 **프로퍼티 어트리뷰트**를 기본값으로 자동 정의한다. 
 
-!@propertyAttribute.js@!
+!@chapter16/propertyAttribute.js@!
 
 ### 3. 데이터 프로퍼티와 접근자 프로퍼티
 
@@ -531,7 +531,7 @@ internal slot/method
 - data property: 키와 값으로 구성된 일반적인 프로퍼티
 - accessor property: 자체 값이 없고 접근자 함수(accessor function)으로 구성된 프로퍼티
 
-!@dataProperty.js@!
+!@chapter16/dataProperty.js@!
 
 [[Value]]: 프로퍼티 값
 [[Writable]]: 값 변경 가능 여부
@@ -542,11 +542,11 @@ internal slot/method
 
 접근자 프로퍼티는 [[Get]], [[Set]], [[Enumerable]], [[Configurable]]을 가지며 getter/setter는 둘 중 하나만 가질 수도 있다. 
 
-!@accessorProperty.js@!
+!@chapter16.accessorProperty.js@!
 
 ### 4. 프로퍼티 정의
 
-!@defineProperty.js@!
+!@chapter16/defineProperty.js@!
 
 ### 5. 객체 변경 방지
 
@@ -565,17 +565,17 @@ Object.preventExtensions는 추가 외 허용,
 
 > 생성자 함수에 의해 생성된 객체를 인스턴스(instance)라고 한다. 
 
-!@constructor.js@!
+!@chapter17/constructor.js@!
 
 ### 2. 생성자 함수
 
 생성자 함수를 사용하면 객체 리터럴을 사용한 방법과 달리 프로퍼티 구조가 동일한 객체 여러 개를 간편하게 생성할 수 있다. 
 
-!@constructorGood.js@!
+!@chapter17/constructorGood.js@!
 
 new 연산자와 함께 호출하면 해당 함수는 생성자 함수로 동작한다. 
 
-!@constructorWithoutNew.js@!
+!@chapter17/constructorWithoutNew.js@!
 
 인스턴스 생성, this에 이를 바인딩 -> 생성자 함수 내의 코드로 인스턴스 초기화 -> this 암묵적 반환
 
@@ -586,11 +586,11 @@ new 연산자와 함께 호출하면 해당 함수는 생성자 함수로 동작
 - constructor: 함수 선언문/표현식, 클래스
 - non-constructor: ES6 메서드 축약 표현, 화살표 함수
 
-!@es6Method.js@!
+!@chapter17/es6Method.js@!
 
 생성자 함수는 파스칼 케이스로 명명하여 일반 함수와 구별할 수 있도록 노력한다. 그럼에도 실수의 위험성을 회피하기 위해 ES6에서는 new.target을 지원한다. 
 
-!@newTarget.js@!
+!@chapter17/newTarget.js@!
 
 대부분의 빌트인 생성자 함수는 new 연산자 유무에 상관없이 적절한 값을 반환하지만, String, Number, Boolean은 new가 있으면 객체, 없으면 값을 반환한다. 
 
@@ -607,7 +607,7 @@ new 연산자와 함께 호출하면 해당 함수는 생성자 함수로 동작
 
 ### 2. 함수 객체의 프로퍼티
 
-!@functionProperty.js@!
+!@chapter18/functionProperty.js@!
 
 __proto__ 프로퍼티는 [[Prototype]] 내부 슬롯이 가리키는 프로토타입 객체에 접근하기 위해 사용하는 접근자 프로퍼티이다. 
 
@@ -623,7 +623,7 @@ prototype 프로퍼티는 constructor만 소유하는 프로퍼티이다. 생성
 
 ### 2. 상속과 프로토타입
 
-!@methodShare.js@!
+!@chapter19/methodShare.js@!
 
 Circle 생성자 함수가 생성한 모든 인스턴스는 자신의 프로토타입, 즉 상위 객체 역할을 하는 Circle.prototype의 모든 프로퍼티와 메서드를 상속받는다. 
 
@@ -631,11 +631,11 @@ Circle 생성자 함수가 생성한 모든 인스턴스는 자신의 프로토�
 
 모든 객체는 하나의 프로토타입을 갖고, 모든 프로토타입은 생성자 함수와 연결되어 있다. 
 
-!@prototypeLink.js@!
+!@chapter19/prototypeLink.js@!
 
 __proto__ 접근자 프로퍼티는 객체가 직접 소유하지 않고 Object.prototype의 프로퍼티를 상속을 통해 사용된다. 
 
-!@cyclicProto.js@!
+!@chapter19/cyclicProto.js@!
 
 __proto__ 대신 getPrototypeOf와 setPrototypeOf가 권장된다. 왜??
 
@@ -661,7 +661,7 @@ __proto__ 대신 getPrototypeOf와 setPrototypeOf가 권장된다. 왜??
 
 객체는 어떤 방식으로 생성되든지 OrdinaryObjectCreate 추상 연산에 의해 생성된다는 공통점이 있다. 이 추상 연산에 결정되는 인수에 따라 생성되는 객체의 프로토타입이 결정된다. 
 
-!@constructorPrototypeQ.js@!
+!@chapter19/constructorPrototypeQ.js@!
 
 ### 7. 프로토타입 체인
 
@@ -697,7 +697,7 @@ __proto__ 대신 getPrototypeOf와 setPrototypeOf가 권장된다. 왜??
 
 instanceof 연산자는 constructor 프로퍼티가 아닌 생성자 함수의 prototype에 바인딩된 객체가 체인에 존재하는지 확인한다. 
 
-!@instanceof.js@!
+!@chapter19/instanceof.js@!
 
 ### 11. 직접 상속
 
@@ -705,7 +705,7 @@ new 연산자가 필요 없고, 프로토타입을 지정하며 객체를 생성
 
 프로토타입 체인의 종점에 위치한 객체를 생성할 수 있으므로, Object.prototype의 빌트인 메서드를 직접 호출하는 것은 권장하지 않는다. call 등의 메서드로 간접 호출을 권함. 
 
-!@directInheritance.js@!
+!@chapter19/directInheritance.js@!
 
 ES6에서는 객체 리터럴 내부에서 __proto__ 접근자 프로퍼티를 사용해 직접 상속을 구현할 수 있다. 
 
@@ -724,11 +724,11 @@ prototype을 #으로 표기하는 경우도 있으니 알아두자. Object#isPro
 
 ### 13. 프로퍼티 존재 확인
 
-!@propertyExistence.js@!
+!@chapter19/propertyExistence.js@!
 
 ### 14. 프로퍼티 열거
 
-!@propertyEnumerate.js@!
+!@chapter19/propertyEnumerate.js@!
 
 ## 20. strict mode
 
@@ -742,7 +742,7 @@ prototype을 #으로 표기하는 경우도 있으니 알아두자. Object#isPro
 
 일반함수에서 this에 undefined가 바인딩되며, 매개변수에 전달된 인수를 재할당해도 arguments 객체에 반영되지 않는다. 
 
-!@argumentBinding.js@!
+!@chapter20/argumentBinding.js@!
 
 ## 21. 빌트인 객체
 
