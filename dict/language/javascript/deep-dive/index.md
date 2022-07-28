@@ -798,4 +798,18 @@ this는 일반함수에서 전역 객체, 메서드에서 메서드를 호출한
 
 어떠한 함수(중첩 함수, 콜백 함수..)라도 일반 함수로 호출되면 this 객체에 전역 객체가 바인딩된다. 
 
+이는 중첩 함수가 헬퍼함수로서 동작하기 힘들게하므로 this 바인딩을 특정 변수에 할당하여 헬퍼 함수에서 사용하거나, apply/call/binding 메서드를 사용하거나, 화살표 함수를 사용할 수 있다. 
+
+메서드 내의 this도 호출한 함수에 따라 달라진다. 
+
+!@chapter22/methodThis.js@!
+
+apply/call/binding 메서드는 Function.prototype의 메서드다. 
+
+!@chapter22/applyCallBinding.js@!
+
+## 23. 실행 컨텍스트
+
+### 1. 소스코드의 타입
+
 
