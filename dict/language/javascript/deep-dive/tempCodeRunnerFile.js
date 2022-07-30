@@ -14,3 +14,5 @@ person.fullName = 'foo bar';
 console.log(person.firstName, person.lastName);
 
 console.log(Object.getOwnPropertyDescriptor(person, 'fullName'));
+
+console.log(globalThis.__proto__.__proto__);
