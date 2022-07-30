@@ -929,4 +929,106 @@ debugger 구문 입력하고 브라우저에서 실행하면 스코프 정보를
 
 ### 5. 캡슐화와 정보 은닉
 
+자바스크립트는 접근 제한자를 제공하지 않는다. [최신 버전에는 있기는 한듯?](https://stackoverflow.com/questions/38243329/classes-access-modifiers-in-javascript) 
+-> private 필드에 대해서는 25.7.4에서.
 
+
+[이런](https://medium.com/@weberino/you-can-create-truly-private-properties-in-js-without-es6-7d770f55fbc3) 방법도 있다. 
+
+### 6. 자주 발생하는 실수
+
+!chapter24/@commonMistake.js@!
+
+## 25. 클래스
+
+### 1. 클래스는 프로토타입의 문법적 설탕인가?
+
+클래스는 생성자 함수보다 엄격하며 생성자 함수에서는 제공하지 않는 기능도 제공한다. 
+
+- 클래스를 new 연산자 없이 호출하면 에러가 발생한다. 
+- 클래스는 extends와 super 키워드를 제공한다. 
+- 클래스는 호이스팅이 발생하지 않는 것처럼 동작한다. 
+- 클래스 내의 모든 코드에는 strict mode가 암묵적으로 적용된다.
+- 클래스의 constructor, 프로토타입 메서드, 정적 메서드는 [[Enumerable]]이 false이다. 
+
+클래스는 새로운 객체 생성 매커니즘이다. 
+
+### 2. 클래스 정의
+
+클래스는 함수며 일급 객체이다. 
+
+### 3. 클래스 호이스팅
+
+클래스 선언문으로 정의한 클래스는 런타임 이전에 평가되지만 클래스 정의 이전에 참조할 수 없다. 
+
+!@chapter25/classHoisting.js@!
+
+### 5. 메서드
+
+constructor는 메서드로 해석되지 않고 클래스가 평가되어 생성된 함수 객체 코드의 일부가 된다. 이에 클래스가 평가된 함수 객체를 봐도 constructor 메서드가 따로 있지 않다. 
+
+constructor는 0개 혹은 1개 존재해야한다. constructor 내에서는 인스턴스의 생성과 프로퍼티 추가를 통한 인스턴스 초기화를 실행한다. 
+
+메서드에 static 키워드를 붙이면 정적 메서드가 된다. 
+
+프로토타입 메서드에서 this는 인스턴스, 정적 메서드의 this는 클래스를 가리킨다. 
+
+정적 메서드는 애플리케이션 전역에서 사용할 유틸리티 함수를 전역 함수로 정의하지 않고 메서드로 구조화할 때 유용하다. 
+
+- function 키워드를 생략한 축약 표현
+- 콤마 필요 없음
+- 암묵적 strict mode
+- 열거 불가
+- non-constructor
+
+### 6. 클래스의 인스턴스 생성 과정
+
+constructor 에서의 this는 내부 코드가 실행될 시점에 이미 클래스의 prototype 프로퍼티가 가리키는 객체가 프로토타입으로 설정되어있다. 
+
+### 7. 프로퍼티
+
+!@chapter25/getOwnPropertyName.js@!
+
+인스턴스 프로퍼티를 자바처럼 정의할 수 있는 Class field declarations가 최신 브라우저에 구현되어 있다. 메소드도 이를 통해 정의할 수 있지만 프로토타입 메서드가 아닌 인스턴스 메서드가 되므로 권장하지 않는다. 
+
+[선언, 정의, 초기화](https://salkuma.wordpress.com/2014/02/05/선언-정의-초기화-기본생성자-그리고-시그너처/)
+
+!@chapter25/accessModifier.js@!
+
+static을 사용한 정적 필드도 최신 브라우저에 구현되어 있다. 
+
+### 8. 상속에 의한 클래스 확장
+
+프로토타입 기반은 다른 객체의 자산을 상속받는 개념이지만 상속에 의한 클래스 확장은 새로운 클래스를 확장하여 정의하는 것이다. 
+
+인스턴스끼리뿐만 아니라 수퍼클래스와 서브클래스는 둘 간 프로토타입 체인도 생성한다. 
+
+동적 상속이 가능하다. 
+
+서브클래스에 constructor를 생략하면 다음과 같은 constructor가 암묵적으로 정의된다. 
+
+```javascript
+constructor(...args) { super(...args); }
+```
+
+super를 호출하면 수퍼클래스의 constructor를 호출한다.
+
+- 서브클래스에서 constructor를 생략하지 않았다면 그 constructor에서는 super를 반드시 호출해야한다. 
+- super 호출 전에는 this를 참조할 수 없다. this를 super에서 만들기 때문이다. 
+- super는 서브클래스의 constructor 내부에서만 호출할 수 있다. 
+
+super를 참조해 수퍼클래스의 메서드를 호출할 수 있다. super는 자신을 참조하는 메서드가 바인딩된 객체의 프로토타입을 가리킨다. 
+
+!@chapter25/superMethod.js@!
+
+super를 위해 메서드는 내부 슬롯 [[HomeObject]]를 가지며 의사 코드는 다음과 같다. 이 슬롯은 ES6 메서드 축약 표현으로 정의된 함수만 지닌다. 이 슬롯을 가져야 super를 참조할 수 있다. 
+
+```javascript
+super = Object.getPrototypeOf([[HomeObject]])
+```
+
+[[ConstructorKind]]의 base/derived 구분을 통해 new 연산자로 호출되었을 때 동작을 구분한다. 서브클래스는 수퍼클래스에게 인스턴스 생성을 위임한다. 이때 수퍼클래스의 constructor의 this의 프로토타입은 서브클래스의 prototype 프로퍼티이다. 
+
+!@chapter25/mySpecies.js@!
+
+## 26. ES6 함수의 추가 기능
