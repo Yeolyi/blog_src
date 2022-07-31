@@ -6,6 +6,7 @@ subtitle: 공부한 것들 창고
 ### 언어
 [Swift](language/swift)
 [Javascript](language/javascript)
+[TypeScript](language/typescript)
 
 ### 컴퓨터 과학
 [로드맵](cs/roadmap)
