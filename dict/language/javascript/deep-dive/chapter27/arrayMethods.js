@@ -5,6 +5,11 @@ printAll([
     [3, 1, 4].indexOf(4), // 2
     [3, 1, 4].indexOf(9), // -1
     [3, 1, 4].includes(9), // false
+    [1, 2, 3, 4].join('&'), // 1&2&3&4
+    [NaN].indexOf(NaN), // -1
+    [NaN].includes(NaN), // true
+    [1, 2, 3, 4].includes(1, 1), // false
+    [1, [2, [3, [4]]]].flat(1) // [ 1, 2, [ 3, [ 4 ] ] ]
 ]);
 
 const arr1 = [];
@@ -32,3 +37,22 @@ console.log(arr2); // [1, 2, 3]
 // start, deleteCount, items
 console.log(arr2.splice(1, 1, 10, 11, 12)) // [2]
 console.log(arr2); // [1, 10, 11, 12, 3]
+
+const arr3 = [1, 2, 3];
+console.log(arr3.slice(-2)); // [ 2, 3 ]
+// start, end
+console.log(arr3.slice(1, 2)); // [2] 
+// 얕은 복사
+const arr4 = [{ foo: 0 }];
+const temp = arr4.slice();
+console.log(arr4 === temp); // false
+console.log(arr4[0] === temp[0]) // true
+
+const arr5 = [1, 2, 3, 4];
+console.log(arr5.reverse()); // [4, 3, 2, 1]
+console.log(arr5); // [4, 3, 2, 1]
+
+console.log(arr5.fill(0, 1, 3)); // [4, 0, 0, 1]
+console.log(arr5) // [4, 0, 0, 1]
+console.log(Array.from({ length: 5 }, (_, i) => i)); // [0, 1, 2, 3, 4]
+

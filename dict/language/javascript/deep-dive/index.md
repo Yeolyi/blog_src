@@ -1093,7 +1093,7 @@ ES6이전에는 this를 스코프 체인을 따라 탐색할 이유가 없었지
 
 > 자료구조에서 말하는 배열, 즉 밀집 배열(dense array)은 동일한 크기의 메모리 공간이 빈틈없이 연속적으로 나열된 자료구조이다. 
 
-> 자바스크립트의 배열은 배열의 구조가 연속적으로 이어져있지 않은 희소 배열(sparse array)이다.
+> 자바스크립트의 배열은 배열의 구조가 연속적으로 이어져있지 않은 희소 배열(sparse array)이다.?
 
 자바스크립트의 배열은 일반적인 배열의 동작을 흉내 낸 특수한 객체다. 해시 테이블로 구현되어 인덱스 접근은 느리지만 요소의 삽입과 삭제는 빠르다. 
 
@@ -1128,3 +1128,25 @@ delete로 프로퍼티를 삭제할 수 있지만 희소 배열이 되므로 추
 mutator method(원본 변경)와 accessor method(새로운 객체 반환)로 구분된다. 부수 효과 방지를 위해 후자가 권장된다. 
 
 !@chapter27/arrayMethods.js@!
+
+slice, 스프레드 문법, Object.assign 메서드는 모두 얕은 복사를 수행한다. 깊은 복사를 위해서는 [참고](https://lodash.com/docs/4.17.15#cloneDeep)
+
+### 9. 배열 고차 함수
+
+고차 함수(Highter-Order Function, HOF)
+
+고차 함수는 외부 상태의 변경이나 가변(mutable) 데이터를 피하고 불변성(immutability)을 지향하는 함수형 프로그래밍에 기반을 두고 있다. 
+
+> 함수형 프로그래밍은 순수 함수(pure function)와 보조 함수의 조합을 통해 로직 내에 존재하는 조건문과 반복문을 제거하여 복잡성을 해결하고 변수의 사용을 억제하여 상태 변경을 피하려는 프로그래밍 패러다임이다. 
+
+!@chapter27/hof.js@!
+
+> 최신 사양의 기능을 지원하지 않는 브라우저를 위해 누락된 최신 사양의 기능을 구현하여 추가하는 것을 폴리필(polyfill)이라 한다. 
+
+## 28. Number
+
+MAX_SAFE_INTEGER: 자바스크립트는 Number에서 부동소수점을 사용하기 때문. [참고](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER)
+
+## 31. RegExp
+
+
