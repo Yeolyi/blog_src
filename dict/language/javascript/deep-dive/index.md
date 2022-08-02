@@ -1179,5 +1179,18 @@ m: multiline
 
 [이메일 regex...](https://emailregex.com)
 
+## 32 String
 
+### 1. String 생성자 함수
 
+new 연산자를 사용하지 않고 String 생성자 함수를 호출하면 String 인스턴스가 아닌 문자열을 반환한다. 
+
+### 2. length 프로퍼티
+
+String은 length 프로퍼티를 갖기에 유사 배열 객체다. 
+
+### 3. String 메서드
+
+String 래퍼 객체도 읽기 전용 객체로 제공된다. 
+
+!@chapter32/stringMethod.js@!
