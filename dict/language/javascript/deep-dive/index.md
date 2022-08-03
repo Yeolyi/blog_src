@@ -1244,7 +1244,7 @@ Symbol.iterator 등등
 
 이터러블이면서 이터레이터인 객체를 생성하는 함수
 
-!@iterableNIterator.js@!
+!@chapter34/iterableNIterator.js@!
 
 무한 이터러블을 생성하는 함수를 통해 무한 수열을 구현할 수 있다. 
 
@@ -1263,3 +1263,9 @@ Rest 파라미터와 스프레드 문법은 서로 반대의 개념이다.
 !@chapter35/restSpread.js@!
 
 !@chapter35/rest.js@!
+
+## 36. 디스트럭처링 할당
+
+> 디스트럭처링 할당(destructuring assignment)은 구조화된 배열과 같은 이터러블 또는 객체를 destructuring하여 1개 이상의 변수에 개별적으로 할당하는 것을 말한다. 
+
+!@chapter36/destructuring.js@!
