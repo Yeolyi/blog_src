@@ -1179,7 +1179,7 @@ m: multiline
 
 [이메일 regex...](https://emailregex.com)
 
-## 32 String
+## 32. String
 
 ### 1. String 생성자 함수
 
