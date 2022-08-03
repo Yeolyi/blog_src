@@ -1361,3 +1361,84 @@ defer는 JS 파싱과 실행이 DOM 생성 직후에 진행된다.
 
 ## 39. DOM
 
+> DOM(Document Object Model)은 HTML 문서의 계층적 구조와 정보를 표현하며 이를 제어할 수 있는 API, 즉 프로퍼티와 메서드를 제공하는 트리 자료구조다. 
+
+### 1. 노드
+
+> HTML 요소는 HTML 문서를 구성하는 개별적인 요소를 의미한다. 시작 태그, 어트리뷰트 이름, 어트리뷰트 값, 콘텐츠, 종료 태그로 구성된다. 
+
+HTML 요소는 파싱되어 요소 노드 객체로 변환된다. HTML 요소간에는 계층적인 부자 관계가 있기에 트리 자료구조로 구성된다. 
+
+노드 객체들로 구성된 트리 자료구조를 DOM이라 한다. 총 12종류가 있고 중요한 4종류는 아래와 같다. 
+
+- 문서 노드: 최상위 루트 노드. window.document. entry point 역할
+- 요소 노드: HTML 요소. 부자 관계를 가짐. 
+- 어트리뷰트 노드: 부모 노드 없이 요소 노드와 연결되어 요소의 어트리뷰트 가리킴. 
+- 텍스트 노드: 텍스트, 문서의 정보를 표현. leaf node. 
+
+모든 노드 객체는 Object, EventTarget(이벤트를 발생시키는 객체), Node(트리 자료구조의 노드 객체) 인터페이스를 상속받는다. 
+
+프런트엔드 개발자에게 HTML은 단순히 태그와 어트리뷰트를 선언적으로 배치하여 뷰를 구성하는 것 이상의 의미를 갖는다. 즉, HTML을 DOM과 연관 지어 바라보아야 한다. 
+
+### 2. 요소 노드 취득
+
+!@chapter39/getElementByID.html@!
+
+**HTMLCollection**
+- 객체의 상태 변화를 실시간으로 반영하는 live object이다. 
+
+**NodeList**
+- 대부분 변화 반영 안하고 정적
+- NodeList.prototype.forEach를 상속받아 사용할 수 있다. 
+- childNodes 프로퍼티가 반환하는 NodeList 객체는 live object이다. 
+
+!@chapter39/htmlCollectionTroll.html@!
+
+노드 객체의 상태 변경과 상관없이 안전하게 DOM 컬렉션을 사용하려면 HTMLCollection이나 NodeList 객체를 배열로 변환하여 사용하는 것을 권장한다. 
+
+### 3. 노드 탐색
+
+Node.prototype: parentNode, previousSibling, firstChild, childNodes
+Element.prototype: previousElementSibling, nextElementSibling
+
+html 요소 사이의 white space는 텍스트 노드를 생성한다. 
+
+!@chapter39/nodeTraversing.html@!
+
+### 4. 노드 정보 취득
+
+!@chapter39/nodeType.html@!
+
+### 5. 요소 노드의 텍스트 조작
+
+!@chapter39/changeNode.html@!
+
+innerText는 CSS에 순종적(visibility등에 영향)이고 느리므로 사용하지 않는 것이 좋다. 
+
+### 6. DOM 조작
+
+!@chapter39/domManipulation.html@!
+
+### 7. 어트리뷰트
+
+HTML 요소가 파싱될 때 어트리뷰트는 어트리뷰트 노드로 변환되어 요소 노드와 연결된다. 어트리뷰트당 하나의 노드가 생성된다. 
+
+!@chapter39/attribute.html@!
+
+HTML 어트리뷰트는 1. 요소 노드의 attributes 프로퍼티 2. 각 어트리뷰트에 대응되는 요소 노드의 프로퍼티(이하 DOM 프로퍼티) 로 중복 관리되는 것 같지만 다르다. 
+
+요소 노드의 초기 상태(새로고침 등 상황에서 사용)는 어트리뷰트 노드가, 최신 상태는 DOM 프로퍼티가 관리한다. 
+
+사용자 입력과 관계있는 DOM 프로퍼티만 최신 상태 값을 관리하고, 그 이외에는 어트리뷰트와 DOM 프로퍼티가 동일한 값으로 연동된다. 
+
+!@chapter39/dataAttribute.html@!
+
+### 8. 스타일
+
+!@chapter39/style.html@!
+### 9. DOM 표준
+
+구글, 애플, 마이크로소프트, 모질라로 구성된 WHATWG가 HTML과 DOM 단일 표준을 내놓는다. 
+
+## 40. 이벤트
+

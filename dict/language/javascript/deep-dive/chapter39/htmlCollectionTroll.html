@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .blue { color: blue; }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <!-- id는 class와 달리 공백 문자로 구분하여 여러 값을 가질 수 없다 -->
+            <li class="temp">Apple</li>
+            <li class="temp">Banana</li>
+            <li class="temp">Orange</li>
+        </ul>
+        <script>
+            const $elems = document.getElementsByClassName('temp');
+            for (let i=0; i<$elems.length; i++) {
+                $elems[i].className = 'blue';
+            }
+
+            // 더 나은 방법. 객체로 변환하여 사용. 
+            // 바로 forEach 안된다는 점 주의
+            // [...$elems].forEach(x => x.className = 'blue'); 
+            console.log($elems); // 길이 0인 HTMLCollection
+        </script>
+    </body>
+</html>

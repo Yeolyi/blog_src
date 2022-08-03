@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="foo">Hello</div>
+    </body>
+    <script>
+        // ELEMENT_NODE 1, TEXT_NODE 3, DOCUMENT_NODE 9
+        console.log(document.nodeType == Node.DOCUMENT_NODE) // true
+        // UL/LI..., #text, #document
+        console.log(document.nodeName) // #document
+    </script>
+</html>

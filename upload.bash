@@ -2,8 +2,13 @@ set -e # https://stackoverflow.com/questions/821396/aborting-a-shell-script-if-a
 
 cd ~/Developer/blog
 git fetch
-git rebase
-git submodule foreach git pull
+git rebase origin/nextJS
+
+cd blog_src
+git fetch
+git rebase origin/main
+
+cd ..
 git add .
 git commit --amend --no-edit
 git push -f
