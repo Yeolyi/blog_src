@@ -1269,3 +1269,20 @@ Rest 파라미터와 스프레드 문법은 서로 반대의 개념이다.
 > 디스트럭처링 할당(destructuring assignment)은 구조화된 배열과 같은 이터러블 또는 객체를 destructuring하여 1개 이상의 변수에 개별적으로 할당하는 것을 말한다. 
 
 !@chapter36/destructuring.js@!
+
+## 37. Set과 Map
+
+### 1. Set
+
+!@chapter37/set.js@!
+
+### 2. Map
+
+> Map 객체는 키와 값의 쌍으로 이루어진 컬렉션이다. 
+
+!@chapter37/map.js@!
+
+Set과 Map 모두 요소의 순서에 의미를 갖지 않지만 다른 이터러블의 순회와 호환성을 유지하기 위해 객체 순회 순서가 요소 추가 순서에 따른다. 
+
+## 38. 브라우저의 렌더링 과정
+
