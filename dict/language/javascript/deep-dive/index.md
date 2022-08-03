@@ -1286,3 +1286,78 @@ Set과 Map 모두 요소의 순서에 의미를 갖지 않지만 다른 이터�
 
 ## 38. 브라우저의 렌더링 과정
 
+> 파싱(구문 분석, syntax analysis)은 프로그래밍 언어의 문법에 맞게 작성된 텍스트 문서를 읽어 들여 실행하기 위해 텍스트 문서의 문자열을 토큰으로 분해(어휘 분석, lexical analysis)하고, 토큰에 문법적 의미와 구조를 반영하여 트리 구조의 자료구조인 parse tree/syntax tree를 생성하는 일련의 과정을 말한다. 일반적으로 파싱이 완료된 이후에는 parse tree를 기반으로 중간언어(intermediate code)인 바이트 코드(byte code)를 생성하고 실행한다. 
+
+> 렌더링(renderind)은 HTML, CSS, JS로 작성된 문서를 파싱하여 브라우저에 시각적으로 출력하는 것을 말한다. 
+
+1. 렌더링에 필요한 리소스 요청, 서버로부터 응답
+2. HTML -> DOM / CSS -> CSSOM. 둘을 결합하여 렌더 트리 생성
+3. 서버로부터 온 JS를 파싱해 AST(Abstract Syntax Tree) 생성, 바이트코드로 변환해 실행. JS를 통해 DOM/CSSOM을 변경할 수 있다. 
+4. 렌더 트리를 기반으로 HTML 요소의 레이아웃을 계산하고 화면에 페인팅
+
+### 1. 요청과 응답
+
+URI, URL, URN, Scheme(Protocol), Host(Domain), Port, Path, Query(Query String), Fragment...
+
+브라우저의 렌더링 엔진은 HTML을 파싱하는 도중에 외부 리소스를 로드하는 태그를 만나면 파싱을 일시중지하고 해당 리소스 파일을 서버로 요청한다. 
+
+### 2. HTTP 1.1과 HTTP 2.0
+
+HTTP/1.1은 커넥션당 하나의 요청과 응답만 처리한다. 리소스들에 대한 요청들이 개별적으로 전송되고 응답 또한 개별적으로 전송된다. 리소스의 개수에 비례해 응답 시간이 증가한다. 
+
+HTTP/2는 다중 요청/응답이 가능하다. 
+
+[Introduction to HTTP/2](https://web.dev/performance-http2/)
+
+### 3. HTML 파싱과 DOM 생성
+
+DOM(Document Object Model)
+
+1. 서버로부터 응답된 HTML 문서는 meta 태그의 charset 어트리뷰트에 따라 문자열로 변화된다. 이 정보는 content-type: text/html; charset=utf-8과 같이 응답 헤더(response header)에 담겨 응답된다. 
+2. 문자열로 변환된 HTML 문서는 토큰들로 분해된다. 
+3. 각 토큰을 객체로 변환하여 노드(node)를 생성한다. 이 노드는 DOM을 구성하는 기본 요소가 된다. 
+4. 노드들을 트리 자료구조로 구성한 DOM을 생성한다. 
+
+### 4. CSS 파싱과 CSSOM 생성
+
+HTML과 동일한 파싱 과정으로 CSSOM(CSS Object Model)을 생성한다. CSSOM은 CSS의 상속을 반영하여 생성된다.
+
+### 5. 렌더 트리 생성
+
+DOM과 CSSOM은 렌더 트리(render tree)로 결합된다. 화면에 렌더링되지 않는 노드와 CSS에 의해 숨겨지는 노드들은 포함되지 않는다. 렌더 트리는 HTML 요소의 레이아웃 계산에 사용되며 브라우저 화면에 픽셀을 렌더링하는 페인팅(painting) 처리에 입력된다. 
+
+Render tree -> Layout -> Paint. 리렌더링이 빈번하지 않도록 주의해야한다. 
+
+### 6. 자바스크립트 파싱과 실행
+
+DOM API를 통해 이미 생성된 얘ㅡ을 동적으로 조작할 수 있다. 
+
+렌더링 엔진은 HTML을 파싱하다 JS 파일을 만나면 DOM 생성을 일시 중단하고 자바스크립트 엔진에 제어권을 넘긴다. 엔진은 코드를 해석하여 AST(Abstract Syntax Tree, 추상적 구문 트리)를 생성하고, 인터프리터가 실행 가능한 중간 코드(intermeditate code)인 바이트 코드를 생성해 실행한다. 
+
+- 토크나이징: 코드를 어휘 분석(lexical analysis)하여 문법적 의미를 가지는 최소 단위인 토큰(token)들로 분해한다. 
+- 파싱: 토큰들의 집합을 구문 분석(syntactic analysis)하여 AST를 생성한다. AST는 토큰에 문법적 의미와 구조를 반영한 트리 구조의 자료구조다. AST를 통해 TypeScript, Babel, Prettier같은 transpiler를 구현할 수도 있다. 
+- 바이트코드 생성과 실행: V8은 터보팬(TurboFan)이라는 컴파일러에 의해 최적화된 머신 코드로 컴파일되어 성능을 최적화한다. 코드의 사용 빈도가 적어지면 다시 디옵티마이징(deoptimizing)하기도 한다. 
+
+### 7. 리플로우와 리페인트
+
+> 변경된 DOM과 CSSOM은 다시 렌더 트리로 결합되고 변경된 렌더 트리를 기반으로 레이아웃과 페인트 과정을 거쳐 브라우저의 화면에 다시 렌더링한다. 이를 리플로우(reflow), 리페인트(repaint)라 한다. 
+
+리플로우는 레이아웃 변경이 발생한 경우에 한해 실행되고, 리페인트는 렌더 트리를 기반으로 다시 페인트를 하는 것을 말한다. 
+
+### 8. 자바스크립트 파싱에 의한 HTML 파싱 중단
+
+body 요소 가장 아래에 JS를 위치시키는 것은 좋은 아이디어다. 
+
+- DOM 미완성일 때 DOM을 조작하면 에러가 발생할 수 있다. 
+- JS 로딩/파싱/실행으로 인한 렌더링 지장이 없다. 
+
+### 9. script 태그의 async/defer 어트리뷰트
+
+앞선 blocking 문제 때문에 HTML5부터 async와 defer 어트리뷰트가 추가되었다. 
+
+aync는 HTML 파싱과 JS 로드가 동시에 일어나고, JS 파싱과 실행이 로드 완료 직후 HTML 파싱을 중단시키고 진행된다. 여러 async 끼리의 순서가 보장되지 않는다. 
+
+defer는 JS 파싱과 실행이 DOM 생성 직후에 진행된다. 
+
+## 39. DOM
+
