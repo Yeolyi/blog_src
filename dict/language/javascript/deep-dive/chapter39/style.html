@@ -26,3 +26,11 @@
     console.log(window.getComputedStyle($box)); // CSSStyleDeclaration 반환
     console.log(window.getComputedStyle($box), ':before'); // :before의 스타일 취득
 </script>
+<body>
+    <div style="color: red">Hello World</div>
+</body>
+<script>
+    const $div = document.querySelector('div');
+    console.log($div.style);
+    $div.style.backgroundColor = 'royalBlue';
+</script>
