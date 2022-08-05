@@ -4,10 +4,8 @@ cd ~/Developer/blog
 git fetch
 git rebase origin/nextJS
 
-cd blog_src
-git pull
+git submodule foreach git pull --rebase
 
-cd ..
 git add .
 git commit --amend --no-edit
 git push -f
