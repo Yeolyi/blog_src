@@ -1526,9 +1526,20 @@ pass
 
 setTimeout의 delay 매개변수는 그 시간 후 즉시 호출을 보장하지 않는다. 태스크 큐에 등록하는 시간일 뿐. 
 
-!@setTimeout.js@!
+!@chapter41/setTimeout.js@!
 
-
+!@chapter41/setInterval.js@!
 
 ### 3. 디바운스와 스로틀
+
+> 디바운스와 스로틀은 짧은 시간 간격으로 연속해서 발생하는 이벤트를 그룹화해서 과도한 이벤트 핸들러의 호출을 방지하는 프로그래밍 기법이다. 
+
+!@chapter41/debounceThrottle.html@!
+
+디바운스는 resize 이벤트 처리, 입력 필드 자동완성 UI 구현, 버튼 중복 클릭 방지 처리 등에 유용하게 사용된다. 위 예제는 완전하기 않으므로 Underscore나 Lodash의 debounce 함수를 사용한다. 
+
+스로틀은 scroll 이벤트 처리나 무한 스크롤 UI 구현에 사용된다. 마찬가리고 실무에서는 다른걸 사용한다. 
+
+## 42. 비동기 프로그래밍
+
 

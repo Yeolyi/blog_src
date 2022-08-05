@@ -5,8 +5,7 @@ git fetch
 git rebase origin/nextJS
 
 cd blog_src
-git fetch
-git rebase origin/main
+git pull
 
 cd ..
 git add .

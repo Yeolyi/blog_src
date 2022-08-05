@@ -1,4 +1,4 @@
-let cnt = 1;
+let cnt = 0;
 const timeoutID = setInterval(() => {
     console.log(cnt++);
     if (cnt == 5) { clearInterval(timeoutID) }
