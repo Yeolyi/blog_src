@@ -1,0 +1,20 @@
+<script>
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts/1');
+    xhr.send();
+    xhr.onload = () => {
+        console.log(xhr.response);
+    }
+    // 위 구문이 실행되고 console.log가 곧바로 실행된다. 
+    // xhr.onload에 바인딩된 이벤트 핸들러는 결코 console.log보다 먼저 실행되지 않는다. 
+    for (let i of Array(100).keys()) {
+        console.log(i);
+    }
+
+    try {
+        setTimeout(() => { throw new Error('Error!'); }, 1000);
+    } catch(e) {
+        // 에러를 캐치하지 못한다. 
+        console.log(e);
+    }
+</script>

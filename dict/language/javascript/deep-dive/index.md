@@ -1436,6 +1436,7 @@ HTML 어트리뷰트는 1. 요소 노드의 attributes 프로퍼티 2. 각 어�
 ### 8. 스타일
 
 !@chapter39/style.html@!
+
 ### 9. DOM 표준
 
 구글, 애플, 마이크로소프트, 모질라로 구성된 WHATWG가 HTML과 DOM 단일 표준을 내놓는다. 
@@ -1632,18 +1633,59 @@ db.json 파일은 리소스를 제공하는 데이터베이스 역할을 한다.
 
 ### 1. 비동기 처리를 위한 콜백 패턴의 단점
 
+!@chapter45/callback.html@!
 
+비동기로 동작하는 코드에서 처리 결과를 외부로 반환하거나 상위 스코프의 변수에 할당하면 기대한 대로 동작하지 않는다. !@chapter45/callback.html@!
+
+비동기 함수의 처리 결과에 대한 후속 처리는 콜백 함수를 전달하여 수행한다. 
+
+> 콜백 함수 호출이 중첩되어 복잡도가 높아지는 현상을 콜백 헬이라 한다. 
+
+에러는 호출자 방향으로 전파되지만 setTimeout 함수의 콜백 함수를 호출한 것은 setTimeout이 아니므로 catch 블록에서 캐치되지 않는다. 
 
 ### 2. 프로미스의 생성
 
+표준 빌트인 객체다. 
+
+생성자는 resolve와 reject를 인수로 전달받는 콜백 함수를 인수로 받는다. 
+
+프로미스의 상태 정보 [[PromiseStatus]]는 pending, fulfilled, rejected로 나뉘며 뒤 두개를 묶어 settled 상태라 한다. settled 상태에서는 다른 상태로 변화할 수 없다. 
+
+> 프로미스는 비동기 처리 상태와 처리 결과를 관리하는 객체다. 
+
 ### 3. 프로미스의 후속 처리 메서드
+
+프로미스의 비동기 처리 상태가 변화하면 후속 처리 메서드에 인수로 전달한 콜백 함수가 선택적으로 호출된다. 모든 후속 처리 메서드는 프로미스를 반환하며 비동기로 동작한다. 
+
+!@chapter45/thenCatchFinally.js@!
 
 ### 4. 프로미스의 에러 처리
 
+then 메서드의 두번째 콜백 함수는 첫번째 콜백 함수에서의 에러를 채키하지 못하니 catch 메서드를 then 다음에 사용해서 해결하자. 
+
 ### 5. 프로미스 체이닝
+
+!@chapter45/promiseChaining.html@!
 
 ### 6. 프로미스의 정적 메서드
 
+- Promise.resolve/reject는 이미 존재하는 값을 래핑하여 프로미스를 생성한다. 
+- Promise.all은 여러 비동기 처리를 병렬 처리할 때 사용한다. 전달받은 프로미스 배열의 요소들의 상태가 모두 fulfilled가 되면 처리 결과를 배열에 저장해 새로운 프로미스를 반환한다. 배열 순서는 유지?된다. 하나라도 reject되면 즉시 종료된다.
+- Promise.race는 가장 먼저 fulfilled된 프로미스의 처리 결과를 resolve하는 새로운 프로미스를 반환한다. 
+- Promise.allSettled는 프로미스가 모두 settled되면 결과를 빼열로 반환한다. fulfilled는 status, value 프로퍼티를, rejected는 status, reason 프로퍼티를 갖는다. 
+
+!@chapter45/promiseAll.html@!
+
 ### 7. 마이크로태스크 큐
 
+!@chapter45/microtaskQueue.js@!
+
+프로미스의 후속 처리 메서드의 콜백 함수는 마이크로태스크 큐에 저장된다. 마이크로태스크 큐는 태스크 큐보다 우선순위가 높다. 
+
 ### 8. fetch
+
+fetch 함수는 XMLHttpRequest 객체보다 사용법이 간단하고 프로미스를 지원하기 때문에 비동기 처리를 위한 콜백 패턴의 단점에서 자유롭다. 
+
+Response 객체를 래핑한 프로미스를 반환한다. 
+
+!@chapter45/fetch.js@!

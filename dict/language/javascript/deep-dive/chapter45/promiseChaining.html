@@ -1,0 +1,21 @@
+<script>
+    const promiseGet = url => {
+        return new Promise((resolve, reject) => {
+            const xhr = new HMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.send();
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                    resolve(JSON.parse(xhr.response));
+                } else {
+                    reject(new Error(xhr.status));
+                }
+            };
+        });
+    };
+
+    promiseGet(`${url}/posts/1`)
+        .then(({userID}) => promiseGet(`${url}/users/${userID}`))
+        .then(userInfo => console.log(userInfo))
+        .catch(err => console.error(err));
+</script>
