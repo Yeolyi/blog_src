@@ -1584,9 +1584,25 @@ WebAPI인 XMLHttpRequest 객체를 기반으로 동작한다.
 
 ### 3. XMLHttpRequest
 
-HTTP 요청 메서드는 클라이언트가 서버에게 요청의 종류와 목적(리소스에 대한 행위)을 알리는 방법이다. 주로 아래 5가지 요청 메서드를 사용하여 [CRUD](https://ko.wikipedia.org/wiki/CRUD)를 구현한다. 
+HTTP 요청 메서드는 클라이언트가 서버에게 요청의 종류와 목적(리소스에 대한 행위)을 알리는 방법이다. 5가지 요청 메서드를 사용하여 [CRUD](https://ko.wikipedia.org/wiki/CRUD)를 구현한다. 
 
 !@chapter43/request.html@!
+
+## 44. REST API
+
+> Rest는 HTTP를 기반으로 클라이언트가 서버의 리소스에 접근하는 방식을 규정한 아키텍처고, REST API는 REST를 기반으로 서비스 API를 구현한 것을 의미한다. 
+
+### 1. REST API의 구성
+
+- 자원(resource, URI로 표현)
+- 행위(verb, HTTP 요청 메서드로 표현)
+- 표현(representations, 자원에 대한 행위의 구체적 내용, 페이로드로 표현)
+
+자체 표현 구조(self-descriptiveness)로 구성된다. 
+
+### 2. REST API 설계 원칙
+
+URI는 리소스를 표현하는데 집중하고, 행위에 대한 정의는 HTTP 요청 메서드를 통해 한다. 
 
 - GET: index/retrieve. 모든/특정 리소스 취득. 페이로드 없음
 - POST: create. 리소스 생성. 페이로드 있음
@@ -1594,6 +1610,40 @@ HTTP 요청 메서드는 클라이언트가 서버에게 요청의 종류와 목
 - PATCH: modify. 리소스의 일부 수정. 페이로드 있음
 - Delete: delete. 모든/특정 리소스 삭제. 페이로드 없음
 
-## 44. REST API
+### 3. JSON Server를 이용한 REST API 실습
+
+json-server-exam 폴더 참고.
+
+db.json 파일은 리소스를 제공하는 데이터베이스 역할을 한다. 
+
+!@chapter44/json-server-exam/public/get_index.html@!
+
+!@chapter44/json-server-exam/public/get_retrieve.html@!
+
+!@chapter44/json-server-exam/public/post.html@!
+
+!@chapter44/json-server-exam/public/put.html@!
+
+!@chapter44/json-server-exam/public/patch.html@!
+
+!@chapter44/json-server-exam/public/delete.html@!
+
+## 45. 프로미스
+
+### 1. 비동기 처리를 위한 콜백 패턴의 단점
 
 
+
+### 2. 프로미스의 생성
+
+### 3. 프로미스의 후속 처리 메서드
+
+### 4. 프로미스의 에러 처리
+
+### 5. 프로미스 체이닝
+
+### 6. 프로미스의 정적 메서드
+
+### 7. 마이크로태스크 큐
+
+### 8. fetch

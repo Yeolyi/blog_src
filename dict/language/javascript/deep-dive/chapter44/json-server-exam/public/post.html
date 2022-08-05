@@ -1,0 +1,18 @@
+<body>
+    <pre></pre>
+    <script>
+        const xhr = new XMLHttpRequest();
+        // todos 리소스에 새로운 todo를 생성
+        xhr.open('POST', '/todos');
+
+        // POST는 페이로드의 MIME 타입을 지정해야한다. 
+        xhr.setRequestHeader('content-type', 'application/json');
+
+        xhr.send(JSON.stringify({ id: 4, content: 'React', completed: false }));
+
+        xhr.onload = () => {
+            // 200 확인 생략
+            document.querySelector('pre').textContent = xhr.response;
+        }
+    </script>
+</body>
