@@ -1731,3 +1731,65 @@ function 키워드와 함수 이름 사이에 *를 넣는다.
 > ES8에서는 제너레이터보다 간단하고 가독성 좋게 비동기 처리를 동기 처리처럼 동작하도록 구현할 수 있는 async/await가 도입되었다. 
 
 !@chapter46/asyncAwait.js@!
+
+## 47. 에러 처리
+
+### 1. 에러 처리의 필요성
+
+발생한 에러에 대해 대처하지 않고 방치하면 프로그램은 강제 종료된다. 
+
+### 2. try...catch...finally 문
+
+finally 코드 블록은 에러 발생과 상관없이 반드시 한 번 실행된다. 
+
+### 3. Error 객체
+
+Error 생성자 함수에 에러 메시지를 전달할 수 있고, 생성된 객체는 message와 stack 프로퍼티를 가진다. 
+
+SyntaxError, ReferenceError, TypeError, RangeError, URIError, EvalError 가 있다. 
+
+### 4. throw 문
+
+에러를 발생시키려면 try 코드 블록에서 throw 문으로 에러 객체를 던져야 한다. 
+
+### 5. 에러의 전파
+
+throw된 에러를 캐치하지 않으면 호출자 방향으로 전파된다. 비동기 함수인 setTimeout이나 프로미스 후속 처리 메서드의 콜백 함수는 호출자가 없음을 주의한다. 
+
+## 48. 모듈
+
+### 1. 모듈의 일반적 의미
+
+> 모듈이란 애플리케이션을 구성하는 개별적 요소로서 재사용 가능한 코드 조각을 말한다. 
+
+모듈은 공개가 필요한 자산에 한정하여 export를 통해 선택적 공개가 가능하다. 모듈 사용자는 공개된 자산 중 일부 또는 전체를 import를 통해 자신의 스코프 내로 불러들여 재사용할 수 있다. 
+
+### 2. 자바스크립트와 모듈
+
+자바스크립트는 본래 하나의 전역을 공유해 모듈 구현이 없었으나, CommonJS와 AMD(Asynchronous Module Definition)가 제안되었다. 
+
+브라우저 환경에서 모듈을 사용하기 위해서는 이들을 구현한 모듈 로더 라이브러리를 사용해야했다. 
+
+Node.js는 사실상 표준(de factor standard)인 CommonJS를 채택했고 독자적인 진화를 거쳤다. 
+
+### 3. ES6 모듈
+
+ES6에서 클라이언트 사이드 JS에서도 동작하는 모듈 기능을 추가했다. ES6 Module, ESM.
+
+script 태그에 type="module"을 추가하면 로드된 JS 파일은 모듈로서 동작한다. ESM의 확장자는 mjs로 명시하는 것이 좋다. 
+
+ES6는 독자적인 모듈 스코프를 갖는다. export 키워드와 import 키워드를 사용할 수 있다. 
+
+require는 NodeJS에서 사용되고 있는 CommonJS 키워드이고, import는 ES6에서 도입된 키워드이다. 
+
+## 49. Babel과 Webpack을 이용한 ES6+/ES.NEXT 개발 환경 구축
+
+### 1. Babel
+
+> Babel은 ES6+/ES.NEXT로 구현된 최신 사양의 소수코드를 구형 브라우저에서도 동작하는 소스코드로 변환(트랜스파일링)할 수 있다. 
+
+> @babel/preset-env는 함께 사용되어야 하는 Babel 플러그인을 모아 둔 것으로 Babel 프리셋이라고 부른다. 
+
+### 2. Webpack
+
+> Webpack은 의존 관계에 있는 JS, CSS, 이미지 등의 리소스들을 하나(또는 여러 개)의 파일로 번들링하는 모듈 번들러다. 
