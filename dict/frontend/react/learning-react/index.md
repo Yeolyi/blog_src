@@ -123,21 +123,21 @@ When writing functions, try to follow these three rules:
 2. The function should return a value or another function.
 3. The function should not change or mutate any of its arguments. 
 
-!@reduceRight.js@! 
+!@chapter1-3/reduceRight.js@! 
 
 > In mathematics and computer science, currying is the technique of converting a function that takes multiple arguments into a sequence of functions that each takes a single argument.
 
-!@currying.js@!
+!@chapter1-3/currying.js@!
 
 Recursion is a pattern that works particularly well with asynchronous processes. Functions can recall themselves when they're ready, like when the data is available or when a timer has finished.
 
-!@recursionAsync.js@!
+!@chapter1-3/recursionAsync.js@!
 
 Composition
 
 A more elegant approach is to create a higher-order function we can use to compose functions into larger functions
 
-!@chaining.js@!
+!@chapter1-3/chaining.js@!
 
 In functional programs, we should use functions over values wherever possible. 
 
@@ -185,11 +185,17 @@ Component 프로퍼티들은 string이나 중괄호로 쌓인 JS expression 두 
 
 [CDN](https://www.cloudflare.com/ko-kr/learning/cdn/what-is-a-cdn/)
 
+!@chapter5/babel.html@!
+
 > If we use a React fragment, we can mimic the behavior of a wrapper without actually creating a new tag. 
 
 Webpack 관련은 스킵. 
 
 ## 6. React State Management
+
+지난 챕터에서 데이터가 프로퍼티를 따라 flow할 수 있는 component tree를 만들었다. Properties are half of the picture. State is the other half. 
+
+> The state of a React application is driven by data that has the ability to change. 
 
 
 
