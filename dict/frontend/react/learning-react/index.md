@@ -161,9 +161,37 @@ React DOM은 React element로 구성되어있다.
 
 !@chapter4/createElement.html@!
 
+The major advantage of using React is its ability to separate data from UI elements.
+
+!@chapter4/seperateData.html@!
+
+Components allow us to reuse the same structure, and then we can populate those structures with different sets of data.
+
+!@chapter4/props.html@!
+
 ## 5. React with JSX
 
+> JSX combines the JS from JavaScript and the X from XML. It is a JS extension that allows us to define React elements using a tag-based syntax directly within our JS code. 
+
+```jsx
+React.createElement(IngredientsList, {list: [...]});
+<Ingredients list={[...]}>
+// 여기서도 그냥 IngredientesList({[...]}) 해주면 안되나?
+// 기계적 변환이라서 어쩔 수 없는건가,,
+// 모든 JSX는 Babel을 통해 createElement 호출로 변환된다. 
+```
+
+Component 프로퍼티들은 string이나 중괄호로 쌓인 JS expression 두 타입만 받는다. 중괄호로 쌓인 것들은 평가(evaluate)된다. 
+
+[CDN](https://www.cloudflare.com/ko-kr/learning/cdn/what-is-a-cdn/)
+
+> If we use a React fragment, we can mimic the behavior of a wrapper without actually creating a new tag. 
+
+Webpack 관련은 스킵. 
+
 ## 6. React State Management
+
+
 
 ## 7. Enhancing Components with Hooks
 

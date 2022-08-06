@@ -19,7 +19,7 @@
         */
         // _ 와 $$ 붙은건 리액트 내부용 같고 key, ref, type, props가 중요.
         // type은 생성할 HTML/SVG의 종류를 의미
-        // props는 DOM 요소를 구성하기 위해 필요한 데이터와 자식 요소.
+        // props는 DOM 요소를 구성하기 위해 필요한 데이터들과 자식 요소.
 
         // ReactDOM.render is no longer supported in React 18.
         // ReactDOM.render(dish, document.getElementById('root'));
@@ -29,5 +29,7 @@
         const root = ReactDOM.createRoot(container);
         root.render([dish, dessert]);
         // Warning: Each child in a list should have a unique "key" prop. See https://reactjs.org/link/warning-keys for more information.
+
+        // JSX 형식이 아닌 createElement로 뒤덮인 코드가 브라우저에서 결과적으로 돌아가는 코드다. 
     </script>
 </body>

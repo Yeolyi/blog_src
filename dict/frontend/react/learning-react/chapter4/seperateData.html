@@ -1,0 +1,23 @@
+<body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script>
+        const items = [
+            '2 lb salmon',
+            '5 sprigs fresh rosemary',
+            '2 tablespoons olive oil',
+            '2 small lemons'
+        ]
+        const ingredients = React.createElement(
+            'ul',
+            { className: 'ingredients' },
+            // key 프로퍼티는 DOM을 효과적으로 업데이트하기 위해 사용된다. 
+            items.map((ingredient, i) => React.createElement('li', { key: i }, ingredient))
+        );
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(ingredients);
+    </script>
+</body>
