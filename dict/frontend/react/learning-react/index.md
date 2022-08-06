@@ -197,6 +197,13 @@ Webpack 관련은 스킵.
 
 > The state of a React application is driven by data that has the ability to change. 
 
+!@chapter6/star-rating/src/starRating.js@!
+
+무분별한 state의 사용은 디버깅을 어렵게하고 프로그램을 바꾸기 어렵게 만든다. 해결법 중 하나는 state를 component tree의 루트에서 자식 컴포넌트로 props를 통해 전달하는 것이다. 
+
+!@chapter6/star-rating/src/App.js@!
+
+!@chapter6/star-rating/src/ColorList.js@!
 
 
 ## 7. Enhancing Components with Hooks
