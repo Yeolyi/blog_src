@@ -205,6 +205,25 @@ Webpack 관련은 스킵.
 
 !@chapter6/star-rating/src/ColorList.js@!
 
+Just as we passed data down a component tree via props, interactinos can be passed back up the tree along with data via functino properties. 
+
+> In React, a ref if an object that stores values for the lifetime of a component. 
+
+!@chapter6/star-rating/src/AddColorForm.js@!
+
+!@chapter6/star-rating/src/useInput.js@!
+
+하지만 여러 요소를 지나 데이터를 건네는 것은 데이터를 사용하는 곳과 넣는 곳이 너무 먼 문제점을 낳는다. 
+
+> A context provider is a React component you can wrap around your entire component tree or specific sections of your component tree.
+
+> The context consumer is the React component that retrieves the data from context. 
+
+!@chapter6/star-rating-context/src/index.js@!
+
+!@chapter6/star-rating-context/src/ColorList.js@!
+
+Hook을 통해 렌더링 부분과 로직 부분을 분리할 수 있다. 
 
 ## 7. Enhancing Components with Hooks
 
