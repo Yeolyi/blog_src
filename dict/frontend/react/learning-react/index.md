@@ -476,9 +476,79 @@ GraphQL 관련은 일단 스킵.
 
 ## 10. React Testing
 
-
+스킵
 
 ## 11. React Router
+
+> **Routing** is the process of defining endpoints for your client’s requests.
+
+> Each **route** is an endpoint that can be entered into the browser's location bar.
+
+> The **Router component** passes information about the current location to any children that are nested inside of it. The Router component should be used once and placed near the root of our component tree.
+
+> The wrapper component for any routes we want to render is called **Routes**. Inside of Routes, we’ll use a **Route component** for each page we want to render.
+
+Routes가 Router에게 window의 위치가 바뀌었을 때 어떤 컴포넌트를 렌더할지 알려준다. 
+
+모든 Route 컴포넌트는 window의 현 위치에 따라 이들을 선택하는 Routes에 감싸져야한다. 
+
+!@chapter11/router-example/src/index.js@!
+
+!@chapter11/router-example/src/App.js@!
+
+!@chapter11/router-example/src/Home.js@!
+
+페이지에 위계를 주고 싶으면 아래와 같이 Route를 nest하면 된다. 
+
+```jsx
+function App() {
+    return (
+        <div>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="about" element={<About />}>
+                    <Route
+                        path="services"
+                        element={<Services />}
+                    />
+                    <Route
+                        path="history"
+                        element={<History />}
+                    />
+                    <Route
+                        path="location"
+                        element={<Location />}
+                    />
+                </Route>
+                <Route
+                    path="events"
+                    element={<Events />}
+                />
+                <Route
+                    path="products"
+                    element={<Products />}
+                /> <Route
+                    path="contact"
+                    element={<Contact />}
+                />
+                <Route path="*" element={<Whoops404 />} />
+            </Routes>
+        </div>);
+}
+```
+
+이때 /about/history에서 About은 보이지만 History는 보이지 않는데, 이 때 Outlet을 사용한다. Child Content를 렌더링하고 싶은 곳에 Outlet을 배치한다. 
+
+Redirect로 리다이렉트한다. 
+
+```jsx
+<Redirect
+    from="services"
+    to="about/services"
+/>
+```
+
+Routing parameter 생략. 
 
 ## 12. React and the Server
 
