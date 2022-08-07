@@ -227,7 +227,159 @@ Hook을 통해 렌더링 부분과 로직 부분을 분리할 수 있다.
 
 ## 7. Enhancing Components with Hooks
 
+- useState, useRef, useContext
+- useEffect, useLayoutEffect, useReducer
+- useCallback, useMemo
+
+> We use useEffect when a render needs to cause side effects. 
+
+> Those things we want the component to do other than return UI are called effects.
+
+렌더가 이루어질 때마나, useEffect는 렌더 이후의 최신 값들에 접근할 수 있다. 
+
+```jsx
+useEffect(() => {
+    localStorage.setItem('checkbos-value', checked);
+})
+```
+
+!@chapter7/dependency-array/src/index.js@!
+
+이런 식의 custom hook을 만들 수도 있다. 
+
+```jsx
+const useJazzyNews = () => {
+    const [posts, setPosts] = useState([]);
+    const addPost = post => setPosts(allPosts => [post, ...allPosts]);
+
+    useEffect(() => {
+        newsFeed.subscribe(addPost);
+        return () => newsFeed.unsubscribe(addPost);
+    }, []);
+
+    useEffect(() => {
+        welcomeChime.play();
+        return () => goodbyeChime.play();
+    }, []);
+
+    return posts;
+}
+```
+
+Dependency array에 객체를 넣으면, rerender마다 새로운 인스턴스가 생기기에 useEffect가 매번 불리게 된다. 
+
+> useMemo invokes a function to calculate a memoized value. 
+
+Memoization할 때 그 memo. Dependency가 바뀔 때만 값을 재계산하여 반환한다. 
+
+```jsx
+// 반환값 타입이 뭘까,,,?
+const words = useMemo(() => {
+    const words = children.split(" ");
+    return words;
+}, [children]);
+
+useEffect(() => {
+    console.log('fresh render');
+}, [words]);
+```
+
+> useCallback can be used like useMemo, but it memoizes functions instead of values. 
+
+useMemo와 useCallback을 사용하여 useJazzyNews를 개선할 수 있다. 
+
+```jsx
+const useJazzyNews = () = {
+    const [_posts, setPosts] = useState([]);
+    const addPost = post => setPosts(allPosts => [post, ...allPosts]);
+
+    const posts = useMemo(() => _posts, [_posts]);
+
+    useEffect(() => {
+        newPostChime.play();
+    }, [posts]);
+
+    // 이하 동일
+}
+```
+
+> **useLayoutEffect** is invoked after the render but before the browser paints the change.
+
+> Browser paint: the time when the components' elements are actually added to the DOM
+
+**Render** > useLayoutEffect > Browser paint > useEffect. 렌더가 가장 먼저네??
+
+Browser paint에 반드시 필요한 effect이면 useLayoutEffect를 사용한다. 
+
+```jsx
+function useWindowSize() {
+    const [width, setWidth] = useState(0);
+    const [height, setHeight] = useState(0);
+
+    const resize = () => {
+        setWidth(window.innerWidth);
+        setHeight(window.innerHeight);
+    }
+
+    useLayoutEffect(() => {
+        window.addEventListener("resize", resize);
+        resize();
+        return () => window.removeEventListener("resize", resize);
+    }, []);
+
+    return [width, height];
+}
+```
+
+### Rules to Follow with Hooks
+
+- Hooks only run in the scope of a component.
+- It's a good idea to break funtionality out into multiple Hooks.
+- Hooks should only be called at the top level. if문을 써야되면 hook안에서.
+
+> Lazy initial state. The initialState argument is the state used during the initial render. In subsequent renders, it is disregarded. If the initial state is the result of an expensive computation, you may provide a function instead, which will be executed only on the initial render.
+
+hook 안에 async function이 필요하면 argument로 전달은 안되고 nested function에서 처리해야한다. 
+
+### Improving Code with useReducer
+
+> Instead of hardcoding behavior, we can abstract logic into a **reducer function** that will always produce the same result. 
+
+```jsx
+const [checked, setChecked] = useState(false);
+// 불필요하게 복잡하다. 
+<input
+    onchange{() => setChecked(checked => !checked)}
+/>
+
+// If the same input is provided to a function, the sam eoutput should be expected. 
+const [checked, toggle] = useReducer(checked => !checked, false);
+const [number, setNumber] = useReducer((number, newNumber) => number+newNumber, 0);
+```
+
+> In React, a pure component is a component that always renders the same output, given the saem properties. 
+
+> The memo function can be used to create a component that will only render when its properties change. 
+
+```jsx
+const Cat = ({name, meow = f => f}) = {
+    return <p onClick={() => meow(name)}>{name}</p>;
+}
+// PureCat will only cause the Cat to render when the properties change. 
+// Second argument sent to the memo function is a predicate.
+// The function decides wheter to reerender a cat or not. 
+const PureCat = memo(
+    Cat, 
+    (prevProps, nextProps) => prevProps.name === nextProps.name
+);
+// 위에 처럼 memo를 사용하거나, useCallback으로 변환한 meow를 건네주거나 둘 중 하나. 
+```
+
+> The **React Profiler** can be used to measure the performance of each of your components.
+
 ## 8. Incorporating Data
+
+
 
 ## 9. Suspense
 
