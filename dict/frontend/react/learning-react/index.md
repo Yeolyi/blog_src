@@ -379,11 +379,104 @@ const PureCat = memo(
 
 ## 8. Incorporating Data
 
+In this chapter, we're going to take a look at various techniques for loading and working with data form the source. 
 
+### Requesting Data
+
+파일을 POST하기 위해서는 body에 파일이 위치함을 서버에 알리는 multipart-formdata request가 필요하다. body에 FormData를 담아 보낸다. 
+
+```js
+const formData = new FormData();
+formData.append('avatar', imgFile);
+fetch("/create/user", { method: "POST", body: formData });
+```
+
+유저를 식별하기 위한 토큰은 보통 Authorization header에 담긴다. 토큰은 특정 서비스에 로그인하거나, open standard protocol인 OAuth를 사용하는 서드파티 웹에서 제공된다.
+
+!@chapter8/github-user/src/GithubUser.js@!
+
+> We can save data locally to the browser using the Web Storage API
+
+- window.sessionStorage: 유저의 세션에 저장. 탭을 닫거나 브라우저를 재시작하면 사라진다. 
+- window.localStorage: 제거 전까지 계속 남는다. 
+
+!@chapter8/github-user/src/storage.js@!
+
+Cache-Control: max-age=<EXP_DATE>를 통해 HTTP가 캐시를 처리할 수 있게 할 수도 있다. 
+
+!@chapter8/github-user/src/GithubUser2.js@!
+
+### Render Props
+
+> Properties that are rendered.
+
+비동기 컴포넌트의 재사용성을 극대화시키는데 유용하다. 
+
+!@chapter8/github-user/src/List.js@!
+
+위 작업을 위한 더 나은 컴포넌트가 존재한다. 
+
+### Virtualized Lists
+
+실제 앱에서는 데이터가 많고 이를 한번에 렌더할 수는 없다. 
+
+windowing/virtualization. 가장 유명한건 react-window/react-virtualized. 
+
+!@chapter8/github-user/src/VirtualizedList.js@!
+
+### --
+
+!@chapter8/github-user/src/useFetch.js@!
+
+!@chapter8/github-user/src/Fetch.js@!
+
+!@chapter8/github-user/src/GithubUser3.js@!
+
+!@chapter8/github-user/src/useIterator.js@!
+
+!@chapter8/github-user/src/UserDetails.js@! 
+
+> 유저 정보를 불러오고 이후 유저의 레포 목록을 불러온다. We call these requests waterfall requests because they happen one right after the other—they’re dependent on each other.
+
+!@chapter8/github-user/src/RepositoryReadme.js@! 
+
+크롬의 Network 탭에서 네트워크 속도를 조절할 수 있다. XHR로 필터링하여 fetch 만 골라서 볼 수 있다. Waterfall에서 그래프도 볼 수 있음. 
+
+이후 책에서 위 구조를 평면화? 병렬화?하는 작업을 하지만 생략.
+
+리액트 요소가 사라졌는데 업데이트를 시도하면(네트워크가 느린 등의 이유로 인해) 'Can't perform a React state update on an unmounted component.'라는 경고가 뜬다. 
+
+```js
+// useState를 안쓰는 이유??
+/*
+Keep in mind that useRef doesn’t notify you when its content changes. Mutating the .current property doesn’t cause a re-render. If you want to run some code when React attaches or detaches a ref to a DOM node, you may want to use a callback ref instead.
+*/
+// 리렌더링과 관련된 듯?
+export function useMountedRef() {
+    const mounted = useRef(false);
+    useEffect(() => {
+        mounted.current = true;
+        return () => (mounted.current = false);
+    });
+    return mounted;
+}
+```
+
+It’s always a good idea to test your app under slow network conditions. These bugs will be revealed and eliminated.
+
+### Introducing GraphQL
+
+> GraphQL is a declarative solution for communicating with APIs. A GraphQL query is a declarative description of the data we’re requesting.
+
+GraphQL 관련은 일단 스킵.
 
 ## 9. Suspense
 
+스킵. 
+
 ## 10. React Testing
+
+
 
 ## 11. React Router
 
