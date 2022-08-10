@@ -319,4 +319,228 @@ hook into = to become connected to
 
 ### Render and Commit
 
-~
+**Trigger a render**
+
+initial render와 state update가 렌더의 두 이유이다. 
+
+initial render는 ReactDOM.render로 이루어진다. 
+
+컴포넌트의 state가 바뀌면 queues a render. 
+
+**React renders your components**
+
+렌더가 트리거된 이후 리액트는 컴포넌트를 호출해 화면에 무엇을 보여줄지 알아본다. 
+
+> “Rendering” is React calling your components.
+
+초기 렌더에서는 root 컴포넌트를 호출하고, 이후에는 state 업데이트로 렌더가 트리거된 컴포넌트를 호출한다. 
+
+초기 렌더에서는 DOM node들을 만들고, re-render에서는 이전 렌더와 비교 작업을 해 어떤 프로퍼티가 바뀌었는지 계산한다. commit phrase 전까지는 이 정보로 아무 작업도 하지 않는다. 
+
+**React commits changes to the DOM**
+
+초기 렌더에서는 appendChild로 모든 DOM 노드들을 넣고, 이후에는 렌더링 단계에서 계산된 minimum neccessary operation을 수행한다. 
+
+### State as a Snapshot
+
+Setting state variable does not change the state variable you already have, but instead triggers a re-render. 
+
+When React re-renders a component:
+
+1. React calls your function again.
+2. Your function returns a new JSX snapshot.
+3. React then updates the screen to match the snapshot you’ve returned.
+
+State actually lives outside of your function.
+
+When React calls your component, it gives you a snapshot of the state for that particular render. Your component returns a snapshot of the UI with a fresh set of props and event handlers in its JSX, all calculated using the state values from that render!
+
+```jsx
+import { useState } from 'react';
+
+export default function Counter() {
+  const [number, setNumber] = useState(0);
+
+  return (
+    <>
+      <h1>{number}</h1>
+      // Scheduled using a snapshot of the state at the time the user interacted with it
+      <button onClick={() => {
+        setNumber(number + 5);
+        setTimeout(() => {
+          alert(number);
+        }, 3000);
+      }}>+5</button>
+    </>
+  )
+}
+
+```
+
+React keeps the state values “fixed” within one render’s event handlers. 
+
+Variables and event handlers don’t “survive” re-renders. Every render has its own event handlers.
+- Event handlers created in the past have the state values from the render in which they were created.
+
+You can mentally substitute state in event handlers, similarly to how you think about the rendered JSX???
+
+### Queueing a Series of State Updates
+
+React waits until all code in the event handlers has run before processing your state updates.
+
+```jsx
+import { useState } from 'react';
+
+export default function Counter() {
+  const [number, setNumber] = useState(0);
+	console.log('asdasd');
+  return (
+    <>
+      <h1>{number}</h1>
+      <button onClick={() => {
+        setNumber(number + 1);
+        setTimeout(() => {
+          setNumber(100);
+        }, 2000);
+      }}>+3</button>
+    </>
+  )
+}
+// 콜백까지 기다리는건 아니니까,,,?
+// 암튼 setNumer는 계속 유효하구나
+```
+
+React does not batch across multiple intentional events like clicks.
+
+```jsx
+import { useState } from 'react';
+
+export default function Counter() {
+  const [number, setNumber] = useState(0);
+
+  return (
+    <>
+      <h1>{number}</h1>
+      <button onClick={() => {
+        // pass updater function
+        setNumber(n => n + 1);
+        setNumber(n => n + 1);
+        setNumber(n => n + 1);
+      }}>+3</button>
+    </>
+  )
+}
+// It is a way to tell React to “do something with the state value” instead of just replacing it.
+```
+
+It’s common to name the updater function argument by the first letters of the corresponding state variable:
+
+```jsx
+setLastName(ln => ln.reverse());
+```
+
+```jsx
+import { useState } from 'react';
+
+export default function RequestTracker() {
+  const [pending, setPending] = useState(0);
+  const [completed, setCompleted] = useState(0);
+
+  async function handleClick() {
+    setPending(p => p+1);
+    await delay(3000);
+    setPending(p => p-1);
+    // 그 순간의 값으로 설정하려면 함수로 건네줘야한다. 
+    // c+1을 전달하면 이벤트 헨들러 호출될 당시의 c값으로 하는 듯. 
+    setCompleted(c => c+1);
+  }
+
+  return (
+    <>
+      <h3>
+        Pending: {pending}
+      </h3>
+      <h3>
+        Completed: {completed}
+      </h3>
+      <button onClick={handleClick}>
+        Buy     
+      </button>
+    </>
+  );
+}
+
+function delay(ms) {
+  return new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
+}
+
+```
+
+### Updating Objects in State
+
+Although objects in React state are technically mutable, you should treat them as if they were immutable
+
+Note that the ... spread syntax is “shallow”—it only copies things one level deep. 
+
+```jsx
+setPerson({
+    ...person,
+    [e.target.name]: e.target.value
+    // 여러 필드에 동일한 이벤트 핸들러 사용하기. 
+    // Dynamic name의 활용
+    // e.target.name은 <input>의 name 프로퍼티
+});
+```
+
+Nested object를 할 때는 잘 분리해서 하기. Objects are not really nested. 다른 객체를 가르킬 뿐. 
+
+**Immer** is a popular library that lets you write using the convenient but mutating syntax and takes care of producing the copies for you. The draft provided by Immer is a special type of object, called a Proxy, that “records” what you do with it. 프록시 공부해보자. 
+
+### Updating Arrays in State
+
+In general, you should only mutate objects that you have just created. 
+
+## Managing State
+
+With React, you won’t modify the UI from code directly. For example, you won’t write commands like “disable the button”, “enable the button”, “show the success message”, etc. Instead, you will describe the UI you want to see for the different visual states of your component (“initial state”, “typing state”, “success state”), and then trigger the state changes in response to user input.
+
+### Reacting to Input with State
+
+React uses a declarative way to manipulate the UI. Instead of manipulating individual pieces of the UI directly, you describe the different states that your component can be in, and switch between them in response to the user input. This is similar to how designers think about the UI.
+
+> Declarative programming means describing the UI for each visual state rather than micromanaging the UI (imperative).
+
+1. Identify your component’s different visual states
+2. Determine what triggers those state changes(state diagram?)
+3. Represent the state in memory using useState
+4. Remove any non-essential state variables
+5. Connect the event handlers to set the state
+
+### Choosing the State Structure
+
+- Group related state.
+- Avoid contradictions in state.
+- Avoid redundant state.
+- Avoid duplication in state.
+- Avoid deeply nested state.
+
+```jsx
+const isSending = status === 'sending';
+// 한 렌더링 안에서는 state가 바뀌지 않으니 이렇게 써도 상관 없는 듯?
+```
+
+**Don't mirror props in state**. “Mirroring” props into state only makes sense when you want to ignore all updates for a specific prop. By convention, start the prop name with initial or default to clarify that its new values are ignored.
+
+
+
+### Sharing State Between Components
+
+### Preserving and Resetting State
+
+### Extracting State Login into a Reducer
+
+### Passing Data Deeply with Context
+
+### Scaling Up with Reducer and Context
