@@ -223,5 +223,100 @@ Note that your components won’t receive key as a prop. It’s only used as a h
 
 ### Keeping Components Pure
 
+React assumes that every component you write is a pure function. 
+
+Now your component is pure, as the JSX it returns only depends on the guest prop.
+
+React offers a “Strict Mode” in which it calls each component’s function twice during development. 이래서 위에 예제에서 1 2 3이 아닌 2 4 6이 나온 것. 
+
+It’s completely fine to change variables and objects that you’ve just created while rendering. 컴포넌트 내부에서 생성한걸 바꾸는 것은 괜찮다. Local mutation이라 함. 
+
+Side effect는 보통 렌더링 중이 아니라 on the side(비밀스럽게?) 발생한다. 
+
+리액트에서 side effect는 보통 이벤트 핸들러 내부에서 발생한다. 이벤트는 핸들러가 컴포넌트 내부에서 정의되었다해도 렌더링중에 발생하지 않기 때문에 순수할 필요가 없다. 
+
+적합한 이벤트 핸들러를 찾지 못했으면 useEffect를 사용할 수 있지만 마지막 수단이 되어야 한다. **가능한 한 렌더링만으로 로직을 표현하라.**
+
+이 챕터는 다시 읽어보면 좋을 듯.
+
+**왜 리액트는 purity를 신경쓸까?**
+
+- 다양한 환경에서 동일하게 동작한다. 
+- 입력이 같으면 렌더링을 건너뛰어 성능을 최적화할 수 있다. 
+- 렌더링 중 데이터가 바뀌면 기존 렌더링을 즉시 중단해도 상관 없다. 
+
+You should not mutate any of the inputs that your components use for rendering. That includes props, state, and context. To update the screen, “set” state instead of mutating preexisting objects.
+
+sort는 원본 배열을 mutate시킨다. 
+
 ## Adding Interactivity
 
+>  In React, data that changes over time is called state.
+
+### Responding to Events
+
+By convention, it is common to name event handlers as **handle** followed by the event name. 
+
+[Everything you need to know about Design Systems](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969)
+
+All events propagate in React except onScroll, which only works on the JSX tag you attach it to.
+
+```jsx
+e.stopPropagation();
+```
+
+자식 요소의 이벤트를 잡고 싶으면...
+
+
+```jsx
+<div onClickCapture={() => { /* this runs first */ }}>
+  <button onClick={e => e.stopPropagation()} />
+  <button onClick={e => e.stopPropagation()} />
+</div>
+```
+
+1. 아래로 내려가며 모든 onClickCapture 호출
+2. 눌린 요소의 onClick 실행
+3. 위로 올라가며 모든 onClick 실행
+
+Explicitly calling an event handler prop from a child handler is a good alternative to propagation.
+
+```jsx
+ e.preventDefault();
+```
+
+**Event handlers are the best place for side effects.** However, in order to change some information, you first need some way to store it. In React, this is done by using state, a component’s memory. You will learn all about it on the next page.
+
+### State: A Component's Memory
+
+> React, this kind of component-specific memory is called **state**.
+
+1. Local variables don’t persist between renders.
+2. Changes to local variables won’t trigger renders.
+
+> Hooks are special functions that are only available while React is rendering.
+
+
+Hooks are functions, but it’s helpful to think of them as unconditional declarations about your component’s needs. 모듈 상단에 import 하는 것과 비슷하게 생각하자. 
+
+How does useState know which of the state variables to return?
+- Hooks rely on a stable call order on every render of the same component.
+- Internally, React holds an array of state pairs for every component.
+
+!@hookMentalModel.html@!
+
+!@hookMentalModel.js@!
+
+State is local to a component instance on the screen. 
+
+Unlike props, state is fully private to the component declaring it. The parent component can’t change it. 
+
+What if you wanted both galleries to keep their states in sync? The right way to do it in React is to remove state from child components and add it to their closest shared parent. 
+
+hook into = to become connected to
+
+배열 역방향 순회에서 -1 % arr.length 하면 몇이 나오지?
+
+### Render and Commit
+
+~
