@@ -3,15 +3,15 @@ title: 사전
 subtitle: 공부한 것들 창고
 ---
 
-### 언어
-[Swift](language/swift)
-[Javascript](language/javascript)
-[TypeScript](language/typescript)
-
 ### 프론트엔드
 [React](frontend/react)
 [HTML](frontend/html)
 [CSS](frontend/css)
+
+### 언어
+[Swift](language/swift)
+[Javascript](language/javascript)
+[TypeScript](language/typescript)
 
 ### iOS
 [로드맵](ios/roadmap)
