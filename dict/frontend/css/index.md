@@ -31,3 +31,13 @@ title: CSS
 [Sizing Items](./sizing-items/)
 
 [Images, media, and form elements](./image-media-form/)
+
+### Styling text
+
+TODO
+
+### CSS layout
+
+[Normal Flow](./normal-flow/)
+
+[Flexbox](./flexbox)
