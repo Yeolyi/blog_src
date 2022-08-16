@@ -43,3 +43,6 @@ TODO
 [Flexbox](./flexbox)
 
 [Grids](./grids/)
+
+[Floats](./floats/)
+
