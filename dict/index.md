@@ -13,12 +13,6 @@ subtitle: 공부한 것들 창고
 [Javascript](language/javascript)
 [TypeScript](language/typescript)
 
-### iOS
-[로드맵](ios/roadmap)
-[SwiftUI](ios/swiftui)
-[UIKit](ios/uikit)
-[Xcode가 group을 사용하는 이유](ios/why-xcode-use-group)
-
 ### 컴퓨터 과학
 [로드맵](cs/roadmap)
 [알고리즘](cs/algorithm)
@@ -27,6 +21,13 @@ subtitle: 공부한 것들 창고
 [데이터베이스](cs/database)
 [네트워크](cs/network)
 [운영체제](cs/os)
+[HTTP](cs/http)
+
+### iOS
+[로드맵](ios/roadmap)
+[SwiftUI](ios/swiftui)
+[UIKit](ios/uikit)
+[Xcode가 group을 사용하는 이유](ios/why-xcode-use-group)
 
 ### ETC
 [statement, expression, syntax, semantics](etc/syntax-vs-semantics)

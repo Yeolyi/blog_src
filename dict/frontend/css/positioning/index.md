@@ -2,7 +2,7 @@
 title: Positioning
 ---
 
-!@position.html@!
+!@positioning.html@!
 
 이미지에 alt빼면 inline 요소처럼 같은줄에 있는데 이미지 파일이 없어서 그런건가?
 
