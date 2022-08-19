@@ -12,15 +12,7 @@ title: HTTP
 
 [Evolution of HTTP]
 
-[Resources and URIs]
-
-[Identifying resources on the Web]
-
-[Data URLs]
-
-[MIME types]
-
-[Choosing between www and non-www URLs]
+[Resources and URIs](./resource/)
 
 [Flow of an HTTP session]
 
@@ -30,7 +22,7 @@ title: HTTP
 
 [Content Negotiation]
 
-### 나머지?
+### HTTP Turotials
 
 [HTTP Cache](./cache/)
 

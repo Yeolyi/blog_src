@@ -1,3 +1,3 @@
-let a = 10;
-setTimeout(() => { console.log(a); }, 1000);
-a = 100;
+const arr = [1, 2, 3];
+arr.push(arr);
+console.log(arr);
