@@ -3,6 +3,9 @@ title: 사전
 subtitle: 공부한 것들 창고
 ---
 
+### 프로젝트
+[오목](project/omok)
+
 ### 프론트엔드
 [React](frontend/react)
 [HTML](frontend/html)
