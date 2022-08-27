@@ -1,6 +1,5 @@
 ---
-title: 공부 기록
-subtitle: 남는건 기록 뿐!
+title: Document
 ---
 
 ### 프론트엔드
