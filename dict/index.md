@@ -1,9 +1,7 @@
 ---
 title: 공부 기록
+subtitle: 남는건 기록 뿐!
 ---
-
-### 프로젝트
-[오목](project/omok)
 
 ### 프론트엔드
 [React](frontend/react)
