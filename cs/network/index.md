@@ -8,7 +8,7 @@ title: 컴퓨터 네트워크
 
 [출처](http://gaia.cs.umass.edu/kurose_ross/videos/1/)
 
-Chapter 1. Computer Networks and the Internet
+[Chapter 1. Computer Networks and the Internet](./kurose/chapter1/)
 
 Chapter 2. The Application Layer
 

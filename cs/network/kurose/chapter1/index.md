@@ -2,7 +2,7 @@
 title: Chapter 1. Computer Networks and the Internet
 ---
 
-## What is the Internet?
+## 1. What is the Internet?
 
 nuts and bolts 관점 / services 관점 
 
@@ -16,7 +16,7 @@ hosts = end systems
 
 > 프로토콜은 네트워크 엔티티간 주고 받는 메시지의 형식과 메시지 전송과 수신의 방법을 규정한다. 
 
-## The Network Edge
+## 2. The Network Edge
 
 access networks: edge device를 first hop router, 더 넓은 네트워크로 연결해줌. 
 
@@ -54,7 +54,7 @@ Physical media는 이 강의에서는 가볍게만 살펴볼 것.
 
 guided media / unguided media
 
-## The Network Core
+## 3. The Network Core
 
 packet switching / circuit switching / structure of today's internet
 
@@ -86,14 +86,29 @@ Packet switching은 bursty data에 좋다. 짧은 시간에 확 보내야 하는
 
 구글 같은 기업은 content provider network를 만들어 end user 가까이서 네트워크를 제공?할 수도 있다. 
 
-## Performance: Delay, Loss, and Throughput in Computer Networks
+## 4. Performance: Delay, Loss, and Throughput in Computer Networks
 
+Components of network delay / traceroute / packet loss / throughput
 
+d_proc: nodal processing. 비트 에러 체크 등등..
+d_queue: queueing delay. 정체 상태에 따라 결정
+d_trans: transmission delay. L/R
+d_prop: propagation delay. 물리적 링크 길이 / 전파 속도. d/s
 
-## Protocol layers and Their Service Models
+마지막 두 개는 자주 헷갈림. Caravan analogy. 
 
-## Networks under attack
+> traceroute program: provides delay measurement from source to router along end-end Internet path towards destination. 
 
-## History of Computer Networking; Chapter 1 Summary
+> Throughput: rate (bit/time unit) at which bits are being sent from sender to receiver. 
 
-## Chapter: Supplemental topics
+throuput은 가장 느린 곳에 의해 결정. bottleneck link: link on end-end path that constrains end-end throughput
+
+보통은 network edge가 가장 느려 여기가 bottleneck link가 됨. 
+
+## 5. Protocol layers and Their Service Models
+
+## 6. Networks under attack
+
+## 7. History of Computer Networking; Chapter 1 Summary
+
+## 8. Chapter: Supplemental topics
