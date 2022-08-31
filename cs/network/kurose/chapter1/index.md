@@ -107,8 +107,70 @@ throuput은 가장 느린 곳에 의해 결정. bottleneck link: link on end-end
 
 ## 5. Protocol layers and Their Service Models
 
+네트워크는 복잡하고 많은 요소들로 구성되어 있다. 
+
+Architectural layering / Internet layers / encapsulation
+
+Layers: each layer implements a service. via its own internal-layer actions, relying on services provided by layer below. 
+
+레이어로 구성함으로서 reference model??을 통해 소통할 수 있다. 모듈화가 용이하다. 캡슐화. 
+
+[Reference Model](https://en.wikipedia.org/wiki/Reference_model)
+
+Application: 네트워크 어플리케이션을 지원. HTTP, IMAP, SMTP, DNS
+Transport: 프로세스간 데이터 전송. TCP, UDP
+Network: Datagram을 source-destination 라우팅. 호스트간. IP, routing protocols. 
+Link: 이웃한 네트워크 요소간 데이터 전송. Eternet, 802.11(WiFi), PPP
+Physical: 선으로 전송
+
+**What's a packet really called?**
+
+Application - Messages
+Transport - Message를 캡슐화(encapsulate)해 segment. 
+Network - Datagram
+Link - Frame
+Physical - ?
+
+강의 자료에서 스위치는 link까지만 구현, 라우터는 network까지만 구현되어있음. 
+
 ## 6. Networks under attack
 
+What can bad actors do? / What defenses designed, deployed?
+
+인터넷은 본래 보안을 크게 신경쓰지 않고 디자인되었다. 
+
+[Secure by Design](https://en.wikipedia.org/wiki/Secure_by_design)
+
+**Packet sniffing**
+
+브로드캐스트 매체에서 패킷 전체을 훔칠 수 있다.
+
+**IP spoofing**
+
+가짜 source 주소로 패킷 주입. 
+
+**Denial of Service(D0S)**
+
+많은 양의 가짜 트래픽으로 서버의 자원을 사용할 수 없게 함. 
+
+> A distributed denial-of-service (DDoS) attack occurs when multiple systems flood the bandwidth or resources of a targeted system, usually one or more web servers
+
+[How AWS Shield mitigates events](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-event-mitigation.html)
+
+Authentication(심카드는 하드웨어로서의 예시)
+
+Confidentiality(via encryption)
+
+Integrity checks(digital signitures prevent/detect tempering)
+
+Access restrictions(password-protected VPNs)
+
+Firewalls: Specialized middleboxes in access and core networks.
+
+챕터 8에서 계속.
+
 ## 7. History of Computer Networking; Chapter 1 Summary
+
+
 
 ## 8. Chapter: Supplemental topics
