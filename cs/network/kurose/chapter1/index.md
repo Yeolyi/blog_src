@@ -101,7 +101,7 @@ d_prop: propagation delay. 물리적 링크 길이 / 전파 속도. d/s
 
 > Throughput: rate (bit/time unit) at which bits are being sent from sender to receiver. 
 
-throuput은 가장 느린 곳에 의해 결정. bottleneck link: link on end-end path that constrains end-end throughput
+Throughput은 가장 느린 곳에 의해 결정. bottleneck link: link on end-end path that constrains end-end throughput
 
 보통은 network edge가 가장 느려 여기가 bottleneck link가 됨. 
 
@@ -170,6 +170,20 @@ Firewalls: Specialized middleboxes in access and core networks.
 챕터 8에서 계속.
 
 ## 7. History of Computer Networking; Chapter 1 Summary
+
+**Cerf and Kahn's internetworking principles**
+
+minimalism, autonomy - 네트워크간을 잇기 위해 내부적 변화가 불필요해야함
+
+best-effort service model
+
+stateless routing
+
+decnetralized control
+
+현재의 인터넷 아키텍처를 정의함. 
+
+> Software-defined networking (SDN) technology is an approach to network management that enables dynamic, programmatically efficient network configuration in order to improve network performance and monitoring, making it more like cloud computing than traditional network management.
 
 
 
