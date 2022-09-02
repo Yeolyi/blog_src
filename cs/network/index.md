@@ -10,7 +10,7 @@ title: 컴퓨터 네트워크
 
 [Chapter 1. Computer Networks and the Internet](./kurose/chapter1/)
 
-Chapter 2. The Application Layer
+[Chapter 2. The Application Layer](./kurose/chapter2/)
 
 Chapter 3. The Transport Layer
 

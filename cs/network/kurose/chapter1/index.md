@@ -1,5 +1,5 @@
 ---
-title: Chapter 1. Computer Networks and the Internet
+title: Computer Networks and the Internet
 ---
 
 ## 1. What is the Internet?
