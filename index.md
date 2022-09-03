@@ -2,6 +2,12 @@
 title: Document
 ---
 
+### 매일의 기록
+
+[컴퓨터 개념 공부](./daily/concept/)
+
+[A-Z 용어 정리](./daily/glossary/)
+
 ### 프론트엔드
 
 [React](frontend/react)
