@@ -65,7 +65,29 @@ HTTP/3은 보안을 더하고, UDP를 기반으로 object별 에러 및 congesti
 
 ## Email
 
+### Infrastructure
 
+user agents: mail reader. 메일 메시지를 읽고 수정함. 나가고 들어오는 메시지는 서버에 저장됨. 
+
+mail servers: 유저에게 온 메시지를 저장하는 mailbox. 보내질 메시지들의 message queue. 
+
+### SMTP
+
+simple mail transfer protocol
+
+메일 서버간에 메일을 주고받기 위해 존재.
+
+SMTP RFC(5321)가 메일 서버간 TCP 연결 프로토콜을 규정한다. 포트 25. 
+
+SMTP handshaking -> SMTP transfer of messages -> SMTP closure. 
+
+Command(ASCII text) / response(status code , phrase interaction. 
+
+HTTP는 client pull, SMTP는 client push. SMTP에서 client는 유저말고 클라이언트 서버도 됨. HTTP는 각 object가 각자의 reponse message에 쌓여있지만 SMTP에서는 복수의 object가 multipart message로 보내짐?
+
+RFC 2822가 e-mail 메시지 자체의 syntax를 규정한다. 
+
+SMTP를 통해 타겟 서버로 잘 가면, mail access protocol을 사용해 클라이언트가 서버로부터 메일을 가져온다. IMAP 등등... Gmail, Hotmail 등등은 SMTP와 IMAP(or POP)을 기반으로 web-based(HTTP) interface를 제공하기도 한다. 
 
 ## The Domain Name Service: DNS
 
