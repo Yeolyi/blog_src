@@ -28,8 +28,6 @@ title: Document
 
 [자료 구조](cs/data-structure) 
 
-[데이터베이스](cs/database)
-
 [네트워크](cs/network)
 
 [운영체제](cs/os)

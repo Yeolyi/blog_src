@@ -15,5 +15,3 @@ title: 컴퓨터 구조
 ### 기록
 
 [pdf 필기 백업(github)](https://github.com/Yeolyi/Computation_Structures)
-
-[Digital Circuits(L01-L08)](/digital-circuits)
