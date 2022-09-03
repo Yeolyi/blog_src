@@ -167,6 +167,42 @@ DNS는 query response protocol. query와 reply가 같은 형식을 가진다. �
 
 ## Video Streaming and Content Distribution Networks
 
+### video characteristics
+
+> [비트레이트](http://medlib.yu.ac.kr/mov/mt/term.htm)(BitRate): 비트(bit) + 레이트(rate,비율)의 합성어로, 정보의 비율을 뜻하는 것으로 1초에 얼마나 많은 데이터들이 흘러가는가를 나타낸다. 데이터량이 많을수록 즉 숫자가 커질수록 소리는 원음에 가깝지만 용량이 커지게 된다. 비트레이트는 고정(CBR)과 가변(VBR)으로 나눌 수 있다. 
+
+비디오의 용량을 줄이기 위해 spatial(한 이미지 내), temporal(인접한 이미지들 사이) coding이 가능하다. CBR(constant bit rate)은 비디오 인코딩 rate(=bitrate?)가 일정하고 VBR(variable ...)은 다르다. MPEG 1(CD-ROM)은 1.5Mbps로 고정, MPEG2(DVD)는 3-6Mbps, MPEG4(가끔 인터넷에서 사용?)은 64kbps-12Mbps.
+
+### streaming stored video
+
+서버에서 클라이언트까지 bandwidth가 지속적으로 변하고, 패킷이 유실되거나 늦게 올 수 있는게 challenge. 
+
+> [Streaming](https://www.cloudflare.com/ko-kr/learning/video/what-is-streaming/) is a method of viewing video or listening to audio content without actually downloading the media files.
+
+Streaming이라 불리는 이유는 서버가 영상 뒷쪽을 보내는 동안 클라이언트는 앞쪽을 플레이하고 있기 때문. 
+
+Continuous playout constraint: 네트워크 딜레이가 가변적이기 때문에(jitter) 원래 영상 프레임?대로 플레이하려면 버퍼링이 필요하다. 클라이언트에서는 영상을 재생하기 전에 버퍼에 담는다. 버퍼링. 
+
+client-side buffering and playout delay: compensate for network-added delay, delay jitter. 
+
+### DASH: dynamic client-driven streaming
+
+Bandwidth가 영상 본래 속도로 재생할 수 없을 정도로 작을 경우. Buffer starvation.
+
+Dynamic, Adaptive, Streaming over Http.
+
+비디오 파일을 여러 청크로 나누고 각 청크를 서로 다른 정도로 인코딩하여 저장한다. 파일들은 여러 CDN 노드들에 복제되어있고 manifest file이 청크들의 URL을 제공한다. 클라이언트는 주기적으로 bandwidth를 체크하고 이에 맞는 coding rate의 파일을 manifest를 참고해 가져온다. 클라이언트가 할 일이 많아짐!
+
+### CDNs, example
+
+challenge: how to stream content to hundreds of thousands of simultaneous users?
+
+Content Distributino Networks: 비디오의 여러 복제본을 여러 지리학적 장소에서 저장하고 제공함. enter deep / bring home 으로 나뉨. 
+
+Service provider가 manifest를 반환함. 이를 통해 가까운 곳 중 막히지 않는 곳에서 적당히 비디오를 받아옴. 
+
+넷플릭슨는 isp는 아니고 이를 이용한 컨텐츠 제공자임. 따라서 over-the-top, OTT라고도 함. 어플리케이션 레벨 서비스. 챕터 1에서 서비스로서의 인터넷의 예시.
+
 ## Socket Programming: Creating Network Applications
 
 ## Chapter 2: Supplemental topics
