@@ -205,4 +205,80 @@ Service provider가 manifest를 반환함. 이를 통해 가까운 곳 중 막�
 
 ## Socket Programming: Creating Network Applications
 
+Socket abstraction / UDP socket / TCP socket
+
+소켓이 Application layer와 Transport layer 사이 유일한 소통 방법. 
+
+Transport 까지는 OS에 의해 구현되어 있다. 
+
+UDP에서는 데이터 전송 전 handshaking이 없고, 모든 패킷에 송신자의 IP 주소와 포트 번호가 있다. 보내진 정보는 유실될 수 있고 순서가 바뀐 채 도착할 수 있다. 
+
+소켓이 만들어질 때는 IP? 말고도 더 있어서 인터넷 프로토콜을 쓸거라고 명시해주어야 한다. 
+
+서버측에서는 받고 보내는걸 같은 소켓에서 하네?
+
+```python
+from socket import *
+serverName = 'hostname'
+serverPort = 12000
+clientSocket = socket(AF_INET, SOCK_DGRAM)
+message = raw_input('Input lowercase sentence:')
+# 서버 이름과 IP간 변환은 sendto 메서드가 해줌
+clientSocket.sendto(message.encode(), (serverName, serverPort))
+modifiedMessage, serverAddress = clientSocket.recvfrom(2048)
+print modifiedMessage.decode()
+clientSocket.close()
+```
+
+```python
+from socket import *
+serverPort = 12000
+serverSocket = socket(AF_INET, SOCK_DGRAM)
+serverSocket.bind((serverName, serverPort))
+print("The server is ready to receive")
+while True:
+    message, clientAddress = serverSocket.recvfrom(2048)
+    modifiedMessage = message.decode().upper()
+    serverSocket.sendto(modifiedMessage.encode(), clientAddress)
+```
+
+TCP는 connection based라서 데이터를 주고받기 전에 연결을 성립시켜야한다. 
+
+클라이언트가 서버에 contact해야하고, **이후 서버 TCP는 해당 클라이언트를 위한 새로운 소켓을 만든다!** 이를 통해 서버가 여러 클라이언트와 통신할 수 있다. 소스 포트 번호가 클라이언트를 구분하기 위해 사용됨. 
+
+welcoming socket과 이후 생기는 new socket을 구분하자. 신기하게도 둘 다 포트 넘버가 같음. 이건 챕터 3에서 더 살펴보자. 
+
+TCP provides reliable, in-order byte-stream transfer("pipe") between client and server process. 
+
+```python
+from socket import *
+serverName = 'serverName'
+serverPort = 12000
+clientSocket = socket(AF_INET, SOCK_STREAM)
+clientSocket.connect((serverName, serverPort))
+sentence = raw_input('Input lowercase sentence.')
+clientSocket.send(sentence.encode())
+modifiedSentence = clientSocket.recv(1024)
+print('From Server', modifiedSentence.decode())
+clientSocket.close()
+```
+
+```python
+from socket import *
+serverPort = 12000
+serverSocket = socket(AF_INET, SOCK_STREAM)
+serverSocket.bind(('', serverPort))
+serverSocket.listen(1)
+print 'The Server is ready to receive'
+while True:
+    connectionSocket, addr = serverSocket.accept()
+    sentence = connectionSocket.recv(1024).decode()
+    capitalizedSentence = sentence.upper()
+    connectionSocket.send(capitalizedSentence.encode())
+    connectionSocket.close()
+```
+
+Server Reply(UDP): The  application code at the server determines client IP address and port # from the initial segment sent by client, and must explicitly specify these values when sending into a socket back to that client.
+
 ## Chapter 2: Supplemental topics
+
