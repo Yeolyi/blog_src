@@ -12,7 +12,7 @@ title: 컴퓨터 네트워크
 
 [Chapter 2. The Application Layer](./kurose/chapter2/)
 
-Chapter 3. The Transport Layer
+[Chapter 3. The Transport Layer](./kurose/chapter3/)
 
 Chapter 4. The Network Layer: the Data Plane
 

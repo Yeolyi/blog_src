@@ -282,3 +282,28 @@ Server Reply(UDP): The  application code at the server determines client IP addr
 
 ## Chapter 2: Supplemental topics
 
+Web tracking, 3rd party cookies, GDPR
+
+> First party cookie: from website you chose to visit(provides base html file). 
+
+> Third party cookie: from website you did not choose to visit
+
+Tracking may be invisible to user. 
+
+써드파티 쿠키는 Firefox, Safari에서 기본적으로 비활성화되어있고, 크롬에서는 2023년에 비활성화될 예정이다. 
+
+GDPR덕에 쿠키 물어봄. 
+
+## Interactive Problems
+
+DNS has always been designed to use both UDP and TCP port 53 from the start 1 , with UDP being the default, and fall back to using TCP when it is unable to communicate on UDP, typically when the packet size is too large to push through in a single UDP packet.
+
+https://www.infoblox.com/dns-security-resource-center/dns-security-faq/is-dns-tcp-or-udp-port-53/
+
+assuming the root DNS server doesn't have the IP we want, where does the response link? -> DNS TLD
+
+HTTP 통신은 TCP라서 RTT 두배인거 기억하기!!
+
+DNS and HTTP delays 다시 풀어보기.
+
+etag 알아보기. 
