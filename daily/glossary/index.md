@@ -50,3 +50,17 @@ In software development, agile practices include requirements discovery and solu
 소프트웨어 개발에서 애자일 프랙티스는 self-organizing하고 cross-functional한 팀과 그들의 고객이 협동적인 노력을 하여 요구사항을 발견하고 솔루션을 개선하는 것과, 적응형 계획, evolutionary devleopment, 빠른 배포, 지속적인 개선, 요청/수용력/당면 문제 이해의 변화에 대한 유연한 대응을 포함한다.
 
 애자일 소프트웨어 개발(Agile software development) 혹은 애자일 개발 프로세스는 소프트웨어 엔지니어링에 대한 개념적인 얼개로, 프로젝트의 생명주기동안 반복적인 개발을 촉진한다. 최근에는 애자일 게임 보급 등의 여파로 소프트웨어 엔지니어링 뿐 아니라 다양한 전문 분야에서 실용주의적 사고를 가진 사람들이 애자일 방법론을 적용하려는 시도를 하고 있다.
+
+### 2022-09-06
+
+**Algorithm**
+
+In mathematics and computer science, an algorithm is a finite sequence of rigorous instructions, typically used to solve a class of specific problems or to perform a computation. Algorithms are used as specifications for performing calculations and data processing.
+
+The informal definitions of algorithms generally require that the algorithm always terminates. This requirement renders the task of deciding whether a formal procedure is an algorithm impossible in the general case—due to a major theorem of computability theory known as the halting problem.
+
+수학과 컴퓨터 과학에서 알고리즘은 특정 유형의 문제들을 풀거나 계산을 수행하기 위해 사용되는 엄밀히 정의된 일련의 절차들이다. 알고리즘은 계산 및 데이터 처리의 수행 방법에 대한 명세로 사용된다.
+
+통상적인 알고리즘의 정의는 알고리즘이 종료될 것을 요구하지만 정지 문제로 알려진 계산가능성 이론의 주요 정리에 따르면 알고리즘이 결국에 종료되는지 판단할 일반적인 방법은 없기에 특정 절차가 알고리즘인지 아닌지 분간할 수 없게 된다.
+
+알고리즘(영어: algorithm), 셈법은 수학과 컴퓨터과학, 언어학 또는 엮인 분야에서 어떠한 문제를 해결하기 위해 정해진 일련의 절차이다. 계산을 실행하기 위한 단계적 절차를 의미하기도 한다. 즉, 문제 풀이에 필요한 계산절차 또는 처리과정의 순서를 뜻한다. 프로그램명령어의 집합을 의미하기도 한다.
