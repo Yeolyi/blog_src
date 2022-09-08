@@ -2,33 +2,13 @@
 title: 타입스크립트
 ---
 
-## React TypeScript Cheatsheet
+## The Typescript Handbook
 
-[출처](https://react-typescript-cheatsheet.netlify.app/docs/basic/setup/)
+[출처](https://www.typescriptlang.org/docs/handbook/intro.html)
 
-### Getting Started
+> Handbook is not a complete language specification, but it is intended to be a comprehensive guide to all of the language’s features and behaviors.
 
-[Typing Component Props]
-
-[Function Components]
-
-[Hooks]
-
-[Class Components]
-
-[Typing defaultProps]
-
-[Forms and Events]
-
-[Context]
-
-[forwardRef/createRef]
-
-[Portals]
-
-[Error Boundaries]
-
-[Concurrent React/React Suspense]
+[내용 보기](./handbook/)
 
 ## TypeScript Playground
 
@@ -51,6 +31,12 @@ title: 타입스크립트
 'See how TypeScript improves day to day working with JavaScript with minimal additional syntax.'
 
 [출처](https://www.typescriptlang.org/play)
+
+TODO...
+
+## React TypeScript Cheatsheet
+
+[출처](https://react-typescript-cheatsheet.netlify.app/docs/basic/setup/)
 
 TODO...
 
