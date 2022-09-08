@@ -5,6 +5,34 @@ date: 2022-09-02
 
 ## Principles of Network Applications
 
+[An Interview with Vint Cerf](https://www.youtube.com/watch?v=E9NHy7MCGm0). 추상화와 안정적인 API의 중요성. 
+
+Client-Server model(오래되고 많이 씀) / Peer-to-Peer model
+
+전자에서 클라이언트는 자기들끼리 소통하지 않고 IP 주소가 고정적이지 않음. 
+
+후자는 서버가 없고 peer가 있음. 다이렉트로 소통. Peer의 주소가 유동적이기 때문에 관리가 훨씬 어렵다. 
+
+프로세스끼리의 통신이다. 같은 컴퓨터면 IPC, 다른 컴퓨터면 메시지. 후자에 관심가질 것. 
+
+Transport layer에서는 Socket이라는 추상화 레이어?를 가짐. Source, destination 두 개의 소켓이 기본적으로 필요. 
+
+Addressing processes. 메시지를 받기 위해서는 identifier가 필요. 호스트 기기는 유일한 32비트 IP 주소를 가진다. 다만 같은 기기에 여러 프로세스가 있을 수도 있으니 포트 넘버도 사용한다. 
+
+Application-layer 프로토콜은 주고 받는 메시지의 종류, 메시지의 syntax와 sementics, 프로세스가 메시지를 처리하는 규칙들이 규정되어있다. 
+
+open protocols(RFCs) / proprietary protocols(Skype, Zoom)
+
+**Transport layer가 제공하는 서비스**
+
+data integrity / timing / throughput / security
+
+TCP: reliable transport, flow control, congestion control, connection-oriented
+
+UDP:  unreliable data transfer... 되는거 없음. 하지만 UDP위에서 application layer가 기능을 구현할 수 있음. 
+
+바닐라 TCP/UDP보안 없음. TLS(Transport Layer Security)는 TCP위에서 구현되어 보안, Data integrity, end-point authentication 제공. 
+
 ## The Web and HTTP
 
 ### Overview
