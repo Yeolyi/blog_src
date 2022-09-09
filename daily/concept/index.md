@@ -63,6 +63,8 @@ sock = socket.socket(
 sock.sendto(MESSAGE, (UDP_IP, UDP_PORT))
 ```
 
+### 2022-09-06
+
 **마크다운**
 
 Markdown is a lightweight markup language for creating formatted text using a plain-text editor. John Gruber and Aaron Swartz created Markdown in 2004 as a markup language that is appealing to human readers in its source code form.[9] Markdown is widely used in blogging, instant messaging, online forums, collaborative software, documentation pages, and readme files.
@@ -86,3 +88,25 @@ produce a line break.
 ```
 
 _Wikipedia - Markdown_
+
+### 2022-09-08
+
+**멱등성**
+
+동일한 요청을 한 번 보내는 것과 여러 번 연속으로 보내는 것이 같은 효과를 지니고, 서버의 상태도 동일하게 남을 때, 해당 HTTP 메서드가 멱등성을 가졌다고 말한다. 멱등성 메서드에는 통계 기록 등을 제외하면 어떠한 부수 효과(side effect)도 존재해서는 안된다.
+
+멱등성을 따질 땐 실제 서버의 백엔드 상태만 보면 되며, 각 요청에서 반환하는 응답 코드는 다를 수 있다. 
+
+```http
+// 멱등성을 가지는 예시. 클라이언트가 받는 응답이 동일하다.
+GET /pageX HTTP/1.1
+GET /pageX HTTP/1.1
+GET /pageX HTTP/1.1
+
+// 멱등성을 갖지 않는 예시.
+POST /add_row HTTP/1.1
+POST /add_row HTTP/1.1   -> Adds a 2nd row
+POST /add_row HTTP/1.1   -> Adds a 3rd row
+```
+
+*출처: MDN Web Docs*

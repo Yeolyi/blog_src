@@ -64,3 +64,21 @@ The informal definitions of algorithms generally require that the algorithm alwa
 통상적인 알고리즘의 정의는 알고리즘이 종료될 것을 요구하지만 정지 문제로 알려진 계산가능성 이론의 주요 정리에 따르면 알고리즘이 결국에 종료되는지 판단할 일반적인 방법은 없기에 특정 절차가 알고리즘인지 아닌지 분간할 수 없게 된다.
 
 알고리즘(영어: algorithm), 셈법은 수학과 컴퓨터과학, 언어학 또는 엮인 분야에서 어떠한 문제를 해결하기 위해 정해진 일련의 절차이다. 계산을 실행하기 위한 단계적 절차를 의미하기도 한다. 즉, 문제 풀이에 필요한 계산절차 또는 처리과정의 순서를 뜻한다. 프로그램명령어의 집합을 의미하기도 한다.
+
+### 2022-09-08
+
+**ASCII**
+
+ASCII abbreviated from American Standard Code for Information Interchange, is a character encoding standard for electronic communication. ASCII codes represent text in computers, telecommunications equipment, and other devices. Most modern character-encoding schemes are based on ASCII, although they support many additional characters.
+
+Originally based on the English alphabet, ASCII encodes 128 specified characters into seven-bit integers as shown by the ASCII chart above
+
+ASCII was the most common character encoding on the World Wide Web until December 2007, when UTF-8 encoding surpassed it; UTF-8 is backward compatible with ASCII.
+
+미국정보교환표준부호(영어: American Standard Code for Information Interchange), 또는 줄여서 ASCII( /ˈæski/, 아스키)는 영문 알파벳을 사용하는 대표적인 문자 인코딩이다. 아스키는 컴퓨터와 통신 장비를 비롯한 문자를 사용하는 많은 장치에서 사용되며, 대부분의 문자 인코딩이 아스키에 기초를 두고 있다.
+
+ASCII(American Standard Code for Information Interchange, 미국정보교환표준부호)는 컴퓨터 통신에서의 문자 인코딩을 위한 표준이다. ASCII는 영문 알파벳 대소문자, 숫자, 특수문자, 공백 문자, 제어 문자로 구성된 128개의 문자들을 7비트 정수로 인코딩한다.
+
+ASCII는 2007년 12월까지 월드 와이드 웹에서 가장 보편적인 문자 인코딩이었으며, 이후 UTF-8이 ASCII를 넘어서게 된다. UTF-8은 ASCII와 역호환된다.
+
+_출처: Wikipedia_
