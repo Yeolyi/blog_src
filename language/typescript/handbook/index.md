@@ -21,15 +21,15 @@ The compiler tries to emit clean readable code that looks like something a perso
 
 ```js
 function greet(person, date) {
-  console.log(`Hello ${person}, today is ${date}!`);
+    console.log(`Hello ${person}, today is ${date}!`);
 }
 greet("Brendan");
 // tsx hello.js
 // 에러가 나지만 js 파일이 생기기는 함
 // --noEmitOnError면 에러 있으면 파일을 만들지 않음.
 function greet(person, date) {
-  // --target es2015 옵션을 주면 concat을 사용 안함
-  console.log("Hello ".concat(person, ", today is ").concat(date, "!"));
+    // --target es2015 옵션을 주면 concat을 사용 안함
+    console.log("Hello ".concat(person, ", today is ").concat(date, "!"));
 }
 greet("Brendan");
 ```
@@ -65,8 +65,8 @@ When you read from an optional property, you'll have to check for undefined befo
 
 ```ts
 type Point = {
-  x: number;
-  y: number;
+    x: number;
+    y: number;
 };
 ```
 
@@ -101,11 +101,13 @@ To define a user-defined type guard, we simply need to define a function whose r
 
 !@typePredicate.ts@!
 
-!@typePredicate.js@!
+!@dest/typePredicate.js@!
 
 > When every type in a union contains a common property with literal types, TypeScript considers that to be a **discriminated union**, and can narrow out the members of the union.
 
 !@discriminatedUnion.ts@!
+
+!@dest/discriminatedUnion.js@!
 
 They’re good for representing any sort of messaging scheme in JavaScript, like when sending messages over the network (client/server communication), or encoding mutations in a state management framework.
 
@@ -122,24 +124,24 @@ The never type is assignable to every type; however, no type is assignable to ne
 ```ts
 // Call signiture
 type DescribableFunction = {
-  description: string;
-  (someArg: number): boolean;
+    description: string;
+    (someArg: number): boolean;
 };
 // Construct signiture
 type SomeConstructor = {
-  new (s: string): SomeObject;
+    new (s: string): SomeObject;
 };
 // Generics are used when we want to describe a correspondence between two values.
 function firstElement<Type>(arr: Type[]): Type | undefined {
-  return arr[0];
+    return arr[0];
 }
 // Constraints
 function longest<Type extends { length: number }>(a: Type, b: Type) {
-  if (a.length >= b.length) {
-    return a;
-  } else {
-    return b;
-  }
+    if (a.length >= b.length) {
+        return a;
+    } else {
+        return b;
+    }
 }
 ```
 
@@ -165,12 +167,12 @@ When writing a function type for a callback, never write an optional parameter u
 
 ```ts
 function myForEach(arr: any[], callback: (arg: any, index?: number) => void) {
-  for (let i = 0; i < arr.length; i++) {
-    callback(arr[i], i);
-  }
+    for (let i = 0; i < arr.length; i++) {
+        callback(arr[i], i);
+    }
 }
 myForEach([1, 2, 3], (a, i) => {
-  console.log(i.toFixed()); // Object is possibly 'undefined'.
+    console.log(i.toFixed()); // Object is possibly 'undefined'.
 });
 ```
 
@@ -186,7 +188,7 @@ The unknown type represents any value. This is similar to the any type, but is s
 
 ```ts
 function doSomething(f: Function) {
-  return f(1, 2, 3);
+    return f(1, 2, 3);
 }
 ```
 
@@ -198,14 +200,14 @@ If you need to accept an arbitrary function but don’t intend to call it, the t
 
 > How TypeScript describes the shapes of Javascript objects.
 
-readonly인 프로퍼티는 바꿀 수 없지만 객체같은건 totally immutable하지는 않다. 
+readonly인 프로퍼티는 바꿀 수 없지만 객체같은건 totally immutable하지는 않다.
 
 TypeScript doesn’t factor in whether properties on two types are readonly when checking whether those types are compatible, so readonly properties can also change via aliasing.
 
 ```ts
 // Index Signatures
 interface StringArray {
-  [index: number]: string;
+    [index: number]: string;
 }
 // 문자열과 숫자 둘 다 가능하지만, but the type returned from a numeric indexer must be a subtype of the type returned from the string indexer.
 ```
@@ -219,7 +221,7 @@ TypeScript provides another construct called intersection types that is mainly u
 Since type aliases, unlike interfaces, can describe more than just object types, we can also use them to write other kinds of generic helper types.
 
 ```ts
-type OrNull<Type> = Type | null; 
+type OrNull<Type> = Type | null;
 type OneOrMany<Type> = Type | Type[];
 ```
 
@@ -230,7 +232,7 @@ When we see a function that consumes ReadonlyArrays, it tells us that we can pas
 ```ts
 let x: readonly string[] = [];
 let y: string[] = [];
- 
+
 x = y;
 y = x;
 // The type 'readonly string[]' is 'readonly' and cannot be assigned to the mutable type 'string[]'.
@@ -240,13 +242,13 @@ y = x;
 
 Tuple types are useful in heavily convention-based APIs, where each element’s meaning is “obvious”. However, since not every user holds the same view of what’s obvious, it may be worth reconsidering whether using objects with descriptive property names may be better for your API.
 
-Tuples can have optional properties 
+Tuples can have optional properties
 
 ## Type Manipulation
 
 ### Creating Types from Types
 
-> An overview of the ways in which you can create more types from existing types. 
+> An overview of the ways in which you can create more types from existing types.
 
 ### Generics
 
@@ -254,13 +256,13 @@ Tuples can have optional properties
 
 ```ts
 interface GenericIdentityFn {
-  <Type>(arg: Type): Type;
+    <Type>(arg: Type): Type;
 }
- 
+
 function identity<Type>(arg: Type): Type {
-  return arg;
+    return arg;
 }
- 
+
 let myIdentity: GenericIdentityFn = identity;
 ```
 
@@ -268,33 +270,33 @@ Understanding when to put the type parameter directly on the call signature and 
 
 When working with classes, static members can not use the class’s type parameter.
 
-You can declare a type parameter that is constrained by another type parameter. 
+You can declare a type parameter that is constrained by another type parameter.
 
 ```ts
 function getProperty<Type, Key extends keyof Type>(obj: Type, key: Key) {
-  return obj[key];
+    return obj[key];
 }
- 
+
 let x = { a: 1, b: 2, c: 3, d: 4 };
- 
+
 getProperty(x, "a");
 ```
 
-아래는 제너릭에서 클래스 타입을 사용하는 방법. mixin 디자인 패턴에서 사용된다. 
+아래는 제너릭에서 클래스 타입을 사용하는 방법. mixin 디자인 패턴에서 사용된다.
 
 ```ts
 function create<Type>(c: { new (): Type }): Type {
-  return new c();
+    return new c();
 }
 ```
 
 ### Keyof Type Operator
 
-The keyof operator takes an object type and produces a string or numeric literal union of its keys. 
+The keyof operator takes an object type and produces a string or numeric literal union of its keys.
 
 ### Typeof Type Operator
 
-여러 predefined type이 있다. 
+여러 predefined type이 있다.
 
 ```ts
 type Predicate = (x: unknown) => boolean;
@@ -318,27 +320,27 @@ The power of conditional types comes from using them with generics.
 
 ```ts
 interface IdLabel {
-  id: number /* some fields */;
+    id: number /* some fields */;
 }
 interface NameLabel {
-  name: string /* other fields */;
+    name: string /* other fields */;
 }
- 
+
 function createLabel(id: number): IdLabel;
 function createLabel(name: string): NameLabel;
 function createLabel(nameOrId: string | number): IdLabel | NameLabel;
 function createLabel(nameOrId: string | number): IdLabel | NameLabel {
-  throw "unimplemented";
+    throw "unimplemented";
 }
 ```
 
 ```ts
 type NameOrId<T extends number | string> = T extends number
-  ? IdLabel
-  : NameLabel;
+    ? IdLabel
+    : NameLabel;
 
 function createLabel<T extends number | string>(idOrName: T): NameOrId<T> {
-  throw "unimplemented";
+    throw "unimplemented";
 }
 ```
 

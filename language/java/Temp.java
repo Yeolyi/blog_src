@@ -1,6 +1,6 @@
 public class Temp {
     public static void main(String[] args) {
-        char test = 1;
-        System.out.println(test);
+        int x;
+        System.out.println(~10);
     }
 }
