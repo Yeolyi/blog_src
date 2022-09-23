@@ -92,4 +92,80 @@ float과 double의 비교에서 float -> double 변환을 해도 어차피 같�
 
 단축 평가로 인해 같은 조건식이라도 피연산자의 위치에 따라서 연산속도가 달라질 수 있다. 
 
+### 4. 조건문과 반복문
+
+> 프로그램의 흐름(flow)를 바꾸는 역할을 하는 문장들을 제어문이라고 한다. 
+
+switch문에서 break는 필수. 아래같은 경우가 있긴 하다. 
+
+```java
+switch (level) {
+    case 3: 
+        grantDelete();
+    case 2:
+        grantWrite();
+    case 1:
+        grantRead();
+}
+```
+
+switch문의 조건식 결과는 반드시 정수/문자열이어야 한다. case문의 값은 정수 상수/문자열 리터럴만 가능하다. 
+
+Switch의 구현은 공부해봐야겠지만 조건식을 한번만 계산하는 듯? switch 테이블 어쩌구 그건가. 
+
+for문: 초기화 -> (조건식 -> 수행될 문들 -> 증감식)
+
+for문에서 % 연산자로 순환, / 연산자로 반복을 할 수 있다. 
+
+```java
+// enhanced for statement
+for (int tmp: arr)
+    System.out.println(tmp);
+```
+
+!@chapter4/While.java@!
+
+```java
+// do while 문은 사용자 입력 받아서 처리할 때 사용될 수 있다.
+
+do {
+    // ...
+} while (input != answer);
+```
+
+### 5. 배열
+
+> 배열은 같은 타입의 여러 변수를 하나의 묶음으로 다루는 것.
+
+배열의 길이는 0일 수도 있다. 
+
+배열은 한번 생성하면 길이를 변경할 수 없기에 arr.length는 상수이다. 
+
+배열은 생성과 동시에 자동적으로 자신의 타입에 해당하는 기본값으로 초기화된다. 
+
+```java
+int[] score = new int[5];
+
+int[] score = new int[]{1, 2, 3, 4, 5};
+int[] score = {1, 2, 3, 4, 5}; 
+// 이외에 선언과 생성이 별도인 경우와 함수의 매개변수에서는 new 어쩌구를 생략할 수 없다. 
+```
+
+!@chapter5/ArrPrint.java@!
+
+System.arraycopy는 배열 요소를 한 번에 복사한다. 
+
+!@chapter5/ArrayCopy.java@!
+
+참조형 변수의 기본값은 null이다. 
+
+> String 클래스는 char배열에 기능(메서드)을 추가한 것이다. 
+
+String 객체의 내용을 바꿀 수는 없다. Mutable한 문자열은 StringBuffer 클래스를 사용한다. 
+
+!@chapter5/StringObj.java@!
+
+이전에 말한 길이 0인 배열은 커맨드라인에서 인수가 0개일 때 args값에서 사용된다. 
+
+
 
