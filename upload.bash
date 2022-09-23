@@ -6,6 +6,7 @@ git rebase origin/nextJS
 
 git submodule foreach git pull --rebase
 
+npm run build
 git add .
 git commit --amend --no-edit
 git push -f
