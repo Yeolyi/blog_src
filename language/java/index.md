@@ -320,3 +320,59 @@ Vector는 동적으로 크기가 관리되는 객체 배열이다.
 > 인터페이스는 추상클래스처럼 추상메서드를 갖지만 추상화 정도가 높아 몸통을 갖춘 일반 메서드 또는 멤버변수를 구성원으로 가질 수 없다.
 
 인터페이스의 모든 멤버변수는 public static final이고, 메서드는 static 메서드와 디폴트 메서드 제외 public abstract이어야 한다. 이들은 생략 가능하다.
+
+class -> extends, interface -> implements
+
+인터페이스의 이름에는 주로 -able로 끝나는 것들이 많은데 어떠한 기능 또는 행위를 하는데 필요한 메서드를 제공한다는 의미를 강조하기 위해서이다. 
+
+!@chapter7/Movable.java@!
+
+**클래스와 클래스간의 직접적인 관계를 인터페이스를 이용해서 간접적인 관계로 변경하면, 한 클래스의 변경이 관련된 다른 클래스에 영향을 미치지 않는 독립적인 프로그래밍이 가능하다.**
+
+Thread(Runnable target)이 인터페이스를 매개변수로 전달받는 형태이고, JDBC의 DriverManager클래스처럼 제3의 클래스를 통해 인스턴스를 제공받을 수도 있다. 
+
+JDK1.8부터 static 메서드를 인터페이스에 추가할 수 있었으나, 이전에는 아니어서 Collection관련 static 메서드들은 Collections 클래스에 존재한다. 
+
+> 디폴트 메서드는 추상 메서드의 기본적인 구현을 제공하는 메서드로 추상 메서드가 아니기 때문에 디폴트 메서드가 새로 추가되어도 해당 인터페이스를 구현한 클래스를 변경하지 않아도 된다. 
+
+!@chapter7/StaticMethodTest.java@!
+
+```java
+// 내부 클래스 예시
+class Outer {
+    private class InstanceInner {}
+    protected static class StaticInner {}
+    void myMethod() {
+        // 지역 클래스는 외부 클래스에서 final이 붙은 지역 변수만 접근 가능한데 이는 메서드가 수행을 마쳐서 지역변수가 소멸된 시점에도 지역 클래스의 인스턴스가 소멸된 지역변수를 참조하려는 경우가 있을 수 있기 때문이다. 
+        // final이 없어도 컴파일러가 자동으로 붙여준다. 
+        // 자바에는 클로저 이런 개념이 없어서 그런가?
+        class LocalInner {}
+    }
+}
+```
+
+내부 클래스와 외부 클래스에 선언된 변수명이 같은 때는 외부 클래스명.this로 구분할 수 있는데 쓸 일이 있을까,,,?
+
+```java
+import java.awt.*;
+import java.awt.event.*;
+
+class InnerEx7 {
+    public static void main(String[] args) {
+        Button b = new Button("Start");
+        b.addActionListener(new EvenrHandler());
+    }
+}
+
+class EventHandler implements ActionListener {
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("ActionEvent occurred");
+    }
+} 
+```
+
+### 8. 예외처리
+
+자바는 프로그램 오류를 두 가지로 구분한다. 
+
+> 에러(error): 프로그램 코드에 의해서 수습될 수 없는 심각한 오류
