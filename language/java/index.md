@@ -376,3 +376,81 @@ class EventHandler implements ActionListener {
 자바는 프로그램 오류를 두 가지로 구분한다. 
 
 > 에러(error): 프로그램 코드에 의해서 수습될 수 없는 심각한 오류
+> 예외(exception): 프로그램 코드에 의해서 수습도리 수 있는 다소 미약한 오류
+
+Exception 클래스의 자손들 중 RuntimeException은 주로 프로그래머의 실수에 의해서 발생될 수 있는 것이고, RuntimeException을 제외한 것들은 외부의 영향으로 발생할 수 있는 것들이다. 
+
+try-catch문의 마지막에 Exception 클래스를 사용하면 모든 예외를 잡을 수 있다. 
+
+|를 사용한 멀티 catch 블럭으로 여러 에러를 잡을 수 있다. 멀티 catch 블럭의 e는 상수이다??
+
+컴파일러가 예외처리를 확인하지 않는 RuntimeException 클래스들은 unchecked 예외라고 부르고, 예외처리를 확인하는 Exception 클래스들은 checked 예외라고 부른다. RuntimeException은 메서드에 예외를 선언할 때도 보통 적지 않는다. 
+
+두 메서드가 예외처리를 분담할 수도 있다. 
+
+try 블럭에서 return 문이 실행되는 경우에도 finally 블럭의 문장들이 먼저 실행된 후에 현재 실행중인 메서드를 종료한다. 
+
+기본적으로 finally문에서 예외가 발생하면 try블럭의 예외는 무시된다. try-with-resources문의 괄호 안에서 Autoclosable을 채택한 객체를 생성하는 문장을 넣으면 try문을 벗어날 때 자동적으로 close가 호출된다. 이때 try에서와 finally에서 모두 예외가 발생하면 CloseException은 억제된 예외로 다룬다. 
+
+현재 자바는 모바일이나 웹 프로그래밍에서 주로 사용되는데, 프로그래밍 환경이 달라진 만큼 필수적으로 처리해야만 할 것 같았던 예외들이 선택적으로 처리해도 되는 상황으로 바뀌는 경우가 종종 있다. 따라서 unchecked 예외가 더 환영받고 있다. 따라서 점점 Exception보다는 RutimeException을 상속받아서 작성하는 경우가 많아지고 있다. 
+
+finally문에서도 return을 할 수 있으며 try나 catch블럭의 return문 다음에 실행되며 최종적으로 반환되는 값이다. 
+
+initCause/getCause로 연결된 예외를 다룰 수 있고 checked 예외를 unchecked 예외로 바꿀 수 있다. 
+
+```java
+RuntimeException(Throwable cause)
+```
+
+### 9. java.lang 패키지와 유용한 클래스
+
+!@chapter9/Lang.java@!
+
+equals를 구현했으면 hashCode 메서드도 같은 값이 나오게 바꾸어주어야한다. 
+
+```java
+// 기본 toString() 구현
+public String toString() {
+    return getClass().getName() + "@" + Integer.toHexString(hashCode());
+}
+```
+
+Clonable 인터페이스를 구현한 클래스만 clone메서드를 부를 수 있다. 이때 공변 변환타입(coviriant return type)덕분에 Object 타입이 반환되지 않아도 된다. 
+
+Clonable은 얕은 복사를 한다. 
+
+클래스 객체는 특정 클래스의 인스턴스로 이름이 'Class'이다. Class 객체는 클래스의 모든 정보를 담고 있고 클래스 당 1개만 존재한다. 클래스 파일이 클래스 로더에 의해 메모리에 올라갈 때 자동으로 생성된다. 
+
+> 클래스 로더는 실행시에 필요한 클래스를 동적으로 메모리에 로드하는 역할을 하며 기존에 생성된 클래스 객체가 메모리에 없다면 클래스 패스에 지정된 경로를 따라 클래스 파일을 찾는다. 
+
+```java
+Class cobj = new Card().getClass();
+Class cObj = Card.class;
+Class cObj = Class.forName("Card");
+```
+
+> 동적으로 객체를 생성하고 메서드를 호출하는 방법에 대해 더 알고 싶다면 '리플렉션 API'로 검색하면 된다. 
+
+문자열간의 결합이나 추출 등 문자열을 다루는 작업이 많이 필요한 경우에는 StringBuffer 클래스를 사용하는 것이 좋다. 
+
+문자열 리터럴은 이미 존재하는 것을 재사용하는 것이다. 자바 소스파일에 포함된 모든 문자열 리터럴은 컴파일 시에 클래스 파일에 저장된다. constant pool.
+
+자바는 C와 달리 문자열 맨 끝에 nul이 있지는 않고 문자열의 길이 정보를 저장한다. 
+
+intern: 문자열을 상수풀에 등록한다. 이미 있으면 그 문자열의 주소값을 반환한다. 
+
+Stringbuffer 클래스에는 append처럼 자기 자신을 반환하는 메서드들이 많이 있다. .append().append()... 가능. 
+
+Stringbuffer는 thread safe하도록 동기화가 되어 성능이 떨어지고, StringBuilder는 멀티쓰레드 지원이 없다. 나머진 완전 동일. 
+
+rint는 반환값이 double이고 가장 가까운 짝수 정수를 반환한다. 
+
+Math클래스는 OS 의존적인 계산을 하지만 StrictMath는 성능은 다소 포기해도 모두 같은 결과를 반환한다. 
+
+기본형 변수도 객체로 다루어야할 때 래퍼 클래스를 이용한다. 
+
+기본형 값을 래퍼 클래스의 객체로 컴파일러가 자동 변환해주는 것을 오토박싱, 반대는 언박싱이라고 한다. 
+
+챕터 9 뒤쪽은 훑어보기만 함~
+
+
