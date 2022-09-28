@@ -2,6 +2,10 @@
 title: 타입스크립트
 ---
 
+## Effective TypeScript
+
+[내용 보기](./effective-typescript/)
+
 ## The Typescript Handbook
 
 [출처](https://www.typescriptlang.org/docs/handbook/intro.html)
@@ -25,21 +29,3 @@ title: 타입스크립트
 [Language](./language/)
 
 [Language Extensions](./language-extensions)
-
-## JavaScript Playground
-
-'See how TypeScript improves day to day working with JavaScript with minimal additional syntax.'
-
-[출처](https://www.typescriptlang.org/play)
-
-TODO...
-
-## React TypeScript Cheatsheet
-
-[출처](https://react-typescript-cheatsheet.netlify.app/docs/basic/setup/)
-
-TODO...
-
-## Programming TypeScript
-
-[Programming TypeScript](programming-typescript)

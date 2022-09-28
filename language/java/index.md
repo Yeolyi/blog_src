@@ -323,17 +323,17 @@ Vector는 동적으로 크기가 관리되는 객체 배열이다.
 
 class -> extends, interface -> implements
 
-인터페이스의 이름에는 주로 -able로 끝나는 것들이 많은데 어떠한 기능 또는 행위를 하는데 필요한 메서드를 제공한다는 의미를 강조하기 위해서이다. 
+인터페이스의 이름에는 주로 -able로 끝나는 것들이 많은데 어떠한 기능 또는 행위를 하는데 필요한 메서드를 제공한다는 의미를 강조하기 위해서이다.
 
 !@chapter7/Movable.java@!
 
 **클래스와 클래스간의 직접적인 관계를 인터페이스를 이용해서 간접적인 관계로 변경하면, 한 클래스의 변경이 관련된 다른 클래스에 영향을 미치지 않는 독립적인 프로그래밍이 가능하다.**
 
-Thread(Runnable target)이 인터페이스를 매개변수로 전달받는 형태이고, JDBC의 DriverManager클래스처럼 제3의 클래스를 통해 인스턴스를 제공받을 수도 있다. 
+Thread(Runnable target)이 인터페이스를 매개변수로 전달받는 형태이고, JDBC의 DriverManager클래스처럼 제3의 클래스를 통해 인스턴스를 제공받을 수도 있다.
 
-JDK1.8부터 static 메서드를 인터페이스에 추가할 수 있었으나, 이전에는 아니어서 Collection관련 static 메서드들은 Collections 클래스에 존재한다. 
+JDK1.8부터 static 메서드를 인터페이스에 추가할 수 있었으나, 이전에는 아니어서 Collection관련 static 메서드들은 Collections 클래스에 존재한다.
 
-> 디폴트 메서드는 추상 메서드의 기본적인 구현을 제공하는 메서드로 추상 메서드가 아니기 때문에 디폴트 메서드가 새로 추가되어도 해당 인터페이스를 구현한 클래스를 변경하지 않아도 된다. 
+> 디폴트 메서드는 추상 메서드의 기본적인 구현을 제공하는 메서드로 추상 메서드가 아니기 때문에 디폴트 메서드가 새로 추가되어도 해당 인터페이스를 구현한 클래스를 변경하지 않아도 된다.
 
 !@chapter7/StaticMethodTest.java@!
 
@@ -343,8 +343,8 @@ class Outer {
     private class InstanceInner {}
     protected static class StaticInner {}
     void myMethod() {
-        // 지역 클래스는 외부 클래스에서 final이 붙은 지역 변수만 접근 가능한데 이는 메서드가 수행을 마쳐서 지역변수가 소멸된 시점에도 지역 클래스의 인스턴스가 소멸된 지역변수를 참조하려는 경우가 있을 수 있기 때문이다. 
-        // final이 없어도 컴파일러가 자동으로 붙여준다. 
+        // 지역 클래스는 외부 클래스에서 final이 붙은 지역 변수만 접근 가능한데 이는 메서드가 수행을 마쳐서 지역변수가 소멸된 시점에도 지역 클래스의 인스턴스가 소멸된 지역변수를 참조하려는 경우가 있을 수 있기 때문이다.
+        // final이 없어도 컴파일러가 자동으로 붙여준다.
         // 자바에는 클로저 이런 개념이 없어서 그런가?
         class LocalInner {}
     }
@@ -368,35 +368,35 @@ class EventHandler implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         System.out.println("ActionEvent occurred");
     }
-} 
+}
 ```
 
 ### 8. 예외처리
 
-자바는 프로그램 오류를 두 가지로 구분한다. 
+자바는 프로그램 오류를 두 가지로 구분한다.
 
 > 에러(error): 프로그램 코드에 의해서 수습될 수 없는 심각한 오류
 > 예외(exception): 프로그램 코드에 의해서 수습도리 수 있는 다소 미약한 오류
 
-Exception 클래스의 자손들 중 RuntimeException은 주로 프로그래머의 실수에 의해서 발생될 수 있는 것이고, RuntimeException을 제외한 것들은 외부의 영향으로 발생할 수 있는 것들이다. 
+Exception 클래스의 자손들 중 RuntimeException은 주로 프로그래머의 실수에 의해서 발생될 수 있는 것이고, RuntimeException을 제외한 것들은 외부의 영향으로 발생할 수 있는 것들이다.
 
-try-catch문의 마지막에 Exception 클래스를 사용하면 모든 예외를 잡을 수 있다. 
+try-catch문의 마지막에 Exception 클래스를 사용하면 모든 예외를 잡을 수 있다.
 
 |를 사용한 멀티 catch 블럭으로 여러 에러를 잡을 수 있다. 멀티 catch 블럭의 e는 상수이다??
 
-컴파일러가 예외처리를 확인하지 않는 RuntimeException 클래스들은 unchecked 예외라고 부르고, 예외처리를 확인하는 Exception 클래스들은 checked 예외라고 부른다. RuntimeException은 메서드에 예외를 선언할 때도 보통 적지 않는다. 
+컴파일러가 예외처리를 확인하지 않는 RuntimeException 클래스들은 unchecked 예외라고 부르고, 예외처리를 확인하는 Exception 클래스들은 checked 예외라고 부른다. RuntimeException은 메서드에 예외를 선언할 때도 보통 적지 않는다.
 
-두 메서드가 예외처리를 분담할 수도 있다. 
+두 메서드가 예외처리를 분담할 수도 있다.
 
-try 블럭에서 return 문이 실행되는 경우에도 finally 블럭의 문장들이 먼저 실행된 후에 현재 실행중인 메서드를 종료한다. 
+try 블럭에서 return 문이 실행되는 경우에도 finally 블럭의 문장들이 먼저 실행된 후에 현재 실행중인 메서드를 종료한다.
 
-기본적으로 finally문에서 예외가 발생하면 try블럭의 예외는 무시된다. try-with-resources문의 괄호 안에서 Autoclosable을 채택한 객체를 생성하는 문장을 넣으면 try문을 벗어날 때 자동적으로 close가 호출된다. 이때 try에서와 finally에서 모두 예외가 발생하면 CloseException은 억제된 예외로 다룬다. 
+기본적으로 finally문에서 예외가 발생하면 try블럭의 예외는 무시된다. try-with-resources문의 괄호 안에서 Autoclosable을 채택한 객체를 생성하는 문장을 넣으면 try문을 벗어날 때 자동적으로 close가 호출된다. 이때 try에서와 finally에서 모두 예외가 발생하면 CloseException은 억제된 예외로 다룬다.
 
-현재 자바는 모바일이나 웹 프로그래밍에서 주로 사용되는데, 프로그래밍 환경이 달라진 만큼 필수적으로 처리해야만 할 것 같았던 예외들이 선택적으로 처리해도 되는 상황으로 바뀌는 경우가 종종 있다. 따라서 unchecked 예외가 더 환영받고 있다. 따라서 점점 Exception보다는 RutimeException을 상속받아서 작성하는 경우가 많아지고 있다. 
+현재 자바는 모바일이나 웹 프로그래밍에서 주로 사용되는데, 프로그래밍 환경이 달라진 만큼 필수적으로 처리해야만 할 것 같았던 예외들이 선택적으로 처리해도 되는 상황으로 바뀌는 경우가 종종 있다. 따라서 unchecked 예외가 더 환영받고 있다. 따라서 점점 Exception보다는 RutimeException을 상속받아서 작성하는 경우가 많아지고 있다.
 
-finally문에서도 return을 할 수 있으며 try나 catch블럭의 return문 다음에 실행되며 최종적으로 반환되는 값이다. 
+finally문에서도 return을 할 수 있으며 try나 catch블럭의 return문 다음에 실행되며 최종적으로 반환되는 값이다.
 
-initCause/getCause로 연결된 예외를 다룰 수 있고 checked 예외를 unchecked 예외로 바꿀 수 있다. 
+initCause/getCause로 연결된 예외를 다룰 수 있고 checked 예외를 unchecked 예외로 바꿀 수 있다.
 
 ```java
 RuntimeException(Throwable cause)
@@ -406,7 +406,7 @@ RuntimeException(Throwable cause)
 
 !@chapter9/Lang.java@!
 
-equals를 구현했으면 hashCode 메서드도 같은 값이 나오게 바꾸어주어야한다. 
+equals를 구현했으면 hashCode 메서드도 같은 값이 나오게 바꾸어주어야한다.
 
 ```java
 // 기본 toString() 구현
@@ -415,13 +415,13 @@ public String toString() {
 }
 ```
 
-Clonable 인터페이스를 구현한 클래스만 clone메서드를 부를 수 있다. 이때 공변 변환타입(coviriant return type)덕분에 Object 타입이 반환되지 않아도 된다. 
+Clonable 인터페이스를 구현한 클래스만 clone메서드를 부를 수 있다. 이때 공변 변환타입(coviriant return type)덕분에 Object 타입이 반환되지 않아도 된다.
 
-Clonable은 얕은 복사를 한다. 
+Clonable은 얕은 복사를 한다.
 
-클래스 객체는 특정 클래스의 인스턴스로 이름이 'Class'이다. Class 객체는 클래스의 모든 정보를 담고 있고 클래스 당 1개만 존재한다. 클래스 파일이 클래스 로더에 의해 메모리에 올라갈 때 자동으로 생성된다. 
+클래스 객체는 특정 클래스의 인스턴스로 이름이 'Class'이다. Class 객체는 클래스의 모든 정보를 담고 있고 클래스 당 1개만 존재한다. 클래스 파일이 클래스 로더에 의해 메모리에 올라갈 때 자동으로 생성된다.
 
-> 클래스 로더는 실행시에 필요한 클래스를 동적으로 메모리에 로드하는 역할을 하며 기존에 생성된 클래스 객체가 메모리에 없다면 클래스 패스에 지정된 경로를 따라 클래스 파일을 찾는다. 
+> 클래스 로더는 실행시에 필요한 클래스를 동적으로 메모리에 로드하는 역할을 하며 기존에 생성된 클래스 객체가 메모리에 없다면 클래스 패스에 지정된 경로를 따라 클래스 파일을 찾는다.
 
 ```java
 Class cobj = new Card().getClass();
@@ -429,28 +429,68 @@ Class cObj = Card.class;
 Class cObj = Class.forName("Card");
 ```
 
-> 동적으로 객체를 생성하고 메서드를 호출하는 방법에 대해 더 알고 싶다면 '리플렉션 API'로 검색하면 된다. 
+> 동적으로 객체를 생성하고 메서드를 호출하는 방법에 대해 더 알고 싶다면 '리플렉션 API'로 검색하면 된다.
 
-문자열간의 결합이나 추출 등 문자열을 다루는 작업이 많이 필요한 경우에는 StringBuffer 클래스를 사용하는 것이 좋다. 
+문자열간의 결합이나 추출 등 문자열을 다루는 작업이 많이 필요한 경우에는 StringBuffer 클래스를 사용하는 것이 좋다.
 
 문자열 리터럴은 이미 존재하는 것을 재사용하는 것이다. 자바 소스파일에 포함된 모든 문자열 리터럴은 컴파일 시에 클래스 파일에 저장된다. constant pool.
 
-자바는 C와 달리 문자열 맨 끝에 nul이 있지는 않고 문자열의 길이 정보를 저장한다. 
+자바는 C와 달리 문자열 맨 끝에 nul이 있지는 않고 문자열의 길이 정보를 저장한다.
 
-intern: 문자열을 상수풀에 등록한다. 이미 있으면 그 문자열의 주소값을 반환한다. 
+intern: 문자열을 상수풀에 등록한다. 이미 있으면 그 문자열의 주소값을 반환한다.
 
-Stringbuffer 클래스에는 append처럼 자기 자신을 반환하는 메서드들이 많이 있다. .append().append()... 가능. 
+Stringbuffer 클래스에는 append처럼 자기 자신을 반환하는 메서드들이 많이 있다. .append().append()... 가능.
 
-Stringbuffer는 thread safe하도록 동기화가 되어 성능이 떨어지고, StringBuilder는 멀티쓰레드 지원이 없다. 나머진 완전 동일. 
+Stringbuffer는 thread safe하도록 동기화가 되어 성능이 떨어지고, StringBuilder는 멀티쓰레드 지원이 없다. 나머진 완전 동일.
 
-rint는 반환값이 double이고 가장 가까운 짝수 정수를 반환한다. 
+rint는 반환값이 double이고 가장 가까운 짝수 정수를 반환한다.
 
-Math클래스는 OS 의존적인 계산을 하지만 StrictMath는 성능은 다소 포기해도 모두 같은 결과를 반환한다. 
+Math클래스는 OS 의존적인 계산을 하지만 StrictMath는 성능은 다소 포기해도 모두 같은 결과를 반환한다.
 
-기본형 변수도 객체로 다루어야할 때 래퍼 클래스를 이용한다. 
+기본형 변수도 객체로 다루어야할 때 래퍼 클래스를 이용한다.
 
-기본형 값을 래퍼 클래스의 객체로 컴파일러가 자동 변환해주는 것을 오토박싱, 반대는 언박싱이라고 한다. 
+기본형 값을 래퍼 클래스의 객체로 컴파일러가 자동 변환해주는 것을 오토박싱, 반대는 언박싱이라고 한다.
 
 챕터 9 뒤쪽은 훑어보기만 함~
 
+### 10. 날짜와 시간 & 형식화
 
+Calendar는 바로는 못쓰고 getInstance 메소드를 쓰면 지역에 따라 적당한 인스턴스를 반환해준다.
+
+자바스크립트와 마찬가지로 Month가 0부터 시작한다. 자스가 자바 따라했다는 것 같기도,,,?
+
+roll 메서드는 다른 필드의 값을 바꾸지 않는다. 회전하는? 느낌인 듯.
+
+날짜 관련은 동기부여가 안돼서 포기,, 나중에 다시 찾아오기-!
+
+### 11. 컬렉션 프레임웍
+
+컬렉션(collection): 데이터 군
+
+Collection
+-> List(ArrayList, LinkedList, Stack, Vector)
+-> Set(HashSet, TreeSet)
+
+Map(HashMap, TreeMap, Hashtable, Propertied)
+
+명명법이 다른 애들은 프레임워크 이전에도 있었던 애들로, 새로 추가된 애들을 대신 사용하는 것이 좋다.
+
+Collection은 인터페이스이고 Collections는 클래스이다.
+
+배열을 이용한 자료구조는 용량을 변경할 때 새로운 배열을 생성해야하므로 효율이 상당히 떨어진다.
+
+LinkedList 클래스는 양방향 연결 리스트로 구현되어있다.
+
+!@chapter9/ArrayListVSLinkedList.java@!
+
+일반 배열은 짐작?으로 배열 크기를 선언해야하므로 메모리 사용이 비효율적임.
+
+Stack을 구현한 클래스는 따로 있지만 Queue는 해당 인터페이스를 구현한 LinkedList같은 애들을 가져다 쓰면 된다. Stack은 인터페이스가 없나??
+
+Stack은 맨 위에 저장된 객체의 index를 1로 정의한다??
+
+Enumeration은 Iterator의 구버전이고, ListIterator는 Iterator를 상속받아 향상시킨 것이다. 양방향 이동이 가능하다.
+
+extends Vector implements Iterator로 할 수 있는데 한 클래스에서 한번에 하는거 어디서 읽었더라?
+
+Arrays에 정의된 메서드는 모두 static 메서드이다.
