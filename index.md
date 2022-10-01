@@ -36,6 +36,12 @@ title: Document
 
 [HTTP](cs/http)
 
+### Links
+
+[overreacted](https://overreacted.io)
+
+[기억장치/표기 용량과 실체](https://namu.wiki/w/기억장치/표기%20용량과%20실제)
+
 ### iOS
 
 [로드맵](ios/roadmap)
@@ -45,17 +51,3 @@ title: Document
 [UIKit](ios/uikit)
 
 [Xcode가 group을 사용하는 이유](ios/why-xcode-use-group)
-
-### ETC
-
-[statement, expression, syntax, semantics](etc/syntax-vs-semantics)
-
-[Argument vs Parameter](etc/parameter-vs-argument)
-
-[Interface, API, Library](etc/api-library)
-
-[Overriding vs Overloading](etc/override-vs-overload)
-
-[Concurrency와 Parallelism](etc/concurrency-vs-parallelism)
-
-[기억장치/표기 용량과 실체](https://namu.wiki/w/기억장치/표기%20용량과%20실제)
