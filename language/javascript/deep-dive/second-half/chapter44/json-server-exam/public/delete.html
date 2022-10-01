@@ -1,13 +1,13 @@
 <body>
-    <pre></pre>
-    <script>
-        const xhr = new XMLHttpRequest();
-        // id로 todo를 특정하여 id를 제외한 리소스 전체를 교체
-        xhr.open('DELETE', '/todos/4');
-        xhr.send();
-        xhr.onload = () => {
-            // 200 확인 생략
-            document.querySelector('pre').textContent = xhr.response;
-        }
-    </script>
+  <pre></pre>
+  <script>
+    const xhr = new XMLHttpRequest();
+    // id로 todo를 특정하여 id를 제외한 리소스 전체를 교체
+    xhr.open("DELETE", "/todos/4");
+    xhr.send();
+    xhr.onload = () => {
+      // 200 확인 생략
+      document.querySelector("pre").textContent = xhr.response;
+    };
+  </script>
 </body>

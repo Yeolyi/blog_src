@@ -1,16 +1,16 @@
 class Rectangle {
-    constructor(width, height) {
-        this.width = width;
-        this.height = height;
-    }
-    get size() {
-        return this.width * this.height;
-    }
-    set size(size) {
-        let ratio = Math.sqrt(size / this.size);
-        this.width *= ratio;
-        this.height *= ratio;
-    }
+  constructor(width, height) {
+    this.width = width;
+    this.height = height;
+  }
+  get size() {
+    return this.width * this.height;
+  }
+  set size(size) {
+    let ratio = Math.sqrt(size / this.size);
+    this.width *= ratio;
+    this.height *= ratio;
+  }
 }
 
 const rect = new Rectangle(2, 3);

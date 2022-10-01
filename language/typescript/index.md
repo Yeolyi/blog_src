@@ -10,7 +10,8 @@ title: 타입스크립트
 
 [출처](https://www.typescriptlang.org/docs/handbook/intro.html)
 
-> Handbook is not a complete language specification, but it is intended to be a comprehensive guide to all of the language’s features and behaviors.
+> Handbook is not a complete language specification, but it is intended to be a
+> comprehensive guide to all of the language’s features and behaviors.
 
 [내용 보기](./handbook/)
 

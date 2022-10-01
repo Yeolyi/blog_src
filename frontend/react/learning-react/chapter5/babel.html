@@ -1,66 +1,71 @@
 <body>
-    <div id="root"></div>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script type="text/babel">
-        const data = [{
-            name: "Baked Salmon",
-            ingredients: [
-                { name: "Salmon", amount: 1, measurement: "l lb" }
-            ], steps: [
-                "Preheat the oven to 350 degrees.",
-            ]
-        },
-        {
-            name: "Fish Tacos",
-            ingredients: [
-                { name: "Whitefish", amount: 1, measurement: "l lb" },
-                { name: "Cheese", amount: 1, measurement: "cup" }
-            ], steps: [
-                "Cook the fish on the grill until cooked through.",
-                "Place the fish on the 3 tortillas.",
-            ]
-        }
-        ];
+  <div id="root"></div>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const data = [
+      {
+        name: "Baked Salmon",
+        ingredients: [{ name: "Salmon", amount: 1, measurement: "l lb" }],
+        steps: ["Preheat the oven to 350 degrees."],
+      },
+      {
+        name: "Fish Tacos",
+        ingredients: [
+          { name: "Whitefish", amount: 1, measurement: "l lb" },
+          { name: "Cheese", amount: 1, measurement: "cup" },
+        ],
+        steps: [
+          "Cook the fish on the grill until cooked through.",
+          "Place the fish on the 3 tortillas.",
+        ],
+      },
+    ];
 
-        function Recipe({ name, ingredients, steps }) {
-            return (
-                <section id={name.toLowerCase().replace(/ /g, "-")}>
-                    { /* Safari에서 h1이 더 작음,, 왜??? */}
-                    <h1>{name}</h1>
-                    <ul className="ingredients">
-                        {ingredients.map((ingredient, i) => (
-                            <li key={i}>{ingredient.name}</li>
-                        ))}
-                    </ul>
-                    <section className="instructions">
-                        <h2>Cooking Instructions</h2>
-                        {steps.map((step, i) => (
-                            <p key={i}>{step}</p>
-                        ))}
-                    </section>
-                </section>
-            );
-        }
+    function Recipe({ name, ingredients, steps }) {
+      return (
+        <section id={name.toLowerCase().replace(/ /g, "-")}>
+          {/* Safari에서 h1이 더 작음,, 왜??? */}
+          <h1>{name}</h1>
+          <ul className="ingredients">
+            {ingredients.map((ingredient, i) => (
+              <li key={i}>{ingredient.name}</li>
+            ))}
+          </ul>
+          <section className="instructions">
+            <h2>Cooking Instructions</h2>
+            {steps.map((step, i) => (
+              <p key={i}>{step}</p>
+            ))}
+          </section>
+        </section>
+      );
+    }
 
-        function Menu({ title, recipes }) {
-            return (
-                <article>
-                    <header>
-                        <h1>{title}</h1>
-                    </header>
-                    <div className="recipes">
-                        {recipes.map((recipe, i) => (
-                            <Recipe key={i} {...recipe} />
-                        ))}
-                    </div>
-                </article>
-            );
-        }
+    function Menu({ title, recipes }) {
+      return (
+        <article>
+          <header>
+            <h1>{title}</h1>
+          </header>
+          <div className="recipes">
+            {recipes.map((recipe, i) => (
+              <Recipe key={i} {...recipe} />
+            ))}
+          </div>
+        </article>
+      );
+    }
 
-        const container = document.getElementById('root');
-        const root = ReactDOM.createRoot(container);
-        root.render(<Menu recipes={data} title="Delicious Recipes" />);
-    </script>
+    const container = document.getElementById("root");
+    const root = ReactDOM.createRoot(container);
+    root.render(<Menu recipes={data} title="Delicious Recipes" />);
+  </script>
 </body>

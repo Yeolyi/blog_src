@@ -9,4 +9,3 @@ title: Codable 프로토콜
 ```swift
 typealias Codable = Decodable & Encodable
 ```
-

@@ -7,6 +7,6 @@ console.log("Hello" || false); // Hello
 var object = null;
 var value = object && object.value;
 
-var emptyStr = ''
+var emptyStr = "";
 console.log(emptyStr && emptyStr.length);
 console.log(emptyStr?.length);

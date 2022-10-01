@@ -1,57 +1,57 @@
 <body>
-    <div id="bar">Hello <span>World!</span></div> 
+  <div id="bar">Hello <span>World!</span></div>
 </body>
 <script>
-    // Element.prototype.innerHTML
-    console.log(document.getElementById('bar').innerHTML); // Hello <span>World!</span>
-    document.getElementById('bar').innerHTML = '<strong>Hello!<strong>';
+  // Element.prototype.innerHTML
+  console.log(document.getElementById("bar").innerHTML); // Hello <span>World!</span>
+  document.getElementById("bar").innerHTML = "<strong>Hello!<strong>";
 
-    // untrusted input data를 innerHTML에 할당하는 것은 XSS(Cross-site Scripting Attacks)에 취약하다. 
-    // HTML sanitization은 잠재적 위험을 제거할 수 있다. 
+  // untrusted input data를 innerHTML에 할당하는 것은 XSS(Cross-site Scripting Attacks)에 취약하다.
+  // HTML sanitization은 잠재적 위험을 제거할 수 있다.
 
-    // insertAdjacentHTML도 HTML 문자열을 파싱하므로 위험하다. 
+  // insertAdjacentHTML도 HTML 문자열을 파싱하므로 위험하다.
 
-    // const textNode = document.createTextNode('Banana');
-    // $li.textContent = 'banana'; 안에 아무것도 없는게 맞으면 이게 간단
+  // const textNode = document.createTextNode('Banana');
+  // $li.textContent = 'banana'; 안에 아무것도 없는게 맞으면 이게 간단
 
-    const $bar = document.getElementById('bar');
+  const $bar = document.getElementById("bar");
 
-    // DOM 변경이 3번 발생한다.
-    // ['Apple', 'Banana', 'Orange'].forEach(x => {
-    //     const $li = document.createElement('li');
-    //     $li.textContent = x;
-    //     $bar.appendChild($li);
-    // })
+  // DOM 변경이 3번 발생한다.
+  // ['Apple', 'Banana', 'Orange'].forEach(x => {
+  //     const $li = document.createElement('li');
+  //     $li.textContent = x;
+  //     $bar.appendChild($li);
+  // })
 
-    // 불필요한 컨테이너 요소(div)가 추가된다. 
-    // const $container = document.createElement('div');
-    // ['Apple', 'Banana', 'Orange'].forEach(x => {
-    //     const $li = document.createElement('li');
-    //     $li.textContent = x;
-    //     $container.appendChild($li);
-    // })
-    // $bar.appendChild($container);
+  // 불필요한 컨테이너 요소(div)가 추가된다.
+  // const $container = document.createElement('div');
+  // ['Apple', 'Banana', 'Orange'].forEach(x => {
+  //     const $li = document.createElement('li');
+  //     $li.textContent = x;
+  //     $container.appendChild($li);
+  // })
+  // $bar.appendChild($container);
 
-    // DocumentFragment 노드는 별도의 서브 DOM을 구성하여 기존 DOM에 추가하기 위한 용도로 사용된다. 
-    const $fragment = document.createDocumentFragment();
-    ['Apple', 'Banana', 'Orange'].forEach(x => {
-        const $li = document.createElement('li');
-        $li.textContent = x;
-        $fragment.appendChild($li);
-    })
-    $bar.appendChild($fragment);
+  // DocumentFragment 노드는 별도의 서브 DOM을 구성하여 기존 DOM에 추가하기 위한 용도로 사용된다.
+  const $fragment = document.createDocumentFragment();
+  ["Apple", "Banana", "Orange"].forEach((x) => {
+    const $li = document.createElement("li");
+    $li.textContent = x;
+    $fragment.appendChild($li);
+  });
+  $bar.appendChild($fragment);
 
-    const $childNode = $bar.children[2];
-    $bar.insertBefore(document.createTextNode('New'), $childNode);
+  const $childNode = $bar.children[2];
+  $bar.insertBefore(document.createTextNode("New"), $childNode);
 
-    const [,,$banana,] = $bar.children;
-    // 이미 존재하는 노드를 추가하면 현재 위치에서 제거하고 추가한다.
-    $bar.append($banana);
+  const [, , $banana] = $bar.children;
+  // 이미 존재하는 노드를 추가하면 현재 위치에서 제거하고 추가한다.
+  $bar.append($banana);
 
-    $banana.append($banana.cloneNode()); // 자손이 복사되지 않으므로 텍스트 없음
-    $banana.append($banana.cloneNode(true));
+  $banana.append($banana.cloneNode()); // 자손이 복사되지 않으므로 텍스트 없음
+  $banana.append($banana.cloneNode(true));
 
-    $bar.replaceChild(document.createTextNode('NewBanana'), $bar.firstChild);
+  $bar.replaceChild(document.createTextNode("NewBanana"), $bar.firstChild);
 
-    $bar.removeChild($bar.lastChild);
+  $bar.removeChild($bar.lastChild);
 </script>

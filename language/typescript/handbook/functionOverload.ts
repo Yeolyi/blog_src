@@ -1,6 +1,7 @@
 function makeDate(timestamp: number): Date;
 function makeDate(m: number, d: number, y: number): Date;
-function makeDate(mOrTimestamp: number, d?: number, y?: number): Date { // function implementation with a compatible signature. 
+function makeDate(mOrTimestamp: number, d?: number, y?: number): Date {
+  // function implementation with a compatible signature.
   if (d !== undefined && y !== undefined) {
     return new Date(y, mOrTimestamp, d);
   } else {

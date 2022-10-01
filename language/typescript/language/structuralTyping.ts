@@ -1,6 +1,6 @@
 let createBall = (diameter: number) => ({ diameter });
 let createSphere = (diameter: number, useInches: boolean) => {
-    return { diameter: useInches ? diameter * 0.39 : diameter };
+  return { diameter: useInches ? diameter * 0.39 : diameter };
 };
 
 createSphere = createBall;

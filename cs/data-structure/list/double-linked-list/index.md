@@ -2,9 +2,10 @@
 title: 양방향 연결 리스트
 ---
 
-더미 노드를 헤드에만 붙였는데, 두 개를 붙이면 LInsert 함수가 좀 더 간단해질 것 같다. 
+더미 노드를 헤드에만 붙였는데, 두 개를 붙이면 LInsert 함수가 좀 더 간단해질 것같
+다.
 
-``` {class="language-c"}
+```{class="language-c"}
 typedef struct _Node
 {
     LData data;

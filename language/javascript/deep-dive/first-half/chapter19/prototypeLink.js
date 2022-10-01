@@ -1,4 +1,4 @@
-function A() { }
+function A() {}
 const a = new A();
 console.log(a.__proto__ === A.prototype); // true
 console.log(A.prototype.constructor === A); // true

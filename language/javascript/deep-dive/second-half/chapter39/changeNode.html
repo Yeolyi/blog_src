@@ -1,16 +1,16 @@
 <body>
-    <div id="foo">Hello</div>
-    <div id="bar">Hello <span>World!</span></div> 
+  <div id="foo">Hello</div>
+  <div id="bar">Hello <span>World!</span></div>
 </body>
 <script>
-    // nodeValue는 노드 객체의 값, 즉 텍스트 노드의 텍스트를 반환한다. 
-    document.getElementById('foo').firstChild.nodeValue = 'Bye';
+  // nodeValue는 노드 객체의 값, 즉 텍스트 노드의 텍스트를 반환한다.
+  document.getElementById("foo").firstChild.nodeValue = "Bye";
 
-    // textContent는 childNodes 프로퍼티가 반환한 모든 노드들의 텍스트 노드의 값을 반환한다. 
-    // nodeValue보다 간편하다. 
-    const $bar = document.getElementById('bar');
-    console.log($bar.textContent); // Hello World!
-    console.log($bar.childNodes.length); // 2
-    $bar.textContent = 'Hello World!';
-    console.log($bar.childNodes.length); // 1
+  // textContent는 childNodes 프로퍼티가 반환한 모든 노드들의 텍스트 노드의 값을 반환한다.
+  // nodeValue보다 간편하다.
+  const $bar = document.getElementById("bar");
+  console.log($bar.textContent); // Hello World!
+  console.log($bar.childNodes.length); // 2
+  $bar.textContent = "Hello World!";
+  console.log($bar.childNodes.length); // 1
 </script>

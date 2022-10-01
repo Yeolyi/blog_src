@@ -1,6 +1,6 @@
 function getArea(shape) {
-    if (shape.kind === "circle") {
-        // shape: Circle
-        return Math.PI * Math.pow(shape.radius, 2);
-    }
+  if (shape.kind === "circle") {
+    // shape: Circle
+    return Math.PI * Math.pow(shape.radius, 2);
+  }
 }

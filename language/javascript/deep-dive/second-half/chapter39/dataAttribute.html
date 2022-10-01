@@ -1,17 +1,17 @@
 <body>
-    <ul class="fruits">
-        <li data-original-cost="100">Apple</li>
-        <li data-original-cost="1200">Banana</li>
-        <li data-original-cost="3000">Watermelon</li>
-    </ul>
+  <ul class="fruits">
+    <li data-original-cost="100">Apple</li>
+    <li data-original-cost="1200">Banana</li>
+    <li data-original-cost="3000">Watermelon</li>
+  </ul>
 </body>
 <script>
-    const fruits = document.querySelector('.fruits').children;
-    [...fruits].forEach(x => {
-        // 케밥케이스와 카멜케이스 간 변환이 이루어짐
-        console.log(x.dataset.originalCost); // 100 1200 3000
-        x.dataset.camelCase = true;
-        console.log(x);
-        // <li data-original-cost="3000" data-camel-case="true">Watermelon</li>...
-    })
+  const fruits = document.querySelector(".fruits").children;
+  [...fruits].forEach((x) => {
+    // 케밥케이스와 카멜케이스 간 변환이 이루어짐
+    console.log(x.dataset.originalCost); // 100 1200 3000
+    x.dataset.camelCase = true;
+    console.log(x);
+    // <li data-original-cost="3000" data-camel-case="true">Watermelon</li>...
+  });
 </script>

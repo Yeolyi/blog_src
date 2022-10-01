@@ -1,6 +1,6 @@
 interface Person {
-    name: string;
-    age: number;
+  name: string;
+  age: number;
 }
 
 // 모두 optional로 변경
@@ -12,18 +12,18 @@ type PersonFromAPI = Readonly<Person>;
 
 // Record<KeysFrom, Type>
 // KeysFrom를 키 값으로 각각에게 Type인 값을 부여
-type NavigationPages = 'name' | 'age';
+type NavigationPages = "name" | "age";
 interface PageInfo {
-    title: string;
+  title: string;
 }
 const navigationInfo: Record<NavigationPages, PageInfo> = {
-    name: { title: 'name' },
-    age: { title: 'age' }
+  name: { title: "name" },
+  age: { title: "age" },
 };
 
 // Pick<Type, Keys>
 // 타입에서 선택된 프로퍼티만 남김
-type PersonSortPreview = Pick<Person, 'name'>;
+type PersonSortPreview = Pick<Person, "name">;
 
 // Omit<Type, Keys>
 

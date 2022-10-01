@@ -1,16 +1,16 @@
 interface Person {
-    name: string;
+  name: string;
 }
 interface Lifespan {
-    birth: Date;
-    death?: Date;
+  birth: Date;
+  death?: Date;
 }
 type PersonSpan = Person & Lifespan;
 
 const ps: PersonSpan = {
-    name: "Yeolyi",
-    birth: new Date(),
-    death: new Date(),
+  name: "Yeolyi",
+  birth: new Date(),
+  death: new Date(),
 }; // OK
 
 type K = keyof (Person | Lifespan); // never

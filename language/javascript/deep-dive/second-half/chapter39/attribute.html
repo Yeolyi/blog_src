@@ -1,18 +1,16 @@
 <body>
-    <input id="user" type="text" value="yeolyi">
-    <script>
-        const $input = document.getElementById('user');
+  <input id="user" type="text" value="yeolyi" />
+  <script>
+    const $input = document.getElementById("user");
 
-        console.log($input.attributes);
-        // NamedNodeMap {0: id, 1: type, 2: value, id: id, type: type, value: value, length: 3}
-        // getter만 존재
-        console.log($input.attributes.type); // type="text"
+    console.log($input.attributes);
+    // NamedNodeMap {0: id, 1: type, 2: value, id: id, type: type, value: value, length: 3}
+    // getter만 존재
+    console.log($input.attributes.type); // type="text"
 
-        $input.setAttribute('value', 'foo');
-        console.log($input.getAttribute('value')); // foo
+    $input.setAttribute("value", "foo");
+    console.log($input.getAttribute("value")); // foo
 
-        // hasAttribute, removeAttribute
-
-        
-    </script>
+    // hasAttribute, removeAttribute
+  </script>
 </body>

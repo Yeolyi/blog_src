@@ -1,8 +1,8 @@
-const target = 'onetwothreetwo';
+const target = "onetwothreetwo";
 
 console.log(/two/g.exec(target));
 // [ 'two', index: 3, input: 'onetwothree', groups: undefined ]
-// g가 있어도 첫번째 매칭 결과만 반환한다. 
+// g가 있어도 첫번째 매칭 결과만 반환한다.
 
 console.log(/two/.test(target)); // true
 

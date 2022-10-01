@@ -1,36 +1,41 @@
 <style>
-    .box {
-        width: 100px; height: 100px;
-        background-color: antiquewhite;
-    }
-    .red { color: red; }
-    .blue { color: blue; }
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: antiquewhite;
+  }
+  .red {
+    color: red;
+  }
+  .blue {
+    color: blue;
+  }
 </style>
 <body>
-    <div style="color: red">Hello World</div>
-    <div class="box red">Hello World</div>
+  <div style="color: red">Hello World</div>
+  <div class="box red">Hello World</div>
 </body>
 <script>
-    const $div = document.querySelector('div');
-    console.log($div.style); // CSSStyleDeclaration 반환
-    $div.style.backgroundColor = 'royalBlue'; // 인라인 스타일로 HTML에 반영
+  const $div = document.querySelector("div");
+  console.log($div.style); // CSSStyleDeclaration 반환
+  $div.style.backgroundColor = "royalBlue"; // 인라인 스타일로 HTML에 반영
 
-    const $box = document.querySelector('.box');
-    console.log($box.className) // 여러 클래스면 불편하다.
+  const $box = document.querySelector(".box");
+  console.log($box.className); // 여러 클래스면 불편하다.
 
-    $box.classList.replace('red', 'blue');
-    // DOMTokenList를 반환한다.
-    // DOMTokenList는 add, remove, item, contains, replace, toggle 등등을 가진다. 
+  $box.classList.replace("red", "blue");
+  // DOMTokenList를 반환한다.
+  // DOMTokenList는 add, remove, item, contains, replace, toggle 등등을 가진다.
 
-    // style 프로퍼티는 인라인 스타일만 반환. 모든 CSS 스타일이 필요하면 getComoputedStyle 사용. 
-    console.log(window.getComputedStyle($box)); // CSSStyleDeclaration 반환
-    console.log(window.getComputedStyle($box), ':before'); // :before의 스타일 취득
+  // style 프로퍼티는 인라인 스타일만 반환. 모든 CSS 스타일이 필요하면 getComoputedStyle 사용.
+  console.log(window.getComputedStyle($box)); // CSSStyleDeclaration 반환
+  console.log(window.getComputedStyle($box), ":before"); // :before의 스타일 취득
 </script>
 <body>
-    <div style="color: red">Hello World</div>
+  <div style="color: red">Hello World</div>
 </body>
 <script>
-    const $div = document.querySelector('div');
-    console.log($div.style);
-    $div.style.backgroundColor = 'royalBlue';
+  const $div = document.querySelector("div");
+  console.log($div.style);
+  $div.style.backgroundColor = "royalBlue";
 </script>

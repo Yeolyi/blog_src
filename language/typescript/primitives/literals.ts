@@ -1,8 +1,8 @@
 function allowsFirstFiveNumbers(arg: 1 | 2 | 3 | 4 | 5) {
-    console.log(arg);
+  console.log(arg);
 }
 
-// allowsFirstFiveNumbers(10); 
+// allowsFirstFiveNumbers(10);
 
 // let number = 1;
 // allowsFirstFiveNumbers(number);

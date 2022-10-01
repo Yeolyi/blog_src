@@ -2,13 +2,16 @@
 title: 이진 탐색 트리
 ---
 
-> In computer science, a binary search tree (BST), also called an ordered or sorted binary tree, is a rooted binary tree data structure whose internal nodes each store a key greater than all the keys in the node’s left subtree and less than those in its right subtree.
+> In computer science, a binary search tree (BST), also called an ordered or
+> sorted binary tree, is a rooted binary tree data structure whose internal
+> nodes each store a key greater than all the keys in the node’s left subtree
+> and less than those in its right subtree.
 
 이중 포인터 쓰는 것 익숙해지기!
 
 아래처럼 바꾸기
 
-``` {class="language-c"}
+```{class="language-c"}
 while (true)
     {
         if (!cur)
@@ -22,7 +25,7 @@ while (true)
     }
 ```
 
-``` {class="language-c"}
+```{class="language-c"}
 while (!cur)
     {
         if (cur->data.key == key)
@@ -53,7 +56,7 @@ while (cur && (cur->data.key != key))
 
 이진 트리에서 함수 만들어놓고 왜 쓰지를 못하니,,,
 
-``` {class="language-c"}
+```{class="language-c"}
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>

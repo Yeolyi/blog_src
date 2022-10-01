@@ -1,11 +1,11 @@
 interface Artist {
-    id: number;
-    name: string;
-    bio: string;
+  id: number;
+  name: string;
+  bio: string;
 }
 
 type MyPartialType<Type> = {
-    [Property in keyof Type]?: Type[Property];
+  [Property in keyof Type]?: Type[Property];
 } & { id: number };
 
 type MappedArtistForEdit = MyPartialType<Artist>;

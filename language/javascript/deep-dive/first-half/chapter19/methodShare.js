@@ -1,8 +1,8 @@
 function Circle(radius) {
-    this.radius = radius;
-    this.getArea = function () {
-        return Math.PI * this.radius ** 2;
-    }
+  this.radius = radius;
+  this.getArea = function () {
+    return Math.PI * this.radius ** 2;
+  };
 }
 
 const circle1 = new Circle(10);
@@ -11,12 +11,12 @@ console.log(circle1.getArea === circle2.getArea);
 // false
 
 function BetterCircle(radius) {
-    this.radius = radius
+  this.radius = radius;
 }
 
 BetterCircle.prototype.getArea = function () {
-    return Math.PI * this.radius ** 2;
-}
+  return Math.PI * this.radius ** 2;
+};
 
 const circle3 = new BetterCircle(10);
 const circle4 = new BetterCircle(12);

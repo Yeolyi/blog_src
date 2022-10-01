@@ -1,8 +1,8 @@
 const person = {
-    name: 'YeolYi'
+  name: "YeolYi",
 };
 
-console.log(Object.getOwnPropertyDescriptor(person, 'name'));
+console.log(Object.getOwnPropertyDescriptor(person, "name"));
 /*
 PropertyDescriptor 객체
 {

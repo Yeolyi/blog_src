@@ -3,12 +3,14 @@ title: 원형 연결 리스트
 ---
 
 head와 tail의 명확한 정의는 무엇일까?
+
 - tail에 추가하면 순회할 때 순서대로 되는 걸까?
-- tail인데 더미 노드를 사용한 구현을 하면 순서대로 될 수 없다. tail의 위치를 옮길 수 없기 때문. 
+- tail인데 더미 노드를 사용한 구현을 하면 순서대로 될 수 없다. tail의 위치를 옮
+  길 수 없기 때문.
 
-여기서는 더미가 무조건 좋지는 않은 것 같다. LNext에서 조건문이 생겨버림. 
+여기서는 더미가 무조건 좋지는 않은 것 같다. LNext에서 조건문이 생겨버림.
 
-``` {class="language-c"}
+```{class="language-c"}
 typedef struct _cLinkedList
 {
     Node *head;

@@ -1,3 +1,3 @@
 function isFish(pet) {
-    return pet.swim !== undefined;
+  return pet.swim !== undefined;
 }

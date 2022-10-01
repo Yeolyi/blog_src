@@ -2,3 +2,4 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 npx ts-node validate.ts
+npx lint-staged

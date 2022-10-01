@@ -1,7 +1,7 @@
 function foo() {
-    console.log(x);
-    var x = 'local';
-    return x;
+  console.log(x);
+  var x = "local";
+  return x;
 }
 
 foo();

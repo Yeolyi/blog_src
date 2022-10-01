@@ -2,19 +2,26 @@
 title: 우선순위 큐
 ---
 
-> In computer science, a priority queue is an abstract data-type similar to a regular queue or stack data structure in which each element additionally has a "priority" associated with it.
+> In computer science, a priority queue is an abstract data-type similar to a
+> regular queue or stack data structure in which each element additionally has a
+> "priority" associated with it.
 
 ## heap
 
-> In computer science, a heap is a specialized tree-based data structure which is essentially an almost complete tree that satisfies the heap property:
+> In computer science, a heap is a specialized tree-based data structure which
+> is essentially an almost complete tree that satisfies the heap property:
 
 **우선순위 큐와 힙의 관계**
 
->While coders often implement priority queues with heaps, they are conceptually distinct from heaps. A priority queue is a concept like "a list" or "a map"; just as a list can be implemented with a linked list or with an array, a priority queue can be implemented with a heap or with a variety of other methods such as an unordered array.
+> While coders often implement priority queues with heaps, they are conceptually
+> distinct from heaps. A priority queue is a concept like "a list" or "a map";
+> just as a list can be implemented with a linked list or with an array, a
+> priority queue can be implemented with a heap or with a variety of other
+> methods such as an unordered array.
 
 ## ADT
 
-``` {class="language-c"}
+```{class="language-c"}
 void PqueueInit(Pqueue *ppq, Comparator comp);
 
 bool PQIsEmpty(PQueue *ppq);
@@ -22,20 +29,27 @@ bool PQIsEmpty(PQueue *ppq);
 void PEnqueue(PQueue *ppq, PQData data);
 
 PQData PDequeue(PQueue *ppq);
-// 데이터가 하나 이상 있음이 보장되어야 함. 
+// 데이터가 하나 이상 있음이 보장되어야 함.
 ```
 
 void PqueueInit(Pqueue *ppq, Comparator *comp); 로 해도 잘 되네??
 
 ## 힙을 이용한 구현
 
-*삭제 과정에서 굳이 swap을 할 필요는 없다. 하나만 대입연산하고 나머지는 마지막에만 해도 됨.*
+_삭제 과정에서 굳이 swap을 할 필요는 없다. 하나만 대입연산하고 나머지는 마지막에
+만 해도 됨._
 
-책에서는 우선순위라고 표현하고 나는 comparator를 사용해서 헷갈렸다 ㅡㅡ 사용하는 데이터 타입에 따라 느낌이 달라질 수 있으니까 개념을 하나로 통일해서 코딩하자. comparator(a, b)를 a가 b보다 루트쪽에 있으면 true로 한다는 식,,, high priority라는건 값이 크다는게 아니라 우선순위 높으니까 먼저 나온다, 더 루트쪽에 있다는 뜻이다. 하도 자연수로 테스트케이스 돌려서 까먹었다본데 우선순위 큐는 대소비교가 아니라 우선순위 비교가 핵심이다!!!
+책에서는 우선순위라고 표현하고 나는 comparator를 사용해서 헷갈렸다 ㅡㅡ 사용하는
+데이터 타입에 따라 느낌이 달라질 수 있으니까 개념을 하나로 통일해서 코딩하자.
+comparator(a, b)를 a가 b보다 루트쪽에 있으면 true로 한다는 식,,, high priority라
+는건 값이 크다는게 아니라 우선순위 높으니까 먼저 나온다, 더 루트쪽에 있다는 뜻이
+다. 하도 자연수로 테스트케이스 돌려서 까먹었다본데 우선순위 큐는 대소비교가 아니
+라 우선순위 비교가 핵심이다!!!
 
-정렬함수 정의하는 것도 생각해보자. 책에서는 양수, 음수, 0으로 나눴지만 bool로도 할 수 있지 않나??
+정렬함수 정의하는 것도 생각해보자. 책에서는 양수, 음수, 0으로 나눴지만 bool로도
+할 수 있지 않나??
 
-``` {class="language-c"}
+```{class="language-c"}
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -170,8 +184,6 @@ int main()
     return 0;
 }
 ```
-
-
 
 [typedef로 함수 포인터 별칭 정의하기](https://dojang.io/mod/page/view.php?id=601)
 

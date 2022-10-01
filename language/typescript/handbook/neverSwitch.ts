@@ -1,5 +1,5 @@
 function getArea2(shape: Shape) {
-    switch (shape.kind) {
+  switch (shape.kind) {
     case "circle":
       return Math.PI * shape.radius ** 2;
     case "square":
@@ -11,9 +11,9 @@ function getArea2(shape: Shape) {
 }
 
 interface Triangle {
-    kind: "triangle";
-    sideLength: number;
+  kind: "triangle";
+  sideLength: number;
 }
 
 // type Shape = Circle | Square | Triangle;
-// 위와 같이 바꾸면 switch문에서 에러난다 
+// 위와 같이 바꾸면 switch문에서 에러난다

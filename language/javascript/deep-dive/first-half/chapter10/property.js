@@ -1,2 +1,2 @@
-console.log({ '': 'Hello' }['']);
-console.log({ a: 'A', a: 'B' }.a);
+console.log({ "": "Hello" }[""]);
+console.log({ a: "A", a: "B" }.a);

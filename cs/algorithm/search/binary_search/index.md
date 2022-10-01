@@ -2,7 +2,7 @@
 title: 이진 탐색
 ---
 
-``` {class="language-c"}
+```{class="language-c"}
 int binary_search(int arr[], int len, int target)
 {
     int lo = 0;

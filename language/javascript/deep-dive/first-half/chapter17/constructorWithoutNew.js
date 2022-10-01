@@ -1,5 +1,5 @@
 function Circle(radius) {
-    this.radius = radius;
+  this.radius = radius;
 }
 
 const wrongCircle = Circle(14);

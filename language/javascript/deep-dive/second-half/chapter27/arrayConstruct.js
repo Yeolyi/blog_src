@@ -8,7 +8,7 @@ console.log(new Array(10)); // [ <10 empty items> ]
 console.log(Array.of(10)); // [ 10 ]
 
 // 유사 배열 객체
-const arrayLikeObject = { length: 2, 0: 'a', 1: 'b' }
+const arrayLikeObject = { length: 2, 0: "a", 1: "b" };
 console.log(Array.from(arrayLikeObject)); // [ 'a', 'b' ]
 // 이터러블
-console.log(Array.from('Hello')); // [ 'H', 'e', 'l', 'l', 'o' ]
+console.log(Array.from("Hello")); // [ 'H', 'e', 'l', 'l', 'o' ]

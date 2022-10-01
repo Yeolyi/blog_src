@@ -1,10 +1,10 @@
 enum StatusCodes {
-    OK = 200,
-    BadRequest = 400,
-    Unauthorized,
-    PaymentRequired,
-    Forbidden,
-    NotFound,
+  OK = 200,
+  BadRequest = 400,
+  Unauthorized,
+  PaymentRequired,
+  Forbidden,
+  NotFound,
 }
 
 const okNumber = StatusCodes.OK;
@@ -15,7 +15,7 @@ const stringBadRequest = StatusCodes[400]; // BadRequest
 // via an object at runtime.
 
 const enum MouseAction {
-    MouseDown,
-    MouseUpOutside,
-    MouseUpInside,
+  MouseDown,
+  MouseUpOutside,
+  MouseUpInside,
 }

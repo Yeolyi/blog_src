@@ -16,17 +16,13 @@ const { a: aa, b: bb, c: cc } = obj;
 console.log(aa, bb, cc); // 1 2 undefined
 
 function foo({ a, b, c }) {
-    console.log(a, b, c);
+  console.log(a, b, c);
 }
 
 foo(obj); // 1 2 undefined
 
 // 배열 디스트럭처링 할당과 객체 디스트렁처링 할당의 혼용
-const d = [
-    { id: 1 },
-    { id: 2 },
-    { id: 3 }
-]
+const d = [{ id: 1 }, { id: 2 }, { id: 3 }];
 const [, { id }] = d;
 console.log(id); // 2
 

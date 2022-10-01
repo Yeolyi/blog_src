@@ -1,8 +1,8 @@
 function Circle(radius) {
-    this.radius = radius;
-    this.getSize = function() {
-        return Math.PI * this.radius * this.radius / 2;
-    }
+  this.radius = radius;
+  this.getSize = function () {
+    return (Math.PI * this.radius * this.radius) / 2;
+  };
 }
 
 const circle1 = new Circle(5);

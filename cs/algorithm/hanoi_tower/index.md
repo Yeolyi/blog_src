@@ -2,7 +2,7 @@
 title: 재귀를 활용한 하노이의 탑 풀이
 ---
 
-``` {class="language-c"}
+```{class="language-c"}
 #include <stdio.h>
 
 void Hanoi(char from, char through, char to, int num)

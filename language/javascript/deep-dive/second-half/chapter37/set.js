@@ -1,11 +1,11 @@
-// 이터러블을 인수로 전달받는다. 
+// 이터러블을 인수로 전달받는다.
 const set1 = new Set([3, 2, 1, 2]);
 console.log(set1); // Set(3) { 3, 2, 1 }
 
-// size 프로퍼티는 getter 함수만 존재한다. 
+// size 프로퍼티는 getter 함수만 존재한다.
 console.log(set1.size); // 3
 
-// add 메서드는 method chaining이 가능하다. 
+// add 메서드는 method chaining이 가능하다.
 const set2 = new Set();
 set2.add(1).add(2);
 console.log(set2); // Set(2) { 1, 2 }
@@ -32,10 +32,10 @@ console.log(Symbol.iterator in set3); // true
 
 // 교집합 구현
 Set.prototype.intersection = function (set) {
-    return new Set([...this].filter(x => set.has(x)));
-}
+  return new Set([...this].filter((x) => set.has(x)));
+};
 
 // 합집합 구현
 Set.prototype.union = function (set) {
-    return new Set([...this, ...set]);
-}
+  return new Set([...this, ...set]);
+};

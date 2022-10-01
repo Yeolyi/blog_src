@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html>
-    <body>
-        <ul id="fruits">
-            <!-- id는 class와 달리 공백 문자로 구분하여 여러 값을 가질 수 없다 -->
-            <li id="apple" class="temp">Apple</li>
-            <li id="banana" class="temp">Banana</li>
-            <li id="orange">Orange</li>
-        </ul>
-        <script>
-            const $fruits = document.getElementById('fruits');
-            // 텍스트 노드 포함
-            console.log($fruits.childNodes); // NodeList(9). comment도 포함!
-            // 요소 노드만
-            console.log($fruits.children); // HTMLCollection(3)
-            // firstChild, lastChild는 텍스트 노드 포함
-            // firstElementChild, lastElementChild는 요소 노드만
-            console.log($fruits.hasChildNodes()); // true. 텍스트 노드 포함
-            
-            // 요소 노드만
-            console.log($fruits.children.length); // 3
-            console.log($fruits.childElementCount); // 3
+  <body>
+    <ul id="fruits">
+      <!-- id는 class와 달리 공백 문자로 구분하여 여러 값을 가질 수 없다 -->
+      <li id="apple" class="temp">Apple</li>
+      <li id="banana" class="temp">Banana</li>
+      <li id="orange">Orange</li>
+    </ul>
+    <script>
+      const $fruits = document.getElementById("fruits");
+      // 텍스트 노드 포함
+      console.log($fruits.childNodes); // NodeList(9). comment도 포함!
+      // 요소 노드만
+      console.log($fruits.children); // HTMLCollection(3)
+      // firstChild, lastChild는 텍스트 노드 포함
+      // firstElementChild, lastElementChild는 요소 노드만
+      console.log($fruits.hasChildNodes()); // true. 텍스트 노드 포함
 
-            // 텍스트 노드 접근
-            // 텍스트 노드나 요소 노드를 반환
-            const $apple = document.getElementById('apple')
-            console.log($apple.firstChild); // #text
+      // 요소 노드만
+      console.log($fruits.children.length); // 3
+      console.log($fruits.childElementCount); // 3
 
-            console.log($apple.parentNode); // ul#fruits
+      // 텍스트 노드 접근
+      // 텍스트 노드나 요소 노드를 반환
+      const $apple = document.getElementById("apple");
+      console.log($apple.firstChild); // #text
 
-            // previousSibling, nextSibling은 텍스트 노드 포함
-            // previousElementSibling, nextElementSibling은 요소 노드만
+      console.log($apple.parentNode); // ul#fruits
 
-        </script>
-    </body>
+      // previousSibling, nextSibling은 텍스트 노드 포함
+      // previousElementSibling, nextElementSibling은 요소 노드만
+    </script>
+  </body>
 </html>
