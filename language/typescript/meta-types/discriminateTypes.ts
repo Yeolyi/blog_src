@@ -4,7 +4,7 @@ type APIResponses =
   | { error: string };
 
 const handleResponse = (response: APIResponses) => {
-  if ("error" in response) {
+  if ('error' in response) {
     console.error(response.error);
     return;
   }

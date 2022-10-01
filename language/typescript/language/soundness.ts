@@ -1,5 +1,5 @@
 // Type Assertion은 개발자에게 모든 것을 맡긴다.
-const usersAge = "23" as any as number;
+const usersAge = '23' as any as number;
 console.log(typeof usersAge); // string
 
 // Function Parameter Bi-variance

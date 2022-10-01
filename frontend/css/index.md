@@ -6,8 +6,8 @@ title: CSS
 
 ### Copyright
 
-[Learn to style HTML using CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS)
-by Mozilla Contributors is licensed under CC-BY-SA 2.5.
+[Learn to style HTML using CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS) by Mozilla
+Contributors is licensed under CC-BY-SA 2.5.
 
 ### CSS first steps
 

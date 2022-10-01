@@ -9,9 +9,9 @@
   // 이벤트 핸들러 어트리뷰트/프로퍼티 방식으로 등록한 핸들러는 타깃/버블링만 캡쳐할 수 있다.
   // addEventListener는 캡처링 단계도 캐치할 수 있다. 3번째 인수로 true 전달.
 
-  const $fruits = document.getElementById("fruits");
+  const $fruits = document.getElementById('fruits');
   $fruits.addEventListener(
-    "click",
+    'click',
     (e) => {
       console.log(e.eventPhase); // 1
       console.log(e.target); // 클릭한 li
@@ -21,14 +21,14 @@
   );
 
   // 이벤트를 발생시킨 이벤트 타깃과 이벤트 핸들러가 바인딩된 커런트 타깃이 같은 요소면 타깃 단계의 이벤트 객체를 캐치한다.
-  const $banana = document.getElementById("banana");
-  $banana.addEventListener("click", (e) => {
+  const $banana = document.getElementById('banana');
+  $banana.addEventListener('click', (e) => {
     console.log(e.eventPhase); // 2
     console.log(e.target); // 클릭한 li
     console.log(e.currentTarget); // 클릭한 li
   });
 
-  $fruits.addEventListener("click", (e) => {
+  $fruits.addEventListener('click', (e) => {
     console.log(e.eventPhase); // 3
     console.log(e.target); // 클릭한 li
     console.log(e.currentTarget); // ul

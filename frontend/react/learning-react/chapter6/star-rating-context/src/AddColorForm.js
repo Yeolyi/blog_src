@@ -1,10 +1,10 @@
-import React from "react";
-import { useInput } from "./useInput";
-import { useColors } from "./index.js";
+import React from 'react';
+import { useInput } from './useInput';
+import { useColors } from './index.js';
 
 export default function BetterAddColorForm() {
-  const [titleProps, resetTitle] = useInput("");
-  const [colorProps, resetColor] = useInput("#000000");
+  const [titleProps, resetTitle] = useInput('');
+  const [colorProps, resetColor] = useInput('#000000');
 
   const { addColor } = useColors();
 
@@ -16,12 +16,7 @@ export default function BetterAddColorForm() {
   };
   return (
     <form onSubmit={submit}>
-      <input
-        {...titleProps}
-        type="text"
-        placeholder="color title..."
-        required
-      />
+      <input {...titleProps} type="text" placeholder="color title..." required />
       <input {...colorProps} type="color" required />
       <button>ADD</button>
     </form>

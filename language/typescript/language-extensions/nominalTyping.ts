@@ -1,9 +1,9 @@
 // __brand는 관례
-type ValidatedInputString = string & { __brand: "User Input Post Validation" };
+type ValidatedInputString = string & { __brand: 'User Input Post Validation' };
 
 // We're just _telling_ TypeScript that it's true.
 const validateUserInput = (input: string) => {
-  const simpleValidatedInput = input.replace(/\</g, "≤");
+  const simpleValidatedInput = input.replace(/\</g, '≤');
   return simpleValidatedInput as ValidatedInputString;
 };
 

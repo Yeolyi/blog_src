@@ -1,7 +1,7 @@
-import React from "react";
-import { useColors } from "./";
-import { FaTrash } from "react-icons/fa";
-import { PureStarRating } from "./starRating";
+import React from 'react';
+import { useColors } from './';
+import { FaTrash } from 'react-icons/fa';
+import { PureStarRating } from './starRating';
 
 export default function ColorList() {
   // The Consumer is accessed within the useContext hook, which mean that we no longer have to work directly with the consumer component.

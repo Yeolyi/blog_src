@@ -1,6 +1,6 @@
 function foo() {
   console.log(x);
-  var x = "local";
+  var x = 'local';
   return x;
 }
 

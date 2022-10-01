@@ -1,15 +1,9 @@
 <body>
   <div id="root"></div>
-  <script
-    crossorigin
-    src="https://unpkg.com/react@18/umd/react.development.js"
-  ></script>
-  <script
-    crossorigin
-    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
-  ></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script>
-    const dish = React.createElement("h1", { id: "recipe-0" }, "Baked Salmon");
+    const dish = React.createElement('h1', { id: 'recipe-0' }, 'Baked Salmon');
     console.log(dish);
     /*
         $$typeof: Symbol(react.element)
@@ -30,8 +24,8 @@
     // ReactDOM.render is no longer supported in React 18.
     // ReactDOM.render(dish, document.getElementById('root'));
     // https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html#updates-to-client-rendering-apis
-    const dessert = React.createElement("h2", null, "Coconut Cream Pie");
-    const container = document.getElementById("root");
+    const dessert = React.createElement('h2', null, 'Coconut Cream Pie');
+    const container = document.getElementById('root');
     const root = ReactDOM.createRoot(container);
     root.render([dish, dessert]);
     // Warning: Each child in a list should have a unique "key" prop. See https://reactjs.org/link/warning-keys for more information.

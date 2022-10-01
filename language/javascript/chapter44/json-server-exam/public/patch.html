@@ -3,12 +3,12 @@
   <script>
     const xhr = new XMLHttpRequest();
     // id로 todo를 특정하여 completed만 수정
-    xhr.open("PATCH", "/todos/3");
-    xhr.setRequestHeader("content-type", "application/json");
+    xhr.open('PATCH', '/todos/3');
+    xhr.setRequestHeader('content-type', 'application/json');
     xhr.send(JSON.stringify({ newParam: true }));
     xhr.onload = () => {
       // 200 확인 생략
-      document.querySelector("pre").textContent = xhr.response;
+      document.querySelector('pre').textContent = xhr.response;
     };
   </script>
 </body>

@@ -2,7 +2,7 @@
 var x = 1;
 y = 2;
 function foo() {
-  console.log("hello");
+  console.log('hello');
 }
 console.log(global.x); // undefined?
 console.log(global.y); // 2

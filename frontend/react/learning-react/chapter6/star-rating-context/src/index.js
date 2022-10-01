@@ -1,8 +1,8 @@
-import React, { createContext, useContext, useState } from "react";
-import colorData from "./color-data";
-import ReactDOM from "react-dom/client";
-import App from "./App.js";
-import v4 from "uuid";
+import React, { createContext, useContext, useState } from 'react';
+import colorData from './color-data';
+import ReactDOM from 'react-dom/client';
+import App from './App.js';
+import v4 from 'uuid';
 
 // ColorContext.consumer을 사용해야하기에 export
 // ...했지만 아래 useColor를 사용한는 방식이 더 깔끔.
@@ -36,11 +36,8 @@ function ColorProvider({ children }) {
       },
     ]);
   const rateColor = (id, rating) =>
-    setColors(
-      colors.map((color) => (color.id === id ? { ...color, rating } : color))
-    );
-  const removeColor = (id) =>
-    setColors(colors.filter((color) => color.id !== id));
+    setColors(colors.map((color) => (color.id === id ? { ...color, rating } : color)));
+  const removeColor = (id) => setColors(colors.filter((color) => color.id !== id));
 
   return (
     <ColorContext.Provider value={{ colors, addColor, removeColor, rateColor }}>
@@ -49,7 +46,7 @@ function ColorProvider({ children }) {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ColorProvider>

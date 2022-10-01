@@ -1,4 +1,4 @@
-const alphabets = Array.from("alphabets");
+const alphabets = Array.from('alphabets');
 alphabets.sort();
 console.log(alphabets);
 /*
@@ -55,17 +55,11 @@ console.log([1, 3, 5, 7].every((x) => x % 2)); // true
 console.log([].some((x) => x)); // false
 console.log([].every(() => false)); // true
 
-console.log(
-  Array.from({ length: 5 }, (_, i) => ({ id: i * 2 })).find((x) => x.id == 8)
-); // { id: 8 }
+console.log(Array.from({ length: 5 }, (_, i) => ({ id: i * 2 })).find((x) => x.id == 8)); // { id: 8 }
 
-console.log(
-  Array.from({ length: 5 }, (_, i) => ({ id: i * 2 })).findIndex(
-    (x) => x.id == 8
-  )
-); // 4
+console.log(Array.from({ length: 5 }, (_, i) => ({ id: i * 2 })).findIndex((x) => x.id == 8)); // 4
 
-const arr = ["hello", "world"];
+const arr = ['hello', 'world'];
 // map에서 생성된 배열을 평탄화한다
 console.log(arr.flatMap((x) => Array.from(x).reverse()));
 /*

@@ -3,11 +3,11 @@
   <script>
     const xhr = new XMLHttpRequest();
     // 특정 todo를 취득(retrieve)한다.
-    xhr.open("GET", "/todos/1");
+    xhr.open('GET', '/todos/1');
     xhr.send();
     xhr.onload = () => {
       // 200 확인 생략
-      document.querySelector("pre").textContent = xhr.response;
+      document.querySelector('pre').textContent = xhr.response;
     };
   </script>
 </body>

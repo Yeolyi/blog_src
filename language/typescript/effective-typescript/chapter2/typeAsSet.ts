@@ -8,7 +8,7 @@ interface Lifespan {
 type PersonSpan = Person & Lifespan;
 
 const ps: PersonSpan = {
-  name: "Yeolyi",
+  name: 'Yeolyi',
   birth: new Date(),
   death: new Date(),
 }; // OK

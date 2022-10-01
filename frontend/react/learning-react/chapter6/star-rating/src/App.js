@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import colorData from "./color-data.json";
-import ColorList from "./ColorList";
-import BetterAddColorForm from "./AddColorForm";
-import { v4 } from "uuid";
+import React, { useState } from 'react';
+import colorData from './color-data.json';
+import ColorList from './ColorList';
+import BetterAddColorForm from './AddColorForm';
+import { v4 } from 'uuid';
 
 // The App component will be the only component within out application that holds state.
 export default function App() {
@@ -26,9 +26,7 @@ export default function App() {
       <ColorList
         colors={colors}
         onRateColor={(id, rating) => {
-          const newColors = colors.map((color) =>
-            color.id === id ? { ...color, rating } : color
-          );
+          const newColors = colors.map((color) => (color.id === id ? { ...color, rating } : color));
           setColors(newColors);
         }}
         onRemoveColor={(id) => {

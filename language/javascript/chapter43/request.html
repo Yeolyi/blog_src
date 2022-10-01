@@ -11,10 +11,10 @@
   // 정적 프로퍼티: Done
 
   //** open으로 요청 초기화 -> 필요에 따라 헤더 설정 -> send로 요청 **
-  xhr.open("GET", "https://jsonplaceholder.typicode.com/todos/1");
+  xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos/1');
   // setRequestHeader 메서드
   // Content-type은 요청 몸체에 담아 전송할 데이터의 MIME 타입의 정보를 표현한다.
-  xhr.setRequestHeader("content-type", "application/json");
+  xhr.setRequestHeader('content-type', 'application/json');
   // send 메소드
   // get는 query string으로 데이터 전송, post는 페이로드를 request body에 담아 전송.
   // 페이로드를 인수로 전달할 수 있다.
@@ -27,7 +27,7 @@
     if (xhr.status === 200) {
       console.log(JSON.parse(xhr.response));
     } else {
-      console.error("Error", xhr.status, xhr.statusText);
+      console.error('Error', xhr.status, xhr.statusText);
     }
   };
 
@@ -36,7 +36,7 @@
     if (xhr.status === 200) {
       console.log(JSON.parse(xhr.response));
     } else {
-      console.error("Error", xhr.status, xhr.statusText);
+      console.error('Error', xhr.status, xhr.statusText);
     }
   };
 </script>

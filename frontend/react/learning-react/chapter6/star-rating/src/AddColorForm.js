@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { useInput } from "./useInput";
+import React, { useRef } from 'react';
+import { useInput } from './useInput';
 
 // DOM 노드의 value 어트리뷰트를 ""로 직접 설정한다. 이는 선언적이지 않고 명령적이다. AddColorForm은 form값을 저장하기 위해 DOM을 사용하는 uncontrolled component라 한다.
 function AddColorForm({ onNewColor = (f) => f }) {
@@ -11,13 +11,12 @@ function AddColorForm({ onNewColor = (f) => f }) {
     const title = txtTitle.current.value;
     const color = hexColor.current.value;
     onNewColor(title, color);
-    txtTitle.current.value = "";
-    hexColor.current.value = "";
+    txtTitle.current.value = '';
+    hexColor.current.value = '';
   };
   return (
     <form onSubmit={submit}>
-      // ref를 통해 설정한 object의 current 필드를 통해 DOM 요소에 직접 접근할
-      수 있다.
+      // ref를 통해 설정한 object의 current 필드를 통해 DOM 요소에 직접 접근할 수 있다.
       <input ref={txtTitle} type="text" placeholder="color title..." required />
       <input ref={hexColor} type="color" required />
       <buttom>ADD</buttom>
@@ -28,8 +27,8 @@ function AddColorForm({ onNewColor = (f) => f }) {
 // controlled component에서는 값/state가 DOM이 아니라 React에 의해 관리된다.
 // refs들을 사용할 필요가 없다.
 export default function BetterAddColorForm({ onNewColor = (f) => f }) {
-  const [titleProps, resetTitle] = useInput("");
-  const [colorProps, resetColor] = useInput("#000000");
+  const [titleProps, resetTitle] = useInput('');
+  const [colorProps, resetColor] = useInput('#000000');
 
   const submit = (e) => {
     // HTML form을 submit할 때 기본 동작으로 POST request를 한다. 이를 방지.

@@ -17,5 +17,5 @@ class iPhone extends Phone {
   }
 }
 
-const phone = new iPhone("010-1234-5678");
+const phone = new iPhone('010-1234-5678');
 console.log(phone.call());

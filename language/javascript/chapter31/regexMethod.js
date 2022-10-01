@@ -1,4 +1,4 @@
-const target = "onetwothreetwo";
+const target = 'onetwothreetwo';
 
 console.log(/two/g.exec(target));
 // [ 'two', index: 3, input: 'onetwothree', groups: undefined ]

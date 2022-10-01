@@ -3,13 +3,13 @@
   <script>
     const xhr = new XMLHttpRequest();
     // id로 todo를 특정하여 id를 제외한 리소스 전체를 교체
-    xhr.open("PUT", "/todos/3");
-    xhr.setRequestHeader("content-type", "application/json");
+    xhr.open('PUT', '/todos/3');
+    xhr.setRequestHeader('content-type', 'application/json');
     // id는 바꾸고 싶어도 안바뀌는 듯?
-    xhr.send(JSON.stringify({ id: 3, content: "JavaScript", completed: true }));
+    xhr.send(JSON.stringify({ id: 3, content: 'JavaScript', completed: true }));
     xhr.onload = () => {
       // 200 확인 생략
-      document.querySelector("pre").textContent = xhr.response;
+      document.querySelector('pre').textContent = xhr.response;
     };
   </script>
 </body>

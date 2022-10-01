@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
+import { useCallback, useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 // export default는 이 경우에 안되네?
 const loadReadme = async (login, repo) => {
@@ -12,7 +12,7 @@ const loadReadme = async (login, repo) => {
 export default function RepositoryReadme({ repo, login }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
-  const [markdown, setMarkdown] = useState("");
+  const [markdown, setMarkdown] = useState('');
 
   const loadReadme = useCallback(async (login, repo) => {
     setLoading(true);

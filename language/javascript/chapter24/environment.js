@@ -12,5 +12,5 @@ function foo() {
 const bar = foo();
 console.log(bar()); // 0
 setTimeout(function () {
-  console.log("result: " + bar());
+  console.log('result: ' + bar());
 }, 200); // 1

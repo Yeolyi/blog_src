@@ -3,11 +3,11 @@
   <script>
     const xhr = new XMLHttpRequest();
     // 모든 todos를 취득(index)한다.
-    xhr.open("GET", "/todos");
+    xhr.open('GET', '/todos');
     xhr.send();
     xhr.onload = () => {
       // 200 확인 생략
-      document.querySelector("pre").textContent = xhr.response;
+      document.querySelector('pre').textContent = xhr.response;
     };
   </script>
 </body>

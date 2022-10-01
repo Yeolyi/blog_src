@@ -1,6 +1,6 @@
-import React from "react";
-import { FaTrash } from "react-icons/fa";
-import { PureStarRating } from "./starRating";
+import React from 'react';
+import { FaTrash } from 'react-icons/fa';
+import { PureStarRating } from './starRating';
 
 export default function ColorList({
   colors = [],
@@ -11,25 +11,13 @@ export default function ColorList({
   return (
     <div>
       {colors.map((color) => (
-        <Color
-          key={color.id}
-          {...color}
-          onRemove={onRemoveColor}
-          onRate={onRateColor}
-        />
+        <Color key={color.id} {...color} onRemove={onRemoveColor} onRate={onRateColor} />
       ))}
     </div>
   );
 }
 
-function Color({
-  id,
-  title,
-  color,
-  rating,
-  onRemove = (f) => f,
-  onRate = (f) => f,
-}) {
+function Color({ id, title, color, rating, onRemove = (f) => f, onRate = (f) => f }) {
   return (
     <section>
       <h1>{title}</h1>

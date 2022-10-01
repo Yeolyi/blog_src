@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { useIterator } from "./useIterator";
-import Fetch from "./Fetch";
-import RepositoryReadme from "./RepositoryReadme";
+import React, { useEffect } from 'react';
+import { useIterator } from './useIterator';
+import Fetch from './Fetch';
+import RepositoryReadme from './RepositoryReadme';
 
 export default function UserDetails({ data }) {
   return (
@@ -12,10 +12,7 @@ export default function UserDetails({ data }) {
         {data.name && <p>{data.name}</p>}
         {data.location && <p>{data.location}</p>}
       </div>
-      <UserRepos
-        login={data.login}
-        onSelect={(repoName) => console.log(`${repoName} selected`)}
-      />
+      <UserRepos login={data.login} onSelect={(repoName) => console.log(`${repoName} selected`)} />
     </div>
   );
 }
@@ -41,7 +38,7 @@ export function RepoMenu({ repositories, login, onSelect = (f) => f }) {
 
   return (
     <>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: 'flex' }}>
         <button onClick={previous}>&lt;</button>
         <p>{name}</p>
         <button onClick={next}>&gt;</button>

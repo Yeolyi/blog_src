@@ -1,8 +1,8 @@
 function getArea2(shape: Shape) {
   switch (shape.kind) {
-    case "circle":
+    case 'circle':
       return Math.PI * shape.radius ** 2;
-    case "square":
+    case 'square':
       return shape.sideLength ** 2;
     default:
       const _exhaustiveCheck: never = shape;
@@ -11,7 +11,7 @@ function getArea2(shape: Shape) {
 }
 
 interface Triangle {
-  kind: "triangle";
+  kind: 'triangle';
   sideLength: number;
 }
 

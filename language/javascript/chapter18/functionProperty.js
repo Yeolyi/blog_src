@@ -28,8 +28,8 @@ console.log(Object.getOwnPropertyDescriptors(square));
 
 // 얘는 'own'이 아니라 아래의 Object.prototype으로부터 상속받는다.
 console.log(square.__proto__); // {},
-console.log(Object.getOwnPropertyDescriptor(square, "__proto__")); // undefined
-console.log(Object.getOwnPropertyDescriptor(Object.prototype, "__proto__"));
+console.log(Object.getOwnPropertyDescriptor(square, '__proto__')); // undefined
+console.log(Object.getOwnPropertyDescriptor(Object.prototype, '__proto__'));
 // {
 //   get: [Function: get __proto__], // 접근자 프로퍼티
 //   set: [Function: set __proto__],

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { loadJSON, saveJSON } from "./storage";
+import React, { useState, useEffect } from 'react';
+import { loadJSON, saveJSON } from './storage';
 
 export default function GitHubUser({ login }) {
   // Save the data to the browser

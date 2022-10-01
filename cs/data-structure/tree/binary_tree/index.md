@@ -2,16 +2,15 @@
 title: 이진 트리
 ---
 
-_영어 번역에 주의. 교재에서는 포화 이진 트리를 full binary tree로 번역하지만 위
-키피디아와 다른 자료에서 포화 이진 트리는 perfect binary tree이다._
+_영어 번역에 주의. 교재에서는 포화 이진 트리를 full binary tree로 번역하지만 위키피디아와 다른 자료
+에서 포화 이진 트리는 perfect binary tree이다._
 
 **이진 트리**
 
-> In computer science, a binary tree is a tree data structure in which each node
-> has at most two children, which are referred to as the left child and the
-> right child. A recursive definition using just set theory notions is that a
-> (non-empty) binary tree is a tuple (L, S, R), where L and R are binary trees
-> or the empty set and S is a singleton set containing the root. Some authors
+> In computer science, a binary tree is a tree data structure in which each node has at most two
+> children, which are referred to as the left child and the right child. A recursive definition
+> using just set theory notions is that a (non-empty) binary tree is a tuple (L, S, R), where L and
+> R are binary trees or the empty set and S is a singleton set containing the root. Some authors
 > allow the binary tree to be the empty set as well.
 >
 > - Wikipedia
@@ -20,18 +19,18 @@ _영어 번역에 주의. 교재에서는 포화 이진 트리를 full binary tr
 
 **정 이진 트리**
 
-> A full binary tree (sometimes referred to as a proper or plane binary tree) is
-> a tree in which every node has either 0 or 2 children.
+> A full binary tree (sometimes referred to as a proper or plane binary tree) is a tree in which
+> every node has either 0 or 2 children.
 
 **포화 이진 트리**
 
-> A perfect binary tree is a binary tree in which all interior nodes have two
-> children and all leaves have the same depth or same level.
+> A perfect binary tree is a binary tree in which all interior nodes have two children and all
+> leaves have the same depth or same level.
 
 **완전 이진 트리**
 
-> In a complete binary tree every level, except possibly the last, is completely
-> filled, and all nodes in the last level are as far left as possible
+> In a complete binary tree every level, except possibly the last, is completely filled, and all
+> nodes in the last level are as far left as possible
 
 ## ADT
 
@@ -55,8 +54,7 @@ void MakeRightSubTree(BTreeNode *main, BTreeNode *sub);
 
 위 ADT를 구현하려면 서브트리의 모든 노드에 대해 free를 할 수 있어야 한다.
 
-루트 노드가 중간에 방문되면 중위(inorder), 마지막이면 후위(postorder), 처음이면
-전위(preorder).
+루트 노드가 중간에 방문되면 중위(inorder), 마지막이면 후위(postorder), 처음이면전위(preorder).
 
 내가 처음에 구현한 이 방법보다는
 
@@ -86,11 +84,10 @@ void InOrderTraverse(BTreeNode *main, void (*Transform)(Data))
 
 ## 구현
 
-연결 리스트처럼 자료 구조를 위한 구조체를 따로 선언할 필요는 없다. 루트 노드가곧
-트리이기 때문.
+연결 리스트처럼 자료 구조를 위한 구조체를 따로 선언할 필요는 없다. 루트 노드가곧트리이기 때문.
 
-void MakeLeftSubTree(BTreeNode *main, BTreeNode *sub)에서 free 잊지 말기!!! 세상
-에. 근데 free한거 그대로 쓰다가 에러난거 찾느라 한참 찾았다. 세상에.
+void MakeLeftSubTree(BTreeNode *main, BTreeNode *sub)에서 free 잊지 말기!!! 세상에. 근데 free한거 그
+대로 쓰다가 에러난거 찾느라 한참 찾았다. 세상에.
 
 ```{class="language-c"}
 #include <stdio.h>

@@ -4,7 +4,7 @@ console.log(Temp1); // undefined
 var Temp1 = class {};
 class Temp2 {}
 
-const Person = "";
+const Person = '';
 {
   // console.log(Person); ReferenceError: Cannot access 'Person' before initialization. 호이스팅 발생 중
   class Person {}

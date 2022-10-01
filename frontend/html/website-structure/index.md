@@ -2,30 +2,28 @@
 title: Document and website structure
 ---
 
-header: Usually a big strip across the top with a big heading, logo, and perhaps
-a tagline. This usually stays the same from one webpage to another.
+header: Usually a big strip across the top with a big heading, logo, and perhaps a tagline. This
+usually stays the same from one webpage to another.
 
-navigation bar: Links to the site's main sections. Like the header, this content
-usually remains consistent from one webpage to another. Many web designers
-consider the navigation bar to be part of the header rather than an individual
-component, but that's not a requirement.
+navigation bar: Links to the site's main sections. Like the header, this content usually remains
+consistent from one webpage to another. Many web designers consider the navigation bar to be part of
+the header rather than an individual component, but that's not a requirement.
 
-main content: A big area in the center that contains most of the unique content
-of a given webpage, for example. This is the one part of the website that
-definitely will vary from page to page!
+main content: A big area in the center that contains most of the unique content of a given webpage,
+for example. This is the one part of the website that definitely will vary from page to page!
 
-sidebar: Some peripheral info, links, quotes, ads, etc. Usually, this is
-contextual to what is contained in the main content.
+sidebar: Some peripheral info, links, quotes, ads, etc. Usually, this is contextual to what is
+contained in the main content.
 
-footer: A strip across the bottom of the page that generally contains fine
-print, copyright notices, or contact info. It's a place to put common
-information (like the header) but usually, that information is not critical or
-secondary to the website itself. The footer is also sometimes used for SEO
-purposes, by providing links for quick access to popular content.
+footer: A strip across the bottom of the page that generally contains fine print, copyright notices,
+or contact info. It's a place to put common information (like the header) but usually, that
+information is not critical or secondary to the website itself. The footer is also sometimes used
+for SEO purposes, by providing links for quick access to popular content.
 
-header: <header>. navigation bar: <nav>. main content: <main>, with various
-content subsections represented by <article>, <section>, and <div> elements.
-sidebar: <aside>; often placed inside <main>. footer: <footer>
+header: <header>. navigation bar: <nav>. main content: <main>, with various content subsections
+represented by <article>, <section>, and <div> elements. sidebar: <aside>; often placed inside
+
+<main>. footer: <footer>
 
 <main>은 페이지당 하나, body 안에 바로 넣기. 
 <article>은 페이지의 다른 부분이 없어도 그 자체로 의미있는 내용을 넣기. 

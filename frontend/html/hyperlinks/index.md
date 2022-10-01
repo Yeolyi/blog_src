@@ -12,13 +12,12 @@ Almost any content can be made into a link, even block-level elements.
 </a>
 ```
 
-In a real website, index.html would be our home page or landing page (a web page
-that serves as the entry point for a website or a particular section of a
-website.).
+In a real website, index.html would be our home page or landing page (a web page that serves as the
+entry point for a website or a particular section of a website.).
 
-It's possible to link to a specific part of an HTML document, known as a
-document fragment, rather than just to the top of the document. To do this you
-first have to assign an id attribute to the element you want to link to.
+It's possible to link to a specific part of an HTML document, known as a document fragment, rather
+than just to the top of the document. To do this you first have to assign an id attribute to the
+element you want to link to.
 
 ```html
 <h2 id="Mailing_address">Mailing address</h2>
@@ -29,18 +28,14 @@ first have to assign an id attribute to the element you want to link to.
 </p>
 ```
 
-Search engines use link text to index target files, so it is a good idea to
-include keywords in your link text to effectively describe what is being linked
-to.
+Search engines use link text to index target files, so it is a good idea to include keywords in your
+link text to effectively describe what is being linked to.
 
 ```html
 <!-- Good -->
 <p><a href="https://www.mozilla.org/firefox/"> Download Firefox </a></p>
 <!-- Bad -->
-<p>
-  <a href="https://www.mozilla.org/firefox/"> Click here </a> to download
-  Firefox
-</p>
+<p><a href="https://www.mozilla.org/firefox/"> Click here </a> to download Firefox</p>
 ```
 
 Linking to non-HTML resources — leave clear signposts

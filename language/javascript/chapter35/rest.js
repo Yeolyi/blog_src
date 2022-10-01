@@ -1,5 +1,5 @@
 const arr = [1, 2, 3];
-arr.splice(1, 0, ...["a", "b"]);
+arr.splice(1, 0, ...['a', 'b']);
 console.log(arr); // [ 1, 'a', 'b', 2, 3 ]
 
 const a = [1, 2];

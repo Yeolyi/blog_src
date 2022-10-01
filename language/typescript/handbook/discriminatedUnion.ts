@@ -1,17 +1,17 @@
 interface Circle {
-  kind: "circle";
+  kind: 'circle';
   radius: number;
 }
 
 interface Square {
-  kind: "square";
+  kind: 'square';
   sideLength: number;
 }
 
 type Shape = Circle | Square;
 
 function getArea(shape: Shape) {
-  if (shape.kind === "circle") {
+  if (shape.kind === 'circle') {
     // shape: Circle
     return Math.PI * shape.radius ** 2;
   }

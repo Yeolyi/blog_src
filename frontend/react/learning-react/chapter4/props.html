@@ -1,31 +1,23 @@
 <body>
   <div id="root"></div>
-  <script
-    crossorigin
-    src="https://unpkg.com/react@18/umd/react.development.js"
-  ></script>
-  <script
-    crossorigin
-    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
-  ></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script>
     const items = [
-      "2 lb salmon",
-      "5 sprigs fresh rosemary",
-      "2 tablespoons olive oil",
-      "2 small lemons",
+      '2 lb salmon',
+      '5 sprigs fresh rosemary',
+      '2 tablespoons olive oil',
+      '2 small lemons',
     ];
     function IngredientsList({ items }) {
       return React.createElement(
-        "ul",
-        { className: "ingredients" },
-        items.map((ingredient, i) =>
-          React.createElement("li", { key: i }, ingredient)
-        )
+        'ul',
+        { className: 'ingredients' },
+        items.map((ingredient, i) => React.createElement('li', { key: i }, ingredient))
       );
     }
 
-    const container = document.getElementById("root");
+    const container = document.getElementById('root');
     const root = ReactDOM.createRoot(container);
     // 그냥 IngredientsList({ items }) 하면 안되나??
     root.render(React.createElement(IngredientsList, { items }));

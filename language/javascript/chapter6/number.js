@@ -5,4 +5,4 @@ console.log(3 / 2); // 1.5
 // number 타입의 세가지 특별한 값
 console.log(1 / 0); // Infinity
 console.log(1 / -0); // -Infinity
-console.log(1 * "Hello"); // NaN
+console.log(1 * 'Hello'); // NaN

@@ -8,11 +8,11 @@ const getGithubUserName = async (id) => {
   console.log(name);
 };
 
-getGithubUserName("yeolyi");
+getGithubUserName('yeolyi');
 
 const foo = async () => {
   try {
-    const wrongUrl = "https://wrong.url";
+    const wrongUrl = 'https://wrong.url';
     const response = await fetch(wrongUrl);
     const data = await response.json();
     console.log(data);

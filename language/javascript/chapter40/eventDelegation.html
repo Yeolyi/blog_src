@@ -21,14 +21,14 @@
   </ul>
   <div>선택된 내비게이션 아이템: <em class="msg">apple</em></div>
   <script>
-    const $fruits = document.getElementById("fruits");
-    const $msg = document.querySelector(".msg");
+    const $fruits = document.getElementById('fruits');
+    const $msg = document.querySelector('.msg');
     function activate({ target, eventPhase }) {
       console.log(eventPhase); // 3
       // 하위 요소 중 어떤 것이 클릭 이벤트를 발생시켰을지 모르니 확인
-      if (!target.matches("#fruits>li")) return;
+      if (!target.matches('#fruits>li')) return;
       [...$fruits.children].forEach(($fruit) => {
-        $fruit.classList.toggle("active", $fruit === target);
+        $fruit.classList.toggle('active', $fruit === target);
         $msg.textContent = target.id;
       });
     }

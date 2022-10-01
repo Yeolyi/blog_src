@@ -9,5 +9,5 @@ var PascalCase;
 
 var typeHungarianCase;
 var strFirstName;
-var $elem = document.getElementById("myId"); //DOM 노드
-var observable$ = fromEvent(document, "click"); // RxJS observable
+var $elem = document.getElementById('myId'); //DOM 노드
+var observable$ = fromEvent(document, 'click'); // RxJS observable

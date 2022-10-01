@@ -22,9 +22,8 @@ title: 리스트
 
 데이터를 나란히 저장하며 중복된 데이터의 저장을 막지 않는다.
 
-> In computer science, a list or sequence is an abstract data type that
-> represents a finite number of ordered values, where the same value may occur
-> more than once.
+> In computer science, a list or sequence is an abstract data type that represents a finite number
+> of ordered values, where the same value may occur more than once.
 >
 > - Wikipedia
 
@@ -32,14 +31,12 @@ title: 리스트
 
 ## ADT 정의
 
-구현하려는 리스트의 기본적인 ADT는 다음과 같다. 리스트의 종류에 따라 추가적인 기
-능이 있을 수 있다.
+구현하려는 리스트의 기본적인 ADT는 다음과 같다. 리스트의 종류에 따라 추가적인 기능이 있을 수 있다.
 
 책의 예제에 내 생각을 첨가해서 ADT를 꽤나 수정했다.
 
-- LRemove가 데이터를 반환해야 할 이유를 모르겠어서 책의 예제의 반환값이없던
-  LData에서 Void로 수정했다. 어차피 LFirst나 LNext 호출하고 LRemove를 쓸거니까.
-  스택의 pop 같은 함수면 반환해야지.
+- LRemove가 데이터를 반환해야 할 이유를 모르겠어서 책의 예제의 반환값이없던 LData에서 Void로 수정했
+  다. 어차피 LFirst나 LNext 호출하고 LRemove를 쓸거니까. 스택의 pop 같은 함수면 반환해야지.
 - 또한 책에는 리스트를 deinit하는 함수가 없어서 내가 추가했다.
 
 ```{class="language-c"}
@@ -64,8 +61,7 @@ int LCount(List *plist);
 void LClear(List *plist);
 ```
 
-추가로 다음 typedef를 통해 사용할 리스트와 저장할 원소를 유동적으로 변경할 수 있
-다.
+추가로 다음 typedef를 통해 사용할 리스트와 저장할 원소를 유동적으로 변경할 수 있다.
 
 ```{class="language-c"}
 typedef Point LData;
@@ -74,24 +70,22 @@ typedef LinkedList List;
 
 ## 리스트 구현
 
-ADT는 구현에 영향을 미쳐 중요하다. 예를 들어 LFirst가 순회 전에 항상 호출됨을 명
-시되어있는데, 따라서 LInit에서는 before를 꼭 초기화하지 않아도 된다. 마찬가지로
-LRemove에서는 원소의 개수가 0임을 확인하지 않아도 된다.
+ADT는 구현에 영향을 미쳐 중요하다. 예를 들어 LFirst가 순회 전에 항상 호출됨을 명시되어있는데, 따라서
+LInit에서는 before를 꼭 초기화하지 않아도 된다. 마찬가지로 LRemove에서는 원소의 개수가 0임을 확인하
+지 않아도 된다.
 
-구현 단계에서는 next 함수에서 data 참조와 next 이동의 순서 관계가 포인트. 이동을
-하고 참조를 하니 cur이 6에 있다는 것을 6이 참조되었다는 것을 의미한다.
+구현 단계에서는 next 함수에서 data 참조와 next 이동의 순서 관계가 포인트. 이동을하고 참조를 하니 cur
+이 6에 있다는 것을 6이 참조되었다는 것을 의미한다.
 
-LClear 함수를 구현하다보니 LFirst와 LNext 함수에 LData 포인터가 꼭 유효해야하는
-지 고민하게 되었다. 그래서 두 함수에 포인터가 NULL인지 확인하는 조건문을 삽입했
-다.
+LClear 함수를 구현하다보니 LFirst와 LNext 함수에 LData 포인터가 꼭 유효해야하는지 고민하게 되었다.
+그래서 두 함수에 포인터가 NULL인지 확인하는 조건문을 삽입했다.
 
-while문이 종료되었다는 것은 그 아래는 while문의 조건을 충족시키지 못하는 상태하
-는 뜻. 당연하지만 코드 해석할 때 유용한 정보이다.
+while문이 종료되었다는 것은 그 아래는 while문의 조건을 충족시키지 못하는 상태하는 뜻. 당연하지만 코
+드 해석할 때 유용한 정보이다.
 
 ## 추가할 원소 정의
 
-테스트를 위해 다음과 같은 구조체와 함수를 정의했다. 자연수 배열에서 자연수를 찾
-는 것은 웃기니까 ^^;
+테스트를 위해 다음과 같은 구조체와 함수를 정의했다. 자연수 배열에서 자연수를 찾는 것은 웃기니까 ^^;
 
 ```{class="language-c"}
 typedef struct __Point
@@ -107,8 +101,7 @@ void printPoint(Point *a)
 }
 ```
 
-다음과 같이 typedef를 정의해 사용할 리스트의 종류와 저장될 원소를 유동적으로 지
-정할 수 있다.
+다음과 같이 typedef를 정의해 사용할 리스트의 종류와 저장될 원소를 유동적으로 지정할 수 있다.
 
 ```{class="language-c"}
 typedef Point LData;
@@ -175,15 +168,15 @@ C를 오랜만에 다뤘는데 검색 중 다음과 같은 사실들을 깨달�
 
 - c언어에서 NULL은 포인터에 적용됨.
 - [NULL의 크기](https://stackoverflow.com/questions/4141666/why-sizeof-is-equivalent-to-1-and-sizeofnull-is-equivalent-to-4-in-c-langu/4141699)
-- You must always check for NULL pointers when using malloc & co. In that case
-  NULL mean that something went wrong, most likely that no memory was available.
+- You must always check for NULL pointers when using malloc & co. In that case NULL mean that
+  something went wrong, most likely that no memory was available.
 
 [Difference between head and tail insert in a single linkedlist](https://stackoverflow.com/questions/58581870/difference-between-head-and-tail-insert-in-a-single-linkedlist)
 
 > The difference is in the names.
 
-> A "tail insert" inserts the new object at the tail of the list and thus the
-> list has the same order as the order in which elements are added.
+> A "tail insert" inserts the new object at the tail of the list and thus the list has the same
+> order as the order in which elements are added.
 
-> A "head insert" inserts the new object at the head of the list, so the list
-> has the reverse order compared to the order in which elements are added.
+> A "head insert" inserts the new object at the head of the list, so the list has the reverse order
+> compared to the order in which elements are added.

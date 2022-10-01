@@ -5,6 +5,6 @@ interface Options {
 
 function createWindow(options: Options) {}
 createWindow({
-  title: "Hello",
+  title: 'Hello',
   darkmode: false, // Object literal may only specify known properties
 });

@@ -1,8 +1,8 @@
-import React from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import React from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
-import { About, Events, Products, Contact } from "./pages";
-import { Home } from "./Home";
+import { About, Events, Products, Contact } from './pages';
+import { Home } from './Home';
 
 export default function App() {
   return (
@@ -10,7 +10,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/events" element={<Events />} />{" "}
+        <Route path="/events" element={<Events />} />{' '}
         <Route path="/products" element={<Products />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Whoops404 />} />

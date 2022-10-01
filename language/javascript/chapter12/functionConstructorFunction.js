@@ -9,7 +9,7 @@ var add1 = (function () {
 
 var add2 = (function () {
   var a = 10;
-  return new Function("x", "y", "return x + y + a");
+  return new Function('x', 'y', 'return x + y + a');
 })();
 
 console.log(add1(1, 2)); // 3

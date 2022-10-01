@@ -1,8 +1,8 @@
 const obj = {
   a: 1,
   b: true,
-  c: "string",
-  d: ["a", "r", "r"],
+  c: 'string',
+  d: ['a', 'r', 'r'],
 };
 
 console.log(JSON.stringify(obj));

@@ -15,7 +15,7 @@ const bar = foo.bind(thisArg);
 bar(3, 4); // 3 4 { x: 1 }
 
 const timer = {
-  message: "bibibib",
+  message: 'bibibib',
   foo(callback) {
     // setTimeout(callback.bind, 1000);
     setTimeout(callback.bind(this), 1000);

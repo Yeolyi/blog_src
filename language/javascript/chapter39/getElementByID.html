@@ -9,17 +9,17 @@
       <li id="banana">Banana</li>
     </ul>
     <script>
-      let $elem = document.getElementById("banana");
-      $elem.style.color = "red";
+      let $elem = document.getElementById('banana');
+      $elem.style.color = 'red';
 
       // 반환값인 HTMLCollection 객체는 유사 배열 객체이면서 이터러블이다.
       // Element.prototype.getElementsByClassName은 요소 노드의 자손 노드를 탐색한다.
-      let $elems = document.getElementsByTagName("li");
+      let $elems = document.getElementsByTagName('li');
       for (let elem of $elems) {
         console.log(elem.innerText);
       }
 
-      $elems = document.getElementsByClassName("temp");
+      $elems = document.getElementsByClassName('temp');
       for (let elem of $elems) {
         console.log(elem.innerText);
       }
@@ -27,7 +27,7 @@
       // 인수로 전달한 CSS 선택자를 만족시키는 하나의 요소 노드를 탐색하여 반환
       // querSelectorAll은 여러 요소 노드 객체를 갖는 DOM 컬렉션 객체인 NodeList를 반환
       // getElementBy어쩌구보다 느리지만 구체적인 조건을 입력할 수 있기에 id가 있으면 전자, 그 외에는 후자를 사용하는 것을 권장
-      console.log(document.querySelector("#apple"));
+      console.log(document.querySelector('#apple'));
     </script>
   </body>
 </html>

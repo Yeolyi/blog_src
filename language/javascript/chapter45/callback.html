@@ -1,6 +1,6 @@
 <script>
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/1");
+  xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts/1');
   xhr.send();
   xhr.onload = () => {
     console.log(xhr.response);
@@ -13,7 +13,7 @@
 
   try {
     setTimeout(() => {
-      throw new Error("Error!");
+      throw new Error('Error!');
     }, 1000);
   } catch (e) {
     // 에러를 캐치하지 못한다.

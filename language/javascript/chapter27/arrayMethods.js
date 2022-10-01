@@ -5,7 +5,7 @@ printAll([
   [3, 1, 4].indexOf(4), // 2
   [3, 1, 4].indexOf(9), // -1
   [3, 1, 4].includes(9), // false
-  [1, 2, 3, 4].join("&"), // 1&2&3&4
+  [1, 2, 3, 4].join('&'), // 1&2&3&4
   [NaN].indexOf(NaN), // -1
   [NaN].includes(NaN), // true
   [1, 2, 3, 4].includes(1, 1), // false
@@ -20,7 +20,7 @@ console.log(arr1); // [ 1, 2 ]
 console.log(arr1.pop()); // 2
 console.log(arr1); // [ 1 ]
 
-console.log(arr1.unshift("a")); // 2
+console.log(arr1.unshift('a')); // 2
 console.log(arr1); // [ 'a', 1 ]
 console.log(arr1.shift()); // a
 console.log(arr1); // [ 1 ]

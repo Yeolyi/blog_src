@@ -1,5 +1,5 @@
 foo: {
-  console.log("start");
+  console.log('start');
   break foo;
-  console.log("end");
+  console.log('end');
 }
