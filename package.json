@@ -1,0 +1,28 @@
+{
+  "name": "blog_src",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yeolyi/blog_src.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yeolyi/blog_src/issues"
+  },
+  "homepage": "https://github.com/yeolyi/blog_src#readme",
+  "dependencies": {
+    "@types/node": "^18.7.23"
+  },
+  "devDependencies": {
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3"
+  }
+}

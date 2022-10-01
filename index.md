@@ -34,7 +34,7 @@ title: Document
 
 [컴퓨터 구조](cs/computer-architecture)
 
-[자료 구조](cs/data-structure) 
+[자료 구조](cs/data-structure)
 
 [네트워크](cs/network)
 

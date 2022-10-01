@@ -44,7 +44,7 @@ TS는 strict 옵션을 통해 거의 모든 에러를 잡아낼 수 있다.
 
 **런타임에 TS 타입 체크는 할 수 없다**
 
-!@chapter1/runtimeTypeCheck.ts@!
+!@chapter/runtimeTypeCheck.ts@!
 
 값은 내가 선언한 타입 이외에 다른 타입도 가질 수 있다.
 
@@ -242,7 +242,7 @@ type Rocket = { [property: string]: string };
 
 Index signature는 부정확하고, 보통 더 나은 대안이 있다.
 
-Truly dynamic data에 보통 사용된다. 런타임까지는 정확한 값을 알 수 없는 경우. 더 안전하게 하려면 undefined를 사용하자. 반환값이 string | undefined인 느낌. 
+Truly dynamic data에 보통 사용된다. 런타임까지는 정확한 값을 알 수 없는 경우. 더 안전하게 하려면 undefined를 사용하자. 반환값이 string | undefined인 느낌.
 
 Record나 Mapped type을 사용하는 대안도 있다.
 
