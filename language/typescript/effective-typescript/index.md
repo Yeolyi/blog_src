@@ -350,15 +350,44 @@ TypeScript is trying to strike a balance between specificity and flexibility.
 
 값 뒤에 as const를 쓰면 타입스크립트는 가능한 좁은 타입으로 추론한다.
 
-## 22. 타입 축소 이해하기
+### 22. 타입 축소 이해하기
 
 !@chapter3/typeGuard.ts@!
 
-## 23. 객체 한번에 생성하기
+### 23. 객체 한번에 생성하기
 
 spread operator를 활용
 
 !@chapter3/objectAtOnce.ts@!
+
+### 24. alias 일관적으로 사용하기
+
+```ts
+const borough = { name: 'Brooklyn', location: [40.688, -73.979] };
+const loc = borough.location;
+```
+
+변수에 새로운 이름을 부여해는 것을 alias라고 한다. control flow 분석을 어렵게 하기 때문에 alias는 컴
+파일러 개발자에게 재앙이다.
+
+같은 값을 담은 변수가 여러개 있으면 TS의 타입 체킹에서도 실수가 발생할 수 있다. If you introduce an
+alias, use it consistently.
+
+const bbox = polygon.box; 보다는 const {box} = polygon;을 선호하자.
+
+!@chapter3/functionPremise.ts@!
+
+### 25. 콜백보다 async 함수 사용하기
+
+콜백 방식에서 실행 순서는 코드 순서의 정반대이다.
+
+!@chapter3/race.ts@!
+
+함수는 sync하게 동작하거나 async하게 동작하거나 둘 중 하나만 해야한다. Promise.resolve가 이를 도움.
+
+!@chapter3/asyncMixed.ts@!
+
+Promise나 callback에서는 위와 같은 짓을 하기 쉽지만 async/await에서는 어렵다.
 
 ## 4. Type Design
 
