@@ -308,7 +308,57 @@ readonly is shallow.
 
 fail closed / fail open
 
+!@chapter2/mappedType.ts@!
+
 ## 3. Type Inference
+
+> An experienced TypeScript developer will use relatively few annotations (but use them to great
+> effect), while a beginner may drown their code in redundant type annotations.
+
+### 19. 추론 가능한 타입으로 코드 어지럽히지 않기
+
+이상적인 TS 코드는 함수/메소드 signiture의 타입은 명시하고, 함수 몸체의 지역 변수에는 생략하여 노이
+즈를 최소화하고 읽는 사람이 구현 로직에 집중할 수 있게 한다.
+
+객체 리터럴로 초기화 하는 경우에는 명시해도 좋다. excess property checking.
+
+**함수 구현 이전에 함수의 signiture을 명확히 알고 있어야 한다.** TDD와도 유사.
+
+객체 리터럴과 함수 반환값에 대해서는 추론 가능해도 타입을 명시하는 것을 고려해보기.
+
+### 20. 다른 타입이면 다른 변수 사용하기.
+
+union 타입은 미래에 문제를 일으킬 수 있다(create more issues down the road). 타입 체크가 필요하므로
+다루기 어렵다.
+
+union타입에서 서로 다른 두 변수로 나누면,
+
+- 엮인 두 개념을 분리하고,
+- 더 자세한 변수 이름을 쓸 수 있으며,
+- 타입 명시가 필요 없고 타입 추론을 개선한다.
+- 더 간단한 타입을 사용하게 되며
+- const로 변수를 선언할 수 있어진다.
+
+type-chainging 변수를 기피하라.
+
+### 21. 타입 확장 이해하기
+
+let으로 변수를 선언하면 TS는 여러 선택지들 중 적당한 타입을 선택한다. const로 선언하면 더 좁은 타입
+이 된다.
+
+TypeScript is trying to strike a balance between specificity and flexibility.
+
+값 뒤에 as const를 쓰면 타입스크립트는 가능한 좁은 타입으로 추론한다.
+
+## 22. 타입 축소 이해하기
+
+!@chapter3/typeGuard.ts@!
+
+## 23. 객체 한번에 생성하기
+
+spread operator를 활용
+
+!@chapter3/objectAtOnce.ts@!
 
 ## 4. Type Design
 
