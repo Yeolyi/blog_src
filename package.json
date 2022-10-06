@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/yeolyi/blog_src#readme",
   "dependencies": {
-    "@types/node": "^18.7.23"
+    "@types/lodash": "^4.14.186",
+    "@types/node": "^18.7.23",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "husky": "^8.0.1",

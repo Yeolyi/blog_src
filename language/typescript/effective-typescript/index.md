@@ -389,6 +389,26 @@ const bbox = polygon.box; 보다는 const {box} = polygon;을 선호하자.
 
 Promise나 callback에서는 위와 같은 짓을 하기 쉽지만 async/await에서는 어렵다.
 
+### 26. 타입 추론에 맥락이 어떻게 활용되는지 알기
+
+타입스크립트는 변수가 처음 도입(introduce)?될 때 그 타입을 결정한다.
+
+원하는 타입이 아니라면 타입 선언을 하거나 const context를 통해 shallow constant가 아닌 deep constant
+임을 알리면 된다.
+
+const contexts can neatly solve issues around losing context in inference, but they do have an
+unfortunate downside: if you make a mistake in the definition (say you add a third element to the
+tuple) then the error will be flagged at the call site, not at the definition. This may be
+confusing, especially if the error occurs in a deeply nested object??
+
+### 27. 타입의 흐름을 돕지 위해 Functional Construct나 라이브러리 사용하기
+
+hand-rolled loop는 타입을 직접 다루어야한다.
+
+!@chapter3/typeLibrary.ts@!
+
+type flow를 개선하고, 가독성을 개선하고, 타입 명시의 필요성을 낮출 수 있다.
+
 ## 4. Type Design
 
 ## 5. Working with any
