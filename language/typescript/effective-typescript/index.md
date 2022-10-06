@@ -411,6 +411,121 @@ type flow를 개선하고, 가독성을 개선하고, 타입 명시의 필요성
 
 ## 4. Type Design
 
+> Show me your flowcharts and conceal your tables, and I shall continue to be mystified. Show me
+> your tables, and I won’t usually need your flowcharts; they’ll be obvious. Fred Brooks, The
+> Mythical Man Month
+
+데이터나 데이터 타입을 모르면 코드를 이해하기 어렵다. 타입을 잘 짜면 flowchart가 명확해진다.
+
+타입을 어떻게 디자인할지 이 챕터에서 살펴보자.
+
+### 28. 항상 유효한 상태를 나타내는 타입을 선호하기
+
+효과적인 타입 디자인의 열쇠는 유효한 상태만 표현할 수 있도록 타입을 설계하는 것이다.
+
+표현하기 길고 어려울 수록 결국에는 시간과 고통을 절약해준다.
+
+### 29. 넓게 수용하고 엄격하게 생산하기
+
+함수가 넓은 범위의 값을 입력으로 받는 것은 좋지만, 일반적으로 받은 것보다 상세한 것을 반환해야한다.
+
+반환값에 optional 프로퍼티와 union type이 많은 함수는 사용하기 어렵다.
+
+### 30. 문서에 타입 정보 반복하지 않기
+
+코드와 주석이 일치하지 않으면 둘 다 틀렸다~!
+
+강제하지 않으면 그 어떤 것도 sync되지 않는다.
+
+단위가 중요하고 타입만으로 충분하지 않다면 변수명에 포함시키자(temperatorC, timeMs...).
+
+### 31. null값을 타입 주변에 씌우기
+
+undefined가 많은 객체는 클라이언트가 사용하기 힘들다.
+
+```ts
+// 혼란스럽고 null 체크 범벅이 된다.
+class UserPosts {
+  user: UserInfo | null;
+  posts: Post[] | null;
+
+  constructor() {
+    this.user = null;
+    this.posts = null;
+  }
+
+  async init(userId: string) {
+    return Promise.all([
+      async () => (this.user = await fetchUser(userId)),
+      async () => (this.posts = await fetchPostsForUser(userId)),
+    ]);
+  }
+
+  getUserName() {
+    // ...?
+  }
+}
+
+// nullable 프로퍼티를 프로미스로 바꾸지는 말자. 모든 메서드가 비동기임이 강제됨.
+// 프로미스는 데이터를 로드하는 코드는 명확하게 하지만 데이터를 사용하는 코드에는 정반대의 영향을 끼침
+class UserPosts {
+  user: UserInfo;
+  posts: Post[];
+
+  constructor(user: UserInfo, posts: Post[]) {
+    this.user = user;
+    this.posts = posts;
+  }
+
+  static async init(userId: string): Promise<UserPosts> {
+    const [user, posts] = await Promise.all([fetchUser(userId), fetchPostsForUser(userId)]);
+    return new UserPosts(user, posts);
+  }
+
+  getUserName() {
+    return this.user.name;
+  }
+}
+```
+
+특정 값의 null 여부가 암묵적으로 다른 값의 상태에 달려있는 디자인을 피하자.
+
+모든 값이 사용 가능해지면 non-null 클래스를 만드는 것을 고려해보자.
+
+### 32. Union들의 인터페이스보다 인터페이스의 union을 선호하기
+
+TS의 타입 체커와 잘 어울려서 tagged union은 널리 사용된다.
+
+union 타입인 프로퍼티를 여러개 가지는 인터페이스는 각각 프로퍼티간의 관계를 흐릿하게 하기에 보통은잘
+못 디자인된 것이다.
+
+### 33. string 타입보다 상세한 대안 찾기
+
+!@chapter4/pluck.ts@!
+
+### 34. 부정확한 타입보다 미완성된 타입 선호하기
+
+Avoid the uncanny valley of type safety: incorrect types are often worse than no types.
+
+새로운 타입 선언이 더 자세하지만 자동완성을 break한다면 TS 개발 경험을 저해시킬 것이다.
+
+### 35. 데이터가 아닌 API나 스펙을 통해 타입 만들기
+
+There is no risk that your types and reality diverge since they are both coming from a single source
+of truth
+
+### 36. 도메인에 맞는 타입 이름 사용하기
+
+Synonym의 사용이 작문에서는 유용해도 코드에서는 그렇지 않음을 알자. 같은 뜻이면 같은 이름을 사용하자
+.
+
+구현이 아닌 사용을 중심으로 이름을 지으면 추상화 정도를 높일 수 있고 inadvertent collision?의 위험성
+을 줄일 수 있다.
+
+data, info, thing, item, object와 같은 애매하고 무의미한 변수의 사용을 피하자.
+
+### 37. Nominal type에서 brand의 사용 고려해보기
+
 ## 5. Working with any
 
 ## 6. Types Declarations and @types
