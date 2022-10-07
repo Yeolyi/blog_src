@@ -586,6 +586,35 @@ const numArgsGood = (...args: any[]) => args.length; // Returns number
 
 YAML can represent the same set of values as JSON but allows a superset of JSON’s syntax
 
+모든 타입이 any에 대입 가능하고, any 또한 모든 타입에 대입 가능하다. 하지만 특정 집합이 다른모 든 집
+합의 subset인 동시에 superset일 수는 없으므로 any는 타입 시스템에 fit하지 못하다.
+
+unknown은 모든 타입이 unknown에 대입 가능하다는 첫번째 속성만 지닌다.
+
+never는 다른 모든 타입에 대입될 수 있다는 두번째 속성만 지닌다.
+
+unknown은 값이 있다는건 알지만 그 값이 무엇인지 모를 때 유용하다.
+
+```ts
+// type assertion과 다를 것이 없다.
+// unknown을 반환하는 것이 낫다.
+function safeParseYAML<T>(yaml: string): T {
+  return parseYAML(yaml);
+}
+```
+
+```ts
+let barAny = foo as any as Bar;
+let barUnk = foo as unknown as Bar;
+// 리팩터링으로 쪼개졌을 때 후자가 더 안전하다.
+```
+
+{} 타입은 null과 undefined를 제외한 모든 값이 가능하다. unknown 생기기 전에 많이 씀.
+
+object 타입은 원시형이 아닌 모든 값이 가능하다.
+
+### 43. Monkey patching보다 타입 안전한 방법 사용하기
+
 ## 6. Types Declarations and @types
 
 ## 7. Writing and Running Your Code
