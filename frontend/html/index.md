@@ -6,8 +6,7 @@ title: HTML
 
 ### Copyright
 
-[Structuring the web with HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML) by Mozilla
-Contributors is licensed under CC-BY-SA 2.5.
+[Structuring the web with HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML) by Mozilla Contributors is licensed under CC-BY-SA 2.5.
 
 ### Introduction to HTML
 

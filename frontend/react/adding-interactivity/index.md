@@ -39,9 +39,7 @@ Explicitly calling an event handler prop from a child handler is a good alternat
 e.preventDefault();
 ```
 
-**Event handlers are the best place for side effects.** However, in order to change some
-information, you first need some way to store it. In React, this is done by using state, a
-component’s memory. You will learn all about it on the next page.
+**Event handlers are the best place for side effects.** However, in order to change some information, you first need some way to store it. In React, this is done by using state, a component’s memory. You will learn all about it on the next page.
 
 ### State: A Component's Memory
 
@@ -52,8 +50,7 @@ component’s memory. You will learn all about it on the next page.
 
 > Hooks are special functions that are only available while React is rendering.
 
-Hooks are functions, but it’s helpful to think of them as unconditional declarations about your
-component’s needs. 모듈 상단에 import 하는 것과 비슷하게생각하자.
+Hooks are functions, but it’s helpful to think of them as unconditional declarations about your component’s needs. 모듈 상단에 import 하는 것과 비슷하게생각하자.
 
 How does useState know which of the state variables to return?
 
@@ -66,11 +63,9 @@ How does useState know which of the state variables to return?
 
 State is local to a component instance on the screen.
 
-Unlike props, state is fully private to the component declaring it. The parent component can’t
-change it.
+Unlike props, state is fully private to the component declaring it. The parent component can’t change it.
 
-What if you wanted both galleries to keep their states in sync? The right way to do it in React is
-to remove state from child components and add it to their closest shared parent.
+What if you wanted both galleries to keep their states in sync? The right way to do it in React is to remove state from child components and add it to their closest shared parent.
 
 hook into = to become connected to
 
@@ -92,21 +87,17 @@ initial render는 ReactDOM.render로 이루어진다.
 
 > “Rendering” is React calling your components.
 
-초기 렌더에서는 root 컴포넌트를 호출하고, 이후에는 state 업데이트로 렌더가 트리거된 컴포넌트를 호출
-한다.
+초기 렌더에서는 root 컴포넌트를 호출하고, 이후에는 state 업데이트로 렌더가 트리거된 컴포넌트를 호출한다.
 
-초기 렌더에서는 DOM node들을 만들고, re-render에서는 이전 렌더와 비교 작업을 해어떤 프로퍼티가 바뀌
-었는지 계산한다. commit phrase 전까지는 이 정보로 아무 작업도 하지 않는다.
+초기 렌더에서는 DOM node들을 만들고, re-render에서는 이전 렌더와 비교 작업을 해어떤 프로퍼티가 바뀌었는지 계산한다. commit phrase 전까지는 이 정보로 아무 작업도 하지 않는다.
 
 **React commits changes to the DOM**
 
-초기 렌더에서는 appendChild로 모든 DOM 노드들을 넣고, 이후에는 렌더링 단계에서계산된 minimum
-neccessary operation을 수행한다.
+초기 렌더에서는 appendChild로 모든 DOM 노드들을 넣고, 이후에는 렌더링 단계에서계산된 minimum neccessary operation을 수행한다.
 
 ### State as a Snapshot
 
-Setting state variable does not change the state variable you already have, but instead triggers a
-re-render.
+Setting state variable does not change the state variable you already have, but instead triggers a re-render.
 
 When React re-renders a component:
 
@@ -116,9 +107,7 @@ When React re-renders a component:
 
 State actually lives outside of your function.
 
-When React calls your component, it gives you a snapshot of the state for that particular render.
-Your component returns a snapshot of the UI with a fresh set of props and event handlers in its JSX,
-all calculated using the state values from that render!
+When React calls your component, it gives you a snapshot of the state for that particular render. Your component returns a snapshot of the UI with a fresh set of props and event handlers in its JSX, all calculated using the state values from that render!
 
 ```jsx
 import { useState } from 'react';
@@ -149,11 +138,9 @@ React keeps the state values “fixed” within one render’s event handlers.
 
 Variables and event handlers don’t “survive” re-renders. Every render has its own event handlers.
 
-- Event handlers created in the past have the state values from the render in which they were
-  created.
+- Event handlers created in the past have the state values from the render in which they were created.
 
-You can mentally substitute state in event handlers, similarly to how you think about the rendered
-JSX???
+You can mentally substitute state in event handlers, similarly to how you think about the rendered JSX???
 
 ### Queueing a Series of State Updates
 
@@ -212,8 +199,7 @@ export default function Counter() {
 // It is a way to tell React to “do something with the state value” instead of just replacing it.
 ```
 
-It’s common to name the updater function argument by the first letters of the corresponding state
-variable:
+It’s common to name the updater function argument by the first letters of the corresponding state variable:
 
 ```jsx
 setLastName((ln) => ln.reverse());
@@ -253,8 +239,7 @@ function delay(ms) {
 
 ### Updating Objects in State
 
-Although objects in React state are technically mutable, you should treat them as if they were
-immutable
+Although objects in React state are technically mutable, you should treat them as if they were immutable
 
 Note that the ... spread syntax is “shallow”—it only copies things one level deep.
 
@@ -270,9 +255,7 @@ setPerson({
 
 Nested object를 할 때는 잘 분리해서 하기. Objects are not really nested. 다른 객체를 가르킬 뿐.
 
-**Immer** is a popular library that lets you write using the convenient but mutating syntax and
-takes care of producing the copies for you. The draft provided by Immer is a special type of object,
-called a Proxy, that “records” what you do with it. 프록시 공부해보자.
+**Immer** is a popular library that lets you write using the convenient but mutating syntax and takes care of producing the copies for you. The draft provided by Immer is a special type of object, called a Proxy, that “records” what you do with it. 프록시 공부해보자.
 
 ### Updating Arrays in State
 

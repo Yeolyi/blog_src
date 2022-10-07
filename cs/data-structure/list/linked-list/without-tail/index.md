@@ -23,9 +23,7 @@ typedef struct _linkedList
 
 ## 더미 노드가 없는 끔찍한 구현
 
-숨 쉴 때마다 head에 대한 예외를 생각해야한다. 정렬 때문에 head에 원소를 삽입해야되는 경우 예외처리를
-해줘야하는데 정말 끔찍하다. cur가 아무리 앞에 있어도 head에위치해있는데 이러면 head 뒤에만 원소를 이
-을 수밖에 없기 때문.
+숨 쉴 때마다 head에 대한 예외를 생각해야한다. 정렬 때문에 head에 원소를 삽입해야되는 경우 예외처리를해줘야하는데 정말 끔찍하다. cur가 아무리 앞에 있어도 head에위치해있는데 이러면 head 뒤에만 원소를 이을 수밖에 없기 때문.
 
 ```{class="language-c"}
 void ListInit(List *plist)
@@ -122,8 +120,7 @@ void SetSortRule(List *plist, bool (*AreInIncreasingOrder)(LData *a, LData *b))
 
 ## 더미 노드가 있는 구현
 
-> Since every position you want to insert at (and every node you're allowed to delete) has a prev
-> and next node, the code is simplified.
+> Since every position you want to insert at (and every node you're allowed to delete) has a prev and next node, the code is simplified.
 
 [출처](https://stackoverflow.com/questions/9103577/what-is-the-difference-between-the-head-node-and-starting-node-of-link-list)
 

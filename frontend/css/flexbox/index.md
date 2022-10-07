@@ -21,8 +21,7 @@ flex-wrap: wrap;
 flex-flow: row wrap;
 ```
 
-article에 flex:1을 주면 모든 article이 같은 같이므로 폭을 균등하게 나눠서 같는다 . flex:40000을 줘도
-같은 결과.
+article에 flex:1을 주면 모든 article이 같은 같이므로 폭을 균등하게 나눠서 같는다 . flex:40000을 줘도같은 결과.
 
 ```css
 // Each flex item will first be given 200px of the available space. After that, the rest of the available space will be shared according to the proportion units.
@@ -31,8 +30,7 @@ article:nth-of-type(3) {
 }
 ```
 
-flex: unitless-proportion flex-shrink flex-basis. We'd advise against using the longhand flex
-properties unless you really have to.
+flex: unitless-proportion flex-shrink flex-basis. We'd advise against using the longhand flex properties unless you really have to.
 
 !@flex-align0.html@!
 

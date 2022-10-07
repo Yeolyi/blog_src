@@ -2,15 +2,12 @@
 title: 자료구조
 ---
 
-> In computer science, a data structure is a data organization, management, and storage format that
-> enables efficient access and modification. \_Wikipedia
+> In computer science, a data structure is a data organization, management, and storage format that enables efficient access and modification. \_Wikipedia
 
 윤성우님의 '열혈 자료구조' 책으로 공부를 진행했다. 다만 예제에 내 생각을 담아 몇몇 부분을 수정했다.
 
 - 참거짓을 반환하는 함수는 int 대신 bool을 반환한다.
-- effective c++(맞나?)와
-  [stackoverflow 글](https://stackoverflow.com/questions/180401/placement-of-the-asterisk-in-pointer-declarations)을
-  참고해 포인터 표시를 위한 asterick는 변수 부분에 붙여서 썼다.
+- effective c++(맞나?)와 [stackoverflow 글](https://stackoverflow.com/questions/180401/placement-of-the-asterisk-in-pointer-declarations)을참고해 포인터 표시를 위한 asterick는 변수 부분에 붙여서 썼다.
 - 생성한 구조체를 free하는 함수가 없어 따로 정의했다.
 
 ## 선형 자료구조

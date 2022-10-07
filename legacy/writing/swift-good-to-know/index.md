@@ -21,8 +21,7 @@ Character("a").asciiValue!
 
 _특정 문자의 아스키 값 알기._
 
-문자열로 시도하면 Character 초기화 중 에러 발생, 이모티콘 같이 아스키 코드 없는값으로 시도하면 nil
-반환.
+문자열로 시도하면 Character 초기화 중 에러 발생, 이모티콘 같이 아스키 코드 없는값으로 시도하면 nil 반환.
 
 ```{class="language-swift"}
 String(repeating: "*", count: i)
@@ -50,8 +49,7 @@ print(Array(str.unicodeScalars).map(\.value))
 
 _String을 아스키 배열로 표현하기_
 
-사실 utf8이든 utf16이든 뭐든 아스키 부분은 일치하는지 코테볼 때는 괜찮겠지만
-[자세한 사항](https://shyi0200.tistory.com/m/28)도 알아보면 좋을 듯!
+사실 utf8이든 utf16이든 뭐든 아스키 부분은 일치하는지 코테볼 때는 괜찮겠지만 [자세한 사항](https://shyi0200.tistory.com/m/28)도 알아보면 좋을 듯!
 
 ```{class="language-swift"}
 // typealias UnicodeScalar = Unicode.Scalar
@@ -60,9 +58,7 @@ Character(UnicodeScalar(72))
 
 _아스키에서 char로 변환하기_
 
-Unicode.Scalar는 UInt8의 이니셜라이져와 다르게 Int의 이니셜라이져는 실패 가능하다는 점 주의! 문자열
-관련 문제 풀 떄 이게 왜 되지? 궁금해했는데 알고보니 다른 문자열 내장 함수가 UInt8을 뱉어서 이니셜라
-이져 실패 안하고 문제 없이 넘어간 것이었다,,,ㅎ
+Unicode.Scalar는 UInt8의 이니셜라이져와 다르게 Int의 이니셜라이져는 실패 가능하다는 점 주의! 문자열관련 문제 풀 떄 이게 왜 되지? 궁금해했는데 알고보니 다른 문자열 내장 함수가 UInt8을 뱉어서 이니셜라이져 실패 안하고 문제 없이 넘어간 것이었다,,,ㅎ
 
 ```{class="language-swift"}
 import Foundation
@@ -80,6 +76,4 @@ for radians in stride(from: 0.0, to: .pi * 2 by: .pi / 2) {
 
 _stride(from:to:by:)_
 
-stride 함수가 있다는 것을 자꾸 까먹어서 기록! 그런데 [이 문제](https://www.acmicpc.net/problem/1929)
-풀어보니까 stride 함수가 느린 것같기도 하다. 속도가 중요하면 수학적으로 좀 더 생각해서 for 문 쓰는게
-나을지도?
+stride 함수가 있다는 것을 자꾸 까먹어서 기록! 그런데 [이 문제](https://www.acmicpc.net/problem/1929) 풀어보니까 stride 함수가 느린 것같기도 하다. 속도가 중요하면 수학적으로 좀 더 생각해서 for 문 쓰는게나을지도?

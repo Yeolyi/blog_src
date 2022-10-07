@@ -2,9 +2,7 @@
 title: 이진 탐색 트리
 ---
 
-> In computer science, a binary search tree (BST), also called an ordered or sorted binary tree, is
-> a rooted binary tree data structure whose internal nodes each store a key greater than all the
-> keys in the node’s left subtree and less than those in its right subtree.
+> In computer science, a binary search tree (BST), also called an ordered or sorted binary tree, is a rooted binary tree data structure whose internal nodes each store a key greater than all the keys in the node’s left subtree and less than those in its right subtree.
 
 이중 포인터 쓰는 것 익숙해지기!
 

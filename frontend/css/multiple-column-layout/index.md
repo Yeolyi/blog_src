@@ -6,11 +6,9 @@ multiple-column layout — often referred to as multicol.
 
 !@multicol.html@!
 
-colum-width. The browser will now give you as many columns as it can of the size that you specify.
-남은 공간은 나눠서 가지므로 표시한 width값과 같지 않은 경우가많다.
+colum-width. The browser will now give you as many columns as it can of the size that you specify. 남은 공간은 나눠서 가지므로 표시한 width값과 같지 않은 경우가많다.
 
-column-rule is a shorthand for column-rule-color, column-rule-style, and column-rule-width. border랑
-비슷.
+column-rule is a shorthand for column-rule-color, column-rule-style, and column-rule-width. border랑비슷.
 
 rule은 그 자체의 width를 가지지 않는다.
 

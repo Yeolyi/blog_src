@@ -4,9 +4,7 @@ title: How CSS is structured
 
 Avoid using CSS in inline style way, when possible. It is the opposite of a best practice.
 
-The CSS language has rules to control which selector is stronger in the event of a conflict. These
-rules are called cascade and specificity. Cascade는 css 파일에서 늦게 등장하는 것이 우선한다는 것,
-specificity는 구체적인 것이 우선함을 의미한다.
+The CSS language has rules to control which selector is stronger in the event of a conflict. These rules are called cascade and specificity. Cascade는 css 파일에서 늦게 등장하는 것이 우선한다는 것, specificity는 구체적인 것이 우선함을 의미한다.
 
 property & value -> CSS declaration -> CSS Declatation Block -> CSS ruleset
 
@@ -21,11 +19,9 @@ property & value -> CSS declaration -> CSS Declatation Block -> CSS ruleset
 }
 ```
 
-> CSS @rules (pronounced "at-rules") provide instruction for what CSS should perform or how it
-> should behave.
+> CSS @rules (pronounced "at-rules") provide instruction for what CSS should perform or how it should behave.
 
-> Some properties like font, background, padding, border, and margin are called **shorthand
-> properties**. This is because shorthand properties set several values in a single line.
+> Some properties like font, background, padding, border, and margin are called **shorthand properties**. This is because shorthand properties set several values in a single line.
 
 ```css
 padding: 10px 15px 15px 5px;

@@ -2,13 +2,11 @@
 title: iOS 개발 공부 로드맵
 ---
 
-[패스트캠퍼스 강의](https://fastcampus.co.kr/dev_online_iosappfinal)에서 뭘 배워야할지 힌트를 얻었다
-.
+[패스트캠퍼스 강의](https://fastcampus.co.kr/dev_online_iosappfinal)에서 뭘 배워야할지 힌트를 얻었다 .
 
 ## iOS
 
-UIKit SwiftUI CocoaPods iCloud JSON parsing APNS Carthage Alamofire WidgetKit AVFoundation GitHub
-Numpy(VStack, HStack) URLSession Kingfisher Network 비동기처리 OpenAPI RxCocoa XCTest UITest
+UIKit SwiftUI CocoaPods iCloud JSON parsing APNS Carthage Alamofire WidgetKit AVFoundation GitHub Numpy(VStack, HStack) URLSession Kingfisher Network 비동기처리 OpenAPI RxCocoa XCTest UITest
 
 ## 채용공고 필수스택
 
@@ -16,8 +14,7 @@ AutoLayout RxSwift MVVM Unit Test
 
 ## Firebase
 
-Firebase Authentication Firebase Realtime Database Firebase Firestore Database Firebase Remote
-Config Firebase A/B Test
+Firebase Authentication Firebase Realtime Database Firebase Firestore Database Firebase Remote Config Firebase A/B Test
 
 ## CI/CD
 

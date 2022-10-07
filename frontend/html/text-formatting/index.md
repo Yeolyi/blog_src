@@ -2,8 +2,7 @@
 title: Advanced text formatting
 ---
 
-> The purpose of **description lists** is to mark up a set of items and their associated
-> descriptions, such as terms and definitions, or questions and answers.
+> The purpose of **description lists** is to mark up a set of items and their associated descriptions, such as terms and definitions, or questions and answers.
 
 ```html
 <dl>
@@ -27,8 +26,7 @@ title: Advanced text formatting
 
 block level content -> <blockquote> inline -> <q>
 
-There is no way to get the browser to display the contents of cite, without writing your own
-solution using JavaScript or CSS.
+There is no way to get the browser to display the contents of cite, without writing your own solution using JavaScript or CSS.
 
 There is a <cite> element meant to contain the title of the resource being quoted.
 
@@ -55,8 +53,7 @@ There is a <cite> element meant to contain the title of the resource being quote
 </p>
 ```
 
-Another fairly common element you'll meet when looking around the Web is <abbr> — this is used to
-wrap around an abbreviation or acronym.
+Another fairly common element you'll meet when looking around the Web is <abbr> — this is used to wrap around an abbreviation or acronym.
 
 컨텐츠의 발음/표시에 대한 힌트를 준다.
 
@@ -70,18 +67,13 @@ HTML has an element for marking up contact details — <address>.
 <address>Page written by <a href="../authors/chris-mills/">Chris Mills</a>.</address>
 ```
 
-The <address> element should only be used to provide contact information for the document contained
-with the nearest <article> or <body> element. It would be correct to use it in the footer of a site
-to include the contact information of the entire site, or inside an article for the contact details
-of the author, but not to mark up a list of addresses unrelated to the content of that page.
+The <address> element should only be used to provide contact information for the document contained with the nearest <article> or <body> element. It would be correct to use it in the footer of a site to include the contact information of the entire site, or inside an article for the contact details of the author, but not to mark up a list of addresses unrelated to the content of that page.
 
 You will occasionally need to use superscript and subscript.
 
-There are a number of elements available for marking up computer code using HTML. code, pre, var,
-kbd, samp...
+There are a number of elements available for marking up computer code using HTML. code, pre, var, kbd, samp...
 
-HTML also provides the <time> element for marking up times and dates in a machine-readable format.
-For example:
+HTML also provides the <time> element for marking up times and dates in a machine-readable format. For example:
 
 ```html
 <time datetime="2016-01-20">20 January 2016</time>

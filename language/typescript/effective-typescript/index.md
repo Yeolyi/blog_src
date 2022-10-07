@@ -4,16 +4,13 @@ title: Effective Typescript
 
 > Effective TypeScript by Dan Vanderkam, published by O'Reilly Media.
 
-> ‘This book is not just about what TypeScript can do—it teaches why each language feature is
-> useful, and where to apply patterns to get the greatest effect’ Jesse Hallett, Senior Software
-> Enginner, Originate, Inc.
+> ‘This book is not just about what TypeScript can do—it teaches why each language feature is useful, and where to apply patterns to get the greatest effect’ Jesse Hallett, Senior Software Enginner, Originate, Inc.
 
 [https://effectivetypescript.com](https://effectivetypescript.com)
 
 ## Preface
 
-TypeScript is more than just a type system. It also brings a whole shite of language services which
-are fast and easy to use.
+TypeScript is more than just a type system. It also brings a whole shite of language services which are fast and easy to use.
 
 ## 1. Getting to Know TypeScript
 
@@ -23,13 +20,11 @@ are fast and easy to use.
 
 문법적인 측면에서 TS는 JS의 상위 집합이다.
 
-TS가 static 타입 시스템이라는 것은 코드를 실행하지 않고도 런타임에 예외를 던질코드를 찾아낼 수 있다
-는 것이다. 이것이 TS 타입 시스템의 목표이다.
+TS가 static 타입 시스템이라는 것은 코드를 실행하지 않고도 런타임에 예외를 던질코드를 찾아낼 수 있다는 것이다. 이것이 TS 타입 시스템의 목표이다.
 
 Type annotation은 TS에게 개발자의 의도를 전달한다.
 
-타입 시스템은 JS의 런타임 행동을 모델링한다. [] + 12 같은 경우는 goes beyond simply modeling the
-runtime behavior.
+타입 시스템은 JS의 런타임 행동을 모델링한다. [] + 12 같은 경우는 goes beyond simply modeling the runtime behavior.
 
 정적 타입의 안정성을 보장할 수 있는 타입 시스템을 sound하다고 한다. TS는 sound하지는 않다.
 
@@ -43,13 +38,11 @@ TS는 strict 옵션을 통해 거의 모든 에러를 잡아낼 수 있다.
 
 ### 3. 코드 생성이 타입과 무관함을 이해하기
 
-타입스크립트는 크게 transpiling과 type error 체크 두가지 일을 한다. 각각은 서로전혀 간섭하지 않는다.
-코드의 타입은 생성되는 JS 파일에 영향을 끼치지 않는다.
+타입스크립트는 크게 transpiling과 type error 체크 두가지 일을 한다. 각각은 서로전혀 간섭하지 않는다. 코드의 타입은 생성되는 JS 파일에 영향을 끼치지 않는다.
 
 따라서 컴파일이 안됐다는 표현보다 doesn't type check(타입이 옳지 않다?)라는 표현을 사용해야 한다.
 
-> You should aim for zero erros when you commit code, lest you fall into trap of having to remember
-> what is an expected or unexpected error.
+> You should aim for zero erros when you commit code, lest you fall into trap of having to remember what is an expected or unexpected error.
 
 **런타임에 TS 타입 체크는 할 수 없다**
 
@@ -88,19 +81,15 @@ nuts and bolds of TS's type system.
 
 ### 6. 타입 시스템의 탐색과 interrogate를 위해 에디터 사용하기
 
-TypeScript에는 두가지 executables가 있다. tsc는 컴파일러, tsserver는 TS standalone server. 서버 또한
-language service를 제공하기에 매우 중요하며 에디터를 통해 해당 서비스를 사용하게 된다. 'Go to
-Definition'도 이 서비스가 제공해줌.
+TypeScript에는 두가지 executables가 있다. tsc는 컴파일러, tsserver는 TS standalone server. 서버 또한 language service를 제공하기에 매우 중요하며 에디터를 통해 해당 서비스를 사용하게 된다. 'Go to Definition'도 이 서비스가 제공해줌.
 
 ### 7. 타입을 값들의 집합으로 보기
 
-> 가장 작은 집합은 어떤 값도 없는 공집합이다. 이는 never 타입에 대입된다. Domain 이 비어있기 때문에
-> 어떤 값도 이 타입을 가지는 변수에 대입할 수 없다.
+> 가장 작은 집합은 어떤 값도 없는 공집합이다. 이는 never 타입에 대입된다. Domain 이 비어있기 때문에어떤 값도 이 타입을 가지는 변수에 대입할 수 없다.
 
 TS에서 assignable하다는 것은 value가 type의 요소거나, type이 type의 부분집합임을의미한다.
 
-타입 연산은 값들의 집합에 적용되지, 인터페이스의 프로퍼티에 적용되는 것이 아니다 . 따라서 아래가 성
-립한다.
+타입 연산은 값들의 집합에 적용되지, 인터페이스의 프로퍼티에 적용되는 것이 아니다 . 따라서 아래가 성립한다.
 
 !@chapter2/typeAsSet.ts@!
 
@@ -138,12 +127,9 @@ You can go between the constructor type and the instance type using the Instance
 type C = InstanceType<typeof Cylinder>;
 ```
 
-위 예제에서 Cylinder는 class로 선언되었어야 한다. 클래스와 열거형은 타입과 값 모두를 가진다. The
-TypeScript type introduced by a class is based on its shape (its properties and methods) while **the
-value is the constructor**.
+위 예제에서 Cylinder는 class로 선언되었어야 한다. 클래스와 열거형은 타입과 값 모두를 가진다. The TypeScript type introduced by a class is based on its shape (its properties and methods) while **the value is the constructor**.
 
-InstanceType이 constructor의 타입을 사용해서 그냥 Cylinder는 안되고 typeof Cylinder를 사용해서 값 타
-입의 Cylinder 즉 constructor의 타입을 사용해야되는건가.
+InstanceType이 constructor의 타입을 사용해서 그냥 Cylinder는 안되고 typeof Cylinder를 사용해서 값 타입의 Cylinder 즉 constructor의 타입을 사용해야되는건가.
 
 **typeof는 항상 값에서 작동한다**
 
@@ -156,23 +142,19 @@ const people = ['alice', 'bob', 'jan'].map((name): Person => ({ name }));
 // 물론 people에 달 수도 있지만 체인이 있으면 이 방법을 사용해야함.
 ```
 
-Type assertions make the most sense when you truly do know more about a type than TypeScript does,
-typically from context that isn’t available to the type checker.
+Type assertions make the most sense when you truly do know more about a type than TypeScript does, typically from context that isn’t available to the type checker.
 
-Type assertion은 두 타입간에 교집합이 있어야 가능하다. unknown은 모든 타입의 subtype이므로 as
-unknown as A로 하는 escape hatch가 있다.
+Type assertion은 두 타입간에 교집합이 있어야 가능하다. unknown은 모든 타입의 subtype이므로 as unknown as A로 하는 escape hatch가 있다.
 
 ### 10. Wrapper Type 기피하기(String, Number...)
 
-래퍼 타입을 직접 인스턴스화할 이유는 없다. new 없이 BigInt와 Symbol을 사용하는것은 어차피 primitive
-를 뱉으므로 괜찮다.
+래퍼 타입을 직접 인스턴스화할 이유는 없다. new 없이 BigInt와 Symbol을 사용하는것은 어차피 primitive 를 뱉으므로 괜찮다.
 
 ### 11. Excess Property Checking의 한계 알기
 
 Object literal을 사용할 때는 알려지지 않은 프로퍼티를 제한한다.
 
-Recognizing excess property checking as a distinct process will help you build a clearer mental
-model of TypeScript’s type system.
+Recognizing excess property checking as a distinct process will help you build a clearer mental model of TypeScript’s type system.
 
 !@chapter2/excessPropertyChecking.ts@!
 
@@ -180,15 +162,13 @@ model of TypeScript’s type system.
 
 다만 다른 변수에 담고 전달하거나 type assertion을 사용했으면 동작하지 못한다.
 
-프로퍼티가 다 weak(? 붙은건가)한 객체는 거기서 적어도 하나는 가지고 있는지를 확인하는 단계가 추가된
-다.
+프로퍼티가 다 weak(? 붙은건가)한 객체는 거기서 적어도 하나는 가지고 있는지를 확인하는 단계가 추가된다.
 
 객체 리터럴에만 적용된다는 점 주의.
 
 ### 12. 가능한 경우 함수 표현식 전체에 타입을 적용하기
 
-Consider applying type annotations to entire function expressions, rather than to their parameters
-and return type.
+Consider applying type annotations to entire function expressions, rather than to their parameters and return type.
 
 ```ts
 type DiceRollFn = (sides: number) => number;
@@ -234,16 +214,13 @@ interface Tuple {
 }
 ```
 
-다만, 인터페이스는 augmented될 수 있다. delcaration merging. 누구도 내 타입을 augment할 수 없게 하려
-면 type을 쓰면 된다.
+다만, 인터페이스는 augmented될 수 있다. delcaration merging. 누구도 내 타입을 augment할 수 없게 하려면 type을 쓰면 된다.
 
-복잡한 타입에는 선택지 없이 type을 사용하고, 이외의 경우 기존 코드와 통일성있게작성하고 혹시 다른 유
-저에 의해 확장이되어야하면 interface를 사용한다.
+복잡한 타입에는 선택지 없이 type을 사용하고, 이외의 경우 기존 코드와 통일성있게작성하고 혹시 다른 유저에 의해 확장이되어야하면 interface를 사용한다.
 
 ### 14. 반복을 막기 위해 타입 연산과 제너릭을 사용하기
 
-DRY principle: don’t repeat yourself. It’s the closest thing to universal advice that you’ll find in
-software development.
+DRY principle: don’t repeat yourself. It’s the closest thing to universal advice that you’ll find in software development.
 
 타입에서의 반복도 막아야한다.
 
@@ -253,12 +230,9 @@ software development.
 
 'typeof 값'을 써도 좋지만 보통은 타입을 먼저 선언하고 이에 맞게 값을 할당하는 것이 좋다.
 
-> Note that ReturnType operates on typeof getUserInfo, the function’s type, rather than getUserInfo,
-> the function’s value. As with typeof, use this technique judiciously. Don’t get mixed up about
-> your source of truth.
+> Note that ReturnType operates on typeof getUserInfo, the function’s type, rather than getUserInfo, the function’s value. As with typeof, use this technique judiciously. Don’t get mixed up about your source of truth.
 
-로직의 DRY를 위해 함수를 사용하고, 타입의 DRY를 위해 제너릭을 사용한다. 제너릭은타입의 DRY를 위한 핵
-심이다. 값을 한정하기 위해 타입을 사용하고, 타입을 한정하기위해 extends를 사용한다.
+로직의 DRY를 위해 함수를 사용하고, 타입의 DRY를 위해 제너릭을 사용한다. 제너릭은타입의 DRY를 위한 핵심이다. 값을 한정하기 위해 타입을 사용하고, 타입을 한정하기위해 extends를 사용한다.
 
 ### 15. 동적인 데이터에 index signature 사용하기
 
@@ -266,13 +240,11 @@ software development.
 type Rocket = { [property: string]: string };
 ```
 
-키의 이름, 키의 타입, 값의 타입으로 구성된다. 키의 이름은 문서화 목적 외에는 타입 체커에게 사용되지
-않는다.
+키의 이름, 키의 타입, 값의 타입으로 구성된다. 키의 이름은 문서화 목적 외에는 타입 체커에게 사용되지않는다.
 
 Index signature는 부정확하고, 보통 더 나은 대안이 있다.
 
-Truly dynamic data에 보통 사용된다. 런타임까지는 정확한 값을 알 수 없는 경우. 더안전하게 하려면
-undefined를 사용하자. 반환값이 string | undefined인 느낌.
+Truly dynamic data에 보통 사용된다. 런타임까지는 정확한 값을 알 수 없는 경우. 더안전하게 하려면 undefined를 사용하자. 반환값이 string | undefined인 느낌.
 
 Record나 Mapped type을 사용하는 대안도 있다.
 
@@ -314,13 +286,11 @@ fail closed / fail open
 
 ## 3. Type Inference
 
-> An experienced TypeScript developer will use relatively few annotations (but use them to great
-> effect), while a beginner may drown their code in redundant type annotations.
+> An experienced TypeScript developer will use relatively few annotations (but use them to great effect), while a beginner may drown their code in redundant type annotations.
 
 ### 19. 추론 가능한 타입으로 코드 어지럽히지 않기
 
-이상적인 TS 코드는 함수/메소드 signiture의 타입은 명시하고, 함수 몸체의 지역 변수에는 생략하여 노이
-즈를 최소화하고 읽는 사람이 구현 로직에 집중할 수 있게 한다.
+이상적인 TS 코드는 함수/메소드 signiture의 타입은 명시하고, 함수 몸체의 지역 변수에는 생략하여 노이즈를 최소화하고 읽는 사람이 구현 로직에 집중할 수 있게 한다.
 
 객체 리터럴로 초기화 하는 경우에는 명시해도 좋다. excess property checking.
 
@@ -330,8 +300,7 @@ fail closed / fail open
 
 ### 20. 다른 타입이면 다른 변수 사용하기.
 
-union 타입은 미래에 문제를 일으킬 수 있다(create more issues down the road). 타입 체크가 필요하므로
-다루기 어렵다.
+union 타입은 미래에 문제를 일으킬 수 있다(create more issues down the road). 타입 체크가 필요하므로다루기 어렵다.
 
 union타입에서 서로 다른 두 변수로 나누면,
 
@@ -345,8 +314,7 @@ type-chainging 변수를 기피하라.
 
 ### 21. 타입 확장 이해하기
 
-let으로 변수를 선언하면 TS는 여러 선택지들 중 적당한 타입을 선택한다. const로 선언하면 더 좁은 타입
-이 된다.
+let으로 변수를 선언하면 TS는 여러 선택지들 중 적당한 타입을 선택한다. const로 선언하면 더 좁은 타입이 된다.
 
 TypeScript is trying to strike a balance between specificity and flexibility.
 
@@ -369,11 +337,9 @@ const borough = { name: 'Brooklyn', location: [40.688, -73.979] };
 const loc = borough.location;
 ```
 
-변수에 새로운 이름을 부여해는 것을 alias라고 한다. control flow 분석을 어렵게 하기 때문에 alias는 컴
-파일러 개발자에게 재앙이다.
+변수에 새로운 이름을 부여해는 것을 alias라고 한다. control flow 분석을 어렵게 하기 때문에 alias는 컴파일러 개발자에게 재앙이다.
 
-같은 값을 담은 변수가 여러개 있으면 TS의 타입 체킹에서도 실수가 발생할 수 있다. If you introduce an
-alias, use it consistently.
+같은 값을 담은 변수가 여러개 있으면 TS의 타입 체킹에서도 실수가 발생할 수 있다. If you introduce an alias, use it consistently.
 
 const bbox = polygon.box; 보다는 const {box} = polygon;을 선호하자.
 
@@ -395,13 +361,9 @@ Promise나 callback에서는 위와 같은 짓을 하기 쉽지만 async/await�
 
 타입스크립트는 변수가 처음 도입(introduce)?될 때 그 타입을 결정한다.
 
-원하는 타입이 아니라면 타입 선언을 하거나 const context를 통해 shallow constant가 아닌 deep constant
-임을 알리면 된다.
+원하는 타입이 아니라면 타입 선언을 하거나 const context를 통해 shallow constant가 아닌 deep constant 임을 알리면 된다.
 
-const contexts can neatly solve issues around losing context in inference, but they do have an
-unfortunate downside: if you make a mistake in the definition (say you add a third element to the
-tuple) then the error will be flagged at the call site, not at the definition. This may be
-confusing, especially if the error occurs in a deeply nested object??
+const contexts can neatly solve issues around losing context in inference, but they do have an unfortunate downside: if you make a mistake in the definition (say you add a third element to the tuple) then the error will be flagged at the call site, not at the definition. This may be confusing, especially if the error occurs in a deeply nested object??
 
 ### 27. 타입의 흐름을 돕지 위해 Functional Construct나 라이브러리 사용하기
 
@@ -413,9 +375,7 @@ type flow를 개선하고, 가독성을 개선하고, 타입 명시의 필요성
 
 ## 4. Type Design
 
-> Show me your flowcharts and conceal your tables, and I shall continue to be mystified. Show me
-> your tables, and I won’t usually need your flowcharts; they’ll be obvious. Fred Brooks, The
-> Mythical Man Month
+> Show me your flowcharts and conceal your tables, and I shall continue to be mystified. Show me your tables, and I won’t usually need your flowcharts; they’ll be obvious. Fred Brooks, The Mythical Man Month
 
 데이터나 데이터 타입을 모르면 코드를 이해하기 어렵다. 타입을 잘 짜면 flowchart가 명확해진다.
 
@@ -498,8 +458,7 @@ class UserPosts {
 
 TS의 타입 체커와 잘 어울려서 tagged union은 널리 사용된다.
 
-union 타입인 프로퍼티를 여러개 가지는 인터페이스는 각각 프로퍼티간의 관계를 흐릿하게 하기에 보통은잘
-못 디자인된 것이다.
+union 타입인 프로퍼티를 여러개 가지는 인터페이스는 각각 프로퍼티간의 관계를 흐릿하게 하기에 보통은잘못 디자인된 것이다.
 
 ### 33. string 타입보다 상세한 대안 찾기
 
@@ -513,16 +472,13 @@ Avoid the uncanny valley of type safety: incorrect types are often worse than no
 
 ### 35. 데이터가 아닌 API나 스펙을 통해 타입 만들기
 
-There is no risk that your types and reality diverge since they are both coming from a single source
-of truth
+There is no risk that your types and reality diverge since they are both coming from a single source of truth
 
 ### 36. 도메인에 맞는 타입 이름 사용하기
 
-Synonym의 사용이 작문에서는 유용해도 코드에서는 그렇지 않음을 알자. 같은 뜻이면 같은 이름을 사용하자
-.
+Synonym의 사용이 작문에서는 유용해도 코드에서는 그렇지 않음을 알자. 같은 뜻이면 같은 이름을 사용하자 .
 
-구현이 아닌 사용을 중심으로 이름을 지으면 추상화 정도를 높일 수 있고 inadvertent collision?의 위험성
-을 줄일 수 있다.
+구현이 아닌 사용을 중심으로 이름을 지으면 추상화 정도를 높일 수 있고 inadvertent collision?의 위험성을 줄일 수 있다.
 
 data, info, thing, item, object와 같은 애매하고 무의미한 변수의 사용을 피하자.
 
@@ -534,8 +490,7 @@ data, info, thing, item, object와 같은 애매하고 무의미한 변수의 �
 
 ## 5. Working with any
 
-기존에는 fully static type system / fully dynamic type system으로 나뉘었지만, TS의 타입 시스템은
-optional/gradual하다.
+기존에는 fully static type system / fully dynamic type system으로 나뉘었지만, TS의 타입 시스템은 optional/gradual하다.
 
 ### 38. 좁은 스코프에서 any 사용하기
 
@@ -586,8 +541,7 @@ const numArgsGood = (...args: any[]) => args.length; // Returns number
 
 YAML can represent the same set of values as JSON but allows a superset of JSON’s syntax
 
-모든 타입이 any에 대입 가능하고, any 또한 모든 타입에 대입 가능하다. 하지만 특정 집합이 다른모 든 집
-합의 subset인 동시에 superset일 수는 없으므로 any는 타입 시스템에 fit하지 못하다.
+모든 타입이 any에 대입 가능하고, any 또한 모든 타입에 대입 가능하다. 하지만 특정 집합이 다른 모든 집합의 subset인 동시에 superset일 수는 없으므로 any는 타입 시스템에 fit하지 못하다.
 
 unknown은 모든 타입이 unknown에 대입 가능하다는 첫번째 속성만 지닌다.
 
