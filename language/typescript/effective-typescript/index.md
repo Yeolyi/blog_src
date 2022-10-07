@@ -8,6 +8,8 @@ title: Effective Typescript
 > useful, and where to apply patterns to get the greatest effect’ Jesse Hallett, Senior Software
 > Enginner, Originate, Inc.
 
+[https://effectivetypescript.com](https://effectivetypescript.com)
+
 ## Preface
 
 TypeScript is more than just a type system. It also brings a whole shite of language services which
@@ -526,7 +528,63 @@ data, info, thing, item, object와 같은 애매하고 무의미한 변수의 �
 
 ### 37. Nominal type에서 brand의 사용 고려해보기
 
+> This is purely a game with the type system.
+
+!@chapter4/brand.ts@!
+
 ## 5. Working with any
+
+기존에는 fully static type system / fully dynamic type system으로 나뉘었지만, TS의 타입 시스템은
+optional/gradual하다.
+
+### 38. 좁은 스코프에서 any 사용하기
+
+함수에서 any 반환값은 전염성이 있다.
+
+에러를 silence하고 싶으면 **@ts-ignore** 활용하기.
+
+```ts
+const bad: Config = {
+  a: 1,
+  b: 2,
+} as any;
+
+const good: Config = {
+  a: 1,
+  b: 2 as any,
+};
+```
+
+### 39. 그냥 any보다는 자세한 variant 쓰기
+
+배열이면 any[], 값을 모르는 객체면 {[key: string]: any}.
+
+object는 원시형이 아닌 모든 타입. 키 순회는 되지만 이걸로 값 접근은 못함.
+
+```ts
+const numArgsBad = (...args: any) => args.length; // Returns any
+const numArgsGood = (...args: any[]) => args.length; // Returns number
+```
+
+### 40. 잘 타입된 함수 안에 위험한 type assertion 숨기기
+
+!@chapter5/cacheLast.ts@!
+
+### 41. Understand Evolving any
+
+일반적으로 TS에서 타입은 선언될 때 결정되고, 이후에는 refined될 수 있지만 expand될 수는 없다.
+
+> This is only enabled if noImplicitAny is set.
+
+!@chapter5/evolvingAny.ts@!
+
+왜 안되나 했네,, tsconfig.json 추가하니 잘 됨
+
+그래도 이거 쓰지 말고 타입을 명시해주자.
+
+### 42. 알려지지 않은 타입에는 any 대신 unknown을 사용하자
+
+YAML can represent the same set of values as JSON but allows a superset of JSON’s syntax
 
 ## 6. Types Declarations and @types
 
