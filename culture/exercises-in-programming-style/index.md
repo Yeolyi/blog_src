@@ -32,6 +32,8 @@ Exercises in Programming Style Second Edition, Cristina Videira Lopes
 
 > Computing systems are like an onion, with layers upon layers of abstraction developed over the years in order to facilitate the expression of intent. It is important to know what the inner layers really entail. The first three programming styles illustrate what programming was like several decades ago, and to some extent, what it still is – because ideas keep getting reinvented.
 
+### 1. Good Old Times
+
 ## 2. Basic Styles
 
 ## 3. Function Composition

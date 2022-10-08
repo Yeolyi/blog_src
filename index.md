@@ -38,7 +38,9 @@ title: Document
 
 ### 교양
 
-[Exercises in Programming Style](culture/exercisesInProgrammingStyle)
+[Clean Code](./culture/clean-code/)
+
+[Exercises in Programming Style](./culture/exercises-in-programming-style/)
 
 ### Links
 

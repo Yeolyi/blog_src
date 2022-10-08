@@ -2,3 +2,4 @@
 *.bash
 tsconfig.json
 *.py
+*.txt
