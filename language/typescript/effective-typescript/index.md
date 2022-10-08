@@ -569,6 +569,26 @@ object 타입은 원시형이 아닌 모든 값이 가능하다.
 
 ### 43. Monkey patching보다 타입 안전한 방법 사용하기
 
+jQuery 등에서 자주 사용되는 monkey patching은 프로그램의 먼 부분끼리의 의존성을 부주의하게 더할 수 있고, 함수를 부를 때마다 side effect에 대해 생각해보아야되게 한다.
+
+어쩔 수 없이 써야 한다면 augmentation을 활용한다.
+
+```ts
+interface Document {
+  monkey: string;
+}
+```
+
+module context에서는 declare global을 활용한다,,,?
+
+**여기 챕터는 나중에 다시 읽어보기**
+
+- Prefer structured code to storing data in globals or on the DOM.
+
+- If you must store data on built-in types, use one of the type-safe approaches (augmentation or asserting a custom interface).
+
+- Understand the scoping issues of augmentations.
+
 ## 6. Types Declarations and @types
 
 ## 7. Writing and Running Your Code
