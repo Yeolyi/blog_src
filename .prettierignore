@@ -1,3 +1,4 @@
 .prettierignore
 *.bash
 tsconfig.json
+*.py
