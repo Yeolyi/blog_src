@@ -6,24 +6,27 @@ import static java.lang.System.out;
 // 10
 // 20
 class VariableOverride {
-    public static void main(String[] args) {
-        new BB();
-    }
+
+  public static void main(String[] args) {
+    new BB();
+  }
 }
 
 class AA {
-    int x = 10;
 
-    AA() {
-        System.out.println("AA INIT");
-    }
+  int x = 10;
+
+  AA() {
+    System.out.println("AA INIT");
+  }
 }
 
 class BB extends AA {
-    int x = 20;
 
-    BB() {
-        out.println(super.x); // 10
-        out.println(x); // 20
-    }
+  int x = 20;
+
+  BB() {
+    out.println(super.x); // 10
+    out.println(x); // 20
+  }
 }

@@ -4,19 +4,19 @@ import java.io.*;
 import java.net.*;
 
 public class DateClient {
-    public static void main(String[] args) throws Exception {
-        // make connection to server socket
-        Socket socket = new Socket("127.0.0.1", 6013);
 
-        InputStream in = socket.getInputStream();
-        BufferedReader br = new BufferedReader(new InputStreamReader(in));
+  public static void main(String[] args) throws Exception {
+    // make connection to server socket
+    Socket socket = new Socket("127.0.0.1", 6013);
 
-        // read date from the socket
-        String line = null;
-        while ((line = br.readLine()) != null)
-            System.out.println(line);
+    InputStream in = socket.getInputStream();
+    BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
-        // close the socket connections
-        socket.close();
-    }
+    // read date from the socket
+    String line = null;
+    while ((line = br.readLine()) != null) System.out.println(line);
+
+    // close the socket connections
+    socket.close();
+  }
 }
