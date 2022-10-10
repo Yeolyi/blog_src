@@ -47,6 +47,12 @@ Complex fulcrumPoint = Complex(23.0);
 
 ## 3. Functions
 
+함수는 작게 만들어야 한다.
+
+if/while 문 등에 들어가는 블록은 한 줄이어야 한다?! 함수에서 들여쓰기 수준은 1단이나 2단을 넘억면 안 된다.
+
+함수는 한 가지를 잘해야 한다. 더 정확히는, 추상화 수준이 하나여야한다.
+
 ## 4. Comments
 
 ## 5. Formatting

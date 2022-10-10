@@ -589,8 +589,132 @@ module context에서는 declare global을 활용한다,,,?
 
 - Understand the scoping issues of augmentations.
 
+## 44. 타입 안전성의 regression을 막기 위해 type coverage 살피기
+
+explicit any와 써드파티 선언때문에 any는 언제든 코드에 침범할 수 있다. 주기적으로 프로그램이 얼마나 잘 타입되어있는지 확인하면 좋다.
+
+type coverage 패키지를 활용할 수 있다.
+
+```bash
+npx type-coverage --detail
+```
+
 ## 6. Types Declarations and @types
+
+의존성 관리는 어떤 언어에서든지 혼란스러울 수 있다.
+
+### 45. TS와 @types를 devDependencies에 넣기
+
+npm(Node Package Manager)는 package.json을 통해 어떤 버전들에 의존하는지 명시할 수 있게 해준다.
+
+devDependency는 런타임에 필요하지 않은 것, peerDependency는 don't want to be responsible for tracking?
+
+[peer-dependencies](https://nodejs.org/en/blog/npm/peer-dependencies/)
+
+devDependency에 TS 버전을 명시하므로써 coworker가 모두 같은 버전을 사용할 수 있다. npx tsc는 그렇게 설치된 버전으로 실행한다.
+
+DefinitelyTyped의 타입 정의는 @types 스코프에서 published되어있다.
+
+### 46. 타입 선언에 얽혀있는 세가지 버전 이해하기
+
+- 패키지의 버전
+- 타입 선언의 버전
+- 타입스크립트의 버전
+
+> Much of the development of TypeScript’s type system has been motivated by an attempt to more precisely type popular JavaScript libraries like Lodash, React, and Ramda
+
+```
+node_modules/
+  @types/
+    foo/
+      index.d.ts @1.2.3
+    bar/
+      index.d.ts
+      node_modules/
+        @types/
+          foo/
+            index.d.ts @2.3.4
+```
+
+위와 같은 경우 모듈과 달리 타입 선언은 flat global namespace에 있으므로 중복 문제가 발생한다.
+
+뒷 내용은 나중에 다시 읽어보기. 타입 번들링 vs Definitely Typed 관련. 라이브러리가 TS로 쓰였으면 전자, 아니면 후자라고 함.
+
+### 47. Public API에 등장하는 모든 타입을 export하기
+
+Public method의 타입은 유저가 어떻게든 추출할 수 있기에 숨기지 말고 사용자가 쓰기 쉽게 만들어야한다.
+
+### 48. API 주석에 TSDoc 사용하기
+
+!@chapter6/tsdoc.ts@!
+
+TSDoc 주석은 마크다운으로 포매팅된다.
+
+### 49. 콜백에서 this의 타입 제공하기
+
+!@chapter6/this.ts@!
+
+this 써본적이 없어서 와닿지는 않네,, 나중에 다시 읽어보기
+
+### 50. 선언 오버로딩보다 conditional 타입 선호하기
+
+!@chapter6/conditionalType.ts@!
+
+### 51. Mirror Types to Server Dependencies
+
+필수적이지 않은 의존성을 줄이기 위해 structural typing을 활용한다. JS 유저가 @types에, 웹 개발자가 NodeJS에 의존하기 않도록 한다.
+
+### 52. 타입 테스트의 pitfall 잘 알기
+
+[dtslint](https://github.com/microsoft/DefinitelyTyped-tools/tree/master/packages/dtslint)
+
+- When testing types, be aware of the difference between equality and assignability, particularly for function types.
+- For functions that use callbacks, test the inferred types of the callback parameters. Don’t forget to test the type of this if it’s part of your API.
+- Be wary of any in tests involving types. Consider using a tool like dtslint for stricter, less error-prone checking.’
+
+다시 읽어보기
 
 ## 7. Writing and Running Your Code
 
+잡동사니 모음
+
+### 53. ECMAScript 기능을 TS 기능보다 우선하기
+
+JS가 답없던 시절 TS에는 home-grown versions of classes, enums, and modules가 있었음.
+
+이후 JS에 해당 기능들이 추가되었고 TS는 타입 영역만 담당하게 되었지만 그때의 잔재가 남아있고 얘네들은 현재 패턴과 맞지 않으므로 안쓰는 것이 좋음.
+
+enum -> union of literal types
+
+```ts
+// Parameter Properties
+class Person {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+class Person {
+  constructor(public name: string) {}
+}
+
+// Parameter / non-parameter property를 섞어 쓰면 보기 좋지 않음
+// TS의 다른 부분의 패턴과도 맞지 않고, 저자는 지양하는 중
+```
+
+일반적으로 TS 컴파일은 타입만 지우지만 parameter properties, triple-slash imports, decorator는 드물게 코드를 추가함.
+
+### 54. 객체 iterate하는 법 알기
+
+!@chapter6/iterate.ts@!
+
+prototype pollution을 유념해야한다. for-in은 언제나 부가적인 키 값을 반환할 수 있다.
+
+let k: keyof T나 for-in은 순회 대상을 정확하게 알 때 사용하고, 나머지는 Object.entries를 사용하자.
+
+### 55. DOM 계층 이해하기
+
 ## 8. Migrating to TypeScript
+
+마이그레이션 상황이 일단 없어 패스
