@@ -38,13 +38,13 @@ title: Document
 
 ### 교양
 
-[클린 코드](./culture/clean-code/)
+[클린 코드](./book/clean-code/)
 
-[린 스타트업](./culture/the-lean-startup/)
+[린 스타트업](./book/the-lean-startup/)
 
-[마케팅이다](./culture/this-is-marketing/)
+[마케팅이다](./book/this-is-marketing/)
 
-[프로그래밍 패턴](./culture/exercises-in-programming-style/)
+[프로그래밍 패턴](./book/exercises-in-programming-style/)
 
 ### Links
 
