@@ -38,9 +38,13 @@ title: Document
 
 ### 교양
 
-[Clean Code](./culture/clean-code/)
+[클린 코드](./culture/clean-code/)
 
-[Exercises in Programming Style](./culture/exercises-in-programming-style/)
+[린 스타트업](./culture/the-lean-startup/)
+
+[마케팅이다](./culture/this-is-marketing/)
+
+[프로그래밍 패턴](./culture/exercises-in-programming-style/)
 
 ### Links
 
@@ -49,6 +53,8 @@ title: Document
 [기억장치/표기 용량과 실체](https://namu.wiki/w/기억장치/표기%20용량과%20실제)
 
 [devhints.io](https://devhints.io)
+
+[넷플릭스의 문화](https://jobs.netflix.com/culture?lang=%ED%95%9C%EA%B5%AD%EC%96%B4)
 
 ### iOS
 
