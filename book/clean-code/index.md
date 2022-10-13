@@ -287,9 +287,59 @@ PrimeGenerator 예시 있음.
 
 > 소프트웨어 시스템은 (애플리케이션 객체를 제작하고 의존성을 서로 '연결'하는) 준비 과정과 (준비 과정 이후에 이어지는) 런타임 로직을 분리해야 한다?? 와닿지 않네,,
 
+198p 의존성 주입 나중에 다시 읽어보기.
+
+처음부터 올바르게 시스템을 만들 수 있다는 믿음은 미신이다. 이는 시스템 아키텍처에서도 마찬가지다.
+
+나머지는 자바 고급? 내용인 것 같아서 생략,,, 나중에 읽어보기.
+
+'아주 단순하면서도' 멋지게 분리된 아키텍처로 소프트웨어 프로젝트를 진행해 결과물을 재빨리 출시한 후, 기반 구조를 추가하며 조금씩 확장해나가도 괜찮다는 말이다.
+
+[POJO](https://en.wikipedia.org/wiki/Plain_old_Java_object)
+
+시스템을 설계하든 개별 모듈을 설계하든, 실제로 돌아가는 가장 단순한 수단을 사용해야 한다는 사실을 명심하자.
+
 ## 12. Emergence
 
+창발성.
+
+켄트 벡은 다음 규칙을 따르면 설계는 '단순하다'고 말한다. (중요도 순)
+
+- 모든 테스트를 실행한다.
+- 중복을 없앤다.
+- 프로그래머 의도를 표현한다.
+- 클래스와 메서드 수를 최소로 줄인다.
+
+TEMPLATE METHOD 패턴은 고차원 중복을 제거할 목적으로 자주 사용하는 기법이다.
+
+코드는 개발자의 의도를 분명히 표현해야 한다. 그래야 유지보스 비용이 적게 든다.
+
+기본적인 개념도 극단으로 치달으면 득보다 실이 많아진다. 함수와 클래스 크기를 줄이는 것도 중요하지만 함수와 클래스 수를 줄이는 것도 중요하다. 시스템 크기도 작게 유지하자.
+
 ## 13. Concurrency
+
+동시성은 결합, 즉 what과 when을 분리하는 전략이다. 구조적인 관점에서 프로그램이 거대한 루프 하나가 아니라 작은 협력 프로그램 여럿으로 보인다.
+
+단일 스레드 시스템과 다중 스레드 시스템은 설계가 판이하게 다르다.
+
+[JIT](https://en.wikipedia.org/wiki/Just-in-time_compilation)
+
+### 동시성 방어 원칙
+
+- 단일 책임 원칙. 동시성 코드는 다른 코드와 분리한다.
+- 자료 범위를 제한하라
+- 자료 사본을 사용하라
+- 스레드는 가능한 독립적으로 구현하라.
+
+### 실행 모델을 이해하라
+
+한정된 자원(Bound Resource): 다중 스레드 환경에서 사용하는 자원으로, 크기나 숫자가 제한적이다. 데이터베이스 연결, 길이가 일정한 읽기/쓰기 버퍼 등이 예다. 상호 배제(Mutual Exclusion): 한 번에 한 스레드만 공유 자료나 공유 자원을 사용할 수 있는 경우를 가리킨다. 기아(Starvation): 한 스레드나 여러 스레드가 굉장히 오랫동안 혹은 영원히 자원을 기다린다. 데드락(Deadlock): 여러 스레드가 서로가 끝나기를 기다린다. 라이브락(Livelock): 락을 거는 단계에서 각 스레드가 서로를 방해한다.
+
+[deadlock vs livelock](https://www.baeldung.com/cs/deadlock-livelock-starvation)
+
+> Although similar in nature, deadlock, and live locks are not the same. In a deadlock, processes involved in a deadlock are stuck indefinitely and do not make any state change. However, in a live lock scenario, processes block each other and wait indefinitely but they change their resource state continuously. The notable point is that the resource state change has no effect and does not help the processes make any progress in their task.
+
+생산자-소비자:
 
 ## 14. Successive Refinement
 
