@@ -14,7 +14,7 @@ Living Clojure by Carin Meier. Copyright © 2015 Carin Meier. All rights reserve
 
 Clojure runs on the Java virtual machine(JVM).
 
-!@playground/first.clj@!
+!@chapter1/first.clj@!
 
 ## 1. A Guided Tour of Clojure
 
@@ -24,6 +24,12 @@ It is designed to get you up and running with a rounded undertstanding of the la
 
 클로저 코드는 표현식으로 구성되어있으며 평가 후 결과를 반환한다. 가장 간단한 표현식은 그 자신으로 평가되며 simple values/literal로 불린다.
 
-!@playground/values.clj@!
+!@chapter1/values.clj@!
 
-클로저에서, 함수나 연산자가 패러미터보다 먼저 등장한다.
+클로저에서는 함수나 연산자가 패러미터보다 먼저 등장한다.
+
+Clojure collection에는 list, vector, map, set이 있다.
+
+!@chapter1/collection.clj@!
+
+모든 collection은 immutable하고 persistent하다. 전자는 불변성이고, 후자는 각 collection이 structural sharing을 사용해 새로운 버전의 스스로를 smart creation한다는 것이다.
