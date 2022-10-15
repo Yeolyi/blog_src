@@ -339,9 +339,29 @@ TEMPLATE METHOD 패턴은 고차원 중복을 제거할 목적으로 자주 사�
 
 > Although similar in nature, deadlock, and live locks are not the same. In a deadlock, processes involved in a deadlock are stuck indefinitely and do not make any state change. However, in a live lock scenario, processes block each other and wait indefinitely but they change their resource state continuously. The notable point is that the resource state change has no effect and does not help the processes make any progress in their task.
 
-생산자-소비자:
+생산자-소비자: 생산자 스레드와 소비자 스레드가 한정된 자원을 공유한다. '대기열에 정보가 있다', '대기열에 빈 공간이 있다'는 시그널을 서로 보낸다. 잘못하면 동시에 서로에게서 시그널을 기다릴 가능성이 존재한다.
+
+읽기-쓰기: 읽기 쓰레드와 쓰리 스레드의 요구를 적절히 만족시켜 처리율도 적당히 높이고 기아도 방지하는 해법이 필요하다. 읽기를 강조하면 쓰기 스레드가 기아에 빠지고, 쓰기를 강조하면 처리율이 떨어진다.
+
+식사하는 철학자들: 기업 애플리케이션은 여러 프로세스가 자원을 얻으려 경쟁한다.
+
+### 동기화하는 메서드 사이에 존재하는 의존성을 이해하라
+
+공유 객체 하나에는 메서드 하나만 사용하라.
+
+### 동기화하는 부분을 작게 만들어라.
+
+### 올바른 종료 코드는 구현하기 어렵다.
+
+### 스레드 코드 테스트하기
+
+말도 안되는 실패는 잠정적인 스레드 문제로 취급하라.
+
+스레드를 아는 코드와 모르는 코드를 분리한다.
 
 ## 14. Successive Refinement
+
+점진적인 개선
 
 ## 15. JUnit Internals
 
