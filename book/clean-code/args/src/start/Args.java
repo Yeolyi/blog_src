@@ -29,19 +29,16 @@ public class Args {
     String elementTail = element.substring(1);
     validateSchemaElementId(elementId);
     // switch문을 쓰는건?
-    if (elementTail.length() == 0) marshalers.put(elementId, new BooleanArgumentMarshaler());
-    // else if (elementTail.equals("*"))
-    // marshalers.put(
-    // elementId,
-    // new StringArgumentMarshaler());
-    // else if (elementTail.equals("#"))
-    // marshalers.put(
-    // elementId,
-    // new IntegerArgumentMarshaler());
-    // else if (elementTail.equals("##"))
-    // marshalers.put(
-    // elementId,
-    // new DoubleArgumentMarshaler());
+    if (elementTail.length() == 0) marshalers.put(
+      elementId,
+      new BooleanArgumentMarshaler()
+    ); else if (elementTail.equals("*")) marshalers.put(
+      elementId,
+      new StringArgumentMarshaler()
+    ); else if (elementTail.equals("#")) marshalers.put(
+      elementId,
+      new IntegerArgumentMarshaler()
+    ); else if (elementTail.equals("##")) marshalers.put(elementId, new DoubleArgumentMarshaler());
     // else if (elementTail.equals("[*]"))
     // marshalers.put(
     // elementId,
@@ -85,16 +82,40 @@ public class Args {
       try {
         m.set(currentArgument);
       } catch (ArgsException e) {
-        e.setErrorArgumentId(argChar);
+        e.errorArgumentId = argChar;
         throw e;
       }
     }
   }
 
+  public boolean has(char arg) {
+    return argsFound.contains(arg);
+  }
+
+  public int nextArgument() {
+    return currentArgument.nextIndex();
+  }
+
   public boolean getBoolean(char arg) {
     return BooleanArgumentMarshaler.getValue(marshalers.get(arg));
   }
+
+  public String getString(char arg) {
+    return StringArgumentMarshaler.getValue(marshalers.get(arg));
+  }
+
+  public int getInt(char arg) {
+    return IntegerArgumentMarshaler.getValue(marshalers.get(arg));
+  }
+
+  public double getDouble(char arg) {
+    return DoubleArgumentMarshaler.getValue(marshalers.get(arg));
+  }
+  // public String[] getStringArray(char arg) {
+  // return StringArrayArgumentMarshaler.getValue(marshalers.get(arg));
+  // }
 }
 // ArgumentMarshaler 정의를 제너릭 써서 하면 안됐을까??
 // currentArgument가 이곳저곳 다니는게 신기했음
+// -> 295p, args와 currentArgument를 인수로 넘기는 것은 지저분하기 때문.
 // BooleanArgumentMarshaler는 왜 throw Error를 안함? 아 애초에 생략될 수 있어서인가.

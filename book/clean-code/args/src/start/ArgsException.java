@@ -6,14 +6,20 @@ import static start.ArgsException.ErrorCode.*;
 
 public class ArgsException extends Exception {
 
-  private char errorArgumentId = '\0';
-  private String errorParameter = null;
-  private ErrorCode errorCode = OK;
+  // getter setter를 단순 반환/대입으로 할거면 그냥 public으로 해도 되지 않나?
+  // 일단은 귀찮아서 getter/setter를 만들어놓지는 않음.
+  char errorArgumentId = '\0';
+  String errorParameter = null;
+  ErrorCode errorCode = OK;
 
   public ArgsException() {}
 
   public ArgsException(String message) {
     super(message);
+  }
+
+  public ArgsException(ErrorCode errorCode) {
+    this.errorCode = errorCode;
   }
 
   public ArgsException(ErrorCode errorCode, String errorParameter) {
@@ -27,12 +33,8 @@ public class ArgsException extends Exception {
     this.errorParameter = errorParameter;
   }
 
-  public void setErrorArgumentId(char errorArgumentId) {
-    this.errorArgumentId = errorArgumentId;
-  }
-
-  public void setErrorParameter(String errorParameter) {
-    this.errorParameter = errorParameter;
+  public String errorMessage() {
+    return "ERROR BLAHBLAH";
   }
 
   public enum ErrorCode {
@@ -40,5 +42,10 @@ public class ArgsException extends Exception {
     INVALID_ARGUMENT_FORMAT,
     UNEXPECTED_ARGUMENT,
     INVALID_ARGUMENT_NAME,
+    MISSING_STRING,
+    MISSING_INTEGER,
+    INVALID_INTEGER,
+    MISSING_DOUBLE,
+    INVALID_DOUBLE,
   }
 }
