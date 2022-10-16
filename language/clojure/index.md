@@ -33,3 +33,7 @@ Clojure collection에는 list, vector, map, set이 있다.
 !@chapter1/collection.clj@!
 
 모든 collection은 immutable하고 persistent하다. 전자는 불변성이고, 후자는 각 collection이 structural sharing을 사용해 새로운 버전의 스스로를 smart creation한다는 것이다.
+
+Lists are actually at the heart of Clojure.
+
+Clojure의 기본 구조는 LISP(LISt Processing)에서 왔고, LISP에서 표현식의 첫 요소는 연산자 혹은 함수로 간주된다. 따라서 Clojure에서 리스트는 `(어쩌구)로 표현된다.

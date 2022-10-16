@@ -35,9 +35,9 @@
 
 
 ; Map
-(println {:jam1 "strawberry" :jam2 "blackberry"}) 
+(println {:jam1 "strawberry" :jam2 "blackberry"})
 ; Maps are the on place that it can be idiomatic to leave the commas in for readability.
-(println {:jam1 "strawberry", :jam2 "blackberry"}) 
+(println {:jam1 "strawberry", :jam2 "blackberry"})
 
 (println (get {:jam1 "strawberry", :jam2 "blackberry"} :jam3)) ; nil
 (println (get {:jam1 "strawberry", :jam2 "blackberry"} :jam3 "not found")) ; not found
@@ -48,3 +48,22 @@
 
 (println (keys {:jam1 "strawberry", :jam2 "blackberry"})); ; (:jam1 :jam2)
 (println (vals {:jam1 "strawberry", :jam2 "blackberry"})); ; (:jam1 :jam2)
+
+(println (assoc {:jam1 "red" :jam2 "black"} :jam1 "orange")); 
+(println (dissoc {:jam1 "red" :jam2 "black"} :jam1 "orange")); 
+(println (merge {:jam1 "red" :jam2 "black"} {:jam1 "orange"})); 
+
+; Set
+(println #{:red :blue :white :pink})
+; (println #{:red :blue :white :pink :pink}) Duplicate key: pink
+
+(require 'clojure.set) ; 책에는 왜 이거 없냐
+(println (clojure.set/union #{:r :b :w} #{:w :p :y}))
+(println (clojure.set/difference #{:r :b :w} #{:w :p :y}))
+(println (clojure.set/intersection #{:r :b :w} #{:w :p :y}))
+
+(println (set [:a :b :c]))
+(println (get (set {:a 1 :b 2 :c 3}) [:a 1]))
+(println (contains? #{:a :b :c} :a)) ; true
+
+; conj와 disj가 동일하게 작동

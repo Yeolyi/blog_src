@@ -4,3 +4,4 @@ tsconfig.json
 *.py
 *.txt
 *.clj
+.gitignore
