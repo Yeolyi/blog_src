@@ -36,4 +36,12 @@ Clojure collection에는 list, vector, map, set이 있다.
 
 Lists are actually at the heart of Clojure.
 
-Clojure의 기본 구조는 LISP(LISt Processing)에서 왔고, LISP에서 표현식의 첫 요소는 연산자 혹은 함수로 간주된다. 따라서 Clojure에서 리스트는 `(어쩌구)로 표현된다.
+Clojure의 기본 구조는 LISP(LISt Processing)에서 왔고, LISP에서 표현식의 첫 요소는 연산자 혹은 함수로 간주된다. 따라서 Clojure에서 리스트는 `(어쩌구)로 표현된다. 없으면 문자열을 함수로 실행시키려고 함.
+
+> ‘All Clojure code is made of lists of data.’
+
+!@chapter1/symbol.clj@!
+
+OOP에서는 객체로 정리하지만 클로저에서는 네임스페이스를 활용한다.
+
+!@chapter1/ns.clj@!
