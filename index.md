@@ -1,5 +1,5 @@
 ---
-title: Document
+title: 매일의 공부
 ---
 
 ### 프론트엔드
