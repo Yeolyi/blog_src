@@ -38,6 +38,32 @@ Javascript stack -> Node / Express / Database server / Rendering engine...
 
 ## 2. Getting Started with Node
 
+bash, zsh. The main reason I gravitate toward bash is ubiquity.
+
+[The Bash Guide](https://guide.bash.academy/)
+
+nodemon은 소스코드에 변화가 있을 때 자동으로 노드 프로그램을 재시작해주는 유틸리티이다. 
+
+PHP/ASP 등의 기존 방식은 URL과 파일 이름 사이 관계가 명확하다. 웹 서버는 파일이 컴퓨터 어디에 위치한지 알고 그것을 브라우저에게 제공한다. 
+
+노드는 기존 패러다임과는 달리 작성한느 앱이 즉 웹 서버이다. 노드는 웹 서버를 위한 프레임워크를 제공할 뿐이다. 
+
+[About node.js](https://nodejs.org/en/about/)
+
+!@ch02/00-helloworld.js@!
+
+Node의 핵심 철학은 이벤트 기반 프로그래밍이다. 개발자는 어떤 이벤트가 가능하고 그것들에 어떻게 반응할지를 이해해야한다. 위 코드에서는 HTTP request 이벤트가 처리된다. 
+
+유저가 앱의 한 페이지에서 다른 페이지로 이동할 때 발생하는 navigation event에 반응하는 것을 routing이라 한다. 
+
+> Routing refers to the mechanism for serving the client the content it has asked for. 
+
+작은 프로젝트에서는 노드로 static resource를 제공하는 것도 좋지만 큰 프로젝트에서는 NGINX나 CDN같은 프록시 서버를 원할 수도 있다. 챕터 17.
+
+!@ch02/01-helloworld.js@!
+
+!@ch02/02-helloworld.js@!
+
 ## 3. Saving Time with Express
 
 ## 4. Tidying Up
