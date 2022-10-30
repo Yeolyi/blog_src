@@ -4,6 +4,8 @@ title: Web Development with Node and Express
 
 다음에서 발췌 Web Development with Node and Express, 2nd Edition Ethan Brown
 
+[GitHub](https://github.com/EthanRBrown/web-development-with-node-and-express-2e)
+
 ## 1. Introducing Express
 
 All-javascript 기술 스택을 통해 context switching을 그만둘 수 있다. Mental gear의 조절이 불필요.
@@ -96,7 +98,30 @@ public 폴더 -> 폴더 내용물이 묻지도 따지지도 않고 클라이언�
 
 ## 4. Tidying Up
 
+보통 소스코드를 src와 같은 디렉터리 아래 몰아넣는 것이 깔끔하다.
+
+> I had a fencing coach who would always remind us that practice doesn’t make perfect; practice makes permanent. That is, if you do something over and over again, eventually it will become automatic, rote. That is true, but it says nothing about the quality of the thing you are practicing.
+
+[Version Control with Git](https://www.oreilly.com/library/view/version-control-with/9780596158187/)
+
+Git은 staging area가 있어 git add를 하면 변경점들이 이곳으로 이동한다. 
+
+package.json의 두 목적은 프로젝트를 설명하고 의존성들을 나열하는 것이다. 
+
+npm의 버전 번호는 semver(semantic versioning)에 의해 파싱된다.
+
+**Node modules**는 모듈화와 캡슐화의 매커니즘을 제공하고, **npm package**는 프로젝트의 저장, 버전 매기기, 참조를 위핸 표준화된 스킴을 제공한다. 
+
+```js
+// ./이 없으면 node_modules를 찾아버리게 된다. 
+const fortune = require('./lib/fortune)
+```
+
+Node modules는 CommonJS(CJS) 모듈로도 불린다. JS가 도입하고 있는 공식적인 패키징 매커니즘은 ECMAScript Module(ECM)이라 불린다. 리액트와 같은 progressive한 프론트 언어에서는 ESM이 익숙할 것이다. 
+
 ## 5. Quality Assurance
+
+> QA is a very different discipline than development, and it attracts dirrefent personalities and talents.
 
 ## 6. The Request and Response Objects
 
