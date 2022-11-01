@@ -104,24 +104,115 @@ public 폴더 -> 폴더 내용물이 묻지도 따지지도 않고 클라이언�
 
 [Version Control with Git](https://www.oreilly.com/library/view/version-control-with/9780596158187/)
 
-Git은 staging area가 있어 git add를 하면 변경점들이 이곳으로 이동한다. 
+Git은 staging area가 있어 git add를 하면 변경점들이 이곳으로 이동한다.
 
-package.json의 두 목적은 프로젝트를 설명하고 의존성들을 나열하는 것이다. 
+package.json의 두 목적은 프로젝트를 설명하고 의존성들을 나열하는 것이다.
 
 npm의 버전 번호는 semver(semantic versioning)에 의해 파싱된다.
 
-**Node modules**는 모듈화와 캡슐화의 매커니즘을 제공하고, **npm package**는 프로젝트의 저장, 버전 매기기, 참조를 위핸 표준화된 스킴을 제공한다. 
+**Node modules**는 모듈화와 캡슐화의 매커니즘을 제공하고, **npm package**는 프로젝트의 저장, 버전 매기기, 참조를 위핸 표준화된 스킴을 제공한다.
 
 ```js
-// ./이 없으면 node_modules를 찾아버리게 된다. 
+// ./이 없으면 node_modules를 찾아버리게 된다.
 const fortune = require('./lib/fortune)
 ```
 
-Node modules는 CommonJS(CJS) 모듈로도 불린다. JS가 도입하고 있는 공식적인 패키징 매커니즘은 ECMAScript Module(ECM)이라 불린다. 리액트와 같은 progressive한 프론트 언어에서는 ESM이 익숙할 것이다. 
+Node modules는 CommonJS(CJS) 모듈로도 불린다. JS가 도입하고 있는 공식적인 패키징 매커니즘은 ECMAScript Module(ECM)이라 불린다. 리액트와 같은 progressive한 프론트 언어에서는 ESM이 익숙할 것이다.
 
 ## 5. Quality Assurance
 
 > QA is a very different discipline than development, and it attracts dirrefent personalities and talents.
+
+QA 계획의 목표는 제품이 의도된대로 동작하는지를 확신하기 위해 밟아야 할 단계들을 기록하는 것이다. 아래 것들에 따라 업데이트된다.
+
+- 새로운 기능
+- 기존 기능의 변화
+- 사라진 기능
+- 테스트 기술이나 테크닉의 변화
+- QA 계획에서 놓친 결함
+
+웹 개발에서 퀄리티란 네 차원으로 나뉠 수 있다.
+
+- Reach: market penetration of your product. SEO
+- Functionality: Site that works as advertised
+- Usability: human-computer interaction(HCI)
+- Aesthetics
+
+Functionality와 SEO는 자동화 가능하니 이들을 집중적으로 다뤄보자.
+
+웹사이트에는 logic / presentation 두가지 영역이 있다. Logic 영역에 있는 것들은 명확하고 간단해야한다. Presentation 영역의 것들은 usability와 aesthetic의 잣대에 놓인다. 최대한 이 둘의 경계를 명확하게 하려고 해야한다.
+
+> Unit testing is very fine-grained, testing single components to make sure they function properly, whereas integration testing tests the interactino between multiple components or even the whole system.
+
+유닛 테스트는 로직 테스팅, integration 테스트는 두 영역 모두에 유용하다.
+
+### Unit Testing
+
+Express를 mock할 필요가 있다.
+
+테스트 파일을 만드는 방법에는 \_\_tests\_\_ 서브디렉터리에 넣거나 .test.js 접미사를 붙이는 것이 있는데 둘 다 사용해보자.
+
+!@meadowlark/site/lib/handlers.js@!
+
+!@meadowlark/site/meadowlark2.js@!
+
+(책에서는 파일명을 \_\_test\_\_라고 했으나 prettier가 언더스코어를 별로 바꿔서 test로 폴더 만듦)
+
+!@meadowlark/site/tests/handlers.test.js@!
+
+jest.fn()으로 generic mock function을 만들어 어떻게 호출되는지 추적할 수 있다.
+
+watch 모드를 통해 코드에 변화가 있을 때 자동으로 테스트를 돌릴 수 있다.
+
+```
+// -- 은 npm이 jest에게 --watch 인자를 넘기게 하기위해 필요하다.
+test -- --watch
+```
+
+테스트를 어떻게 얼마나 진행할지에 대해서는 정답이 없지만, code coverage는 중요하다할 수 있다.
+
+> Code coverage offers a quantitative answer to how much of your code is tested.
+
+```
+npm test -- --coverage
+```
+
+- Stmt: JS 문. 한 줄에 여러 문이 있을 수 있어서 Lines의 결과와는 다를 수 있다.
+- Branch: if-else와 같은 제어 흐름에서 얼마나 실행됐는지
+
+Entropic functionality(랜덤)를 테스트하는 것은 어렵다.
+
+### Integration Testing
+
+Home에서 About 페이지로 이동할 수 있는 기능을 추가해보자. 두개의 Express route henalder를 사용하며 HTML과 DOM 상호작용(링크 클릭+페이지네비게이션)을 포함하니 integration test라 할 수 있겠다.
+
+!@meadowlark/site/views/homeWithLink.handlebars@!
+
+[Node's module documentation](https://nodejs.org/docs/latest-v14.x/api/modules.html)
+
+[Difference between module.exports and exports in Node.js](https://www.geeksforgeeks.org/difference-between-module-exports-and-exports-in-node-js/)
+
+> Puppeteer is essentially a controllable, headless version of Chrome. (Headless simply means that the browser is capable of running wothout actually rendering a UI on-screen.)
+
+!@meadowlark/site/integration-tests/basic-navigation.test.js@!
+
+### Linting
+
+ESLint에서 한 프로젝트 내의 다른 부분에서 다른 규칙을 사용할 수도 있다.
+
+ESLint는 미확인된 global 변수를 싫어한다. Jest의 경우 .eslintrc.js의 env에 "jest": true를 추가함으로써 해결할 수 있다.
+
+```js
+// 아래 코드는 eslint에 의해 next를 사용하지 않는다는 경고가 표시된다.
+// 하지만 next를 제거하면 argument 개수의 변화때문에 error handler 여부가 바뀌게 된다.
+exports.serverError = (err, req, res, next) => res.render('500');
+```
+
+### Continuous Integration
+
+레포에 기여할 때마다 테스트를 실행한다. 테스트 실패시 알림이 가게 할 수 있다.
+
+노드 프로젝트에서는 Travis CI가 많이 사용된다. 깃허브에서도 잘 지원하고 CircleCI라는 것도 있다.
 
 ## 6. The Request and Response Objects
 

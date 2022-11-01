@@ -29,6 +29,7 @@ app.use((req, res) => {
   res.send('404 - Not Found');
 });
 
+// 여기만 인자가 4개로 err로 시작하네?
 app.use((err, req, res, next) => {
   console.error(err.message);
   res.type('text/plain');
