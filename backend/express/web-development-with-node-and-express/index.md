@@ -253,7 +253,7 @@ URL의 path는 추상적이고 브라우저는 궁극적으로 Content-Type을 �
 
 content type / internet media type / MIME(Multipurpose Internet Mail Extensions)
 
-MIME는 precursor지만 대부분 같다. 
+MIME는 precursor지만 대부분 같다.
 
 ### Request Body
 
@@ -261,11 +261,27 @@ POST는 보통 application/x-www-form-urlencoded(쿼리스트링과 유사). 파
 
 ### The Request/Response Object
 
-각각 노드의 http.IncomingMessage, http.ServerResponse에 기능을 붙인 것. 
+각각 노드의 http.IncomingMessage, http.ServerResponse에 기능을 붙인 것.
 
-훑어보고 지나감. 
+훑어보고 지나감.
 
+## Boiling It Down
 
+렌더링 관련 여러 사용례들. These examples are intended to be a quick reference you can revisit in the future.
+
+chaining을 사용할 수 있는지 고려해보기.
+
+레이아웃은 views/ 커스텀 한 것들은 views/layouts인듯?
+
+```js
+// 위에서도 언급되었지만 next를 안쓰더라도 있어야 error handler임이 인식된다.
+app.use((err, req, res, next) => {
+  console.error('** SERVER ERROR: ' + err.message);
+  res.status(500).render('08-error', { message: "you shouldn't have clicked that!" });
+});
+```
+
+> The term **endpoint** is often used to describe a single function in an API.
 
 ## 7. Templating with Handlebars
 
