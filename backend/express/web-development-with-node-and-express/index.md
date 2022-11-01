@@ -216,6 +216,57 @@ exports.serverError = (err, req, res, next) => res.render('500');
 
 ## 6. The Request and Response Objects
 
+Express로 웹 서버를 만드는 과정은 request 객체로 시작해서 response 객체로 끝난다.
+
+### URL의 구성요소
+
+- 프로토콜: 요청이 어떻게 전송될 것인지
+- 호스트: 서버를 식별. 인터넷에서 호스트는 TLD(Top Level Domain)으로 끝나고 www와 같은 subdomain이 접두어로 붙을 수도 있다.
+- 포트: 1023보다 큰 것을 사용해야 한다.
+- Path
+- 쿼리스트링: 키/값 조합들의 집합. URL 인코딩되어야한다. JS에는 encodeURIComponent가 있다.
+- Fragment: 브라우저에 의해 사용된다.
+
+### HTTP Request methods
+
+or HTTP verbs
+
+브라우저에서 페이지를 열면 GET 요청을 한다.
+
+POST 요청은 흔히 대응되는 GET 요청과 같은 HTML를 반환한다.
+
+### Request Headers
+
+user agent(브라우저, 운영체제, 하드웨어 등)에 대한 정보를 보낸다.
+
+!@ch06/00-echo-headers.js@!
+
+### Response Headers
+
+메타데이터와 서버 정보가 담겨있다.
+
+URL의 path는 추상적이고 브라우저는 궁극적으로 Content-Type을 참고해 렌더링한다.
+
+!@ch06/01-disable-x-powered-by.js@!
+
+### Internet Media Types
+
+content type / internet media type / MIME(Multipurpose Internet Mail Extensions)
+
+MIME는 precursor지만 대부분 같다. 
+
+### Request Body
+
+POST는 보통 application/x-www-form-urlencoded(쿼리스트링과 유사). 파일 업로드가 필요하면 multipart/form-data.
+
+### The Request/Response Object
+
+각각 노드의 http.IncomingMessage, http.ServerResponse에 기능을 붙인 것. 
+
+훑어보고 지나감. 
+
+
+
 ## 7. Templating with Handlebars
 
 ## 8. Form Handling
