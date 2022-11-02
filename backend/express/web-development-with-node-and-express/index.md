@@ -375,10 +375,116 @@ The {{> partial_name}} syntax is how you include a partial in a view.
 
 [HTML5 boilerplate](https://html5boilerplate.com)
 
-
 ## 8. Form Handling
 
+유저로부터 정보를 모으는 여러 방법이 있지만 근원적으로는 HTML form을 활용하게 된다.
+
+GET과 POST 여부에 상관없이 HTTPS면 안전하고 HTTP면 위험하다.
+
+항상 form 태그에 유효한 action을 명시하는 것을 추천한다.
+
+form 제출은 기본적으로 application/x-www-form-urlencoded로 설정된다. URL encoded를 그냥 길게 쓴 것임. express에서 기본적으로 지원함.
+
+파일 전송은 multipart/form-data를 사용해야되는데, express에서 곧장 지원하지는 않음.
+
+[AJAX - 나무위키](https://namu.wiki/w/AJAX)
+
+AJAX를 사용하지 않으면 form을 제출했을 때 브라우저가 reload된다. 이때 브라우저에게 HTML을 보내주는 방법은 북마크나 뒤로가기 등을 고장낼 수 있어서 비추. 303(See Other)를 사용하자.
+
+이후 성공/실패 페이지로 리다이렉트하거나 flash message와 함께 원래 위치 혹은 새로운 위치로 리다이렉트할 수 있다.
+
+### Form Handling with Express
+
+!@meadowlark/site/views/newsletter-signup.handlebars@!
+
+!@meadowlark/site/lib/handlers2.js@!
+
+!@meadowlark/site/meadowlark5.js@!
+
+### Using Fetch to Send Form Data
+
+```js
+document.getElementById('newsletterSignupForm').addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  const form = evt.target;
+  const body = JSON.stringify({
+    _csrf: form.elements._csrf.value,
+    name: form.elements.name.value,
+    email: form.elements.email.value,
+  });
+  const headers = { 'Content-Type': 'application/json' };
+  const container = document.getElementById('newsletterSignupFormContainer');
+  fetch('/api/newsletter-signup', { method: 'post', body, headers })
+    .then((resp) => {
+      if (resp.status < 200 || resp.status >= 300)
+        throw new Error(`Request failed with status ${resp.status}`);
+      return resp.json();
+    })
+    .then((json) => {
+      container.innerHTML = '<b>Thank you for signing up!</b>';
+    })
+    .catch((err) => {
+      container.innerHTML =
+        `<b>We're sorry, we had a problem` +
+        `signing you up. Please <a href="/newsletter">try again</a>`;
+    });
+});
+
+// meadowlark.js
+app.use(bodyParser.urlencoded({ extended: true }));
+```
+
+### File Uploads
+
+busboy / multiparty / formidable / multer
+
+form 태그에 enctype="multipart/form-data"를 명시해주어야한다.
+
+accept를 통해 가능한 파일 형식을 지정해줄 수도 있다.
+
+```js
+const multiparty = require('multiparty');
+
+app.post('/contest/vacation-photo/:year/:month', (req, res) => {
+  const form = new multiparty.Form();
+  form.parse(req, (err, fields, files) => {
+    if (err) return res.status(500).send({ error: err.message });
+    handlers.vacationPhotoContestProcess(req, res, fields, files);
+  });
+});
+```
+
+```js
+// Fetch를 사용한 방법
+document.getElementById('vacationPhotoContestForm').addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  const body = new FormData(evt.target);
+  const container = document.getElementById('vacationPhotoContestFormContainer');
+  const url = '/api/vacation-photo-contest/{{year}}/{{month}}';
+  fetch(url, { method: 'post', body })
+    .then((resp) => {
+      if (resp.status < 200 || resp.status >= 300)
+        throw new Error(`Request failed with status ${resp.status}`);
+      return resp.json();
+    })
+    .then((json) => {
+      container.innerHTML = '<b>Thank you for submitting your photo!</b>';
+    })
+    .catch((err) => {
+      container.innerHTML =
+        `<b>We're sorry, we had a problem processing ` +
+        `your submission.  Please <a href="/newsletter">try again</a>`;
+    });
+});
+```
+
+[Uppy](https://github.com/transloadit/uppy)
+
+> We explored the traditional way forms are handled by browsers (letting the browser issue a POST request to the server with the form contents and rendering the response from the server, usually a redirect) as well as the increasingly ubiquitous approach of preventing the browser from submitting the form and handling it ourselves with fetch.
+
 ## 9. Cookies and Sessions
+
+
 
 ## 10. Middleware
 
