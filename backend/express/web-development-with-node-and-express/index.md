@@ -285,6 +285,86 @@ app.use((err, req, res, next) => {
 
 ## 7. Templating with Handlebars
 
+Templating: Technique for constructing and formating your content to display to the user.
+
+This process of replacing fields is sometimes called **interpolation**, which is just a fancy word for “supplying missing information” in this context.
+
+PHP는 초기 템플릿 언어이다. 요즘 기술은 템플릿 엔진으로 따로 언어에서 분리되어 사용한다.
+
+JS에서 HTML을 뱉어서 발생하는 대부분의 문제를 템플릿을 통해 해결할 수 있다.
+
+Pug는 HTML를 추상화했다. 인덴트와 몇몇 규칙을 사용해 타이핑 양을 줄였다.
+
+템플릿을 렌더링할 때 템플릿 엔진에게 **context 객체**를 건네준다.
+
+Handlebar의 주석은 HTML 주석과 달리 유저에게 전달되지 않는다.
+
+```html
+<!-- Include Handlebars from a CDN -->
+<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+<script>
+  // compile the template
+  var template = Handlebars.compile('Handlebars <b>{{doesWhat}}</b>');
+  // execute the compiled template and print the output to the console
+  console.log(template({ doesWhat: 'rocks!' }));
+</script>
+```
+
+```js
+{
+  currency: {
+    name: 'United States dollars',
+    abbrev: 'USD',
+  },
+  tours: [
+    { name: 'Hood River', price: '$99.95' },
+    { name: 'Oregon Coast', price: '$159.95' },
+  ],
+  specialsUrl: '/january-specials',
+  currencies: [ 'USD', 'GBP', 'BTC' ],
+}
+```
+
+```handlebars
+<ul>
+  {{#each tours}}
+    {{! I'm in a new block...and the context has changed }}
+    <li>
+      {{name}} - {{price}}
+      {{#if ../currencies}}
+        ({{../currency.abbrev}})
+      {{/if}}
+    </li>
+  {{/each}}
+</ul>
+{{#unless currencies}}
+  <p>All prices in {{currency.name}}.</p>
+{{/unless}}
+{{#if specialsUrl}}
+  {{! I'm in a new block...but the context hasn't changed (sortof) }}
+  <p>Check out our <a href="{{specialsUrl}}">specials!</p>
+{{else}}
+  <p>Please check back often for specials.</p>
+{{/if}}
+<p>
+  {{#each currencies}}
+    <a href="#" class="currency">{{.}}</a>
+  {{else}}
+    Unfortunately, we currently only accept {{currency.name}}.
+  {{/each}}
+</p>
+```
+
+Client-side templating은 유저에게 템플릿이 공개되지만 server-side는 유저가 알 수 없다. 캐싱도 가능하다.
+
+```js
+app.set('view cache', true);
+```
+
+view는 웹사이트의 개별 페이지를 의미하고, layout은 특별한 종류의 view로 템플릿을 위한 템플릿이다. 
+
+view가 먼저 렌더링되고, 이후 레이아웃이 렌더링된다. 
+
 ## 8. Form Handling
 
 ## 9. Cookies and Sessions
