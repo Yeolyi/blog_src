@@ -361,9 +361,20 @@ Client-side templating은 유저에게 템플릿이 공개되지만 server-side�
 app.set('view cache', true);
 ```
 
-view는 웹사이트의 개별 페이지를 의미하고, layout은 특별한 종류의 view로 템플릿을 위한 템플릿이다. 
+view는 웹사이트의 개별 페이지를 의미하고, layout은 특별한 종류의 view로 템플릿을 위한 템플릿이다.
 
-view가 먼저 렌더링되고, 이후 레이아웃이 렌더링된다. 
+view가 먼저 렌더링되고, 이후 레이아웃이 렌더링된다.
+
+섹션은 뭔 얘긴지 모르겠음,,,
+
+The {{> partial_name}} syntax is how you include a partial in a view.
+
+!@meadowlark/site/views/partials/weather.handlebars@!
+
+!@meadowlark/site/lib/middleware/weather.js@!
+
+[HTML5 boilerplate](https://html5boilerplate.com)
+
 
 ## 8. Form Handling
 
