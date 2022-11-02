@@ -6,9 +6,9 @@ Thorsten Ball
 
 ## Introduction
 
-인터프리터는 매우 다양한 종류가 있지만, 근본적으로는 모두 소스 코드를 받아 평가하여 실행될 수 있는 눈에 보이는 중간 산물을 만든다는 것이다. 
+인터프리터는 매우 다양한 종류가 있지만, 근본적으로는 모두 소스 코드를 받아 평가하여 실행될 수 있는 눈에 보이는 중간 산물을 만든다는 것이다.
 
-이 책에서는 소스 코드를 파싱해서 AST를 만들고 이를 평가하는 **tree walking interpreter**를 만들 것이다. 
+이 책에서는 소스 코드를 파싱해서 AST를 만들고 이를 평가하는 **tree walking interpreter**를 만들 것이다.
 
 ### The Monkey Programming Language & Interpreter
 
@@ -34,13 +34,36 @@ Thorsten Ball
 
 ## 1. Lexing
 
-
-
 ### 1. Lexical Analysis
+
+소스 코드를 다루기 쉬운 다른 형태로 바꿀 필요성이 있다. 소스 코드에서 토큰으로, 토큰에서 AST로.
+
+토큰으로의 변환은 **lexer**(tokenizer, scanner)가 맡는다.
+
+AST로의 변환은 **parser**가 맡는다.
 
 ### 2. Defining Our Tokens
 
+```monkey
+// lex할 첫번째 Monkey Language
+let five = 5; let ten = 10;
+let add = fn(x, y) {
+  x + y;
+};
+let result = add(five, ten);
+```
+
+number, identifier, keyword로 구성된다.
+
+!@token/token.go@!
+
 ### 3. The Lexer
+
+> We’ll initialize the lexer with our source code and then repeatedly call NextToken() on it to go through the source code, token by token, character by character.
+
+!@lexer/lexer.go@!
+
+> it’s left as an exercise to the reader to fully support Unicode (and emojis!) in Monkey.
 
 ### 4. Extending our Token Set and Lexer
 
