@@ -484,7 +484,13 @@ document.getElementById('vacationPhotoContestForm').addEventListener('submit', (
 
 ## 9. Cookies and Sessions
 
+HTTP는 stateless한 프로토콜이다. 모든 HTTP 요청은 서버가 응답하기 위해 필요한 모든 정보를 담고있다. 
 
+- 쿠키는 유저에게 숨겨져있지 않다. 
+- 쿠키는 삭제되거나 승인되지 않을 수 있다. 
+- 쿠키는 조작될 수 있다. 쿠키에 코드를 담고 그걸 실행시키는 짓은 하면 안됨. 
+- 쿠키는 공격에 이용될 수 있다. XSS(cross-site scripting) 중 하나는 쿠키의 내용을 바꾼다. signed cookie를 사용할 수는 있지만 덜 유용해질 수 있다. 
+- 쿠키를 남용하면 유저가 눈치챈다. 
 
 ## 10. Middleware
 

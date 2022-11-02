@@ -42,17 +42,19 @@ title: 매일의 공부
 
 [HTTP](cs/http)
 
+[Writing an Interpreter in Go](cs/writing-an-interpreter-in-go/)
+
 ### 교양
 
 [클린 코드](./book/clean-code/)
 
 [테스트 주도 개발](./book/test-driven-development/)
 
+[프로그래밍 패턴](./book/exercises-in-programming-style/)
+
 [린 스타트업](./book/the-lean-startup/)
 
 [마케팅이다](./book/this-is-marketing/)
-
-[프로그래밍 패턴](./book/exercises-in-programming-style/)
 
 ### Links
 
