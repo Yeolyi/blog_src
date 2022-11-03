@@ -531,6 +531,47 @@ The use of sessions to control UI like this is typically not used in application
 
 ## 10. Middleware
 
+> Conceptually, middleware is a way to encapsulate functionality—specifically, functionality that operates on an HTTP request to your application.
+
+미들웨어는 req, res, next 세가지의 인자를 받는다.
+
+미들웨어는 파이프라인으로 실행되고, 따라서 순서가 중요하다. app.use를 통해 파이프라인에 미들웨어를 삽입한다.
+
+마지막 미들웨어는 catchall handler로 자주 활용된다. next를 호출하지 않으면 request는 해당 미들웨어에서 중단된다.
+
+- Route handler(app.get, app.post...)는 특정 HTTP 동사만 처리하는 미들웨어로 생각할 수 있다.
+- Route handler는 첫 패러미터로 path를 필요로하고, \*를 사용해서?? 어떤 path든지 매치시킬 수 있다. 미들웨어도 path 명시 가능
+- 2, 3개의 패러미터면 req, res, next, 4개면 err, req, res, next
+- next를 호출하는데 클라이언트에게 응답하는 것은 비추. 이러면 이후 응답은 무시된다.
+
+```js
+// middleware의 반환값으로 뭐 하는게 없어서 아래처럼 줄여쓸 수 있다.
+next();
+return;
+
+return next();
+```
+
+express에 번들 된 미들웨어는 static뿐이다.
+
+- basicauth-middleware: HTTPS 환경에서 빠르게 해야할 때만 사용할 것.
+- body-parser
+- bosboy, multiparty, formidable, multer: multipart/form-data의 body 처리
+- compression. 대부분 프로덕션 환경에서는 NGINX 같은 프록시가 압축을 처리한다.
+- cookie-parser
+- cookie-session. 추천은 안함
+- express-session
+- csurf: CSRF에서 보호
+- serve-index: directory listing support
+- errorhandler: 클라이언트에 stack trace/error message 적용. 프로덕션 서버에서는 쓰지 말 것.
+- serve-favicon: 더 좋은 성능
+- morgan: 디버깅용.
+- response-time
+- static
+- vhost: virtual hosts
+
+[expressjs.com - middleware](https://expressjs.com/en/resources/middleware.html)
+
 ## 11. Sending Email
 
 ## 12. Production Concerns
