@@ -484,13 +484,50 @@ document.getElementById('vacationPhotoContestForm').addEventListener('submit', (
 
 ## 9. Cookies and Sessions
 
-HTTP는 stateless한 프로토콜이다. 모든 HTTP 요청은 서버가 응답하기 위해 필요한 모든 정보를 담고있다. 
+HTTP는 stateless한 프로토콜이다. 모든 HTTP 요청은 서버가 응답하기 위해 필요한 모든 정보를 담고있다.
 
-- 쿠키는 유저에게 숨겨져있지 않다. 
-- 쿠키는 삭제되거나 승인되지 않을 수 있다. 
-- 쿠키는 조작될 수 있다. 쿠키에 코드를 담고 그걸 실행시키는 짓은 하면 안됨. 
-- 쿠키는 공격에 이용될 수 있다. XSS(cross-site scripting) 중 하나는 쿠키의 내용을 바꾼다. signed cookie를 사용할 수는 있지만 덜 유용해질 수 있다. 
-- 쿠키를 남용하면 유저가 눈치챈다. 
+- 쿠키는 유저에게 숨겨져있지 않다.
+- 쿠키는 삭제되거나 승인되지 않을 수 있다.
+- 쿠키는 조작될 수 있다. 쿠키에 코드를 담고 그걸 실행시키는 짓은 하면 안됨.
+- 쿠키는 공격에 이용될 수 있다. XSS(cross-site scripting) 중 하나는 쿠키의 내용을 바꾼다. signed cookie를 사용할 수는 있지만 덜 유용해질 수 있다.
+- 쿠키를 남용하면 유저가 눈치챈다.
+- 쿠키보다 세션을 선호하자.
+
+> cookie secret이란 서버에게 알려진 문자열로 쿠키를 클라이언트에게 보내기 전에 암호화한다.
+
+credential을 externalizing하는 것은 유지보수가 편하고 버전 관리 시스템에서 제외하기 용이하다.
+
+!@meadowlark/site/.credentials.development.json@!
+
+!@meadowlark/site/config.js@!
+
+### Cookies in Express
+
+!@meadowlark/site/meadowlark-chapter9.js@!
+
+쿠키의 domain, path, maxAge, secure, httpOnly, signed를 설정할 수 있다.
+
+크롬의 inspector에서 쿠키를 삭제할 수 있다.
+
+### Sessions
+
+세션은 상태를 유지하기 위한 더 편리한 방법이다.
+
+쿠키에 전부 저장하거나, 쿠키에는 식별자만 저장하고 나머지는 서버에 저장하는 방법이 있다. 전자는 cookie-based sessions로 불리고 클라이언트의 브라우저에 죄다 저장돼서 비추. 적은 양의 정보라서 이거 쓸거면 cookie-session 미들웨어를 사용하면 된다.
+
+후자는 어딘가에 세션 정보를 저장해야한다. 일단은 메모리에,, express-session 미들웨어를 써보자.
+
+!@meadowlark/site/meadowlark-chapter9-2.js@!
+
+[delete vs undefined](https://stackoverflow.com/questions/14967535/delete-a-x-vs-a-x-undefined)
+
+!@meadowlark/site/views/homeWithFlash.handlebars@!
+
+The use of sessions to control UI like this is typically not used in applications that use Ajas for form submission. 프론트엔드에서 렌더링하는 어플리케이션에서는 이런 방법은 잘 안쓴다.
+
+세션은 페이지를 넘나들며 유용한 유저 정보를 저장하기에 유용하다.
+
+그럼 쿠키 차단하면 refresh마다 로그인 풀리고 그러나??
 
 ## 10. Middleware
 
