@@ -544,6 +544,8 @@ The use of sessions to control UI like this is typically not used in application
 - 2, 3개의 패러미터면 req, res, next, 4개면 err, req, res, next
 - next를 호출하는데 클라이언트에게 응답하는 것은 비추. 이러면 이후 응답은 무시된다.
 
+!@meadowlark/site/routingExample.js@!
+
 ```js
 // middleware의 반환값으로 뭐 하는게 없어서 아래처럼 줄여쓸 수 있다.
 next();
