@@ -67,7 +67,21 @@ number, identifier, keyword로 구성된다.
 
 ### 4. Extending our Token Set and Lexer
 
+따로 소스코드 파일을 만들지는 않음. 위 코드들은 여기 챕터에서 추가된 기능을 담고 있음. 
+
+코드가 말이 되고 에러가 있는지 없는지 판단하는 것은 lexer의 일이 아니다.
+
+> The test cases I write for lexers cover all tokens and also try to provoke off-by-one errors, edge cases at end-of-file, newline handling, multi-digit number parsing and so on.
+
+[Off-by-one error](https://en.wikipedia.org/wiki/Off-by-one_error)
+
+Most lexers and parser have such a “peek” function that looks ahead and most of the time it only returns the immediately next character. The difficulty of parsing different languages often comes down to how far you have to peek ahead (or look backwards!) in the source code to make sense of it.
+
 ### 5. Start of a REPL
+
+Sometimes the REPL is called “console”, sometimes “interactive mode”.
+
+
 
 ## 2. Parsing
 
