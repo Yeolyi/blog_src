@@ -576,7 +576,99 @@ express에 번들 된 미들웨어는 static뿐이다.
 
 ## 11. Sending Email
 
+> Lingua franca: 모국어가 다른 사람들이 상호 이해를 위하여 만들어 사용하는 언어. 어느 한쪽의 모국어이거나 제3의 언어일 때도 있으나, 대개의 경우 양쪽 국어가 혼합되고 문법이 간략하게 된 것이 많음. 명칭은 중세 시대 십자군이나 무역업자들 사이에서 사용된, 프로방스어를 중심으로 한 여러 언어의 혼합어에서 유래함.
+
+이메일을 보낼 때의 lingua franca는 SMTP(Simple Mail Transfer Protocol)이다. 하지만 이걸 바로 쓰면 trusted sender가 아니기 때문에 스팸메일함으로 갈 것임.
+
+따라서 MSA(Mail Submission Agent)를 사용. MTA(Mail Transfer Agent)는 뭐가 다른거지??
+
+Sendgrid 가입하기 귀찮아서,,,PASS
+
 ## 12. Production Concerns
+
+원하는 만큼의 서로 다른 환경을 가질 수 있다. 보통 development, production, test를 사용한다.
+
+`app.get('env')`로 현재 모드를 알아낼 수 있다.
+
+```bash
+export NODE_ENV=production
+node meadowlark.js
+# Unix/BSD에서 명령어 실행되는 동안만 환경 바꾸기
+NODE_ENV=production node meadowlark.js
+```
+
+!@ch12/00-logging.js@!
+
+```log
+::1 - - [03/Nov/2022:16:29:09 +0000] "GET / HTTP/1.1" 404 139 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15"
+::1 - - [03/Nov/2022:16:29:19 +0000] "GET / HTTP/1.1" 404 139 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15"
+```
+
+로그를 저장하는 Unix-like 접근법은 /var/log의 서브디렉터리에 저장하는 것이다. 아파치가 이렇게 함.
+
+지금까지는 node로 곧장 실행시켰지만 production에서는 이 경우 앱이 충돌나거나 종료되었을 때를 위한 보호가 없다. 이때 **process manager**를 사용한다. Forever, PM2 등등...
+
+저자의 의견으로는 Forever가 조금 더 직관적이고 시작하기 쉬웠고 PM2는 기능이 더 많았다.
+
+- Scaling up: 서버를 더 강력하게
+- Scaling out: 서버를 더 많이
+
+노드는 scaling out하기 용이하다.
+
+하지만 persistence를 유념하기. Persistence를 위해 file-based storage를 사용한다면 나중에 scale out할 때 정신나갈 것임. 모든 서버에서 접근 가능한 파일 시스템이 아닌 이상 local filesystem을 사용하면 안된다. read-only data는 그나마 예외.
+
+Node는 app cluster를 지원한다. CPU 코어마다 독립적인 서버를 만들 수 있다.
+
+!@ch12/01-cluster.js@!
+
+!@ch12/01-server.js@!
+
+코어가 10개인 것 같은데 worker가 10개인건 master와 worker가 같이 돌아가는 코어가 있다는 뜻인가??
+
+```js
+// 서버 터지고 request가 serve되지 않음
+app.get('/epic-fail', (req, res) => {
+  // execution of the function with the exception is being deferred until Node is idle
+  process.nextTick(() => throw new Error('Kaboom!'));
+  // 함수를 실행할 쯤이면 더 이상 serve하던 request의 context가 존재하지 않는다?
+});
+```
+
+> If Node can't determine the stability of your application, neither can you.
+
+가장 쉬운 failover 매커니즘은 cluster를 사용하는 것이다. 한 worker가 죽으면 master가 그 자리에 새로운 worker를 소환한다.
+
+```js
+// uncaughtException 이벤트를 사용한다.
+process.on('uncaughtException', (err) => {
+  console.error('UNCAUGHT EXCEPTION\n', err.stack);
+  // do any cleanup you need to do here...close
+  // database connections, etc.
+  process.exit(1);
+});
+```
+
+여러 서버로 늘려야되면 **프록시 서버**를 활용한다. 외부 네트워크에 접근하기 위해 사용되는 프록시 서버와 구분해 reverse proxy, forward-facing proxy로 불리기도 한다.
+
+개발중에 간단히 하려면 node-http-proxy도 있다.
+
+```js
+// Express에게 프록시를 사용하고 it should be trusted임을 알린다.
+app.enable('trust proxy');
+// 이후 req.ip, req.protocol, req.secure가 client와 app이 아닌 client와 proxy 사이 연결을 반영한다.
+// 특히 req.ip는 클라이언트 ip와 중간 프록시의 ip를 담은 배열이 된다.
+```
+
+서버가 죽으면 서버 내에 있는 모니터도 죽으니 third-party uptime monitor가 필요하다. UptimeRobot 등등...
+
+Artillery 등으로 stress test를 할 수 있다.
+
+```json
+"scripts": {
+  "stress": "artillery quick --count 10 -n 20 http://localhost:3000/"
+},
+```
+
 
 ## 13. Persistence
 
