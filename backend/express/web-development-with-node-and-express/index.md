@@ -669,8 +669,61 @@ Artillery 등으로 stress test를 할 수 있다.
 },
 ```
 
-
 ## 13. Persistence
+
+데이터를 flat files로 저장해서 달성할 수 있다. 파일에 구조가 없기 때문에 flat file이라고 한다. Just a sequence of bytes. 이거는 scale이 용이하지는 않다.
+
+사진 같은 이진 파일은 데이터베이스보다 파일 시스템이 더 잘하긴 한다. 이 경우에도 탐색이나 정렬을 위한 이미지에 대한 데이터는 데이터베이스에 저장한다. 그래도 scale이 잘 안되니 S3나 Azure같은 클라우드 기반 저장 시스템을 쓰자.
+
+```js
+// filesystem persistence
+const pathUtils = require('path');
+const fs = require('fs');
+
+// create directory to store vacation photos (if it doesn't already exist)
+const dataDir = pathUtils.resolve(__dirname, '..', 'data');
+const vacationPhotosDir = pathUtils.join(dataDir, 'vacation-photos');
+if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir);
+if (!fs.existsSync(vacationPhotosDir)) fs.mkdirSync(vacationPhotosDir);
+
+function saveContestEntry(contestName, email, year, month, photoPath) {
+  // TODO...this will come later
+}
+
+// we'll want these promise-based versions of fs functions later
+const { promisify } = require('util');
+const mkdir = promisify(fs.mkdir);
+const rename = promisify(fs.rename);
+
+exports.api.vacationPhotoContest = async (req, res, fields, files) => {
+  const photo = files.photo[0];
+  const dir = vacationPhotosDir + '/' + Date.now();
+  const path = dir + '/' + photo.originalFilename;
+  await mkdir(dir);
+  await rename(photo.path, path);
+  saveContestEntry('vacation-photo', fields.email, req.params.year, req.params.month, path);
+  res.send({ result: 'success' });
+};
+```
+
+```js
+// Cloud Persistence (S3)
+const filename = 'customerUpload.jpg'
+
+s3.putObject({
+  Bucket: 'uploads',
+  Key: filename,
+  Body: fs.readFileSync(__dirname + '/tmp/ + filename),
+})
+```
+
+유명한 NoSQL의 타입은 document database와 key-value database이다. 전자는 객체를 잘 저장해서 Node와 JS에 맞고, 후자는 매우 단순하고 key-value 짝인 데이터 스킴을 가지는 앱에 유용하다. 
+
+MongoDB가 document database에 자주 사용된다. RDBMS(relational database management system)에는 PostgreSQL을 사용해보자. 
+
+NoSQL은 성능을 위한 동시성에 집중했다. 
+
+
 
 ## 14. Routing
 
