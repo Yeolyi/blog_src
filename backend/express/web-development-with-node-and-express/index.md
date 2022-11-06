@@ -717,13 +717,23 @@ s3.putObject({
 })
 ```
 
-유명한 NoSQL의 타입은 document database와 key-value database이다. 전자는 객체를 잘 저장해서 Node와 JS에 맞고, 후자는 매우 단순하고 key-value 짝인 데이터 스킴을 가지는 앱에 유용하다. 
+유명한 NoSQL의 타입은 document database와 key-value database이다. 전자는 객체를 잘 저장해서 Node와 JS에 맞고, 후자는 매우 단순하고 key-value 짝인 데이터 스킴을 가지는 앱에 유용하다.
 
-MongoDB가 document database에 자주 사용된다. RDBMS(relational database management system)에는 PostgreSQL을 사용해보자. 
+MongoDB가 document database에 자주 사용된다. RDBMS(relational database management system)에는 PostgreSQL을 사용해보자.
 
-NoSQL은 성능을 위한 동시성에 집중했다. 
+NoSQL은 성능을 위한 동시성에 집중했다.
 
+MongoDB를 위한 ODM(object document mapper)에는 Mongoose가 있다. JS에서는 object model이 매우 유연하지만 남용하면 데이터베이스의 최적화에 나쁜 영향을 줄 수 있다. 이에 Mongoose는 schema와 model을 도입했다.
 
+[currency.js](https://github.com/scurker/currency.js)
+
+!@ch13/db.js@!
+
+!@ch13/models/vacation.js@!
+
+> There are good reasons not to pass unmapped database objects directly to views. The view gets a bunch of properties it may not need, possibly in formats that are incompatible with it.
+
+> **In some variations of the MVC architecture, a third component called a view model is introduced. A view model essentially distills and transforms a model (or models) so that it’s more appropriate for display in a view. What we’re doing here is creating a view model on the fly.**
 
 ## 14. Routing
 
