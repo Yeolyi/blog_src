@@ -2,7 +2,7 @@
 title: 매일의 공부
 ---
 
-### 프론트엔드
+## 프론트엔드
 
 [React](frontend/react)
 
@@ -10,11 +10,11 @@ title: 매일의 공부
 
 [CSS](frontend/css)
 
-### 백엔드
+## 백엔드
 
 [express](backend/express/)
 
-### 언어
+## 언어
 
 [Swift](language/swift)
 
@@ -26,7 +26,7 @@ title: 매일의 공부
 
 [Clojure](language/clojure/)
 
-### 컴퓨터 과학
+## 컴퓨터 과학
 
 [로드맵](cs/roadmap)
 
@@ -44,7 +44,7 @@ title: 매일의 공부
 
 [Writing an Interpreter in Go](cs/writing-an-interpreter-in-go/)
 
-### 교양
+## 교양
 
 [클린 코드](./book/clean-code/)
 
@@ -56,7 +56,7 @@ title: 매일의 공부
 
 [마케팅이다](./book/this-is-marketing/)
 
-### Links
+## Links
 
 [overreacted](https://overreacted.io)
 
@@ -68,7 +68,7 @@ title: 매일의 공부
 
 [넷플릭스의 문화](https://jobs.netflix.com/culture?lang=%ED%95%9C%EA%B5%AD%EC%96%B4)
 
-### iOS
+## iOS
 
 [로드맵](ios/roadmap)
 
