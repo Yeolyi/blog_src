@@ -51,3 +51,10 @@ Canvas 요소는 페이지에서 표시되는 크기(CSS로 설정)와 캔버스
 캔버스 내부의 크기를 drawingbuffer 크기라 한다.
 
 [helloCube](./build/helloCube.html)
+
+## Primitives
+
+> Primitives are generally 3D shapes that are generated at runtime with a bunch of parameters.
+
+[radialSegments](./build/radialSegments.html)
+
