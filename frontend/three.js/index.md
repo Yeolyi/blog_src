@@ -58,3 +58,28 @@ Canvas 요소는 페이지에서 표시되는 크기(CSS로 설정)와 캔버스
 
 [radialSegments](./build/radialSegments.html)
 
+일반적으로 solid shape는 반대쪽도 그릴 이유가 없다. 그려야되면 Material에 side: THREE.DoubleSide를 설정해준다.
+
+크게 solid gemometry, line geometry, point geometry로 나뉘는 듯.
+
+삼각형 개수를 염두에 두자. 평면을 여러 삼각형으로 나누는건 대부분의 경우 의미가 없다.
+
+## Scene Graph
+
+> A scene graph in a 3D engine is a hierarchy of nodes in a graph where each node represents a local space.
+
+자식 노드는 local space에서 어떻게 움직이는지만 신경쓰면 된다.
+
+[solar system](./build/solarSystem.html)
+
+## Materials
+
+[material](./build/material.html)
+
+## Textures
+
+당장 쓸 일 없을 것 같아 생략
+
+## Lights
+
+
