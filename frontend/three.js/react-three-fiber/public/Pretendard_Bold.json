@@ -1,0 +1,86 @@
+{
+  "glyphs": {
+    "e": {
+      "ha": 798,
+      "x_min": 49,
+      "x_max": 750,
+      "o": "m 412 -15 q 218 32 300 -15 q 93 163 136 78 q 49 365 49 249 q 93 564 49 477 q 217 698 136 650 q 404 746 298 746 q 582 704 503 746 q 705 578 660 663 q 750 373 750 494 l 750 316 l 247 316 q 268 220 247 261 q 327 158 288 180 q 416 136 365 136 q 503 156 467 136 q 553 210 538 176 l 745 210 q 686 91 730 142 q 572 13 642 41 q 412 -15 502 -15 m 560 442 q 541 522 560 486 q 487 576 522 557 q 408 595 452 595 q 327 575 363 595 q 270 519 291 555 q 247 442 249 484 l 560 442 z "
+    },
+    "i": {
+      "ha": 357,
+      "x_min": 69,
+      "x_max": 288,
+      "o": "m 79 736 l 279 736 l 279 0 l 79 0 l 79 736 m 179 833 q 124 847 149 833 q 84 884 99 861 q 69 935 69 907 q 84 986 69 962 q 124 1024 99 1010 q 179 1038 149 1038 q 233 1024 208 1038 q 273 986 258 1010 q 288 935 288 962 q 273 884 288 907 q 233 847 258 861 q 179 833 208 833 z "
+    },
+    "l": {
+      "ha": 357,
+      "x_min": 79,
+      "x_max": 279,
+      "o": "m 279 0 l 79 0 l 79 982 l 279 982 l 279 0 z "
+    },
+    "o": {
+      "ha": 819,
+      "x_min": 49,
+      "x_max": 772,
+      "o": "m 410 -15 q 218 33 300 -15 q 93 167 136 81 q 49 366 49 253 q 93 565 49 479 q 218 699 136 651 q 410 746 300 746 q 601 699 519 746 q 727 565 683 651 q 772 366 772 479 q 727 167 772 253 q 601 33 683 81 q 410 -15 519 -15 m 252 366 q 270 250 252 300 q 324 170 288 199 q 411 141 360 141 q 496 170 460 141 q 549 249 531 199 q 567 363 567 299 q 549 482 567 430 q 496 563 532 534 q 411 593 461 593 q 324 564 360 593 q 270 483 288 534 q 252 366 252 432 z "
+    },
+    "y": {
+      "ha": 781,
+      "x_min": 20,
+      "x_max": 762,
+      "o": "m 197 -277 q 95 -273 121 -275 l 95 -117 q 176 -119 130 -119 q 216 -115 200 -119 q 247 -97 233 -111 q 273 -52 261 -82 l 285 -20 l 20 736 l 231 736 l 385 194 l 393 194 l 549 736 l 762 736 l 475 -81 q 375 -226 441 -176 q 197 -277 308 -276 z "
+    }
+  },
+  "familyName": "Pretendard",
+  "ascender": 1322,
+  "descender": -335,
+  "underlinePosition": -145,
+  "underlineThickness": 127,
+  "boundingBox": { "yMin": -430, "xMin": -1126, "yMax": 1501, "xMax": 3932 },
+  "resolution": 1000,
+  "original_font_information": {
+    "format": 0,
+    "copyright": "Copyright © 2022 Kil Hyung-jin",
+    "fontFamily": "Pretendard",
+    "fontSubfamily": "Bold",
+    "uniqueID": "1.301;CTUS;Pretendard-Bold",
+    "fullName": "Pretendard Bold",
+    "version": "Version 1.301",
+    "postScriptName": "Pretendard-Bold",
+    "trademark": "Pretendard is a trademark of Kil Hyung-jin.",
+    "manufacturer": "Kil Hyung-jin",
+    "designer": "Base glyphs from Inter by Rasmus Andersson; Hangul glyphs from Noto Sans CJK(Source Han Sans) by Jang Soo-young and Kang Joo-yeon, Sandoll Communications; Kana glyphs from M PLUS 1p by Coji Morishita, UNDERFOREST DESIGN; Combined and redesigned to Pretendard by Kil Hyung-jin.",
+    "manufacturerURL": "https://orioncactus.com/",
+    "designerURL": "https://orioncactus.com/",
+    "licence": "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL",
+    "licenceURL": "http://scripts.sil.org/OFL",
+    "preferredFamily": "Pretendard",
+    "preferredSubfamily": "Bold",
+    "unknown1": "Straight-sided six and nine",
+    "unknown2": "Open four",
+    "unknown3": "Vertically centered colon",
+    "unknown4": "Korean localization",
+    "unknown5": "High legibility",
+    "unknown6": "One storey a",
+    "unknown7": "Flat-top three",
+    "unknown8": "Medium symbols",
+    "unknown9": "Outlined symbols",
+    "unknown10": "Circle symbols",
+    "unknown11": "Square symbols",
+    "unknown12": "Filled symbols",
+    "unknown13": "Small symbols",
+    "unknown14": "Large symbols",
+    "unknown15": "Alternate one",
+    "unknown16": "Open six",
+    "unknown17": "Open nine",
+    "unknown18": "Lower-case L with tail",
+    "unknown19": "Alternate German double s",
+    "unknown20": "Upper-case i with serif",
+    "unknown21": "Captital G with spur",
+    "unknown22": "Single-storey a",
+    "unknown23": "Vertically centered ellipsis",
+    "unknown24": "High legibility one"
+  },
+  "cssFontWeight": "bold",
+  "cssFontStyle": "normal"
+}

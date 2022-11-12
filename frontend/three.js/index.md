@@ -82,4 +82,43 @@ Canvas 요소는 페이지에서 표시되는 크기(CSS로 설정)와 캔버스
 
 ## Lights
 
+여기 예제는 웹팩 배우면 블로그에 올릴 예정
 
+## Cameras
+
+가장 많이쓰는건 PerspectiveCamera. frustum을 정의한다.
+
+scissor function??
+
+near나 far를 너무 작고 크게 설정하면 GPU가 한정된 정확도를 가지기에 이 정확도가 넓은 범위에 퍼지게 된다. **z fighting**이 발생함.
+
+OrthographicCamera는 원근이 없다. 2D를 그릴 때 사용된다.
+
+---
+
+## react-three-fiber
+
+> Build your scene declaratively with re-usable, self-contained components that react to state, are readily interactive and can tap into React's ecosystem.
+
+<mesh/>를 new THREE.Mesh()로 바꿔주는 식.
+
+Canvas 컴포넌트가 Scene과 Camera를 셋업한다. 또한 매 프레임마다 렌더를 해줘서 고전적인 render-loop가 필요하지 않다. 부모 노드에 responsive하게 맞는다.
+
+All three.js objects will be treated as native JSX elements.
+
+```jsx
+// Note that every time you change args, the object must be re-constructed!
+new THREE.BoxGeometry(2, 2, 2);
+<boxGeometry args={[2, 2, 2]} />;
+
+const light = new THREE.DirectionalLight()
+light.position.set(0, 0, 5)
+light.color.set('red')
+<directionalLight position={[0, 0, 5]} color="red" />
+```
+
+### Hooks
+
+components that want to participate in the renderloop can use useFrame, components that need to be informed of three.js specifics can use useThree and so on
+
+Context에 의지하므로 Canvas 요소 내부에서 사용해야한다. 
