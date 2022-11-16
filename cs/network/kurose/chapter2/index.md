@@ -245,7 +245,7 @@ UDP에서는 데이터 전송 전 handshaking이 없고, 모든 패킷에 송신
 
 서버측에서는 받고 보내는걸 같은 소켓에서 하네?
 
-```python
+```py
 from socket import *
 serverName = 'hostname'
 serverPort = 12000
@@ -258,7 +258,7 @@ print modifiedMessage.decode()
 clientSocket.close()
 ```
 
-```python
+```py
 from socket import *
 serverPort = 12000
 serverSocket = socket(AF_INET, SOCK_DGRAM)
@@ -278,7 +278,7 @@ welcoming socket과 이후 생기는 new socket을 구분하자. 신기하게도
 
 TCP provides reliable, in-order byte-stream transfer("pipe") between client and server process.
 
-```python
+```py
 from socket import *
 serverName = 'serverName'
 serverPort = 12000
@@ -291,7 +291,7 @@ print('From Server', modifiedSentence.decode())
 clientSocket.close()
 ```
 
-```python
+```py
 from socket import *
 serverPort = 12000
 serverSocket = socket(AF_INET, SOCK_STREAM)

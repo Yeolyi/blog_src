@@ -47,7 +47,7 @@ A network socket is a software structure within a network node of a computer net
 
 UDP를 사용하는 datagram 소켓은 비연결성(conectionless) 소켓이며, TCP를 사용하는 stream 소켓은 연결성소켓이다.
 
-```python
+```py
 import socket
 
 UDP_IP = "127.0.0.1"

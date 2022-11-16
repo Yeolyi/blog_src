@@ -32,7 +32,7 @@ Function declarations are hoisted and function expression are not.
 
 [Babel REPL](https://babeljs.io/repl)
 
-```javascript
+```js
 const sandwich = {
   bread: 'dutch crunch',
   meat: 'tuna',
@@ -72,7 +72,7 @@ In a declarative program, the syntax itself describes what souel happen, and the
 
 [Declarative Programming wiki](http://wiki.c2.com/?DeclarativeProgramming)
 
-```javascript
+```js
 // Building a DOM
 
 // Imperative approach
@@ -108,7 +108,7 @@ Core concepts of functional programming
 - High-order functions
 - Recursion
 
-```javascript
+```js
 const rateColor = function (color, rating) {
   // return Object.assign({}, color, {rating: rating});
   return { ...color, rating };
