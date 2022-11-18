@@ -24,6 +24,8 @@ title: 매일의 공부
 
 [TypeScript](language/typescript)
 
+[Python](language/python/)
+
 [Java](language/java/)
 
 [Clojure](language/clojure/)

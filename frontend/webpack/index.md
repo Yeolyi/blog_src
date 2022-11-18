@@ -100,19 +100,6 @@ webpack-dev-middleware is a wrapper that will emit files processed by webpack to
 
 ### Code Splitting
 
-```c
-// djb2
-// hash(i) = hash(i - 1) * 33 ^ str[i]
-// 33이 다른 수들에 비해 효과적인 이유는 밝혀지지 않았다.
-unsigned long hash(unsigned char *str) {
-  unsigned long hash = 5381;
-  int c;
-  while (c = *str++)
-    hash = ((hash << 5) + hash) + c; // hash * 33 + c
-  return hash;
-}
-```
-
 ### Caching
 
 ### Authoring Libraries
