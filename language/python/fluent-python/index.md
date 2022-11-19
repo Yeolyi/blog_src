@@ -54,7 +54,104 @@ ABC: abstract base classes
 
 ### 2. An Array of Sequences
 
+표준 라이브러리는 C로 구현된 풍부한 시퀀스 타입을 제공한다.
 
+list, tuple, deque같은 container sequence는 다른 타입의 요소를 가질 수 있고 str, byte, array같은 flat sequence는 한 타입만 가질 수 있다. 전자는 참조, 후자는 값을 가진다. 전자는 숫자를 넣어도 참조로 가지는 듯?(Figure 2-1)
+
+이렇게 말고 mutability로 나눌 수도 있다. tuple, str, byte는 변경 불가능하다. mutable sequence들은 immutable sequence의 것들을 상속받는다.
+
+모든 파이썬 객체는 메타데이터가 든 헤더를 가진다.
+
+생성된 list로 뭘 할게 아니라면 list comprehension은 사용하면 안된다.
+
+!@chapter1/listComp.py@!
+
+Listcomp는 map과 filter가 하는거 다 할 수 있다. 더 예쁨.
+
+다른 시퀀스 다루려면 generator expression을 사용한다.
+
+!@chapter1/genExp.py@!
+
+튜플은 변경 불가능한 리스트 외에도 records with no field names로 사용할 수 있다.
+
+!@chapter1/tupleUnpacking.py@!
+
+Mutable한 객체를 담은 튜플은 버그의 원인이 될 수 있다.
+
+튜플은 리스트보다 성능이 좋다.
+
+> Unpacking is important because it avoids unnecessary and error-prone use of indexes to extract elements from sequences.
+
+!@chapter1/unpacking.py@!
+
+single-item 튜플은 trailing comma와 함께 써야한다. (a, )
+
+```py
+# One key improvement of match over switch is destructuring
+def handle_command(self, message):
+  match message:
+    case ['BEEPER', frequency, times]:
+      self.beep(times, frequency)
+    case ['NECK', angle]:
+      self.rotate_neck(angle)
+    case ['LED', ident, intensity]:
+      self.leds[ident].set_brightness(ident, intensity)
+    case ['LED', ident, red, green, blue]:
+      self.leds[ident].set_color(ident, red, green, blue)
+    case _:
+      raise InvalidCommand(message)
+# Sequence pattern은 튜플이든 리스트든 상관이 없다. collection.abs.Sequence의 서브클래스면 되지만 str, bytes, bytearray는 예외.
+# patterns don't destructure iterables that are not sequences. like iterator
+# 여기서 사용된 _에는 값이 바인딩되지 않는다.
+```
+
+시퀀스 패턴에서 \*는 시퀀스당 한번만 등장할 수 있다.
+
+> Pattern matching is an example of declarative programming: the code describes “what” you want to match, instead of “how” to match it.
+
+slice/range에서 명시한? 마지막 원소를 포함하지 않는 것은 길이를 알기 쉽고 계산하기도 쉽고(stop - start) 시퀀스를 두 개로 나누기(list[:x], list[x:]도 쉽다.
+
+!@chapter1/slice.py@!
+
+Augmented assignment operator. +=의 경우 \_\_iadd\_\_를 통해 작동하고 구현되어있지 않으면 \_\_add\_\_를 사용한다. 따라서 후자의 경우 a = a + b처럼 작동하고 a + b를 평가할 때 새로운 객체를 만들게 된다. 객체의 identity가 바뀔 수도 안바뀔 수도 있다.
+
+따라서 mutable 객체는 iadd가 구현되어 inplace로 작동한다 생각해도 좋다.
+
+!@chapter1/sequenceOperator.py@!
+
+- 튜플에 mutable 넣는 것 지양
+- Augmented assignement는 원자적 작업이 아니다.
+- Python bytecode를 보는건 그리 어렵지 않다.
+
+> Receiver is the target of a method call, the object bound to self in the method body.
+
+list.sort는 inplace.
+
+[Fluent interface](https://en.wikipedia.org/wiki/Fluent_interface#Swift)
+
+이진 검색 모듈인 bisect가 있다.
+
+리스트도 좋지만 다른걸 사용하는게 좋은 경우도 있다. array, dequeue 등,,,
+
+!@chapter1/arrray.py@!
+
+> A memoryview is essentially a generalized NumPy array structure in Python itself (without the math). It allows you to share memory between data-structures (things like PIL images, SQLite databases, NumPy arrays, etc.) without first copying. This is very important for large data sets.
+
+> NumPy implements multi-dimensional, homogeneous arrays and matrix types that hold not only numbers but also user-defined records, and provides efficient element-wise operations.
+
+> SciPy is a library, written on top of NumPy, offering many scientific computing algorithms from linear algebra, numerical calculus, and statistics.
+
+> NumPy and SciPy are formidable libraries, and are the foundation of other awesome tools such as the Pandas—which implements efficient array types that can hold nonnumeric data and provides import/export functions for many different formats’
+
+!@chapter1/numpyEx.py@!
+
+> The class collections.deque is a thread-safe double-ended queue designed for fast inserting and removing from both ends
+
+!@chapter1/dequeEx.py@!
+
+덱은 양 끝에서는 빠른 대신에 중간에서 하는건 느림에 유의. append와 popleft는 원자적이라서 멀티쓰레드에서 락 없이 사용해도 좋다.
+
+이외에도 queue, multiprocessing, asyncio, heapq가 있다. 
 
 ## 2. Functions as Objects
 
