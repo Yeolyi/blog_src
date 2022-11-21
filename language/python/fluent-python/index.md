@@ -28,13 +28,13 @@ title: Fluent Python 2ed
 
 파이썬 인터프리터는 기본적인 객체 연산을 위해 특별 메서드(special method)를 호출한다. obj[key]는 \_\_getitem\_\_ 특별 메서드에 의해 지원된다.
 
-!@chapter1/specialMethod.py@!
+!@chapter1/1-2/specialMethod.py@!
 
 파이썬 데이터 모델을 leverage하기 위한 특별 메서드는 클래스의 사용자가 임의의 메서드 이름을 외울 필요가 없게 하고 풍부한 파이썬 표준 라이브러리로부터 이득을 취하기 쉽게 한다.
 
 특별 메서드는 내가 아닌 파이썬 인터프리터에 의해 호출되어야한다. 유일하게 자주 직접 불러야하는 특별 메서드는 \_\_init\_\_이다. 빌트인 함수들이 부르는게 다른 작업도 해주고 빌트인 타입에서는 빠르니까 좋다.
 
-!@chapter1/vector.py@!
+!@chapter1/1-2/vector.py@!
 
 [what does r do in str and repr](https://stackoverflow.com/questions/38418070/what-does-r-do-in-str-and-repr)
 
@@ -64,17 +64,17 @@ list, tuple, deque같은 container sequence는 다른 타입의 요소를 가질
 
 생성된 list로 뭘 할게 아니라면 list comprehension은 사용하면 안된다.
 
-!@chapter1/listComp.py@!
+!@chapter1/1-2/listComp.py@!
 
 Listcomp는 map과 filter가 하는거 다 할 수 있다. 더 예쁨.
 
 다른 시퀀스 다루려면 generator expression을 사용한다.
 
-!@chapter1/genExp.py@!
+!@chapter1/1-2/genExp.py@!
 
 튜플은 변경 불가능한 리스트 외에도 records with no field names로 사용할 수 있다.
 
-!@chapter1/tupleUnpacking.py@!
+!@chapter1/1-2/tupleUnpacking.py@!
 
 Mutable한 객체를 담은 튜플은 버그의 원인이 될 수 있다.
 
@@ -82,7 +82,7 @@ Mutable한 객체를 담은 튜플은 버그의 원인이 될 수 있다.
 
 > Unpacking is important because it avoids unnecessary and error-prone use of indexes to extract elements from sequences.
 
-!@chapter1/unpacking.py@!
+!@chapter1/1-2/unpacking.py@!
 
 single-item 튜플은 trailing comma와 함께 써야한다. (a, )
 
@@ -111,13 +111,13 @@ def handle_command(self, message):
 
 slice/range에서 명시한? 마지막 원소를 포함하지 않는 것은 길이를 알기 쉽고 계산하기도 쉽고(stop - start) 시퀀스를 두 개로 나누기(list[:x], list[x:]도 쉽다.
 
-!@chapter1/slice.py@!
+!@chapter1/1-2/slice.py@!
 
 Augmented assignment operator. +=의 경우 \_\_iadd\_\_를 통해 작동하고 구현되어있지 않으면 \_\_add\_\_를 사용한다. 따라서 후자의 경우 a = a + b처럼 작동하고 a + b를 평가할 때 새로운 객체를 만들게 된다. 객체의 identity가 바뀔 수도 안바뀔 수도 있다.
 
 따라서 mutable 객체는 iadd가 구현되어 inplace로 작동한다 생각해도 좋다.
 
-!@chapter1/sequenceOperator.py@!
+!@chapter1/1-2/sequenceOperator.py@!
 
 - 튜플에 mutable 넣는 것 지양
 - Augmented assignement는 원자적 작업이 아니다.
@@ -133,7 +133,7 @@ list.sort는 inplace.
 
 리스트도 좋지만 다른걸 사용하는게 좋은 경우도 있다. array, dequeue 등,,,
 
-!@chapter1/arrray.py@!
+!@chapter1/1-2/arrray.py@!
 
 > A memoryview is essentially a generalized NumPy array structure in Python itself (without the math). It allows you to share memory between data-structures (things like PIL images, SQLite databases, NumPy arrays, etc.) without first copying. This is very important for large data sets.
 
@@ -143,15 +143,82 @@ list.sort는 inplace.
 
 > NumPy and SciPy are formidable libraries, and are the foundation of other awesome tools such as the Pandas—which implements efficient array types that can hold nonnumeric data and provides import/export functions for many different formats’
 
-!@chapter1/numpyEx.py@!
+!@chapter1/1-2/numpyEx.py@!
 
 > The class collections.deque is a thread-safe double-ended queue designed for fast inserting and removing from both ends
 
-!@chapter1/dequeEx.py@!
+!@chapter1/1-2/dequeEx.py@!
 
 덱은 양 끝에서는 빠른 대신에 중간에서 하는건 느림에 유의. append와 popleft는 원자적이라서 멀티쓰레드에서 락 없이 사용해도 좋다.
 
-이외에도 queue, multiprocessing, asyncio, heapq가 있다. 
+이외에도 queue, multiprocessing, asyncio, heapq가 있다.
+
+### 3. Dictionaries and Sets
+
+> Python is basically dicts wrapped in loads of syntactic sugar.
+
+파이썬과 딕셔너리는 떼놓을 수 없다. 중요한 역할을 맞기에 매우 최적화되어있다.
+
+!@chapter1/3/modernDict.py@!
+
+!@chapter1/3/dictPatternMatching.py@!
+
+> An object is hashable if it has a hash code which never changes during its lifetime (it needs a \_\_hash\_\_() method), and can be compared to other objects (it needs an \_\_eq\_\_() method). Hashable objects which compare equal must have the same hash code.
+
+Container 타입은 immutable하고 contained object가 hashable할 때 hashable하다.
+
+보안상의 이유로 파이썬 버전별로, 컴퓨터 아키텍처에 따라 해시 값은 다를 수 있다. 해시 값은 한 파이썬 프로세스내에서만 같을 것이 보장된다.
+
+```py
+# setdefault example
+if key not in my_dict:
+  my_dict[key] = []
+my_dict[key].append(new_value)
+
+my_dict.setdefault(key, []).append(new_value)
+```
+
+defaultdict은 \_\_missing\_\_을 통해 작동한다.
+
+k in my_dict.keys()보다 k in my_dict가 더 빠르다.
+
+3.6부터 기본 dict도 순서를 보존해서 OrderedDict는 보통 하위호환을 위해 사용한다. 어느정도 차이는 있는데, dict는 mapping 연산에 특화되었고 OrderedDict는 reorder에 특화되어있다. LRU 캐시에서 최근 접근을 관리하는데 용이하다.
+
+```py
+# A ChainMap instance holds a list of mappings that can be searched as one.
+import builtins
+pylookup = ChainMap(locals(), globals(), vars(builtins)
+```
+
+!@chapter1/3/counterEx.py@!
+
+> The shelve module in the standard library provides persistent storage for a mapping of string keys to Python objects serialized in the pickle binary format.
+
+dict보다 UserDict를 서브클래싱하는 것이 좋다.
+
+!@chapter1/3/mappingProxyTypeEx.py@!
+
+dict의 .keys(), .values(), .items()는 특정 클래스의 인스턴스를 반환하는데, 이 **dictionary view**들은 read-only projections of the internal data structures used in the dict implementation으로 메모리를 절약할 수 있게 해준다. 이 view object는 dynamic proxy이다. 
+
+!@chapter1/3/dictProjections.py@!
+
+> To save memory, avoid creating instance attributes outside of the \_\_init\_\_ method...??
+
+**Set**
+
+```py
+# 중복 요소 제거해야되는데 순서도 보장해야할 때
+dict.fromkeys(l).keys()
+list(dict.fromkeys(l).keys())
+```
+
+빈 집합은 {}로는 안되고 set()을 사용해야한다. 
+
+!@chapter1/3/setComprehension.py@!
+
+!@chapter1/3/setOperation.py@!
+
+dict_keys와 dict_items는 frozenset과 아주 유사하다. 
 
 ## 2. Functions as Objects
 
