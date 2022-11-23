@@ -157,7 +157,7 @@ list.sort는 inplace.
 
 > Python is basically dicts wrapped in loads of syntactic sugar.
 
-파이썬과 딕셔너리는 떼놓을 수 없다. 중요한 역할을 맞기에 매우 최적화되어있다.
+파이썬과 딕셔너리는 떼놓을 수 없다. 중요한 역할을 맡기에 매우 최적화되어있다.
 
 !@chapter1/3/modernDict.py@!
 
@@ -198,7 +198,7 @@ dict보다 UserDict를 서브클래싱하는 것이 좋다.
 
 !@chapter1/3/mappingProxyTypeEx.py@!
 
-dict의 .keys(), .values(), .items()는 특정 클래스의 인스턴스를 반환하는데, 이 **dictionary view**들은 read-only projections of the internal data structures used in the dict implementation으로 메모리를 절약할 수 있게 해준다. 이 view object는 dynamic proxy이다. 
+dict의 .keys(), .values(), .items()는 특정 클래스의 인스턴스를 반환하는데, 이 **dictionary view**들은 read-only projections of the internal data structures used in the dict implementation으로 메모리를 절약할 수 있게 해준다. 이 view object는 dynamic proxy이다.
 
 !@chapter1/3/dictProjections.py@!
 
@@ -212,13 +212,49 @@ dict.fromkeys(l).keys()
 list(dict.fromkeys(l).keys())
 ```
 
-빈 집합은 {}로는 안되고 set()을 사용해야한다. 
+빈 집합은 {}로는 안되고 set()을 사용해야한다.
 
 !@chapter1/3/setComprehension.py@!
 
 !@chapter1/3/setOperation.py@!
 
-dict_keys와 dict_items는 frozenset과 아주 유사하다. 
+dict_keys와 dict_items는 frozenset과 아주 유사하다.
+
+### 4. Unicode Text Versus Bytes
+
+> Python 3 introduced a sharp distinction between strings of human text and sequences of raw bytes. Implicit conversion of byte sequences to Unicode text is a thing of the past.
+
+string이란 character의 시퀀스고 character는 일반적으로 Unicode character이다.
+
+character의 identity는 code point이며 0에서 1114111까지의 수이다.
+
+특정 character를 표현하기 위한 바이트는 인코딩에 따라 달라진다. 인코딩이란 code point에서 바이트 시퀀스로의 변환을 하는 알고리즘이다.
+
+!@chapter1/4/encoding.py@!
+
+bytes, bytearray의 요소는 0-255의 수이다.
+
+!@chapter1/4/byte.py@!
+
+!@chapter1/4/error.py@!
+
+utf 인코딩은 모든 유니코드 코드 포인트를 표현할 수 있도록 디자인되었다. utf-8은 97%의 웹사이트가 사용한다.
+
+!@chapter1/4/bom.py@!
+
+> **Unicode sandwich**. byte는 input, output얻어올 때 바로 처리하고 비즈니스 코드에서는 text만 처리하는 것인듯.
+
+In the Unicode standard, sequences like 'é' and 'e\u0301' are called **canonical equivalents**, and applications are supposed to treat them as the same. But Python sees two different sequences of code points, and considers them not equal.
+
+이때 normalize 함수를 활용한다. 
+
+!@chapter1/4/canonical.py@!
+
+Case Folding이란 모든 텍스트를 소문자로 바꾸는 것이다. 
+
+### 5. Data Class Builders
+
+> ‘Python offers a few ways to build a simple class that is just a collection of fields, with little or no extra functionality. That pattern is known as a **data class**
 
 ## 2. Functions as Objects
 
