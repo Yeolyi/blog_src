@@ -246,11 +246,19 @@ utf 인코딩은 모든 유니코드 코드 포인트를 표현할 수 있도록
 
 In the Unicode standard, sequences like 'é' and 'e\u0301' are called **canonical equivalents**, and applications are supposed to treat them as the same. But Python sees two different sequences of code points, and considers them not equal.
 
-이때 normalize 함수를 활용한다. 
+이때 normalize 함수를 활용한다.
 
 !@chapter1/4/canonical.py@!
 
-Case Folding이란 모든 텍스트를 소문자로 바꾸는 것이다. 
+Case Folding이란 모든 텍스트를 소문자로 바꾸는 것이다.
+
+유니코드 표준은 code point에서 character 이름, 각 character의 메타 데이터등을 포함하는 데이터베이스를 제공한다.
+
+!@chapter1/4/findByName.py@!
+
+!@chapter1/4/database.py@!
+
+파이썬의 표준 라이브러리 중에는 str과 bytes를 모두 인자로 받는 것들이 있으며 입력받은 타입에 따라 다르게 작동한다.
 
 ### 5. Data Class Builders
 
@@ -263,3 +271,14 @@ Case Folding이란 모든 텍스트를 소문자로 바꾸는 것이다.
 ## 4. Control Flow
 
 ## 5. Metaprogramming
+
+```py
+def factorial(x):
+    if x == 1: # This is the base case
+        return 1
+
+    else: # This is the recursive case
+        return(x * factorial(x-1))
+
+print(factorial(4))
+```

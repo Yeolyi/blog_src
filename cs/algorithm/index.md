@@ -2,7 +2,9 @@
 title: 알고리즘
 ---
 
-> In mathematics and computer science, an algorithm is a finite sequence of well-defined instructions, typically used to solve a class of specific problems or to perform a computation. \_Wikipedia
+> In mathematics and computer science, an algorithm is a finite sequence of well-defined instructions, typically used to solve a class of specific problems or to perform a computation. - Wikipedia
+
+[알고리즘 문제 해결 전략](/jongman)
 
 [탐색](search)
 
