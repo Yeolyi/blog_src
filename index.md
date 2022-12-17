@@ -52,6 +52,8 @@ title: 매일의 공부
 
 [Writing an Interpreter in Go](cs/writing-an-interpreter-in-go/)
 
+[SEO](cs/seo)
+
 ## 교양
 
 [클린 코드](./book/clean-code/)
