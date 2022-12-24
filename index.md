@@ -1,5 +1,5 @@
 ---
-title: 매일의 공부
+title: 공부 기록
 ---
 
 ## 프론트엔드
@@ -50,11 +50,9 @@ title: 매일의 공부
 
 [HTTP](cs/http)
 
-[Writing an Interpreter in Go](cs/writing-an-interpreter-in-go/)
-
 [SEO](cs/seo)
 
-## 교양
+## 독서
 
 [클린 코드](./book/clean-code/)
 
@@ -66,7 +64,9 @@ title: 매일의 공부
 
 [마케팅이다](./book/this-is-marketing/)
 
-## Links
+[Writing an Interpreter in Go](cs/writing-an-interpreter-in-go/)
+
+## 유용했던 링크들
 
 [overreacted](https://overreacted.io)
 

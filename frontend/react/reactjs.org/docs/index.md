@@ -1075,9 +1075,60 @@ PASS
 
 ### Strict Mode
 
+Production build에 영향을 주지 않는다.
 
+```jsx
+<React.StrictMode>
+  <div>
+    <ComponentOne />
+    <ComponentTwo />
+  </div>
+</React.StrictMode>
+```
+
+예상하지 못한 side effect를 감지할 수 있다.
+
+리액트는 두단계로 작동한다. Render 단계에서는 (브라우저의 경우) DOM에 어떤 변경을 주어야하는지 결정한다. render 함수를 호출해 이전 render와 결과를 비교한다. Commit 단계에서는 변경사항을 적용한다. lifecycle 함수도 이때 불린다. Commit은 빠르지만 render는 비교적 느린데 브라우저가 blocking되는 것을 막기 위해 concurrent mode를 개발중이다. 이는 리액트가 render phase lifecycle을 commit 전에 한 번 이상, 혹은 commit도 하기 전에 호출할 수 있음을 의미한다? 이때문에 lifecycle 함수들은 side effect가 없어야한다. 이를 감지하기 위해 몇몇 함수를 여러번 호출한다.
+
+With Strict Mode starting in React 18, whenever a component mounts in development, React will simulate immediately unmounting and remounting the component:
+
+### Typechecking With PropTypes
+
+PASS
+
+### Uncontrolled Components
+
+> In most cases, we recommend using controlled components to implement forms. In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
+
+[Controlled and uncontrolled form inputs in React don't have to be complicated](https://goshacmd.com/controlled-vs-uncontrolled-inputs-react/)
+
+Uncontrolled component인데 초기값은 지정해주고 싶을 때 defaultValue 어트리뷰트를 활용하면 된다.
+
+### Web Components
+
+[Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
 
 ## API Reference
+
+### React
+
+### ReactDOM
+
+### ReactDOMClient
+
+### ReactDOMServer
+
+### DOM Elements
+
+### Synthetic Event
+
+### Test Utilities
+
+### Test Renderer
+
+### JS Environment Requirements
+
+### Glossary
 
 ## Hooks
 
