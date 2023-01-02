@@ -6,7 +6,7 @@ title: React
 
 [JSX Babel REPL](https://babeljs.io/repl/#?presets=react&code_lz=MYewdgzgLgBApgGzgWzmWBeGAeAFgRgD4AJRBEAGhgHcQAnBAEwEJsB6AwgbgChRJY_KAEMAlmDh0YWRiGABXVOgB0AczhQAokiVQAQgE8AkowAUAcjogQUcwEpeAJTjDgUACIB5ALLK6aRklTRBQ0KCohMQk6Bx4gA)
 
-Using props and state, we can put together a small Todo application. This example uses state to track the current list of items as well as the text that the user has entered. **Although event handlers appear to be rendered inline, they will be collected and implemented using event delegation.**??
+Using props and state, we can put together a small Todo application. This example uses state to track the current list of items as well as the text that the user has entered. **Although event handlers appear to be rendered inline, they will be collected and implemented using event delegation(?)**
 
 ### Tutorial
 
@@ -20,13 +20,13 @@ Using props and state, we can put together a small Todo application. This exampl
 
 [Advanced Guides](./reactjs.org/docs/advanced-guides/)
 
-[API Reference]
+API Reference
 
-[Hooks]
+Hooks
 
-[Testing]
+Testing
 
-### beta.react.js.org
+## beta.react.js.org
 
 [Installation](./beta.react.js.org/installation)
 
@@ -40,4 +40,6 @@ Using props and state, we can put together a small Todo application. This exampl
 
 [Escape Hatches](./beta.react.js.org/escape-hatches)
 
-## [Learning React](./learning-react/)
+## Learning React
+
+[내용 보기](./learning-react/)
