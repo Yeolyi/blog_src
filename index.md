@@ -48,8 +48,6 @@ title: 공부 기록
 
 [HTTP](cs/http)
 
-[SEO](cs/seo)
-
 ## 독서
 
 [클린 코드](./book/clean-code/)
@@ -62,19 +60,7 @@ title: 공부 기록
 
 [마케팅이다](./book/this-is-marketing/)
 
-[Writing an Interpreter in Go](cs/writing-an-interpreter-in-go/)
-
-## 유용했던 링크들
-
-[overreacted](https://overreacted.io)
-
-[기억장치/표기 용량과 실체](https://namu.wiki/w/기억장치/표기%20용량과%20실제)
-
-[devhints.io](https://devhints.io)
-
-[tonsky.me](https://tonsky.me)
-
-[넷플릭스의 문화](https://jobs.netflix.com/culture?lang=%ED%95%9C%EA%B5%AD%EC%96%B4)
+[Writing an Interpreter in Go](./book/writing-an-interpreter-in-go/)
 
 ## iOS
 
@@ -85,3 +71,17 @@ title: 공부 기록
 [UIKit](ios/uikit)
 
 [Xcode가 group을 사용하는 이유](ios/why-xcode-use-group)
+
+## 기타
+
+### 북마크
+
+[overreacted](https://overreacted.io)
+
+[기억장치/표기 용량과 실체](https://namu.wiki/w/기억장치/표기%20용량과%20실제)
+
+[devhints.io](https://devhints.io)
+
+[tonsky.me](https://tonsky.me)
+
+[넷플릭스의 문화](https://jobs.netflix.com/culture?lang=%ED%95%9C%EA%B5%AD%EC%96%B4)

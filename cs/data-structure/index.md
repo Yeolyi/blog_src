@@ -2,8 +2,6 @@
 title: 자료구조
 ---
 
-> In computer science, a data structure is a data organization, management, and storage format that enables efficient access and modification. \_Wikipedia
-
 윤성우님의 '열혈 자료구조' 책으로 공부를 진행했다. 다만 예제에 내 생각을 담아 몇몇 부분을 수정했다.
 
 - 참거짓을 반환하는 함수는 int 대신 bool을 반환한다.
