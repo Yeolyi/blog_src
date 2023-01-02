@@ -8,26 +8,36 @@ title: React
 
 Using props and state, we can put together a small Todo application. This example uses state to track the current list of items as well as the text that the user has entered. **Although event handlers appear to be rendered inline, they will be collected and implemented using event delegation.**??
 
-[Tutorial](./reactjs.org/tutorial/)
+### Tutorial
 
-## 책
+[Tutorial](./reactjs.org/tutorial)
 
-[Learning React](./learning-react)
+### Docs
 
-## React Docs Beta
+[Installation](./reactjs.org/docs/installation/)
 
-[출처](https://beta.reactjs.org)
+[Main Concepts](./reactjs.org/docs/main-concepts/)
 
-### Learn React
+[Advanced Guides](./reactjs.org/docs/advanced-guides/)
 
-[Installation](./installation/)
+[API Reference]
 
-[Quick Start](./quick-start/)
+[Hooks]
 
-[Describing the UI](./describing-the-UI/)
+[Testing]
 
-[Adding Interactivity](./adding-interactivity/)
+### beta.react.js.org
 
-[Managing State](./managing-state/)
+[Installation](./beta.react.js.org/installation)
 
-[Escape Hatches](./escape-hatches/)
+[Quick Start](./beta.react.js.org/quick-start)
+
+[Describing the UI](./beta.react.js.org/describing-the-UI)
+
+[Adding Interactivity](./beta.react.js.org/adding-interactivity)
+
+[Managing State](./beta.react.js.org/managing-state)
+
+[Escape Hatches](./beta.react.js.org/escape-hatches)
+
+## [Learning React](./learning-react/)
