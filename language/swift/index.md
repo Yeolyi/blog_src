@@ -2,4 +2,6 @@
 title: Swift
 ---
 
-[Escaping Closure](escaping-closure) [frozen](frozen)
+[Escaping Closure](./escaping-closure)
+
+[frozen](./frozen)

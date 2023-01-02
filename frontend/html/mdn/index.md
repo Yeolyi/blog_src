@@ -1,5 +1,5 @@
 ---
-title: HTML - MDN Web Docs
+title: HTML MDN Web Docs
 ---
 
 ## 출처

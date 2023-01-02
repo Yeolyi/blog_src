@@ -2,7 +2,11 @@
 title: The TypeScript Handbook
 ---
 
+## 출처 
+
 다음에서 발췌 TypeScript Handbook TypeScript Team and Open Source Contributors 이 자료는 저작권에 의해 보호됩니다.
+
+> Handbook is not a complete language specification, but it is intended to be a comprehensive guide to all of the language’s features and behaviors.
 
 ## The Basics
 

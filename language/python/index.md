@@ -2,4 +2,6 @@
 title: Python
 ---
 
-[Fluent Python](./fluent-python/)
+## Fluent Python
+
+[내용 보기](./fluent-python/)
