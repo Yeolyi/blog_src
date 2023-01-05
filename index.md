@@ -34,13 +34,11 @@ title: 공부 기록
 
 ## 컴퓨터 과학
 
-[알고리즘](cs/algorithm)
+[자료구조/알고리즘](cs/algorithm)
 
 [백준](cs/baekjoon/)
 
 [컴퓨터 구조](cs/computer-architecture)
-
-[자료 구조](cs/data-structure)
 
 [네트워크](cs/network)
 
