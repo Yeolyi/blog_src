@@ -8,6 +8,8 @@ title: 자료구조/알고리즘
 
 [MIT OpenCourseWare - Introduction to Algorithms](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/)
 
+교재: [Introduction to Algorithms](https://ko.wikipedia.org/wiki/Introduction_to_Algorithms). CLRS라고도 한다.
+
 ### Course Description
 
 기초적인 자료 구조(동적 배열, 힙, 균형잡힌 이진 탐색 트리, 해시 테이블)과 고전적인 문제 해결을 위한 알고리즘(정렬, 그래프 탐색, 다이나믹 프로그래밍)을 다룬다.
@@ -64,7 +66,43 @@ Recitation 5 페이지 주석은 또 읽어보기.
 
 > The set of operations supported by a data structure is called an interface
 
-[스털링 근사](https://ko.wikipedia.org/wiki/스털링_근사)
+[스털링 근사](https://ko.wikipedia.org/wiki/스털링_근사). 나중에 practice problems에도 나오니 기억해두기. 
+
+### 2. Data Structures and Dynamic Arrays
+
+> Sequences maintain a collection of items in an **extrinsic** order, where each item stored has a **rank** in the sequence.
+
+여기서 extrinsic하다는 것은 요소가 그런 속성을 가지는게 아니라 external party가 그 순서로 요소를 배치했다는 뜻이다.
+
+시퀀스는 스택과 큐의 일반화이다. 이 둘은 시퀀스 작업의 부분 집합을 제공한다.
+
+build(X), len, iter_seq, get_at, set_at, insert_at, delete_at, insert_first, delete_first, insert_last, delete_last.
+
+> Sets maintain a collection of items based on an **intrinsic** property involving what the items are, usually based on a unique **key**.
+
+Set은 딕셔너리나 다른 쿼리 데이터베이스의 일반화이다.
+
+시퀀스 인터페이스는 배열, 연결 리스트, 동적 배열 자료구조로 구현할 수 있다.
+
+build, len, find, insert, delete, iter_ord, find_min, find_max, find_next, find_prev.
+
+운영체제는 각 프로세스에게 고정된 메모리 청크들을 할당한다.
+
+!@src/Array_Seq.py@!
+
+Linked list에서는 요소를 저장하기 위해 연속된 청크를 할당받는 것이 아니라 item과 next로 이루어진 node에 요소를 저장한다. 이러한 자료구조는 pointer-based, linked라고도 불린다.
+
+!@src/Linked_List.py@!
+
+O(i)인 작업과 O(n)인 작업이 있음 기억하기.
+
+**Dynamic array sequence**. 파이썬 리스트 append는 worst-case O(1)의 시간 복잡도가 아니다. 평균적으로 O(1)이며 이러한 asymptotic running time을 **amortized constant time**이라 한다.
+
+두 배씩 한다면 n = 1, 2, 4, 8, 16...에서 resize한다. resize cost는 Θ(1 + 2 + 4 + ...) = Θ(i=1~lgn 2^i)
+
+이를 위해 추가적인 공간을 할당할 때 저장된 요소의 개수에 비례하는 만큼 할당한다. 두 배인 경우 table doubling이라 한다.
+
+Excercise 해설 다시 읽어보기.
 
 ## 알고리즘 문제 해결 전략
 
