@@ -66,9 +66,13 @@ Recitation 5 페이지 주석은 또 읽어보기.
 
 > The set of operations supported by a data structure is called an interface
 
-[스털링 근사](https://ko.wikipedia.org/wiki/스털링_근사). 나중에 practice problems에도 나오니 기억해두기. 
+[스털링 근사](https://ko.wikipedia.org/wiki/스털링_근사). 나중에 practice problems에도 나오니 기억해두기.
 
 ### 2. Data Structures and Dynamic Arrays
+
+자료 구조는 데이터를 저장하는 방법 및 해당 데이터를 처리하는 알고리즘(support operations on the data)을 의미한다.
+
+가능한 처리 방법을 인터페이스(혹은 API, ADT)라 한다. 인터페이스는 명세, what, 자료 구조는 표현, how.
 
 > Sequences maintain a collection of items in an **extrinsic** order, where each item stored has a **rank** in the sequence.
 
@@ -80,7 +84,7 @@ build(X), len, iter_seq, get_at, set_at, insert_at, delete_at, insert_first, del
 
 > Sets maintain a collection of items based on an **intrinsic** property involving what the items are, usually based on a unique **key**.
 
-Set은 딕셔너리나 다른 쿼리 데이터베이스의 일반화이다.
+Set은 딕셔너리나 다른 쿼리 데이터베이스의 일반화이다. 딕셔너리는 order operation이 없는 set이다.
 
 시퀀스 인터페이스는 배열, 연결 리스트, 동적 배열 자료구조로 구현할 수 있다.
 
@@ -88,21 +92,60 @@ build, len, find, insert, delete, iter_ord, find_min, find_max, find_next, find_
 
 운영체제는 각 프로세스에게 고정된 메모리 청크들을 할당한다.
 
-!@src/Array_Seq.py@!
+!@src/lecture1/Array_Seq.py@!
 
 Linked list에서는 요소를 저장하기 위해 연속된 청크를 할당받는 것이 아니라 item과 next로 이루어진 node에 요소를 저장한다. 이러한 자료구조는 pointer-based, linked라고도 불린다.
 
-!@src/Linked_List.py@!
+!@src/lecture1/Linked_List.py@!
 
 O(i)인 작업과 O(n)인 작업이 있음 기억하기.
 
-**Dynamic array sequence**. 파이썬 리스트 append는 worst-case O(1)의 시간 복잡도가 아니다. 평균적으로 O(1)이며 이러한 asymptotic running time을 **amortized constant time**이라 한다.
+**Dynamic array sequence**. 파이썬 리스트 append는 worst-case O(1)의 시간 복잡도가 아니다. 평균적으로 O(1)이며 이러한 asymptotic running time을 **amortized constant time**이라 한다. 재할당에 O(n)이지만 O(n)개의 operation에서 한번씩하니 평균적으로 O(1). 비용을 여러 operation에 분산시킨다.
+
+Fill ratio, r이란 용량을 차지한 요소의 비중.
 
 두 배씩 한다면 n = 1, 2, 4, 8, 16...에서 resize한다. resize cost는 Θ(1 + 2 + 4 + ...) = Θ(i=1~lgn 2^i)
 
 이를 위해 추가적인 공간을 할당할 때 저장된 요소의 개수에 비례하는 만큼 할당한다. 두 배인 경우 table doubling이라 한다.
 
+!@src/lecture1/Dynamic_Array_Seq.py@!
+
 Excercise 해설 다시 읽어보기.
+
+### Problem Session 1
+
+[Little-O notation](https://en.wikipedia.org/wiki/Big_O_notation#Little-o_notation)
+
+Big-O-notation 관련해서는 교재에 나와있는듯. 수학에서의 쓰임새와 컴퓨터에서의 쓰임새가 다른 것 같다.
+
+Double-Ended Sequence의 구현법에는 양쪽에 빈 공간을 두는 방법과 앞부분용 배열과 뒷부분용 배열을 두는 방법이 있다. 후자의 경우 한 배열이 비게 되면 다시 build한다.
+
+!@src/ps0-template/count_long_subarray.py@!
+
+### 3. Sets and Sorting
+
+**Set interface**
+
+- Container: build
+- Static: find
+- Dynamic: insert, delete
+- Order: find_max, find_min, find_prev(k), find_next(k)
+
+정렬된 배열을 통해 그냥 배열로 구현한 것보다 비교적 효과적인 set을 구현할 수 있다. 정렬을 공부해보자.
+
+원래 배열을 덮어쓰면 **destructive**, O(1)만큼의 추가 공간을 사용하면 **in place**한 정렬 알고리즘이다. destructive는 in place를 포함한다.
+
+!@src/lecture2/permutation_sort.py@!
+
+**Solving Recurrences**
+
+- Substitution: Guess a solution, replace with representative function, recurrence holds true. 찍고 대입해서 맞으면 정답?
+- RecurrenceTree: Draw a tree representing the recursive calls and sum computation at nodes. 관계식을 나열해서 쭉 더한다.
+- Master Theorem: A formula to solve many recurrences (R03)
+
+!@src/lecture2/selection_sort.py@!
+
+Insertion sort, Merge sort 생략
 
 ## 알고리즘 문제 해결 전략
 
