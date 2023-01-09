@@ -122,6 +122,22 @@ Double-Ended Sequence의 구현법에는 양쪽에 빈 공간을 두는 방법�
 
 ## 3. Sets and Sorting
 
+Lecture note은 insertion, selection, merge sort를 재귀적으로 구현하고 각각에 대해 귀납적으로 정당성 증명을 하고 substitution과 recurrence tree를 통한 시간복잡도 증명을 보인다. 좀 지루함,,, 재귀 구현은 좀 장황하고 recitation에 있는 루프를 이용한 구현이 더 깔끔하다.
+
+### 외부 사이트 참조
+
+출처: [How to analyse Complexity of Recurrence Relation](https://www.geeksforgeeks.org/how-to-analyse-complexity-of-recurrence-relation/)
+
+Substitution Method: We make a guess for the solution and then we use mathematical induction to prove the guess is correct or incorrect.
+
+Recurrence Tree Method: In this method, we draw a recurrence tree and calculate the time taken by every level of the tree. Finally, we sum the work done at all levels.
+
+Master Method: Master Method is a direct way to get the solution. The master method works only for the following type of recurrences or for recurrences that can be transformed into the following type.
+
+> T(n) = aT(n/b) + f(n) where a >= 1 and b > 1
+
+[Wikipedia - Mathmatical induction](https://en.wikipedia.org/wiki/Mathematical_induction#Description)
+
 ### Set interface
 
 - Container: build
@@ -133,16 +149,34 @@ Double-Ended Sequence의 구현법에는 양쪽에 빈 공간을 두는 방법�
 
 원래 배열을 덮어쓰면 **destructive**, O(1)만큼의 추가 공간을 사용하면 **in place**한 정렬 알고리즘이다. destructive는 in place를 포함한다.
 
+(Sorted_Array_Set 구현이 맞나? binary search에서 없는 경우에 대한 처리가 없는 것 같은데)
+
+### Sorting
+
 !@src/lecture2/permutation_sort.py@!
 
 ### Solving Recurrences
 
-- Substitution: Guess a solution, replace with representative function, recurrence holds true. 찍고 대입해서 맞으면 정답?
-- RecurrenceTree: Draw a tree representing the recursive calls and sum computation at nodes. 관계식을 나열해서 쭉 더한다.
-- Master Theorem: A formula to solve many recurrences (R03)
-
 !@src/lecture2/selection_sort.py@!
 
-[Wikipedia - Mathmatical induction](https://en.wikipedia.org/wiki/Mathematical_induction#Description)
+Insertion sort, Merge sort에서 재귀를 통한 정당성 증명과 substitution, recurrence tree를 통한 시간 복잡도 계산 생략
 
-Insertion sort, Merge sort 생략
+선택 정렬은 가장 큰 i개의 요소들을 찾으며 쌓아가고, 삽입 정렬은 처음 i개의 요소들을 정렬되게 유지하며 쌓아간다. 둘 다 정렬된 subset들을 키우기에 incremental하다고 한다.
+
+선택 정렬: omega(n^2) comparison, O(n) swaps, 삽입 정렬: omega(n^2) comparison, omega(n^2) swaps.
+
+삽입 정렬은 stable하다.
+
+logn은 n보다 '지수적'으로 느리게 성장한다. 지수적으로 느리게라는 말 어감이 신기.
+
+in-place merge sort도 있다.
+
+### Master Theorem
+
+재귀 호출에서 한 단계 내려갈 때 a배 늘어나고 작업량은 1/b배 감소한다고 하자. f(n)과 n^(logba)를 비교하게 된다. Polynomial하면 간단해진다.
+
+[Master Theorem](<https://en.wikipedia.org/wiki/Master_theorem_(analysis_of_algorithms)>)
+
+[Akra-Bazzi method](https://en.wikipedia.org/wiki/Akra–Bazzi_method)
+
+## 4. Hashing

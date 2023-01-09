@@ -1,3 +1,10 @@
 {
-  "problems.decorations.enabled": false
+  "problems.decorations.enabled": false,
+  "files.exclude": {
+    "**/*.aux": true,
+    "**/*.fdb_latexmk": true,
+    "**/*.fls": true,
+    "**/*.log": true,
+    "**/*.synctex.gz": true
+  }
 }

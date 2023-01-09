@@ -44,3 +44,11 @@ pom.xml.asc
 /.prepl-port
 .hgignore
 .hg/
+
+# https://github.com/github/gitignore/blob/main/TeX.gitignore
+
+*.aux
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.log
