@@ -180,3 +180,83 @@ in-place merge sort도 있다.
 [Akra-Bazzi method](https://en.wikipedia.org/wiki/Akra–Bazzi_method)
 
 ## 4. Hashing
+
+### Comparison Model
+
+알고리즘이 요소들을 비교 연산을 통해서만 구분할 수 있다고 가정한다. 비교 연산의 반환값은 True나 False 두가지이다.
+
+알고리즘 수행 시간의 하한은 비교의 횟수에 따라 정해진다.
+
+### Decision Tree
+
+모든 알고리즘은 수행된 작업들의 decision tree로 볼 수 있다.
+
+Comparison model의 경우 내부 노드는 비교 연산을 의미하고 leaf는 알고리즘의 종료, 결과값을 의미한다.
+
+비교 연산의 결과는 binary하므로 가지는 두 개로 갈라진다.
+
+root-to-leaf path는 특정 입력에 대한 알고리즘 실행 추이?를 보여준다.
+
+탐색 알고리즘의 경우 결과값이 없는 경우도 있으니 잎 노드가 최소 n+1개이어야 한다.
+
+**트리의 높이가 알고리즘의 수행 시간을 의미한다.** 따라서 탐색 알고리즘의 경우 logn이 가능한 가장 짧은 트리의 높이이다.
+
+> The relationship between Big Omega (Ω) and Little Omega (ω) is similar to that of Big-Ο and Little o except that now we are looking at the lower bounds. [geeksforgeeks](https://www.geeksforgeeks.org/analysis-of-algorithems-little-o-and-little-omega-notations/)
+
+[Branching factor](https://en.wikipedia.org/wiki/Branching_factor)
+
+To get faster, need an operation that allows super-constant ω(1) branching factor?? 상수 시간을 뛰어넘는 branching factor가 필요하다는 뜻인가.
+
+Most operations within a computer only allow for constant logical branching, like if statements in your code. However, one operation on your computer allows for non-constant branching factor: specifically the ability to randomly access any memory address in constant time.
+
+아무튼 Word-RAM의 O(1) random access를 활용하면 linear branching factor를 얻어낼 수 있다.
+
+레지스터 크기는 보통 w(word)의 크기와 같다.
+
+k = {0, ..., u-1}의 키를 사용하여 요소를 k번째 인덱스에 넣는다.
+
+### Hashing
+
+공간을 너무 많이 차지하므로 해시 함수를 통해 더 작은 direct access array를 사용할 수 있도록 한다.
+
+> Hash function: h(k) : {0, . . . , u − 1} → {0, . . . , m − 1} (also hash map)
+
+Direct access array는 hash table이라 부르고, h(k)는 k라는 키 값의 해시 값이라 한다.
+
+비둘기집 원리에 의해 충돌이 일어날 수밖에 없는데, 다른 곳에 저장하는 open addressing과 dynamic set interface를 제공하는 또다른 자료 구조에 저장하는 chaining이 있다. 전자는 분석이 어렵지만 실용적이고 흔히 사용된다.
+
+Chain size가 theta(n)이면 좋지 않다. 이를 위해 좋은 해시 함수가 필요하다.
+
+### Hashing Functions
+
+> h(k) = (k mod m)
+
+2와 10의 거듭제곱과 거리가 먼 큰 소수가 주로 사용된다.
+
+하지만 입력이 커지면 결국에는 O(n) 크기의 체인을 만들게 된다. If u > nm, every hash function from u to m maps some n keys to the same hash, by the pigeonhole principle.
+
+> For a large enough key domain u, every hash function will be bad for some set of n inputs2. However, we can achieve good **expected** bounds on hash table performance by choosing our hash function **randomly** from a large family of hash functions. Here the expecta- tion is over our choice of hash function, which is independent of the input. **This is not expectation over the domain of possible input keys.**
+
+Deterministic하지 않게 랜덤으로 해시 함수를 고를 수 있게 해보자.
+
+> Universal hash function: h_ab(k) = (((ak + b) mod p) mod m)
+>
+> Hash Family H(p, m) = {h_ab | a, b ∈ {0, . . . , p − 1} and a != 0}
+
+p는 u보다 큰 고정된 상수값. H는 universal family이다.
+
+Universal family에서 임의로 선택한 해시 함수를 통해 해시한 임의의 두 키의 해시 값이 충돌할 확률은 1/m보다 작거나 같다.
+
+어렵다,,,
+
+위의 h_ab가 universal함은 이 강의에서 다루지 않음. 다만 이를 전제로 평균 체인의 길이가 어떨지는 구할 수 있음. 
+
+[Universal hashing](https://en.wikipedia.org/wiki/Universal_hashing)에 정리가 잘 되어 있음.
+
+[Perfect hash function](https://en.wikipedia.org/wiki/Perfect_hash_function)
+
+체이닝으로 충돌을 처리하는 해시 테이블을 universal family에서 임의로 선택한 해시 함수를 통해 구현하면 입력 키들과 무관하게 set 연산들을 **expected constant time**에 처리할 수 있다.
+
+!@src/lecture4/Hash_Table_Set.py@!
+
+시간 복잡도에 a(amortized)말고 e(expected?)도 추가됨. 
